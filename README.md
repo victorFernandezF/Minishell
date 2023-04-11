@@ -1,0 +1,2 @@
+# Minishell
+A little shell
