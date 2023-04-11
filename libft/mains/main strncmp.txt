@@ -1,0 +1,14 @@
+int	main(void)
+{
+	char	*s1;
+	char	*s2;
+	int		n;
+
+	s1 = "hola mundo";
+	s2 = "hola mundo";
+	n = 15;
+	printf("STRNCMP REAL\n _______\n");
+	printf("strncmp: %d\n", strncmp(s1, s2, n));
+	printf("\nMI STRNCMP\n _______\n");
+	printf("strncmp: %d\n", ft_strncmp(s1, s2, n));
+}

@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+int	main(void)
+{
+	char	*str;
+	char	*str2;
+	int		n;
+	int		res;
+	int		res2;
+
+	str = "HELLO WORLD";
+	str2 = "HELLO WORLD";
+	n = 11;
+	res = memcmp(str, str2, n);
+	printf("ORIGINAL -> %i", res);
+
+	printf("\n________\n");
+	res2 = ft_memcmp(str, str2, n);
+	printf(" MI FUNCION -> %i\n", res2);
+
+}

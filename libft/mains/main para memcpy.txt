@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+
+int	main(void)
+{
+    char	dest[20] = "kiwi";
+    char	test[20] = "kiwi";
+    char	src[50] = "malaga";
+	int		n = 3;
+    
+	printf("MEMCPY REAL\n _______\n");
+	printf("Before memcpy() src -> %s\n", src);
+	printf("Before memcpy() dest -> %s\n", dest);
+	memcpy(dest, src, n);
+	printf("After memcpy(): dest ->  %s\n", dest);
+//MY FUNCTION
+	printf("\nMI MEMCPY\n _______\n");
+	printf("Before memcpy() src -> %s\n", src);
+	printf("Before memcpy():  dest ->%s\n", test);
+	ft_memcpy(test, src, n);
+	printf("After memcpy(): dest ->  %s\n", test);
+	return (0);
+}

@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+int	main(void)
+{
+	char	*str = "HOLA MUNDO HELLO WORLD";
+	char	*find;
+	char	*ptr;
+	char	*ptr2;
+	int		n;
+
+	find = "HELLO";
+	n = 10;
+	ptr = strnstr(str, find, n);
+	printf("ORIGINAL -> %s", ptr);
+
+	printf("\n________\n");
+	ptr2 = ft_strnstr(str, find, n);
+	printf(" MI FUNCION -> %s\n", ptr2);
+}

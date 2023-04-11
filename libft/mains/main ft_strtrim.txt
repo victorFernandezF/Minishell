@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+int	main(void)
+{
+	char			*s1;
+	char			*set;
+
+	s1 = "BUZZ HOLA A TODOS, HOLA DOCTOR NICK BUZZ";
+	set = "BUZZ";
+	printf("MI FUNCION: %s\n", ft_strtrim(s1, set));
+	return (0);
+}

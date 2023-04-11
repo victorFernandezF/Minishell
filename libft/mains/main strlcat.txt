@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+int	main(void)
+{
+	char	*src;
+	char	dest[20] = "HOLA";
+	char	dest2[20] = "HOLA";
+	int		r;
+	int		r2;
+	int		size;
+
+	src = "MUNDO";
+	size = 11;
+	r = strlcat(dest, src, size);
+	printf(" ORIGINAL %d\n", r);
+	printf(" ORIGINAL DEST %s\n", dest);
+	printf("\n________\n");
+	r2 = ft_strlcat(dest2, src, size);
+	printf(" MIA %d\n", r2);
+	printf(" MIA DEST %s\n", dest2);
+}

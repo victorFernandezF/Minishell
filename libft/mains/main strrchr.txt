@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+int	main(void)
+{
+	char	*s1;
+	int		n;
+
+	s1 = "hola mundo que pasa";
+	n = 15;
+	printf("STRRCHR REAL\n _______\n");
+	printf("strrchr: %s\n", strrchr(s1, 'o'));
+	printf("\nMI STRRCHR\n _______\n");
+	printf("strrchr: %s\n", ft_strrchr(s1, 'o'));
+}

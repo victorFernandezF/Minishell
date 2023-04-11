@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+
+int	main(void)
+{
+    char str[50] = "hola mundo";
+    char mystr[50] = "hola mundo";
+    
+	printf("MEMSET REAL\n _______\n");
+	printf("Before memset(): %s\n", str);
+	memset(str + 2, '.', 3 * sizeof(char));
+	printf("After memset():  %s", str);
+	printf("\n______\nMI MEMSET\n _______\n");
+	printf("Before memset(): %s\n", mystr);
+	ft_memset(mystr + 2, '.', 3 * sizeof(char));
+	printf("After memset():  %s", str);
+	return (0);
+}

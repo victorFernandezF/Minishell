@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include "libft.h"
+
+
+int	main(void)
+{
+    char	dest[20];
+    char	test[20];
+    char	src[50] = "hola mundo";
+	int		n = 3;
+    
+	printf("MEMMOVE REAL\n _______\n");
+	printf("Before memmove() src -> %s\n", src);
+	printf("Before memmove() dest -> %s\n", dest);
+	memmove(dest, src, n);
+	printf("After memmove() dest ->  %s\n", dest);
+ //MY FUNCTION
+	printf("\nMI MEMMOVE\n _______\n");
+	printf("Before memmove() src -> %s\n", src);
+	printf("Before memmove():  dest ->%s\n", test);
+	ft_memmove(test, src, n);
+	printf("After memmove(): dest ->  %s\n", test);
+	return (0);
+}

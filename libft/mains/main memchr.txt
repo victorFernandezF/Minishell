@@ -1,0 +1,14 @@
+    char	src[50] = "hula mundo";
+	char	find = 'o';
+	char	*res;
+	int		n = 15;
+    
+	printf("MEMCHR REAL\n _______\n");
+	res = memchr(src, find, n);
+	printf("After memmchr(): %s\n", res);
+	
+ //MY FUNCTION
+	 printf("\nMI MEMCHR\n _______\n");
+	res = ft_memchr(src, find, n);
+	printf("After memmchr(): %s\n", res);
+	return (0);
