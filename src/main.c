@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/11 19:13:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/12 12:12:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,32 @@ int	is_token(char c)
 	return (c == '|');
 }
 
+t_cmd	*fill_struct(t_cmd *cmd, char **command, int nb_cmd)
+{
+	//int	i;
+	int	output;
+
+	(void)nb_cmd;
+	(void)command;
+	cmd = malloc(sizeof(t_cmd));
+	cmd->cmd = get_part_from_str(command[0], 1);
+	cmd->flags = get_part_from_str(command[0], 2);
+	output = open(get_part_from_str(command[0], 3), O_CREAT);
+	cmd->output = output;
+	return (cmd);
+}
+
 void	start_parser(t_cmd *cmd, char *str)
 {
 	int		nb_cmd;
-	int		i;
 	char	**command;
-	t_cmd	**cmd_list;
 
-	(void)cmd;
-	nb_cmd = 1;
-	i = 0;
-	while (str[i])
-	{
-		if (is_token(str[i]))
-			nb_cmd++;
-		i++;
-	}
-	i = 0;
-	//printf("%i\n", nb_cmd);
-	command = ft_split_2(str);
-	cmd_list = malloc(sizeof(t_cmd) * nb_cmd);
-	while (command[i])
-	{
-		if (is_token(command[i][0]))
-			i++;
-		printf("%s\n", command[i]);
-		i++;
-	}
-	//printf("%s\n", cmd_list[0]->cmd);
+	nb_cmd = get_nb_cmd(str, 1);
+	command = ft_split(str, '|');
+	cmd = fill_struct(cmd, command, nb_cmd);
+	printf("test cmd 1 cmd -> %s\n", cmd->cmd);
+	printf("test cmd 1 flag -> %s\n", cmd->flags);
+	printf("test cmd 1 out -> %i\n", cmd->output);
 }
 
 int	main(int argc, char **argv)

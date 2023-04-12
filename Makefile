@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/11 18:42:38 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/12 11:16:28 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CFLAGS 	= 	-Wall -Wextra -Werror
 
 LIBFT_D	=	libft
 SRC 	= 	src/main.c \
+			utils/get.c \
 	
 OBJS	=	$(SRC:.c=.o)
 
