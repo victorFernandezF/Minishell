@@ -6,12 +6,12 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/12 18:07:28 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/12 19:06:24 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	minishell
-CFLAGS 	= 	-Wall -Wextra -Werror
+CFLAGS 	= 	-Wall -Wextra -Werror -g
 
 LIBFT_D	=	libft
 SRC 	= 	src/main.c \
