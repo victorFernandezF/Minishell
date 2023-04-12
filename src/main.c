@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/12 18:18:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:29:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@ int	is_token(char c)
 t_cmd	*fill_struct(t_cmd *cmd, char **command, int nb_cmd)
 {
 	//int	i;
-	//int	output;
+	int	output;
 
 	(void)nb_cmd;
 	(void)command;
 	cmd = malloc(sizeof(t_cmd));
 	cmd->cmd = get_part_from_str(command[0], 1);
 	cmd->flags = get_part_from_str(command[0], 2);
-	//output = open(get_part_from_str(command[0], 3), O_CREAT);
-	//cmd->output = output;
+	output = open(get_part_from_str(command[0], 3),
+			O_CREAT | O_WRONLY | O_RDONLY);
+	cmd->output = output;
+	write(cmd->output, "PEPE", 4);
 	return (cmd);
 }
 
@@ -48,7 +50,7 @@ int	main(int argc, char **argv)
 {
 	t_cmd	*cmd;
 
-	atexit(leaks);
+	//atexit(leaks);
 	cmd = NULL;
 	if (argc >= 2)
 		cmd = start_parser(cmd, argv[1]);
