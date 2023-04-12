@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/26 09:36:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/11 18:29:08 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/12 18:44:18 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,11 +58,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
-	@echo "$(G) $@ Compiled successfully $(E)"
 
 bonus: $(OBJ) $(OBJ_B)
 	ar rcs $(NAME) $(OBJ) $(OBJ_B)
-	@echo "$(G) $@ Bonus Compiled successfully $(E)"
 
 norminette:
 	@echo ""
@@ -74,7 +72,6 @@ norminette:
 
 clean:
 	rm -f $(OBJ) $(OBJ_B)
-	@echo "$(M) Everything cleaned $(E)"
 
 fclean: clean
 	rm -f $(NAME)

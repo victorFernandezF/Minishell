@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/12 12:10:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:16:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,35 +21,6 @@ int	get_nb_cmd(char *str, int cmd)
 		if (str[i] == '|')
 			cmd++;
 	return (cmd);
-}
-
-char	*get_output(char *str)
-{
-	int		i;
-	int		j;
-	int		output;
-	int		start;
-	char	*res;
-
-	i = -1;
-	j = 0;
-	output = 0;
-	while (str[++i])
-		if (str[i] == '>')
-			output = i;
-	if (output == 0)
-		return (NULL);
-	output += 2;
-	start = output;
-	while (str[output] != ' ')
-		output++;
-	res = malloc((output - start + 1) * sizeof(char));
-	if (!res)
-		exit(0);
-	while (start < output)
-		res[j++] = str[start++];
-	res[j] = '\0';
-	return (res);
 }
 
 char	*get_cmd(char *str)
@@ -88,7 +59,7 @@ char	*get_flags(char *str)
 	while (str[i] == ' ')
 		i++;
 	start = i;
-	while (str[i] != '>' && str[i] != '<')
+	while (str[i] != '>' && str[i] != '<' && str[i] != '\0')
 		i++;
 	res = malloc(((i - start) + 1) * sizeof(char));
 	if (!res)
@@ -108,7 +79,5 @@ char	*get_part_from_str(char *str, int part)
 		res = get_cmd(str);
 	if (part == 2)
 		res = get_flags(str);
-	if (part == 3)
-		res = get_output(str);
 	return (res);
 }
