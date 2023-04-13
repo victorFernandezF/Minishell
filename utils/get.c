@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/12 19:16:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:18:38 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_cmd(char *str)
 	char	*res;
 
 	i = 0;
-	while (str[i] != ' ')
+	while (str[i] != ' ' && str[i] != '\0')
 			i++;
 	end = i;
 	res = malloc(i * sizeof(char));
@@ -50,17 +50,16 @@ char	*get_flags(char *str)
 	int		j;
 	char	*res;
 
-	i = 0;
 	j = 0;
-	while (str[i] == ' ')
-			i++;
-	while (str[i] != ' ')
+	i = 0;
+	i = skip_whitespaces(str, i);
+	while (str[i] != ' ' && str[i] != '\0')
 		i++;
-	while (str[i] == ' ')
-		i++;
+	i++;
 	start = i;
-	while (str[i] != '>' && str[i] != '<' && str[i] != '\0')
-		i++;
+	while (str[++i])
+		if (str[i] == ' ' && str[i + 1] != '-')
+			break ;
 	res = malloc(((i - start) + 1) * sizeof(char));
 	if (!res)
 		exit(0);
