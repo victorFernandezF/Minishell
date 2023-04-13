@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 12:38:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:57:29 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_cmd
 	char	*cmd;
 	char	*flags;
 	int		input;
-	int		output;
+	int		nb_outputs;
+	char	**output;
 	int		index;
 	t_cmd	*next;
 }			t_cmd;
@@ -38,8 +39,11 @@ char	*get_part_from_str(char *str, int part);
 //	G E T   E A C H   P A R T   O F   C M D 
 
 int		get_nb_cmd(char *str);
+int		*get_nb_output(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
+char	**get_output(char *str, t_cmd *cmd);
+char	*get_output_from_pos(char *str, int pos);
 
 //	U T I L I T I E S
 
@@ -47,7 +51,7 @@ int		skip_whitespaces(char *str, int i);
 
 //	C H E C K S
 
-int		are_there_flags(char *str);
+int		are_there_char(char *str, char c);
 int		is_token(char c);
 
 //	F R E E   S T U F F 

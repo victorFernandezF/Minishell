@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 12:49:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/13 19:11:29 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*get_cmd(char *str)
 	end = i;
 	res = malloc(i * sizeof(char));
 	if (!res)
-		exit(0);
+		return (NULL);
 	i = -1;
 	while (++i < end)
 		res[i] = str[i];
@@ -97,11 +97,51 @@ char	*get_flags(char *str)
 			break ;
 	res = malloc(((i - start) + 1) * sizeof(char));
 	if (!res)
-		exit(0);
+		return (NULL);
 	while (start < i)
 		res[j++] = str[start++];
 	res[j] = '\0';
 	return (res);
+}
+
+/* 
+ * get_output
+ * ----------------------------
+ *	Splits the flags of the command from the given string
+ *
+ *	PARAMS:
+ *	-> str: string given by user.
+ *
+ * 	RETURN
+ *	-> A string with the flags name.
+ */
+char	**get_output(char *str, t_cmd *cmd)
+{
+	int		nb_output;
+	int		*output_pos;
+	char	**output;
+	int		i;
+	int		j;
+	char	*tmp;
+
+	output_pos = get_nb_output(str);
+	nb_output = output_pos[0];
+	cmd->nb_outputs = output_pos[0];
+	output = malloc((nb_output + 1) * sizeof(char **));
+	i = -1;
+	j = 1;
+	while (++i < nb_output)
+	{
+		tmp = get_output_from_pos(str, output_pos[j]);
+		output[i] = tmp;
+		tmp = NULL;
+		j++;
+	}
+	output[i] = NULL;
+	printf("inside the loop -> %s\n", tmp);
+	free(tmp);
+	free(output_pos);
+	return (output);
 }
 
 /* 
