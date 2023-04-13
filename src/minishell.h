@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 12:26:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:38:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*get_part_from_str(char *str, int part);
 
 //	G E T   E A C H   P A R T   O F   C M D 
 
-int		get_nb_cmd(char *str, int cmd);
+int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
 

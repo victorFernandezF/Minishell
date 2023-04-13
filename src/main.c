@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 12:20:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:38:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *str)
 	int		nb_cmd;
 	char	**command;
 
-	nb_cmd = get_nb_cmd(str, 1);
+	nb_cmd = get_nb_cmd(str);
 	command = ft_split(str, '|');
 	cmd = fill_struct(cmd, command, nb_cmd);
 	free_array(command);
