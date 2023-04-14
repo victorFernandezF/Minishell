@@ -6,15 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 11:49:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:58:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/minishell.h"
 
-char	*get_output_from_pos(char *str, int pos)
+char	*get_output_from_pos(char *out, char *str, int pos)
 {
-	char	*res;
 	int		i;
 	int		aux;
 
@@ -22,16 +21,16 @@ char	*get_output_from_pos(char *str, int pos)
 	aux = pos + 1;
 	while (str[++pos])
 		i++;
-	res = malloc((i + 1) * sizeof(char));
+	out = malloc((i + 1) * sizeof(char));
 	i = 0;
 	while (str[aux] != ' ' && str[aux] != '\0')
 	{
-		res[i] = str[aux];
+		out[i] = str[aux];
 		aux++;
 		i++;
 	}
-	res[i] = '\0';
-	return (res);
+	out[i] = '\0';
+	return (out);
 }
 
 int	*get_fd_ftom_outputs(char **output, int nb)
@@ -45,7 +44,6 @@ int	*get_fd_ftom_outputs(char **output, int nb)
 	{
 		if (output[i][0] == '>')
 		{
-			printf("AHOY\n");
 			output[i] = ft_strtrim(output[i], ">");
 			res[i] = open(output[i], O_CREAT | O_RDWR | O_APPEND, 0644);
 		}
@@ -55,7 +53,7 @@ int	*get_fd_ftom_outputs(char **output, int nb)
 	return (res);
 }
 
-static int	*fill_output_pos(int	*output_pos, int pos, char *str, int i)
+static int	*fill_output_pos(int *output_pos, int pos, char *str, int i)
 {
 	while (str[++i])
 		if (str[i] == '>')

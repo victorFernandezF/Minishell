@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 10:57:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:08:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,13 +130,16 @@ int	*get_output(char *str, t_cmd *cmd)
 	j = 1;
 	while (++i < output_pos[0])
 	{
-		output[i] = get_output_from_pos(str, output_pos[j]);
+		output[i] = get_output_from_pos(output[i], str, output_pos[j]);
 		j++;
 	}
 	output[i] = NULL;
 	outputs_fd = get_fd_ftom_outputs(output, output_pos[0]);
 	i = 0;
 	free(output_pos);
+	while (output[i] != NULL)
+		free(output[i++]);
+	free(output[1]);
 	return (outputs_fd);
 }
 
@@ -161,5 +164,7 @@ char	*get_part_from_str(char *str, int part)
 		res = get_cmd(str);
 	if (part == 2)
 		res = get_flags(str);
+	if (part == 3)
+		res = get_params(str);
 	return (res);
 }

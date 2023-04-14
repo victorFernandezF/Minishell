@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 11:38:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:34:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,3 @@ int	are_there_char(char *str, char c)
 			return (1);
 	return (0);
 }
-
-

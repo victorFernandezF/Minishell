@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:15:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/20 11:17:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:51:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 char	*ft_strtrim(char *s1, char *set)
 {
 	size_t	i;
+	char	*res;
 
 	if (!s1 || !set)
 		return (NULL);
@@ -36,5 +37,6 @@ char	*ft_strtrim(char *s1, char *set)
 	i = ft_strlen (s1);
 	while (i && ft_strchr(set, s1[i]))
 		i--;
-	return (ft_substr(s1, 0, i + 1));
+	res = ft_substr(s1, 0, i + 1);
+	return (res);
 }
