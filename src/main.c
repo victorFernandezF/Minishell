@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 10:17:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 11:11:15 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ t_cmd	*start_parser(t_cmd *cmd, char *str)
 int	main(int argc, char **argv)
 {
 	t_cmd	*cmd;
+	int		i;
 
+	i = -1;
 	//atexit(leaks);
 	cmd = NULL;
 	if (argc >= 2)
@@ -49,6 +51,8 @@ int	main(int argc, char **argv)
 	printf("test out -> %i\n", cmd->output[0]);
 	printf("test out -> %i\n", cmd->output[1]);
 	printf("test nb_out -> %i\n", cmd->nb_outputs);
+	while (++i < cmd->nb_outputs)
+		close(cmd->output[i]);
 	free_struct(cmd);
 	return (0);
 }
