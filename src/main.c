@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 19:12:52 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:17:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	main(int argc, char **argv)
 		cmd = start_parser(cmd, argv[1]);
 	printf("test cmd -> %s\n", cmd->cmd);
 	printf("test flg -> %s\n", cmd->flags);
-	printf("test out -> %s\n", cmd->output[0]);
-	printf("test out -> %s\n", cmd->output[1]);
+	printf("test out -> %i\n", cmd->output[0]);
+	printf("test out -> %i\n", cmd->output[1]);
 	printf("test nb_out -> %i\n", cmd->nb_outputs);
 	free_struct(cmd);
 	return (0);

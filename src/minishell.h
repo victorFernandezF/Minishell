@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 18:57:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:16:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_cmd
 	char	*flags;
 	int		input;
 	int		nb_outputs;
-	char	**output;
+	int		*output;
 	int		index;
 	t_cmd	*next;
 }			t_cmd;
@@ -42,8 +42,10 @@ int		get_nb_cmd(char *str);
 int		*get_nb_output(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
-char	**get_output(char *str, t_cmd *cmd);
+int		*get_output(char *str, t_cmd *cmd);
 char	*get_output_from_pos(char *str, int pos);
+int		*get_fd_ftom_outputs(char **output, int nb);
+
 
 //	U T I L I T I E S
 

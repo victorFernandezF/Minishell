@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 18:47:33 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:44:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,21 @@ char	*get_output_from_pos(char *str, int pos)
 		i++;
 	}
 	res[i] = '\0';
+	return (res);
+}
+
+int	*get_fd_ftom_outputs(char **output, int nb)
+{
+	int		i;
+	int		*res;
+
+	i = -1;
+	res = malloc((nb + 1) * sizeof(int));
+	while (++i < nb)
+	{
+		res[i] = open(output[i], O_CREAT | O_RDWR | O_TRUNC, 0644);
+		printf("out ---> %i %s\n", res[i], output[i]);
+	}
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/13 19:11:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:18:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,33 +115,30 @@ char	*get_flags(char *str)
  * 	RETURN
  *	-> A string with the flags name.
  */
-char	**get_output(char *str, t_cmd *cmd)
+int	*get_output(char *str, t_cmd *cmd)
 {
-	int		nb_output;
+	int		*outputs_fd;
 	int		*output_pos;
 	char	**output;
 	int		i;
 	int		j;
-	char	*tmp;
 
 	output_pos = get_nb_output(str);
-	nb_output = output_pos[0];
 	cmd->nb_outputs = output_pos[0];
-	output = malloc((nb_output + 1) * sizeof(char **));
+	output = malloc((output_pos[0] + 1) * sizeof(char **));
 	i = -1;
 	j = 1;
-	while (++i < nb_output)
+	while (++i < output_pos[0])
 	{
-		tmp = get_output_from_pos(str, output_pos[j]);
-		output[i] = tmp;
-		tmp = NULL;
+		output[i] = get_output_from_pos(str, output_pos[j]);
 		j++;
 	}
 	output[i] = NULL;
-	printf("inside the loop -> %s\n", tmp);
-	free(tmp);
+	outputs_fd = get_fd_ftom_outputs(output, output_pos[0]);
+	i = 0;
+	//free(output);
 	free(output_pos);
-	return (output);
+	return (outputs_fd);
 }
 
 /* 
