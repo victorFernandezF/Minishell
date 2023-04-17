@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/14 13:12:48 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/17 13:36:07 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC 	= 	src/main.c \
 			utils/get.c \
 			utils/utilities.c \
 			utils/output_management.c \
+			utils/get_env_vars.c \
 			utils/get_params.c \
 	
 OBJS	=	$(SRC:.c=.o)

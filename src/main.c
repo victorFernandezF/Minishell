@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/17 12:28:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/17 14:39:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,14 @@ t_cmd	*start_parser(t_cmd *cmd, char *str)
 {
 	int		nb_cmd;
 	char	**command;
+	int		i;
 
+	i = -1;
 	nb_cmd = get_nb_cmd(str);
 	command = ft_split(str, '|');
-	command[0] = transform_env_var(command[0]);
+	while (++i < nb_cmd)
+		command[i] = transform_env_var(command[i]);
+	printf("%s\n", command[0]);
 	cmd = fill_struct(cmd, command, nb_cmd);
 	free_array(command);
 	return (cmd);
