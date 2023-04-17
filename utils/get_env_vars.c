@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/17 14:36:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:52:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	*get_env_positions(int nb, char *str)
 		return (NULL);
 	while (str[++i])
 		if (is_env_var(str[i]))
-			env[j] = i;
+			env[j++] = i;
 	return (env);
 }
 
@@ -109,6 +109,7 @@ char	*transform_env_var(char *str)
 	i = -1;
 	nb_env = get_nb_env(str);
 	env = get_env_positions(nb_env, str);
+	//printf("%d\n", env[1]); exit(0);
 	while (++i < nb_env)
 	{
 		res = transformation(str, env[i]);
