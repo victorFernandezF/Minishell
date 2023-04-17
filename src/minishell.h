@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 13:13:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:28:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,14 @@ int		*get_output(char *str, t_cmd *cmd);
 char	*get_output_from_pos(char *out, char *str, int pos);
 int		*get_fd_ftom_outputs(char **output, int nb);
 char	*get_params(char *str);
+char	*transform_env_var(char *str);
 
 
 //	U T I L I T I E S
 
 int		skip_whitespaces(char *str, int i);
+int		is_redirect(char c);
+int		is_env_var(char c);
 
 //	C H E C K S
 

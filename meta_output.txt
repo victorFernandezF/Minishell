@@ -1,7 +1,0 @@
-1
-test cmd -> wc
-test flg -> -a
-test params -> (null)
-test out -> 0
-test out -> 0
-test nb_out -> 0

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 12:58:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:19:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*get_output_from_pos(char *out, char *str, int pos)
 		i++;
 	out = malloc((i + 1) * sizeof(char));
 	i = 0;
+	while (str[aux] == ' ')
+		aux++;
 	while (str[aux] != ' ' && str[aux] != '\0')
 	{
 		out[i] = str[aux];
@@ -56,8 +58,10 @@ int	*get_fd_ftom_outputs(char **output, int nb)
 static int	*fill_output_pos(int *output_pos, int pos, char *str, int i)
 {
 	while (str[++i])
+	{
 		if (str[i] == '>')
 			output_pos[pos++] = i;
+	}
 	return (output_pos);
 }
 
@@ -75,8 +79,10 @@ int	*get_nb_output(char *str)
 	if (are_there_char(str, '>'))
 	{
 		while (str[++i])
+		{
 			if (str[i] == '>' && str[i + 1] != '>')
 				nb++;
+		}
 		output_pos = malloc((nb + 1) * sizeof(int));
 		if (!output_pos)
 			return (NULL);

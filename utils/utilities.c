@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 12:34:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:41:34 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 int	is_token(char c)
 {
 	return (c == '|');
+}
+
+int	is_env_var(char c)
+{
+	return (c == '#');
+}
+
+int	is_redirect(char c)
+{
+	return (c == '|' || c == '>' || c == '<');
 }
 
 int	skip_whitespaces(char *str, int i)

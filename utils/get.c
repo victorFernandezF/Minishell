@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 13:08:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:33:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	*get_output(char *str, t_cmd *cmd)
 	free(output_pos);
 	while (output[i] != NULL)
 		free(output[i++]);
-	free(output[1]);
+	//free(output[1]);
 	return (outputs_fd);
 }
 
