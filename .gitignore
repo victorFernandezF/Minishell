@@ -54,3 +54,5 @@ dkms.conf
 # OTHERS
 .DS_Store
 *.txt
+*.json
+.vscode
