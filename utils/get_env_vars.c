@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/17 15:52:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:03:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,28 @@ char	*replace_env_by_value(char	*str, int pos, char *env)
 	return (res);
 }
 
-char	*transformation(char *str, int pos)
+char	*fill_temporal_env_var(char *tmp, char *str, int aux, int i)
+{
+	while (str[aux] != ' ' && str[aux] != '\0')
+		tmp[i++] = str[aux++];
+	tmp[i] = '\0';
+	return (tmp);
+}
+
+char	*transformation(char *str)
 {
 	int		i;
 	int		aux;
 	char	*tmp;
 	char	*tmp_env;
 	char	*res;
+	int		posi;
 
 	i = 0;
-	aux = pos;
+	while (str[++i] != '#')
+		posi = i;
+	posi++;
+	aux = posi;
 	while (str[aux] != ' ' && str[aux] != '\0')
 	{
 		aux++;
@@ -87,15 +99,11 @@ char	*transformation(char *str, int pos)
 	}
 	i++;
 	tmp = malloc(i * sizeof(char));
-	i = 0;
-	aux = pos + 1;
-	while (str[aux] != ' ' && str[aux] != '\0')
-		tmp[i++] = str[aux++];
-	tmp[i] = '\0';
+	aux = posi + 1;
+	tmp = fill_temporal_env_var(tmp, str, aux, 0);
 	tmp_env = getenv(tmp);
-	res = replace_env_by_value(str, pos, tmp_env);
+	res = replace_env_by_value(str, posi, tmp_env);
 	free(tmp);
-	//free(tmp_env);
 	return (res);
 }
 
@@ -107,12 +115,14 @@ char	*transform_env_var(char *str)
 	int		i;
 
 	i = -1;
+	res = str;
 	nb_env = get_nb_env(str);
 	env = get_env_positions(nb_env, str);
-	//printf("%d\n", env[1]); exit(0);
-	while (++i < nb_env)
+	res = transformation(res);
+	res = transformation(res);
+	//res = transformation(res, env[i]);
+	/*while (++i < nb_env)
 	{
-		res = transformation(str, env[i]);
-	}
+	}*/
 	return (res);
 }

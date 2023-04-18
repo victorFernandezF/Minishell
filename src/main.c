@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/17 15:53:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:03:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ int	main(int argc, char **argv)
 	i = -1;
 	if (argc >= 2)
 		cmd = start_parser(cmd, argv[1]);
-	printf("test cmd -> %s\n", cmd->cmd);
-	printf("test flg -> %s\n", cmd->flags);
-	printf("test params -> %s\n", cmd->params);
-	printf("test nb_out -> %i\n", cmd->nb_outputs);
-	while (++i < cmd->nb_outputs)
-		printf("test out %i -> %i\n", i, cmd->output[i]);
-	i = 0;
-	while (++i < cmd->nb_outputs)
-		close(cmd->output[i]);
-	free_struct(cmd);
+	//printf("test cmd -> %s\n", cmd->cmd);
+	//printf("test flg -> %s\n", cmd->flags);
+	//printf("test params -> %s\n", cmd->params);
+	//printf("test nb_out -> %i\n", cmd->nb_outputs);
+	//while (++i < cmd->nb_outputs)
+	//	printf("test out %i -> %i\n", i, cmd->output[i]);
+	//i = 0;
+	//while (++i < cmd->nb_outputs)
+	//	close(cmd->output[i]);
+	//free_struct(cmd);
 	return (0);
 }
