@@ -6,12 +6,25 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 18:44:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:58:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/minishell.h"
 
+/* 
+ * get_output_from_pos
+ * ----------------------------
+ *	get each '>' position in str and returns their names. 
+ *
+ *	PARAMS:
+ *	-> out: string where filename will be stored. 
+ *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
+ *	-> pos: Position of one '>'.
+ *
+ * 	RETURN
+ *	-> A string with the filename of the output.
+ */
 char	*get_output_from_pos(char *out, char *str, int pos)
 {
 	int		i;
@@ -35,7 +48,20 @@ char	*get_output_from_pos(char *out, char *str, int pos)
 	return (out);
 }
 
-int	*get_fd_ftom_outputs(char **output, int nb)
+/* 
+ * str_to_fd_converteer
+ * ----------------------------
+ *	get the output name, and open the file with the correct
+ *	permission.
+ *
+ *	PARAMS:
+ *	-> output: array with outputs filenames. 
+ *	-> nb: Number of files to be openned.
+ *
+ * 	RETURN
+ *	-> An Array of ints with the fd's ready to work..
+ */
+int	*str_to_fd_converter(char **output, int nb)
 {
 	int		i;
 	int		j;
