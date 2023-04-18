@@ -6,12 +6,17 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/14 12:32:42 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:09:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* 
+ * free_struct
+ * ----------------------------
+ *	Frees the struct and all its elements.
+ */
 void	free_struct(t_cmd *cmd)
 {
 	int	i;
@@ -25,6 +30,11 @@ void	free_struct(t_cmd *cmd)
 	cmd = NULL;
 }
 
+/* 
+ * free_array
+ * ----------------------------
+ *	Frees an array of ints and all its elements.
+ */
 void	free_array(char **array)
 {
 	int	i;

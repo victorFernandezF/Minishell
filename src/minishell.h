@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 18:48:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:07:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ typedef struct s_cmd
 	int		index;
 	t_cmd	*next;
 }			t_cmd;
-
-//	I N I T
 
 //	P A R S E R
 
