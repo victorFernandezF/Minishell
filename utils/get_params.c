@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/17 13:14:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:39:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ char	*get_params(char *str)
 		i++;
 	last_flag++;
 	param = malloc((i - last_flag) * sizeof(char));
-	while (!is_token(str[i]) && !is_redirect(str[last_flag]))
+	while (!is_redirect(str[last_flag]) && str[last_flag] != '\0')
 		param[j++] = str[last_flag++];
-	param[i] = '\0';
+	param[j] = '\0';
 	return (param);
 }

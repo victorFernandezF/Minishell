@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 11:03:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:42:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	get_nb_env(char *str)
 	return (nb_env);
 }
 
-int	*get_env_positions(int nb, char *str)
+/* int	*get_env_positions(int nb, char *str)
 {
 	int	*env;
 	int	i;
@@ -40,7 +40,7 @@ int	*get_env_positions(int nb, char *str)
 		if (is_env_var(str[i]))
 			env[j++] = i;
 	return (env);
-}
+} */
 
 char	*replace_env_by_value(char	*str, int pos, char *env)
 {
@@ -111,18 +111,12 @@ char	*transform_env_var(char *str)
 {
 	int		nb_env;
 	char	*res;
-	int		*env;
 	int		i;
 
 	i = -1;
 	res = str;
 	nb_env = get_nb_env(str);
-	env = get_env_positions(nb_env, str);
-	res = transformation(res);
-	res = transformation(res);
-	//res = transformation(res, env[i]);
-	/*while (++i < nb_env)
-	{
-	}*/
+	while (++i < nb_env)
+		res = transformation(res);
 	return (res);
 }

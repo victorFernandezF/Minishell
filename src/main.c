@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 11:03:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 11:16:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_cmd	*fill_struct(t_cmd *cmd, char **command, int nb_cmd)
 	cmd->cmd = get_part_from_str(command[0], 1);
 	if (are_there_char(command[0], '-'))
 		cmd->flags = get_part_from_str(command[0], 2);
-	//cmd->params = get_part_from_str(command[0], 3);
+	cmd->params = get_part_from_str(command[0], 3);
 	cmd->output = get_output(command[0], cmd);
 	return (cmd);
 }
@@ -52,15 +52,15 @@ int	main(int argc, char **argv)
 	i = -1;
 	if (argc >= 2)
 		cmd = start_parser(cmd, argv[1]);
-	//printf("test cmd -> %s\n", cmd->cmd);
-	//printf("test flg -> %s\n", cmd->flags);
-	//printf("test params -> %s\n", cmd->params);
-	//printf("test nb_out -> %i\n", cmd->nb_outputs);
+	printf("test cmd -> %s\n", cmd->cmd);
+	printf("test flg -> %s\n", cmd->flags);
+	printf("test params -> %s\n", cmd->params);
+	printf("test nb_out -> %i\n", cmd->nb_outputs);
+	while (++i < cmd->nb_outputs)
+		printf("test out %i -> %i\n", i, cmd->output[i]);
+	i = 0;
 	//while (++i < cmd->nb_outputs)
-	//	printf("test out %i -> %i\n", i, cmd->output[i]);
-	//i = 0;
-	//while (++i < cmd->nb_outputs)
-	//	close(cmd->output[i]);
-	//free_struct(cmd);
+		//close(cmd->output[i]);
+	free_struct(cmd);
 	return (0);
 }
