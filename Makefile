@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/17 13:36:07 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/18 18:15:50 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CFLAGS 	= 	-Wall -Wextra -Werror -g
 
 LIBFT_D	=	libft
 SRC 	= 	src/main.c \
+		 	src/parser.c \
 			src/leaks.c \
 			src/free_stuff.c \
 			utils/get.c \
