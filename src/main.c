@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 11:16:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 12:20:56 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	main(int argc, char **argv)
 	t_cmd	*cmd;
 	int		i;
 
-	//atexit(leaks);
 	cmd = NULL;
 	i = -1;
 	if (argc >= 2)
@@ -58,9 +57,6 @@ int	main(int argc, char **argv)
 	printf("test nb_out -> %i\n", cmd->nb_outputs);
 	while (++i < cmd->nb_outputs)
 		printf("test out %i -> %i\n", i, cmd->output[i]);
-	i = 0;
-	//while (++i < cmd->nb_outputs)
-		//close(cmd->output[i]);
 	free_struct(cmd);
 	return (0);
 }
