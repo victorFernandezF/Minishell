@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/17 11:19:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:10:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ char	*get_output_from_pos(char *out, char *str, int pos)
 int	*get_fd_ftom_outputs(char **output, int nb)
 {
 	int		i;
+	int		j;
 	int		*res;
 
 	i = -1;
+	j = 0;
 	res = malloc((nb + 1) * sizeof(int));
 	while (++i < nb)
 	{
@@ -79,10 +81,8 @@ int	*get_nb_output(char *str)
 	if (are_there_char(str, '>'))
 	{
 		while (str[++i])
-		{
 			if (str[i] == '>' && str[i + 1] != '>')
 				nb++;
-		}
 		output_pos = malloc((nb + 1) * sizeof(int));
 		if (!output_pos)
 			return (NULL);
