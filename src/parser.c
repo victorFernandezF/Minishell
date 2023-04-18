@@ -6,12 +6,27 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 18:17:48 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:33:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* 
+ * fill_struct
+ * ----------------------------
+ *	This function is supose to set the components of the
+ *	cmd line. 
+ *
+ *	PARAMS:
+ *	-> cmd: The structure created at main. 
+ *	-> command: An array of strings whith the given command
+ *		if there are pipes in the line, there will be variosus
+ *		elements in the array
+ *
+ * 	RETURN
+ *	-> cmd: the given struct struct.
+ */
 t_cmd	*fill_struct(t_cmd *cmd, char **command, int nb_cmd)
 {
 	(void)nb_cmd;
@@ -24,8 +39,20 @@ t_cmd	*fill_struct(t_cmd *cmd, char **command, int nb_cmd)
 	return (cmd);
 }
 
-
-
+/* 
+ * start_parser
+ * ----------------------------
+ *	This is the main parser function.
+ *	It separate the different parts of the cmd line. 
+ *
+ *	PARAMS:
+ *	-> cmd: The structure created at main. 
+ *		At this point it has nothing.
+ *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
+ *
+ * 	RETURN
+ *	-> cmd: the given struct struct.
+ */
 t_cmd	*start_parser(t_cmd *cmd, char *str)
 {
 	int		nb_cmd;

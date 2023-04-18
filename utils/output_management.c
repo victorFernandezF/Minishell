@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 18:10:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:44:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,25 @@ int	*get_fd_ftom_outputs(char **output, int nb)
 	return (res);
 }
 
-static int	*fill_output_pos(int *output_pos, int pos, char *str, int i)
+/* 
+ * fill_output_pos
+ * ----------------------------
+ *	This is an auxiliar function that helps get_nb_output
+ *
+ *	PARAMS:
+ *	-> output_pos: array to fill with positions. 
+ *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
+ *
+ * 	RETURN
+ *	-> output_pos: the given array but with elements.
+ */
+static int	*fill_output_pos(int *output_pos, char *str)
 {
+	int	pos;
+	int	i;
+
+	pos = 1;
+	i = -1;
 	while (str[++i])
 	{
 		if (str[i] == '>')
@@ -67,16 +84,28 @@ static int	*fill_output_pos(int *output_pos, int pos, char *str, int i)
 	return (output_pos);
 }
 
+/* 
+ * get_nb_output
+ * ----------------------------
+ *	Counts the number of outputs for each command. 
+ *
+ *	PARAMS:
+ *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
+ *
+ * 	RETURN
+ *	-> An array of ints with following structure 
+ *		array[0] = number of outputs
+ *		array[1 ...] = positions of each character '>' in str.
+ *
+ */
 int	*get_nb_output(char *str)
 {
 	int	*output_pos;
 	int	i;
 	int	nb;
-	int	pos;
 
 	i = -1;
 	nb = 0;
-	pos = 1;
 	output_pos = NULL;
 	if (are_there_char(str, '>'))
 	{
@@ -87,8 +116,7 @@ int	*get_nb_output(char *str)
 		if (!output_pos)
 			return (NULL);
 		output_pos[0] = nb;
-		i = -1;
-		output_pos = fill_output_pos(output_pos, pos, str, i);
+		output_pos = fill_output_pos(output_pos, str);
 		return (output_pos);
 	}
 	output_pos = malloc(1 * sizeof(int));
