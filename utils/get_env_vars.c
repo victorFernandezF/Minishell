@@ -6,12 +6,20 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 12:20:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:54:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/minishell.h"
 
+/* 
+ * get_nb_env
+ * ----------------------------
+ *	Return the number of enviroment variables ($HOME ...) in the line  
+ *
+ *	PARAMS:
+ *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
+ */
 static int	get_nb_env(char *str)
 {
 	int	i;
@@ -25,6 +33,20 @@ static int	get_nb_env(char *str)
 	return (nb_env);
 }
 
+/* 
+ * replace_env_by_value
+ * ----------------------------
+ *	Replaces the enviroment variable found in the str by.
+ *	its value (ex: "echo -n $USER" will become "echo -n victofer" ). 
+ *
+ *	PARAMS:
+ *	-> tmp: A string with the name of the env var.
+ *	-> pos: The position where the env var starts.
+ *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
+ *
+ * 	RETURN
+ *	-> A string with en vars replaced.
+ */
 char	*replace_env_by_value(char	*str, int pos, char *tmp)
 {
 	char	*res;
@@ -54,7 +76,7 @@ char	*replace_env_by_value(char	*str, int pos, char *tmp)
 	return (res);
 }
 
-char	*fill_temporal_env_var(char *tmp, char *str, int aux, int i)
+static char	*fill_temporal_env_var(char *tmp, char *str, int aux, int i)
 {
 	while (str[aux] != ' ' && str[aux] != '\0')
 		tmp[i++] = str[aux++];
@@ -89,6 +111,18 @@ char	*transformation(char *str)
 	return (res);
 }
 
+/* 
+ * transform_env_var
+ * ----------------------------
+ *	get the number of enviroment variables and replaces them
+  *	by its value. (calling each functions) 
+ *
+ *	PARAMS:
+ *	-> str: A string whith the commad line.
+ *
+ * 	RETURN
+ *	-> str: A string.
+ */
 char	*transform_env_var(char *str)
 {
 	int		nb_env;

@@ -6,12 +6,18 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 18:13:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:40:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* 
+ * print_test
+ * ----------------------------
+ *	Prints all elements of the struct cms
+ *	JUST FOR TESTING.
+ */
 void	print_test(t_cmd *cmd)
 {
 	int	i;
