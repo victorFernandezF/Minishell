@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/19 09:40:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:15:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	print_test(t_cmd *cmd)
 	i = -1;
 	printf("test cmd -> %s\n", cmd->cmd);
 	printf("test flg -> %s\n", cmd->flags);
-	printf("test params -> %s\n", cmd->params);
+	while (cmd->params[++i] != NULL)
+		printf("test params %i -> %s\n", i, cmd->params[i]);
 	printf("test nb_out -> %i\n", cmd->nb_outputs);
+	i = -1;
 	while (++i < cmd->nb_outputs)
 		printf("test out %i -> %i\n", i, cmd->output[i]);
 }
