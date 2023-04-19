@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/19 09:54:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:15:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,18 @@ static char	*fill_temporal_env_var(char *tmp, char *str, int aux, int i)
 	return (tmp);
 }
 
+/* 
+ * transformation
+ * ----------------------------
+ *	gets the name of the env var and calls
+ *	the function to replace it by its value. 
+ *
+ *	PARAMS:
+ *	-> str: A string whith the commad line.
+ *
+ * 	RETURN
+ *	-> str: A string.
+ */
 char	*transformation(char *str)
 {
 	int		i;
@@ -134,5 +146,6 @@ char	*transform_env_var(char *str)
 	nb_env = get_nb_env(str);
 	while (++i < nb_env)
 		res = transformation(res);
+	free(str);
 	return (res);
 }
