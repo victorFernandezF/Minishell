@@ -6,13 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/11 11:15:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:59:14 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	is_space(char c)
+int	is_space_or_end(char c)
 {
 	return (c == ' ' || c == '\n' || c == '\t');
 }
@@ -24,12 +24,12 @@ int	count_words(char *str)
 	cont = 0;
 	while (*str)
 	{
-		while (*str && is_space(*str))
+		while (*str && is_space_or_end(*str))
 			str++;
-		if (*str && !is_space(*str))
+		if (*str && !is_space_or_end(*str))
 		{
 			cont++;
-			while (*str && !is_space(*str))
+			while (*str && !is_space_or_end(*str))
 				str++;
 		}
 	}
@@ -42,7 +42,7 @@ char	*write_word(char *str)
 	char	*word;
 
 	i = 0;
-	while (str[i] && !is_space(str[i]))
+	while (str[i] && !is_space_or_end(str[i]))
 		i++;
 	word = (char *)malloc(sizeof(char) * (i + 1));
 	if (!word)
@@ -51,7 +51,7 @@ char	*write_word(char *str)
 		return (NULL);
 	}
 	i = 0;
-	while (str[i] && !is_space(str[i]))
+	while (str[i] && !is_space_or_end(str[i]))
 	{
 		word[i] = str[i];
 		i++;
@@ -71,13 +71,13 @@ char	**ft_split_2(char *str)
 		return (NULL);
 	while (*str)
 	{
-		while (*str && is_space(*str))
+		while (*str && is_space_or_end(*str))
 		str++;
-		if (*str && !is_space(*str))
+		if (*str && !is_space_or_end(*str))
 		{
 			split[i] = write_word(str);
 			i++;
-			while (*str && !is_space(*str))
+			while (*str && !is_space_or_end(*str))
 				str++;
 		}
 	}
