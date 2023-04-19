@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 18:16:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:11:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_cmd	*cmd;
 	int		i;
 
+	atexit(leaks);
 	cmd = NULL;
 	i = -1;
 	if (argc >= 2)
