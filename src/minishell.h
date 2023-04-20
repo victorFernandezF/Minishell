@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/20 12:34:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:02:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_cmd
 	int		input;
 	int		nb_outputs;
 	int		*output;
-	//t_cmd	*next;
 }			t_cmd;
 
 //	P A R S E R
