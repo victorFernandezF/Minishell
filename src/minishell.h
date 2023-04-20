@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/20 11:41:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:34:56 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*get_output_from_pos(char *out, char *str, int pos);
 int		*str_to_fd_converter(char **output, int nb);
 char	*get_params(char *str);
 char	*transform_env_var(char *str);
+char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
 
 //	U T I L I T I E S
 

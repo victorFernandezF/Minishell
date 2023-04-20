@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/19 12:15:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:50:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ static int	get_nb_env(char *str)
  * 	RETURN
  *	-> A string with en vars replaced.
  */
-char	*replace_env_by_value(char	*str, int pos, char *tmp)
+char	*replace_env_by_value(char	*str, int pos, char *tmp, int i)
 {
 	char	*res;
-	int		i;
 	int		j;
 	int		aux;
 	char	*env;
 
-	i = 0;
 	aux = pos;
 	env = getenv(tmp);
 	while (str[aux] != ' ' && str[aux] != '\0')
@@ -68,6 +66,7 @@ char	*replace_env_by_value(char	*str, int pos, char *tmp)
 	j = 0;
 	while (!is_env_var(str[i]) && str[i])
 		res[j++] = str[i++];
+	i = 0;
 	while (env[i])
 		res[j++] = env[i++];
 	while (str[aux] != '\0')
@@ -118,7 +117,7 @@ char	*transformation(char *str)
 	tmp = malloc(i * sizeof(char));
 	aux = posi + 1;
 	tmp = fill_temporal_env_var(tmp, str, aux, 0);
-	res = replace_env_by_value(str, posi, tmp);
+	res = replace_env_by_value(str, posi, tmp, 0);
 	free(tmp);
 	return (res);
 }
