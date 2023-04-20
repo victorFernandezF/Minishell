@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/20 11:55:52 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/20 19:03:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ char	*get_output_from_pos(char *out, char *str, int pos)
 	while (str[++pos])
 		i++;
 	out = malloc((i + 1) * sizeof(char));
-	i = 0;
+	i = 1;
+	if (str[aux] == '>')
+	{
+		aux += 2;
+		out[0] = '>';
+	}
 	while (str[aux] == ' ')
 		aux++;
 	while (str[aux] != ' ' && str[aux] != '\0')

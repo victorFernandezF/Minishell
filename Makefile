@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/18 18:15:50 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/20 18:26:10 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ WY		= \033[0;93m
 M		= \033[0;95m
 BOLD	= \033[0;1m
 E		= \033[0m
+
+NICE_TEST = compiling
 
 all: nice_text lib $(NAME)
 
@@ -75,5 +77,6 @@ fclean: clean
 	@make -C libft/ fclean
 
 re: fclean all
+
 .PHONY: all clean fclean re
 .SILENT: $(OBJS)
