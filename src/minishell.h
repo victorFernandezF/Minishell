@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/19 12:25:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:41:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
+# define R	"\x1B[31m"
+# define G	"\x1B[32m"
+# define BG	"\x1B[92m"
+# define Y	"\x1B[33m"
+# define B	"\x1B[36m"	
+# define W	"\x1B[37m"
+# define BY	"\x1B[93m"
+# define BM	"\x1B[95m"
+
 typedef struct s_cmd	t_cmd;
 
 typedef struct s_cmd
@@ -29,7 +38,7 @@ typedef struct s_cmd
 	int		input;
 	int		nb_outputs;
 	int		*output;
-	t_cmd	*next;
+	//t_cmd	*next;
 }			t_cmd;
 
 //	P A R S E R
@@ -70,5 +79,4 @@ void	free_array(char **array);
 
 void	print_test(t_cmd *cmd);
 void	leaks(void);
-
 #endif

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 18:58:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:55:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	*str_to_fd_converter(char **output, int nb)
 	int		i;
 	int		j;
 	int		*res;
+	char	*out;
 
 	i = -1;
 	j = 0;
@@ -74,7 +75,9 @@ int	*str_to_fd_converter(char **output, int nb)
 	{
 		if (output[i][0] == '>')
 		{
-			output[i] = ft_strtrim(output[i], ">");
+			out = ft_strtrim(output[i], ">");
+			free(output[i]);
+			output[i] = out;
 			res[i] = open(output[i], O_CREAT | O_RDWR | O_APPEND, 0644);
 		}
 		else
