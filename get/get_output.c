@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output_management.c                                :+:      :+:    :+:   */
+/*   get_output.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 12:09:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:45:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ int	*get_output(char *str, t_cmd *cmd)
 	i = -1;
 	j = 1;
 	while (++i < output_pos[0])
-	{
-		output[i] = get_output_from_pos(output[i], str, output_pos[j]);
-		j++;
-	}
+		output[i] = get_output_from_pos(output[i], str, output_pos[j++]);
 	output[i] = NULL;
 	outputs_fd = str_to_fd_converter(output, output_pos[0]);
 	i = 0;
