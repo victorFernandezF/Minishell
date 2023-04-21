@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/21 10:10:26 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/21 10:53:43 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,9 @@ $(NAME): $(OBJS)
 del:
 	@rm -rf *.txt
 
+del_log:
+	@rm -rf *.log
+	
 clean:
 	@/bin/rm -f $(OBJS)
 
@@ -79,6 +82,7 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 	@make -C libft/ fclean
 	@rm -rf *.txt
+	@rm -rf *.log
 
 re: fclean all
 
