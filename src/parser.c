@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 11:12:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:57:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ t_cmd	*fill_struct(t_cmd *cmd, char **command, int nb_cmd)
 
 	(void)nb_cmd;
 	cmd = malloc(sizeof(t_cmd));
-	cmd->cmd = get_part_from_str(command[0], 1);
+	cmd->cmd = get_cmd(command[0]);
 	if (are_there_char(command[0], '-'))
-		cmd->flags = get_part_from_str(command[0], 2);
+		cmd->flags = get_flags(command[0]);
 	param = get_params(command[0]);
 	params = ft_split_2(param);
 	free(param);

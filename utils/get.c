@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/20 19:12:18 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:00:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,30 +139,4 @@ int	*get_output(char *str, t_cmd *cmd)
 	free(output_pos);
 	free_array(output);
 	return (outputs_fd);
-}
-
-/* 
- * get_part_from_string
- * ----------------------------
- *	Splits each part of the commans from the given string
- *
- *	PARAMS:
- *	-> str: string given by user.
- *	-> part: an int representing wich part to return. (1: cmd, 2: flags ... )
- *
- * 	RETURN
- *	-> A string with the command part.
- */
-char	*get_part_from_str(char *str, int part)
-{
-	char	*res;
-
-	res = NULL;
-	if (part == 1)
-		res = get_cmd(str);
-	if (part == 2)
-		res = get_flags(str);
-	if (part == 3)
-		res = get_params(str);
-	return (res);
 }
