@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 12:12:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:29:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_nb_cmd(char *str)
 	i = -1;
 	cmd = 1;
 	while (str[++i])
-		if (str[i] == '|')
+		if (is_pipe(str[i]))
 			cmd++;
 	return (cmd);
 }

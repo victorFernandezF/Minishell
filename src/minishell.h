@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 12:05:21 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:29:32 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		skip_characters(char *str, int i);
 //	C H E C K S
 
 int		are_there_char(char *str, char c);
-int		is_token(char c);
+int		is_pipe(char c);
 
 //	F R E E   S T U F F 
 
