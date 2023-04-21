@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 11:07:21 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:19:38 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void	leaks(void)
 {
 	printf(" \n%s-- LEAKS -- %s\n\n", B, W);
 	system("leaks -q minishell");
-	sleep(5);
 }

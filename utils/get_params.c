@@ -6,11 +6,12 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 11:39:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:54:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/minishell.h"
+
 
 /* 
  * get_cmd
@@ -32,6 +33,7 @@ char	*get_params(char *str)
 
 	i = -1;
 	j = 0;
+	last_flag = 0;
 	while (str[++i])
 	{
 		if (str[i] == '-')
@@ -41,10 +43,10 @@ char	*get_params(char *str)
 			last_flag = i;
 		}
 	}
-	while (str[i] != ' ' && str[i] != '\0')
-		i++;
-	last_flag++;
-	param = malloc((i - last_flag) * sizeof(char));
+	if (last_flag == 0)
+		last_flag = skip_characters(str, last_flag);
+	i = skip_whitespaces(str, i);
+	param = malloc((i - last_flag + 1) * sizeof(char));
 	while (!is_redirect(str[last_flag]) && str[last_flag] != '\0')
 		param[j++] = str[last_flag++];
 	param[j] = '\0';

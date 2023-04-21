@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/20 13:02:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:53:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
 int		skip_whitespaces(char *str, int i);
 int		is_redirect(char c);
 int		is_env_var(char c);
+int		skip_characters(char *str, int i);
+
 
 //	C H E C K S
 
