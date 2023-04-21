@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 11:53:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:02:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_cmd
 //	P A R S E R
 
 t_cmd	*start_parser(t_cmd *cmd, char *str);
-char	*get_part_from_str(char *str, int part);
 
 //	G E T   E A C H   P A R T   O F   C M D 
 
