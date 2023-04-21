@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 12:14:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:57:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*get_flags(char *str)
 	i = skip_whitespaces(str, i);
 	i = skip_characters(str, i);
 	i++;
+	if (str[i] != '-')
+		return (NULL);
 	start = i;
 	while (str[++i])
 		if (str[i] == ' ' && str[i + 1] != '-')
