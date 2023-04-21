@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/21 10:08:51 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/21 10:10:26 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,9 @@ $(NAME): $(OBJS)
 	@echo "$(Y)|$(G)    MINISHELL CREATED $(Y) |"
 	@echo "$(Y)0-----------------------0"
 	@echo "$(E)"
+
+del:
+	@rm -rf *.txt
 
 clean:
 	@/bin/rm -f $(OBJS)
