@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/18 19:06:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:42:14 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  *	Returns 1 if '|' is found in string str.
  *	If not, returns 0.
  */
-int	is_token(char c)
+int	is_pipe(char c)
 {
 	return (c == '|');
 }
@@ -42,20 +42,7 @@ int	is_env_var(char c)
  */
 int	is_redirect(char c)
 {
-	return (c == '|' || c == '>' || c == '<');
-}
-
-/* 
- * skip_whitespaces
- * ----------------------------
- *	Returns an int with the position of the string
- *	after skipping all initials spaces.
- */
-int	skip_whitespaces(char *str, int i)
-{
-	while (str[i] == ' ')
-		i++;
-	return (i);
+	return (c == '>' || c == '<');
 }
 
 /* 
