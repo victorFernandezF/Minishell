@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 12:02:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:05:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,21 @@ typedef struct s_cmd
 
 t_cmd	*start_parser(t_cmd *cmd, char *str);
 
+// C O N V E R T   E N V   V A R S 
+
+char	*transform_env_var(char *str);
+char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
+
 //	G E T   E A C H   P A R T   O F   C M D 
 
 int		get_nb_cmd(char *str);
 int		*get_nb_output(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
+char	*get_params(char *str);
 int		*get_output(char *str, t_cmd *cmd);
 char	*get_output_from_pos(char *out, char *str, int pos);
 int		*str_to_fd_converter(char **output, int nb);
-char	*get_params(char *str);
-char	*transform_env_var(char *str);
-char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
 
 //	U T I L I T I E S
 
@@ -64,12 +67,10 @@ int		is_redirect(char c);
 int		is_env_var(char c);
 int		skip_characters(char *str, int i);
 
-
 //	C H E C K S
 
 int		are_there_char(char *str, char c);
 int		is_token(char c);
-int		are_there_char(char *str, char c);
 
 //	F R E E   S T U F F 
 

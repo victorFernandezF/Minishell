@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/21 11:53:22 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/21 12:13:45 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,12 @@ SRC 	= 	src/main.c \
 		 	src/parser.c \
 			src/leaks.c \
 			src/free_stuff.c \
-			utils/get.c \
+			get/get_cmd.c \
+			get/get_flags.c \
+			get/get_output.c \
+			get/get_env_vars.c \
+			get/get_params.c \
 			utils/utilities.c \
-			utils/output_management.c \
-			utils/get_env_vars.c \
-			utils/get_params.c \
 			utils/utilities_2.c \
 	
 OBJS	=	$(SRC:.c=.o)

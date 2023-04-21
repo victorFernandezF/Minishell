@@ -6,11 +6,48 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 10:05:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/21 12:09:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/minishell.h"
+
+/* 
+ * get_output
+ * ----------------------------
+ *	Splits the flags of the command from the given string
+ *
+ *	PARAMS:
+ *	-> str: string given by user.
+ *
+ * 	RETURN
+ *	-> A string with the flags name.
+ */
+int	*get_output(char *str, t_cmd *cmd)
+{
+	int		*outputs_fd;
+	int		*output_pos;
+	char	**output;
+	int		i;
+	int		j;
+
+	output_pos = get_nb_output(str);
+	cmd->nb_outputs = output_pos[0];
+	output = malloc((output_pos[0] + 1) * sizeof(char **));
+	i = -1;
+	j = 1;
+	while (++i < output_pos[0])
+	{
+		output[i] = get_output_from_pos(output[i], str, output_pos[j]);
+		j++;
+	}
+	output[i] = NULL;
+	outputs_fd = str_to_fd_converter(output, output_pos[0]);
+	i = 0;
+	free(output_pos);
+	free_array(output);
+	return (outputs_fd);
+}
 
 /* 
  * get_output_from_pos

@@ -1,17 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_params.c                                       :+:      :+:    :+:   */
+/*   get_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 11:54:59 by victofer         ###   ########.fr       */
+/*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
+/*   Updated: 2023/04/21 12:12:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/minishell.h"
 
+/* 
+ * get_nb_cmd
+ * ----------------------------
+ *	Counts the number of commands depending on the pipes.
+ *
+ *	PARAMS:
+ *	-> str: string given by user.
+ *
+ * 	RETURN
+ *	-> An integer with the number of commands found.
+ */
+int	get_nb_cmd(char *str)
+{
+	int	i;
+	int	cmd;
+
+	i = -1;
+	cmd = 1;
+	while (str[++i])
+		if (str[i] == '|')
+			cmd++;
+	return (cmd);
+}
 
 /* 
  * get_cmd
@@ -24,31 +47,21 @@
  * 	RETURN
  *	-> A string with the command name.
  */
-char	*get_params(char *str)
+char	*get_cmd(char *str)
 {
 	int		i;
-	int		j;
-	int		last_flag;
-	char	*param;
+	int		end;
+	char	*res;
 
+	i = 0;
+	i = skip_characters(str, i);
+	end = i;
+	res = malloc(i * sizeof(char));
+	if (!res)
+		return (NULL);
 	i = -1;
-	j = 0;
-	last_flag = 0;
-	while (str[++i])
-	{
-		if (str[i] == '-')
-		{
-			while (str[i] != ' ' && str[i] != '\0')
-				i++;
-			last_flag = i;
-		}
-	}
-	if (last_flag == 0)
-		last_flag = skip_characters(str, last_flag);
-	i = skip_whitespaces(str, i);
-	param = malloc((i - last_flag + 1) * sizeof(char));
-	while (!is_redirect(str[last_flag]) && str[last_flag] != '\0')
-		param[j++] = str[last_flag++];
-	param[j] = '\0';
-	return (param);
+	while (++i < end)
+		res[i] = str[i];
+	res[i] = '\0';
+	return (res);
 }
