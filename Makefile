@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/20 18:26:10 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/21 10:08:51 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ fclean: clean
 	@echo "$(E)"
 	@/bin/rm -f $(NAME)
 	@make -C libft/ fclean
+	@rm -rf *.txt
 
 re: fclean all
 
