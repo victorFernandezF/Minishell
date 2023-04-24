@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/21 12:13:45 by victofer         ###   ########.fr        #
+#    Updated: 2023/04/24 18:20:11 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC 	= 	src/main.c \
 		 	src/parser.c \
 			src/leaks.c \
 			src/free_stuff.c \
+			src/init_struct.c \
 			get/get_cmd.c \
 			get/get_flags.c \
 			get/get_output.c \

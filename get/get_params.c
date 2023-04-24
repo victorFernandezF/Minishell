@@ -6,11 +6,55 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 13:33:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:21:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/minishell.h"
+
+static char	*fill_param_out(char *res, char *param, char *str, int i)
+{
+	int	j;
+
+	j = -1;
+	while (param[++j])
+		res[j] = param[j];
+	while (str[i])
+		res[j++] = str[i++];
+	res[j] = '\0';
+	return (res);
+}
+
+char	*get_params_after_out(char *param, char *str)
+{
+	int		i;
+	int		last;
+	int		start;
+	char	*res;
+
+	last = 0;
+	i = ft_strlen(str) -1;
+	while (str[i])
+	{
+		if (str[i] == '>')
+		{
+			last = i;
+			break ;
+		}
+		i--;
+	}
+	last++;
+	last = skip_whitespaces(str, last);
+	last = skip_characters(str, last);
+	last++;
+	start = last;
+	while (str[last])
+		last++;
+	res = malloc((last - start + 1) * sizeof(char));
+	res = fill_param_out(res, param, str, start);
+	free(param);
+	return (res);
+}
 
 static	char	*fill_param(char *param, char *str, int i, int last_flag)
 {

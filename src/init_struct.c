@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/24 18:33:24 by victofer         ###   ########.fr       */
+/*   Created: 2023/04/24 18:14:41 by victofer          #+#    #+#             */
+/*   Updated: 2023/04/24 18:24:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv)
+t_cmd	*init_struct(t_cmd *cmd)
 {
-	t_cmd	*cmd;
-	int		i;
-
-	atexit(leaks);
-	cmd = NULL;
-	cmd = init_struct(cmd);
-	i = -1;
-	if (argc >= 2)
-		cmd = start_parser(cmd, argv[1]);
-	print_test(cmd);
-	free_struct(cmd);
-	return (0);
+	cmd = malloc(sizeof(t_cmd));
+	cmd->cmd = NULL;
+	cmd->flags = NULL;
+	cmd->params = NULL;
+	cmd->input = 0;
+	cmd->nb_outputs = 0;
+	cmd->output = NULL;
+	cmd->index = 1;
+	return (cmd);
 }

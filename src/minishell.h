@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 12:29:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:07:51 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,13 @@ typedef struct s_cmd
 	int		input;
 	int		nb_outputs;
 	int		*output;
+	int		index;
+	t_cmd	*next;
 }			t_cmd;
 
 //	P A R S E R
 
+t_cmd	*init_struct(t_cmd *cmd);
 t_cmd	*start_parser(t_cmd *cmd, char *str);
 
 // C O N V E R T   E N V   V A R S 
@@ -59,6 +62,7 @@ char	*get_params(char *str);
 int		*get_output(char *str, t_cmd *cmd);
 char	*get_output_from_pos(char *out, char *str, int pos);
 int		*str_to_fd_converter(char **output, int nb);
+char	*get_params_after_out(char *param, char*str);
 
 //	U T I L I T I E S
 
