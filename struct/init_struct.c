@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_struct.c                                      :+:      :+:    :+:   */
+/*   init_struct->c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: victofer <victofer@student->42->fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:14:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/24 18:24:25 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:24:34 by victofer         ###   ########->fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-t_cmd	*init_struct(t_cmd *cmd)
+t_cmd	*init_struct(t_cmd *tmp)
 {
-	cmd = malloc(sizeof(t_cmd));
-	cmd->cmd = NULL;
-	cmd->flags = NULL;
-	cmd->params = NULL;
-	cmd->input = 0;
-	cmd->nb_outputs = 0;
-	cmd->output = NULL;
-	cmd->index = 1;
-	return (cmd);
+	tmp = malloc(sizeof(t_cmd));
+	tmp->cmd = NULL;
+	tmp->flags = NULL;
+	tmp->params = NULL;
+	tmp->input = 0;
+	tmp->nb_outputs = 0;
+	tmp->output = NULL;
+	tmp->index = 1;
+	tmp->next = NULL;
+	return (tmp);
 }

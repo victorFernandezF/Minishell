@@ -6,11 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/24 18:56:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:55:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 /* 
  * fill_struct
@@ -27,23 +27,25 @@
  * 	RETURN
  *	-> cmd: the given struct struct.
  */
-t_cmd	*fill_struct(t_cmd *cmd, char **command, int nb_cmd)
+t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 {
 	char	**params;
 	char	*param;
+	t_cmd	*new;
 
 	(void)nb_cmd;
-	cmd->cmd = get_cmd(command[0]);
-	if (are_there_char(command[0], '-'))
-		cmd->flags = get_flags(command[0]);
-	cmd->output = get_output(command[0], cmd);
-	param = get_params(command[0]);
-	if (cmd->nb_outputs > 0)
-		param = get_params_after_out(param, command[0]);
+	new = tmp;
+	new->cmd = get_cmd(command);
+	if (are_there_char(command, '-'))
+		new->flags = get_flags(command);
+	new->output = get_output(command, new);
+	param = get_params(command);
+	if (new->nb_outputs > 0)
+		param = get_params_after_out(param, command);
 	params = ft_split_2(param);
 	free(param);
-	cmd->params = params;
-	return (cmd);
+	new->params = params;
+	return (new);
 }
 
 /* 
@@ -72,7 +74,12 @@ t_cmd	*start_parser(t_cmd *cmd, char *str)
 	if (are_there_char(str, '#'))
 		while (++i < nb_cmd)
 			command[i] = transform_env_var(command[i]);
-	cmd = fill_struct(cmd, command, nb_cmd);
+	cmd = fill_struct(cmd, command[0], nb_cmd);
+	i = 0;
+	/* if (nb_cmd > 1)
+		while (command[++i] != NULL)
+			cmd = fill_more_than_one(cmd, command[i], i + 1); */
+	//printf("cmd --> %s\n", command[i]);
 	free_array(command);
 	return (cmd);
 }

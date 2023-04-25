@@ -6,11 +6,26 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/21 11:19:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:46:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
+
+/* static int	ft_lstsize_1(t_cmd *lst)
+{
+	int		size;
+	t_cmd	*temp;
+
+	size = 0;
+	temp = lst;
+	while (temp != NULL)
+	{
+		size++;
+		temp = temp->next;
+	}	
+	return (size);
+} */
 
 /* 
  * print_test
@@ -20,12 +35,13 @@
  */
 void	print_test(t_cmd *cmd)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	printf("%s -- TESTING -- %s\n\n", BG, W);
 	printf("%s cmd       ➤%s %s\n", Y, W, cmd->cmd);
 	printf("%s flg       ➤%s %s\n", Y, W, cmd->flags);
+	printf("%s id        ➤%s %d\n", Y, W, cmd->index);
 	while (cmd->params[++i] != NULL)
 		printf("%s param[%i]  ➤%s %s\n", Y, i, W, cmd->params[i]);
 	printf("%s nb_out    ➤%s %i\n", Y, W, cmd->nb_outputs);
@@ -33,6 +49,8 @@ void	print_test(t_cmd *cmd)
 	while (++i < cmd->nb_outputs)
 		printf("%s out[%i]    ➤%s %i\n", Y, i, W, cmd->output[i]);
 	printf("\n");
+	//if (cmd->next != NULL)
+		//print_test(cmd->next);
 }
 
 void	leaks(void)

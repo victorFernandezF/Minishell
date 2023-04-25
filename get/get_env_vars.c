@@ -6,12 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/20 12:50:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:53:51 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/minishell.h"
-
+#include "../minishell.h"
 /* 
  * get_nb_env
  * ----------------------------

@@ -6,11 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/24 19:21:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:54:05 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../src/minishell.h"
+#include "../minishell.h"
 
 static char	*fill_param_out(char *res, char *param, char *str, int i)
 {
