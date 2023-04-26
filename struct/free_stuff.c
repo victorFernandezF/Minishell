@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/26 10:15:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:55:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	free_struct(t_cmd *cmd)
 /* 
  * free_array
  * ----------------------------
- *	Frees an array of ints and all its elements.
+ *	Frees an array of chars and all its elements.
  */
 void	free_array(char **array)
 {
