@@ -6,26 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/25 12:46:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:00:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* static int	ft_lstsize_1(t_cmd *lst)
-{
-	int		size;
-	t_cmd	*temp;
-
-	size = 0;
-	temp = lst;
-	while (temp != NULL)
-	{
-		size++;
-		temp = temp->next;
-	}	
-	return (size);
-} */
 
 /* 
  * print_test
@@ -49,8 +34,8 @@ void	print_test(t_cmd *cmd)
 	while (++i < cmd->nb_outputs)
 		printf("%s out[%i]    ➤%s %i\n", Y, i, W, cmd->output[i]);
 	printf("\n");
-	//if (cmd->next != NULL)
-		//print_test(cmd->next);
+	if (cmd->next != NULL)
+		print_test(cmd->next);
 }
 
 void	leaks(void)
