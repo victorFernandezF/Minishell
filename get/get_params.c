@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/25 09:54:05 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:29:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,20 @@ static char	*fill_param_out(char *res, char *param, char *str, int i)
 	return (res);
 }
 
-char	*get_params_after_out(char *param, char *str)
+char	*get_params_after_out(char *param, char *str, int i)
 {
-	int		i;
 	int		last;
 	int		start;
 	char	*res;
 
 	last = 0;
-	i = ft_strlen(str) -1;
-	while (str[i])
+	while (str[--i])
 	{
 		if (str[i] == '>')
 		{
 			last = i;
 			break ;
 		}
-		i--;
 	}
 	last++;
 	last = skip_whitespaces(str, last);
@@ -62,8 +59,8 @@ static	char	*fill_param(char *param, char *str, int i, int last_flag)
 
 	j = 0;
 	param = malloc((i - last_flag + 1) * sizeof(char));
-	while (!is_redirect(str[last_flag]) && str[last_flag] != '\0')
-		param[j++] = str[last_flag++];
+	while (!is_redirect(str[i]) && str[i] != '\0')
+		param[j++] = str[i++];
 	param[j] = '\0';
 	return (param);
 }
@@ -92,6 +89,7 @@ char	*get_params(char *str)
 	i = skip_whitespaces(str, i);
 	if (str[i] == '-')
 	{
+		last_flag = i;
 		while (str[++i])
 		{
 			if (str[i] == '-')
@@ -103,7 +101,8 @@ char	*get_params(char *str)
 	}
 	if (last_flag == 0)
 		last_flag = skip_characters(str, last_flag);
-	i = skip_whitespaces(str, i);
+	i = skip_characters(str, last_flag);
+	printf("%i\n", i);
 	param = fill_param(param, str, i, last_flag);
 	return (param);
 }

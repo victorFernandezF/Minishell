@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/26 10:22:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:30:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	char	**params;
 	char	*param;
 	t_cmd	*new;
+	int		len;
 
 	(void)nb_cmd;
 	new = tmp;
@@ -41,7 +42,10 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	new->output = get_output(command, new);
 	param = get_params(command);
 	if (new->nb_outputs > 0)
-		param = get_params_after_out(param, command);
+	{
+		len = ft_strlen(command);
+		param = get_params_after_out(param, command, len);
+	}
 	params = ft_split_2(param);
 	free(param);
 	new->params = params;
