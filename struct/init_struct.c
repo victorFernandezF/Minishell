@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_struct->c                                      :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student->42->fr>          +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 18:14:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/25 12:24:34 by victofer         ###   ########->fr       */
+/*   Created: 2023/04/26 10:55:59 by victofer          #+#    #+#             */
+/*   Updated: 2023/04/26 11:01:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-t_cmd	*init_struct(t_cmd *tmp)
+/*
+ * init_struct
+ * ----------------------------
+ *	Initialize a struct with all its elements to NULL 
+ *
+ *	PARAMS:
+ *	-> struct: A struct to be initialized
+ * 	RETURN
+ *	-> The struct initialized.
+ */
+t_cmd	*init_struct(t_cmd *structure)
 {
-	tmp = malloc(sizeof(t_cmd));
-	tmp->cmd = NULL;
-	tmp->flags = NULL;
-	tmp->params = NULL;
-	tmp->input = 0;
-	tmp->nb_outputs = 0;
-	tmp->output = NULL;
-	tmp->index = 1;
-	tmp->next = NULL;
-	return (tmp);
+	structure = malloc(sizeof(t_cmd));
+	structure->cmd = NULL;
+	structure->flags = NULL;
+	structure->params = NULL;
+	structure->input = 0;
+	structure->nb_outputs = 0;
+	structure->output = NULL;
+	structure->index = 1;
+	structure->next = NULL;
+	return (structure);
 }

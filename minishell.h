@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/26 09:43:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:59:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_cmd
 
 //	P A R S E R
 
-t_cmd	*init_struct(t_cmd *tmp);
+t_cmd	*init_struct(t_cmd *structure);
 t_cmd	*start_parser(t_cmd *cmd, char *str);
 t_cmd	*fill_more_than_one(t_cmd *cmd, char *str, int index);
 t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd);
