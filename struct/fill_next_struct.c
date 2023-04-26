@@ -6,13 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:18:37 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/25 12:54:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:59:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* t_cmd	*ft_lstlast_1(t_cmd *lst)
+t_cmd	*ft_lstlast_1(t_cmd *lst)
 {
 	t_cmd	*tmp;
 
@@ -43,7 +43,7 @@ static t_cmd	*ft_lstadd_back_1(t_cmd *cmd, t_cmd *new)
 	}
 	cmd = new;
 	return (cmd);
-} */
+}
 
 t_cmd	*fill_more_than_one(t_cmd *cmd, char *str, int index)
 {
@@ -53,11 +53,8 @@ t_cmd	*fill_more_than_one(t_cmd *cmd, char *str, int index)
 	(void)index;
 	aux = NULL;
 	aux = init_struct(aux);
-	aux = fill_struct(cmd, str, 1);
+	aux = fill_struct(aux, str, 1);
 	aux->index = index;
-	cmd->next = aux;
-	printf("test %s\n", cmd->next->params[0]);
-
-	//cmd = ft_lstadd_back_1(cmd, aux);
+	cmd = ft_lstadd_back_1(cmd, aux);
 	return (cmd);
 }
