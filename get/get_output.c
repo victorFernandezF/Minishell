@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/25 09:53:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:40:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	*get_output(char *str, t_cmd *cmd)
 	int		j;
 
 	output_pos = get_nb_output(str);
+	printf("position %i\n", output_pos[2]);
 	cmd->nb_outputs = output_pos[0];
 	output = malloc((output_pos[0] + 1) * sizeof(char **));
 	i = -1;
@@ -38,6 +39,9 @@ int	*get_output(char *str, t_cmd *cmd)
 	while (++i < output_pos[0])
 		output[i] = get_output_from_pos(output[i], str, output_pos[j++]);
 	output[i] = NULL;
+	i = -1;
+	while (output[++i])
+		printf("every %s \n", output[i]);
 	outputs_fd = str_to_fd_converter(output, output_pos[0]);
 	i = 0;
 	free(output_pos);
@@ -71,12 +75,11 @@ char	*get_output_from_pos(char *out, char *str, int pos)
 	i = 0;
 	if (str[aux] == '>')
 	{
-		aux += 2;
+		aux ++;
 		out[0] = '>';
 		i++;
 	}
-	while (str[aux] == ' ')
-		aux++;
+	aux = skip_whitespaces(str, aux);
 	while (str[aux] != ' ' && str[aux] != '\0')
 	{
 		out[i] = str[aux];
@@ -110,6 +113,7 @@ int	*str_to_fd_converter(char **output, int nb)
 	i = -1;
 	j = 0;
 	res = malloc((nb + 1) * sizeof(int));
+	printf("%s\n", output[0]);
 	while (++i < nb)
 	{
 		if (output[i][0] == '>')
@@ -146,7 +150,7 @@ static int	*fill_output_pos(int *output_pos, char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == '>')
+		if (str[i] == '>' && str[i - 1] != '>')
 			output_pos[pos++] = i;
 	}
 	return (output_pos);
