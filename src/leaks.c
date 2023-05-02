@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/26 18:20:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:24:32 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	print_test(t_cmd *cmd)
 	i = -1;
 	while (++i < cmd->nb_outputs)
 		printf("%s out[%i]    ➤%s %i\n", Y, i, W, cmd->output[i]);
+	printf("%s nb_inp    ➤%s %i\n", Y, W, cmd->nb_inputs);
+	i = -1;
+	while (++i < cmd->nb_inputs)
+		printf("%s inp[%i]    ➤%s %i\n", Y, i, W, cmd->input[i]);
 	printf("\n");
 	if (cmd->next != NULL)
 		print_test(cmd->next);
