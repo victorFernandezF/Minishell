@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/04/25 10:38:14 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/02 18:59:03 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,14 @@ LIBFT_D	=	libft
 SRC 	= 	src/main.c \
 		 	src/parser.c \
 			src/leaks.c \
+			src/error.c \
 			struct/free_stuff.c \
 			struct/init_struct.c \
 			struct/fill_next_struct.c \
 			get/get_cmd.c \
 			get/get_flags.c \
 			get/get_output.c \
+			get/get_input.c \
 			get/get_env_vars.c \
 			get/get_params.c \
 			utils/utilities.c \

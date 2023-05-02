@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/26 12:14:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:58:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct s_cmd
 	char	*cmd;
 	char	*flags;
 	char	**params;
-	int		input;
+	int		nb_inputs;
+	int		*input;
 	int		nb_outputs;
 	int		*output;
 	int		index;
@@ -51,6 +52,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd);
 
 // C O N V E R T   E N V   V A R S 
 
+void	print_error_file(char *input, char *msg, t_cmd *cmd);
 char	*transform_env_var(char *str);
 char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
 
@@ -65,6 +67,10 @@ int		*get_output(char *str, t_cmd *cmd);
 char	*get_output_from_pos(char *out, char *str, int pos);
 int		*str_to_fd_converter(char **output, int nb);
 char	*get_params_after_out(char *param, char*str, int i);
+int		*get_nb_input(char *str);
+int		*str_to_fd_converter_in(char **output, int nb, t_cmd *cmd);
+int		*get_input(char *str, t_cmd *cmd);
+char	*get_input_from_pos(char *out, char *str, int pos);
 
 //	U T I L I T I E S
 
