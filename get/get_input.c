@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/02 19:00:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:00:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,55 @@
 /* 
  * get_input
  * ----------------------------
- *	Splits the flags of the command from the given string
+ *	Gets every input file found in command line, check if all
+ *	of them exists and can be opened. Then returns an array
+ *	of ints with the files converted to fd (file descriptor).
  *
  *	PARAMS:
  *	-> str: string given by user.
+ *	-> cmd: struct.
  *
  * 	RETURN
- *	-> A string with the flags name.
+ *	-> An array of ints with the files converted
+ *	to fd (file descriptor).
  */
-int	*get_input(char *str, t_cmd *cmd)
+int	get_input(char *str, t_cmd *cmd)
 {
 	int		*inputs_fd;
 	int		*input_pos;
+	int		last_input;
 	char	**input;
 	int		i;
-	int		j;
 
-	input_pos = get_nb_input(str);
-	cmd->nb_inputs = input_pos[0];
-	input = malloc((input_pos[0] + 1) * sizeof(char **));
+	input_pos = get_input_char_positions(str, cmd);
+	input = malloc((cmd->nb_inputs + 1) * sizeof(char **));
 	i = -1;
-	j = 1;
-	while (++i < input_pos[0])
-		input[i] = get_input_from_pos(input[i], str, input_pos[j++]);
+	while (++i < cmd->nb_inputs)
+		input[i] = get_input_from_position(input[i], str, input_pos[i]);
 	input[i] = NULL;
-	inputs_fd = str_to_fd_converter_in(input, input_pos[0], cmd);
-	i = 0;
+	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs, cmd);
+	last_input = inputs_fd[cmd->nb_inputs - 1];
 	free(input_pos);
+	free(inputs_fd);
 	free_array(input);
-	return (inputs_fd);
+	return (last_input);
 }
 
-char	*get_input_from_pos(char *input, char *str, int pos)
+/* 
+ * get_input_from_position
+ * ----------------------------
+ *	Gets the input filename (ex: test.txt) depending on the 
+ *	position of the character '<' in the string.
+ *
+ *	PARAMS:
+ *	-> input: A String where the result will be stored.
+ *	-> str: string given by user.
+ *	-> pos: position of character '<'.
+ *
+ * 	RETURN
+ *	-> A String with the input filename.
+ */
+char	*get_input_from_position(char *input, char *str, int pos)
 {
 	int		i;
 	int		aux;
@@ -74,7 +91,22 @@ char	*get_input_from_pos(char *input, char *str, int pos)
 	return (input);
 }
 
-int	*str_to_fd_converter_in(char **input, int nb, t_cmd *cmd)
+/* 
+ * input_filename_to_fd_converter
+ * ----------------------------
+ *	Transforms each input filename into a file descriptor (in read mode).
+ *	If the file does not exist, prints a message.
+ *
+ *	PARAMS:
+ *	-> input: An array of strings with every inputs filenames.
+ *	-> nb_inputs: The number of input filenames found in command line.
+ *	-> cmd: struct.
+ *
+ * 	RETURN
+ *	-> An array of ints filled with the file descriptors of each
+ *		input files.
+ */
+int	*input_filename_to_fd_converter(char **input, int nb, t_cmd *cmd)
 {
 	int		i;
 	int		j;
@@ -94,43 +126,48 @@ int	*str_to_fd_converter_in(char **input, int nb, t_cmd *cmd)
 	return (res);
 }
 
-static int	*fill_input_pos(int *inputput_pos, char *str)
+int	get_nb_input(char *str)
 {
-	int	pos;
-	int	i;
-
-	pos = 1;
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == '<' && str[i - 1] != '<')
-			inputput_pos[pos++] = i;
-	}
-	return (inputput_pos);
-}
-
-int	*get_nb_input(char *str)
-{
-	int	*input_pos;
 	int	i;
 	int	nb;
 
 	i = -1;
 	nb = 0;
-	input_pos = NULL;
 	if (are_there_char(str, '<'))
-	{
 		while (str[++i])
 			if (str[i] == '<' && str[i + 1] != '<')
 				nb++;
-		input_pos = malloc((nb + 1) * sizeof(int));
-		if (!input_pos)
-			return (NULL);
-		input_pos[0] = nb;
-		input_pos = fill_input_pos(input_pos, str);
-		return (input_pos);
+	return (nb);
+}
+
+/* 
+ * get_nb_input
+ * ----------------------------
+ *	An auxiliar function that fills an array of ints with the
+ *	positions of every '<' character found in the command line.
+ *
+ *	PARAMS:
+ *	-> input_pos: An array of ints where the positions will be stored.
+ *	-> str: the command line given by user.
+ *
+ * 	RETURN
+ *	-> An array of ints filled with the positions of chars '<' in the line.
+ */
+int	*get_input_char_positions(char *str, t_cmd *cmd)
+{
+	int	*input_pos;
+	int	i;
+	int	pos;
+
+	i = -1;
+	input_pos = malloc((cmd->nb_inputs + 1) * sizeof(int));
+	if (!input_pos)
+		return (NULL);
+	pos = 0;
+	while (str[++i])
+	{
+		if (str[i] == '<' && str[i - 1] != '<')
+			input_pos[pos++] = i;
 	}
-	input_pos = malloc(1 * sizeof(int));
-	input_pos[0] = nb;
 	return (input_pos);
 }

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/03 09:57:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:59:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	char	*param;
 	t_cmd	*new;
 	int		len;
-	int		*input_temp;
 
 	(void)nb_cmd;
 	new = tmp;
@@ -41,8 +40,8 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	if (are_there_char(command, '-'))
 		new->flags = get_flags(command);
 	new->output = get_output(command, new);
-	input_temp = get_input(command, new);
-	new->input = input_temp[new->nb_inputs - 1];
+	new->nb_inputs = get_nb_input(command);
+	new->input = get_input(command, new);
 	param = get_params(command);
 	if (new->nb_outputs > 0)
 	{
@@ -50,7 +49,6 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 		param = get_params_after_out(param, command, len);
 	}
 	params = ft_split_2(param);
-	free(input_temp);
 	free(param);
 	new->params = params;
 	return (new);
