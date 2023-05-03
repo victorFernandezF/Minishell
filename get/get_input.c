@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/03 12:00:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:17:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
  * get_input
  * ----------------------------
  *	Gets every input file found in command line, check if all
- *	of them exists and can be opened. Then returns an array
- *	of ints with the files converted to fd (file descriptor).
+ *	of them exists and can be opened. Then returns an int
+ *	with the last input file converted to fd (file descriptor).
  *
  *	PARAMS:
  *	-> str: string given by user.
  *	-> cmd: struct.
  *
  * 	RETURN
- *	-> An array of ints with the files converted
- *	to fd (file descriptor).
+ *	-> An integer of ints with the last input file converted
+ *		to fd (file descriptor).
  */
 int	get_input(char *str, t_cmd *cmd)
 {
@@ -126,7 +126,19 @@ int	*input_filename_to_fd_converter(char **input, int nb, t_cmd *cmd)
 	return (res);
 }
 
-int	get_nb_input(char *str)
+/* 
+ * get_nb_inputs
+ * ----------------------------
+ *	Counts the number of '<' inputs chars found in command line.
+ *
+ *	PARAMS:
+ *	-> str: Command line.
+ *
+ * 	RETURN
+ *	-> The number of '<' found in the command line. 
+ 		In other words, the number of inputs files found.
+ */
+int	get_nb_inputs(char *str)
 {
 	int	i;
 	int	nb;
@@ -141,17 +153,18 @@ int	get_nb_input(char *str)
 }
 
 /* 
- * get_nb_input
+ * get_input_char_positions
  * ----------------------------
- *	An auxiliar function that fills an array of ints with the
- *	positions of every '<' character found in the command line.
+ *	Searchs each '<' in command line and returns an array
+ *	of ints whith their positions in the string.
  *
  *	PARAMS:
- *	-> input_pos: An array of ints where the positions will be stored.
  *	-> str: the command line given by user.
+ *	-> cmd: struct.
  *
  * 	RETURN
- *	-> An array of ints filled with the positions of chars '<' in the line.
+ *	-> An array of ints filled with the positions of chars
+ * 		'<' in command line.
  */
 int	*get_input_char_positions(char *str, t_cmd *cmd)
 {
