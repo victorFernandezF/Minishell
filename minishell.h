@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/02 18:58:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:17:15 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_cmd
 	char	*flags;
 	char	**params;
 	int		nb_inputs;
-	int		*input;
+	int		input;
 	int		nb_outputs;
 	int		*output;
 	int		index;
@@ -92,6 +92,6 @@ void	free_array(char **array);
 
 //	L E A K S   T E M P 
 
-void	print_test(t_cmd *cmd);
+void	print_test(t_cmd *cmd, int repeat);
 void	leaks(void);
 #endif
