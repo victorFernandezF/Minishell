@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/03 12:17:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:29:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	get_input(char *str, t_cmd *cmd)
 	free(input_pos);
 	free(inputs_fd);
 	free_array(input);
+	if (cmd->nb_inputs == 0)
+		return (0);
 	return (last_input);
 }
 

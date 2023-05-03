@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/03 12:19:34 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:28:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	new->cmd = get_cmd(command);
 	if (are_there_char(command, '-'))
 		new->flags = get_flags(command);
+	new->nb_outputs = get_nb_outputs(command);
 	new->output = get_output(command, new);
 	new->nb_inputs = get_nb_inputs(command);
 	new->input = get_input(command, new);
+	printf("TEST %i\n", new->input);
+
 	param = get_params(command);
 	if (new->nb_outputs > 0)
 	{

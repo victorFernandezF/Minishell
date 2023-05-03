@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/02 17:59:36 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:16:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 /* 
  * get_output
  * ----------------------------
- *	Splits the flags of the command from the given string
+ *	Returns an array of ints with the fds of each output
+ *	found in command line.
  *
  *	PARAMS:
  *	-> str: string given by user.
+ *	-> cmd: struct.
  *
  * 	RETURN
- *	-> A string with the flags name.
+ *	-> An arrray of ints with the fds of the ouput files.
  */
 int	*get_output(char *str, t_cmd *cmd)
 {
@@ -28,37 +30,33 @@ int	*get_output(char *str, t_cmd *cmd)
 	int		*output_pos;
 	char	**output;
 	int		i;
-	int		j;
 
-	output_pos = get_nb_output(str);
-	cmd->nb_outputs = output_pos[0];
-	output = malloc((output_pos[0] + 1) * sizeof(char **));
+	output = malloc((cmd->nb_outputs + 1) * sizeof(char **));
+	output_pos = get_output_char_positions(str, cmd);
 	i = -1;
-	j = 1;
-	while (++i < output_pos[0])
-		output[i] = get_output_from_pos(output[i], str, output_pos[j++]);
+	while (++i < cmd->nb_outputs)
+		output[i] = get_output_from_position(output[i], str, output_pos[i]);
 	output[i] = NULL;
-	outputs_fd = str_to_fd_converter(output, output_pos[0]);
-	i = 0;
+	outputs_fd = output_to_fd_converter(output, cmd->nb_outputs);
 	free(output_pos);
 	free_array(output);
 	return (outputs_fd);
 }
 
 /* 
- * get_output_from_pos
+ * get_output_from_position
  * ----------------------------
- *	get each '>' position in str and returns their names. 
+ *	Returns a sting with the output filename depending on each
+ *	character '>' position in the command line. 
  *
  *	PARAMS:
- *	-> out: string where filename will be stored. 
- *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
- *	-> pos: Position of one '>'.
+ *	-> str: the command line given by user.
+ *	-> cmd: Struct.
  *
  * 	RETURN
- *	-> A string with the filename of the output.
+ *	-> A string with the output filename (rady to convert to fd).
  */
-char	*get_output_from_pos(char *out, char *str, int pos)
+char	*get_output_from_position(char *out, char *str, int pos)
 {
 	int		i;
 	int		aux;
@@ -87,10 +85,11 @@ char	*get_output_from_pos(char *out, char *str, int pos)
 }
 
 /* 
- * str_to_fd_converteer
+ * output_to_fd_converteer
  * ----------------------------
- *	get the output name, and open the file with the correct
- *	permission.
+ *	Converts each output filename into fd's.
+ *	Creates the files in mode append or trunk depending
+ *	on the redirections used '>' or '>>'
  *
  *	PARAMS:
  *	-> output: array with outputs filenames. 
@@ -99,7 +98,7 @@ char	*get_output_from_pos(char *out, char *str, int pos)
  * 	RETURN
  *	-> An Array of ints with the fd's ready to work..
  */
-int	*str_to_fd_converter(char **output, int nb)
+int	*output_to_fd_converter(char **output, int nb)
 {
 	int		i;
 	int		j;
@@ -124,69 +123,60 @@ int	*str_to_fd_converter(char **output, int nb)
 	return (res);
 }
 
-/* 
- * fill_output_pos
- * ----------------------------
- *	This is an auxiliar function that helps get_nb_output
- *
- *	PARAMS:
- *	-> output_pos: array to fill with positions. 
- *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
- *
- * 	RETURN
- *	-> output_pos: the given array but with elements.
- */
-static int	*fill_output_pos(int *output_pos, char *str)
-{
-	int	pos;
-	int	i;
-
-	pos = 1;
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == '>' && str[i - 1] != '>')
-			output_pos[pos++] = i;
-	}
-	return (output_pos);
-}
-
-/* 
+/*
  * get_nb_output
  * ----------------------------
- *	Counts the number of outputs for each command. 
+ *	Counts the number of outputs found in command line. 
  *
  *	PARAMS:
- *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
+ *	-> str: The command line.
  *
  * 	RETURN
- *	-> An array of ints with following structure 
- *		array[0] = number of outputs
- *		array[1 ...] = positions of each character '>' in str.
+ *	-> The number of outputs found in the given line.
  *
  */
-int	*get_nb_output(char *str)
+int	get_nb_outputs(char *str)
 {
-	int	*output_pos;
 	int	i;
 	int	nb;
 
 	i = -1;
 	nb = 0;
-	output_pos = NULL;
 	if (are_there_char(str, '>'))
-	{
 		while (str[++i])
 			if (str[i] == '>' && str[i + 1] != '>')
 				nb++;
-		output_pos = malloc((nb + 1) * sizeof(int));
-		if (!output_pos)
-			return (NULL);
-		output_pos[0] = nb;
-		output_pos = fill_output_pos(output_pos, str);
-		return (output_pos);
+	return (nb);
+}
+
+/*
+ * get_output_char_positions
+ * ----------------------------
+ *	Returns an array of ints with the positions of each '>' chars. 
+ *
+ *	PARAMS:
+ *	-> str: The command line.
+ *	-> cmd: struct.
+ *
+ * 	RETURN
+ *	-> An array of ints with the positions of each '>' chars.
+ *
+ */
+int	*get_output_char_positions(char *str, t_cmd *cmd)
+{
+	int	*output_pos;
+	int	pos;
+	int	i;
+
+	output_pos = malloc((cmd->nb_outputs + 1) * sizeof(int));
+	if (!output_pos)
+		return (NULL);
+	i = -1;
+	pos = 0;
+	while (str[++i])
+	{
+		if (str[i] == '>' && str[i - 1] != '>')
+			output_pos[pos++] = i;
 	}
-	output_pos = malloc(1 * sizeof(int));
-	output_pos[0] = nb;
 	return (output_pos);
 }
