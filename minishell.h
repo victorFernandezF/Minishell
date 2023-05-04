@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/03 18:34:48 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:28:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	free_array(char **array);
 
 //	L E A K S   T E M P 
 
-void	print_test(t_cmd *cmd, int repeat);
+void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 #endif
