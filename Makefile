@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/11 17:49:58 by victofer          #+#    #+#              #
-#    Updated: 2023/05/08 12:33:56 by victofer         ###   ########.fr        #
+#    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
+#    Updated: 2023/05/08 18:42:49 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,12 +70,6 @@ $(NAME): $(OBJS)
 	@echo "$(Y)0-----------------------0"
 	@echo "$(E)"
 
-del:
-	@rm -rf *.txt
-
-del_log:
-	@rm -rf *.log
-	
 clean:
 	@/bin/rm -f $(OBJS)
 
@@ -87,8 +81,7 @@ fclean: clean
 	@echo "$(E)"
 	@/bin/rm -f $(NAME)
 	@make -C libft/ fclean
-	@rm -rf *.txt
-	@rm -rf *.log
+	@find . -type f ! -name "*.*" ! -name "Makefile" -not -path "./.git/*" -delete	
 
 re: fclean all
 
