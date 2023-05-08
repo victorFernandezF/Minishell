@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   empty(just in case).c                              :+:      :+:    :+:   */
+/*   check_env_vars_out.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 19:06:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:16:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,10 @@ char	**check_env_output(char **output)
 	i = -1;
 	while (output[++i])
 	{
-		printf("%s\n", output[i]);
 		if (output[i][0] == '>' && output[i][1] == '#')
 			output[i] = check_double_output(output[i]);
 		if (output[i][0] != '>' && output[i][0] == '#')
 		{
-			printf("JELOU MAI FREN\n");
 			tmp = output[i];
 			free(output[i]);
 			env = transforming(tmp);

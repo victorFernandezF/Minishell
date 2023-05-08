@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:54:54 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 19:08:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:20:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_cmd	*check_env_param(t_cmd *cmd)
 	int		j;
 
 	i = -1;
-
 	while (cmd->params[++i])
 	{
 		if (cmd->params[i][0] == '#')
@@ -67,7 +66,6 @@ t_cmd	*check_env_cmd(t_cmd *cmd)
 	int		j;
 
 	i = -1;
-
 	if (cmd->cmd[0] == '#')
 	{
 		tmp = cmd->cmd;
