@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 12:30:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:58:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	free(param);
 	new->params = parameters;
 	new = check_env_param(new);
+	new = check_env_cmd(new);
 	return (new);
 }
 

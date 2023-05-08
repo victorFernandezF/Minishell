@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:54:54 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 12:54:21 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:00:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,31 @@ t_cmd	*check_env_param(t_cmd *cmd)
 			par[j] = '\0';
 			cmd->params[i] = par;
 		}
+	}
+	return (cmd);
+}
+
+t_cmd	*check_env_cmd(t_cmd *cmd)
+{
+	char	*tmp;
+	char	*env;
+	char	*name;
+	int		i;
+	int		j;
+
+	i = -1;
+
+	if (cmd->cmd[0] == '#')
+	{
+		tmp = cmd->cmd;
+		free(cmd->cmd);
+		env = transforming(tmp);
+		name = malloc((1 + ft_strlen(env)) * sizeof(char));
+		j = -1;
+		while (env[++j])
+			name[j] = env[j];
+		name[j] = '\0';
+		cmd->cmd = name;
 	}
 	return (cmd);
 }
