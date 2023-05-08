@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/03 18:29:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:31:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	get_input(char *str, t_cmd *cmd)
 	while (++i < cmd->nb_inputs)
 		input[i] = get_input_from_position(input[i], str, input_pos[i]);
 	input[i] = NULL;
+	input = check_env_input(input);
 	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs, cmd);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
 	free(input_pos);
