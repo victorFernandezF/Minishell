@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 17:42:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:08:15 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ t_cmd	*check_env_param(t_cmd *cmd);
 t_cmd	*check_env_cmd(t_cmd *cmd);
 char	**check_env_input(char **input);
 char	**check_env_output(char **output);
+char	*transforming(char *str);
 
 #endif
