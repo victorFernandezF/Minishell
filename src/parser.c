@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/04 10:31:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:30:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
  */
 t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 {
-	char	**params;
+	char	**parameters;
 	char	*param;
 	t_cmd	*new;
 	int		len;
@@ -49,9 +49,10 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 		len = ft_strlen(command);
 		param = get_params_after_out(param, command, len);
 	}
-	params = ft_split_2(param);
+	parameters = ft_split_2(param);
 	free(param);
-	new->params = params;
+	new->params = parameters;
+	new = check_env_param(new);
 	return (new);
 }
 
@@ -80,9 +81,9 @@ t_cmd	*start_parser(t_cmd *cmd, char *str)
 	i = -1;
 	nb_cmd = get_nb_cmd(str);
 	command = ft_split(str, '|');
-	if (are_there_char(str, '#'))
+	/*if (are_there_char(str, '#'))
 		while (++i < nb_cmd)
-			command[i] = transform_env_var(command[i]);
+			command[i] = transform_env_var(command[i]);*/
 	cmd = fill_struct(cmd, command[0], nb_cmd);
 	i = 0;
 	if (nb_cmd > 1)

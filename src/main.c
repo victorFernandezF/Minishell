@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/04 10:28:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:13:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	print_test(argv[1], cmd, 0);
-	free_struct(cmd);
+	if (cmd != NULL)
+		free_struct(cmd);
 	return (0);
 }
