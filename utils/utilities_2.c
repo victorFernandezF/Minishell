@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/26 12:13:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:18:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,4 @@ int	skip_characters_and_spaces(char *str, int i)
 	i = skip_whitespaces(str, i);
 	return (i);
 }
+

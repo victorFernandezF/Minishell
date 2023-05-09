@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 13:31:52 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 10:47:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	*input_filename_to_fd_converter(char **input, int nb, t_cmd *cmd)
  *
  * 	RETURN
  *	-> The number of '<' found in the command line. 
- 		In other words, the number of inputs files found.
+ *		In other words, the number of inputs files found.
  */
 int	get_nb_inputs(char *str)
 {

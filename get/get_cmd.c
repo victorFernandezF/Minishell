@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 10:39:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:15:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	*check_env_cmd(char *str)
 	int		j;
 
 	i = -1;
-	if (str[0] == '#')
+	if (is_env_var(str[0]))
 	{
 		tmp = str;
 		free(str);
