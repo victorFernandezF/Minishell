@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 10:13:15 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:02:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	char	*param;
 	t_cmd	*new;
 	int		len;
+	//int		i;
 
 	(void)nb_cmd;
 	new = tmp;
@@ -50,6 +51,10 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 		param = get_params_after_out(param, command, len);
 	}
 	parameters = ft_split_2(param);
+	/* i = -1;
+	while (parameters[++i] != NULL)
+		printf("%s test[%i] ->%s %s\n", B, i, W, parameters[i]);
+ */
 	free(param);
 	new->params = parameters;
 	new = check_env_param(new);

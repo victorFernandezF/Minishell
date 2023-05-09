@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 10:20:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:15:18 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ char	*get_params_after_out(char *param, char *str, int i)
 	return (res);
 }
 
-static	char	*fill_param(char *param, char *str, int i, int last_flag)
+static	char	*fill_param(char *param, char *str, int i)
 {
 	int	j;
+	int	size;
 
 	j = 0;
-	param = malloc((i - last_flag + 1) * sizeof(char));
+	size = ft_strlen(str) - i;
+	param = malloc((size + 1) * sizeof(char));
 	while (!is_redirect(str[i]) && str[i] != '\0')
 		param[j++] = str[i++];
 	param[j] = '\0';
@@ -98,9 +100,9 @@ char	*get_params(char *str)
 			}
 		}
 	}
-	if (last_flag == 0)
-		last_flag = skip_characters(str, last_flag);
+	last_flag = skip_characters(str, last_flag);
 	i = skip_characters(str, last_flag);
-	param = fill_param(param, str, i, last_flag);
+	i++;
+	param = fill_param(param, str, last_flag);
 	return (param);
 }
