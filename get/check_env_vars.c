@@ -6,12 +6,24 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:54:54 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 10:23:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 10:45:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/* 
+ * transforming
+ * ----------------------------
+ *	Take an string with the name of the env var
+ *	and returns a new string with its value.
+ *
+ *	PARAMS:
+ *	-> str: string with env var name without '$' (ex: USER)
+ *
+ * 	RETURN
+ *	-> A string with the value of the enviroment var. (ex: victofer)
+ */
 char	*transforming(char *str)
 {
 	int		i;
@@ -30,6 +42,19 @@ char	*transforming(char *str)
 	return (env);
 }
 
+/* 
+ * check_env_param
+ * ----------------------------
+ *	If an enviroment var is found in any parameters, this
+ *	function converts it in its value. 
+ *	(ex: $USER becomes 'victofer' 
+ *
+ *	PARAMS:
+ *	-> cmd: the struct that contains everything.
+ *
+ * 	RETURN
+ *	-> The struct with the params correctly formatted.
+ */
 t_cmd	*check_env_param(t_cmd *cmd)
 {
 	char	*tmp;
@@ -57,6 +82,20 @@ t_cmd	*check_env_param(t_cmd *cmd)
 	return (cmd);
 }
 
+/* 
+ * check_env_input
+ * ----------------------------
+ *	If a enviroment var is found in any inputs, this
+ *	function converts it in its value. 
+ *	(ex: $USER becomes 'victofer' 
+ *
+ *	PARAMS:
+ *	-> input: Array of strings with the input filenames.
+ *
+ * 	RETURN
+ *	-> An array of strings with the input filenames correctly
+ *		formatted.
+ */
 char	**check_env_input(char **input)
 {
 	char	*tmp;

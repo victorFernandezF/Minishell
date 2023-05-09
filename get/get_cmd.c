@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 10:30:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 10:39:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_cmd(char *str)
 /* 
  * check_env_cmd
  * ----------------------------
- *	If a enviroment var is found in cmd name, this
+ *	If an enviroment var is found in cmd name, this
  *	function converts it in its value. 
  *	(ex: $USER becomes 'victofer' 
  *
