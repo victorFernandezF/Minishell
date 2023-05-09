@@ -6,12 +6,27 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 19:16:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:19:26 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/* 
+ * transforming_out
+ * ----------------------------
+ *	Take an string with the name of the env var
+ *	and returns a new string with its value but starting with
+ *	the character '>' in order to open it correctly in case of '>>'
+ *	(ex: $USER -> >victofer)
+ *
+ *	PARAMS:
+ *	-> str: string with env var name without '$' (ex: USER)
+ *
+ * 	RETURN
+ *	-> A string with the value of the enviroment var
+ *		starting with '>' (ex: >victofer)
+ */
 static char	*transforming_out(char *str)
 {
 	int		i;
@@ -30,6 +45,20 @@ static char	*transforming_out(char *str)
 	return (env);
 }
 
+/* 
+ * check_double_output
+ * ----------------------------
+ *	Take an string with the name of the env var
+ *	like this (>$USER) and returns a new string with its value
+ *	starting with '>'.
+ *
+ *	PARAMS:
+ *	-> str: string with env var name without '$' (ex: >$USER)
+ *
+ * 	RETURN
+ *	-> A string with the value of the enviroment var.
+ *		starting with '>' (ex: >victofer)
+ */
 static char	*check_double_output(char *output)
 {
 	char	*tmp;
@@ -52,6 +81,18 @@ static char	*check_double_output(char *output)
 	return (output);
 }
 
+/* 
+ * check_env_output
+ * ----------------------------
+ *	Take an array with the output filenames and transforms any
+ *	env var to its value.
+ *
+ *	PARAMS:
+ *	-> output: Array of strings with the outputs.
+ *
+ * 	RETURN
+ *	-> A new array of strings with the ouputs correctly formatted.
+  */
 char	**check_env_output(char **output)
 {
 	char	*tmp;
@@ -63,9 +104,9 @@ char	**check_env_output(char **output)
 	i = -1;
 	while (output[++i])
 	{
-		if (output[i][0] == '>' && output[i][1] == '#')
+		if (output[i][0] == '>' && is_env_var(output[i][1]))
 			output[i] = check_double_output(output[i]);
-		if (output[i][0] != '>' && output[i][0] == '#')
+		if (output[i][0] != '>' && is_env_var(output[i][1]))
 		{
 			tmp = output[i];
 			free(output[i]);
