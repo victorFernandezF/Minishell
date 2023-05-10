@@ -6,11 +6,28 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 12:52:18 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:08:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	skip_cmd_and_flags(char	*str)
+{
+	int	i;
+
+	i = 0;
+	if (are_there_char(str, '-'))
+	{
+		i = ft_strlen(str);
+		while (str[i] != '-')
+			i--;
+		i = skip_characters(str, i);
+		return (i);
+	}
+	i = skip_characters(str, i);
+	return (i);
+}
 
 char	*get_temp_char(char *str)
 {
@@ -20,11 +37,10 @@ char	*get_temp_char(char *str)
 	char	*res;
 
 	i = 0;
-	i = skip_characters(str, i);
+	i = skip_cmd_and_flags(str);
+	printf("%i\n", i);
 	len = strlen_startin_in(str, i);
 	res = malloc((len + 1) * sizeof(char));
-	i = 0;
-	i = skip_characters(str, i);
 	j = 0;
 	while (str[++i])
 	{

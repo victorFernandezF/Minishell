@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 12:56:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:00:18 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,12 @@
  * 	RETURN
  *	-> cmd: the given struct struct.
  */
-t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
+t_cmd	*fill_struct(t_cmd *tmp, char *command)
 {
 	char	**parameters;
 	char	*param;
 	t_cmd	*new;
-	//int		i;
 
-	(void)nb_cmd;
 	new = tmp;
 	new->cmd = get_cmd(command);
 	if (are_there_char(command, '-'))
@@ -79,7 +77,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *str)
 	i = -1;
 	nb_cmd = get_nb_cmd(str);
 	command = ft_split(str, '|');
-	cmd = fill_struct(cmd, command[0], nb_cmd);
+	cmd = fill_struct(cmd, command[0]);
 	i = 0;
 	if (nb_cmd > 1)
 		while (command[++i] != NULL)
