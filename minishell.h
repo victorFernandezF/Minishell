@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 11:17:21 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:15:03 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
 char	*get_params(char *str);
-char	*get_params_after_out(char *param, char*str, int i);
+char	*get_params_after_out(char *str, t_cmd *cmd);
 
 int		*get_output(char *str, t_cmd *cmd);
 int		get_nb_outputs(char *str);
@@ -105,5 +105,9 @@ char	**check_env_input(char **input);
 char	**check_env_output(char **output);
 char	*transforming(char *str);
 int		is_env_var(char c);
+int		strlen_startin_in(char *str, int i);
+char	*del_outputs(char *str);
+
+
 
 #endif

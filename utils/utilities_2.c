@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 11:18:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:13:14 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,15 @@ int	skip_characters_and_spaces(char *str, int i)
 	return (i);
 }
 
+int	strlen_startin_in(char *str, int i)
+{
+	int	len;
+
+	len = 0;
+	while (str[i])
+	{
+		len++;
+		i++;
+	}
+	return (len);
+}

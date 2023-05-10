@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/08 19:07:05 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/10 12:10:44 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC 	= 	src/main.c \
 			get/get_output.c \
 			get/get_input.c \
 			get/get_params.c \
+			get/get_parameters.c \
 			get/check_env_vars.c \
 			get/check_env_vars_out.c \
 			utils/utilities.c \

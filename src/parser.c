@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 19:02:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 12:56:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	char	**parameters;
 	char	*param;
 	t_cmd	*new;
-	int		len;
 	//int		i;
 
 	(void)nb_cmd;
@@ -44,17 +43,11 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, int nb_cmd)
 	new->output = get_output(command, new);
 	new->nb_inputs = get_nb_inputs(command);
 	new->input = get_input(command, new);
-	param = get_params(command);
 	if (new->nb_outputs > 0)
-	{
-		len = ft_strlen(command);
-		param = get_params_after_out(param, command, len);
-	}
+		param = del_outputs(command);
+	else
+		param = get_params(command);
 	parameters = ft_split_2(param);
-	/* i = -1;
-	while (parameters[++i] != NULL)
-		printf("%s test[%i] ->%s %s\n", B, i, W, parameters[i]);
- */
 	free(param);
 	new->params = parameters;
 	new = check_env_param(new);

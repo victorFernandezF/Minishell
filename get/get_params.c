@@ -6,13 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 19:15:18 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:53:32 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static char	*fill_param_out(char *res, char *param, char *str, int i)
+/* static char	*fill_param_out(char *res, char *param, char *str, int i)
 {
 	int	j;
 
@@ -23,34 +23,24 @@ static char	*fill_param_out(char *res, char *param, char *str, int i)
 		res[j++] = str[i++];
 	res[j] = '\0';
 	return (res);
-}
+} */
 
-char	*get_params_after_out(char *param, char *str, int i)
+char	*get_params_after_out(char *str, t_cmd *cmd)
 {
-	int		last;
-	int		start;
-	char	*res;
+	int		i;
+	int		j;
+	int		*pos;
+	//char	*res;
 
-	last = 0;
-	while (str[--i])
+	i = -1;
+	pos = get_output_char_positions(str, cmd);
+	while (++i < cmd->nb_outputs)
 	{
-		if (str[i] == '>')
-		{
-			last = i;
-			break ;
-		}
+		j = pos[i];
+		j = skip_characters_and_spaces(str, j);
+		j++;
 	}
-	last++;
-	last = skip_whitespaces(str, last);
-	last = skip_characters(str, last);
-	last++;
-	start = last;
-	while (str[last])
-		last++;
-	res = malloc((last - start + 1) * sizeof(char));
-	res = fill_param_out(res, param, str, start);
-	free(param);
-	return (res);
+	return (NULL);
 }
 
 static	char	*fill_param(char *param, char *str, int i)
