@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 13:25:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:25:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ char	*get_cmd(char *str);
 char	*get_flags(char *str);
 
 char	*get_params(char *str);
-char	*del_outputs(char *str);
+char	*get_temp_param_and_output_string(char *str);
+int		get_params_len(char **arr);
+char	*get_params_when_output_found(char *str);
 
 int		get_nb_outputs(char *str);
 int		*get_output(char *str, t_cmd *cmd);
@@ -106,8 +108,5 @@ void	free_array(char **array);
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
-
-
-
 
 #endif

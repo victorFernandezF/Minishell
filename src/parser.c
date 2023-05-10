@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 13:00:18 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:05:05 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 	new->nb_inputs = get_nb_inputs(command);
 	new->input = get_input(command, new);
 	if (new->nb_outputs > 0)
-		param = del_outputs(command);
+		param = get_params_when_output_found(command);
 	else
 		param = get_params(command);
 	parameters = ft_split_2(param);

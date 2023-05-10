@@ -6,13 +6,27 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 13:13:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:31:13 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*get_temp_char(char *str)
+/* 
+ * get_temp_param_and_output_string
+ * ----------------------------
+ *	Create a new string with everithing except cmd name and flags
+ *	and the redirection characters are followed by '_'
+ *	(ex: line 'echo -n hello > out world' will become 'hello >_out world')
+ *
+ *	PARAMS:
+ *	-> str: the command line.
+ *
+ * 	RETURN
+ *	-> A string that contains everithing except cmd name and flags
+ *	and the redirection characters are followed by '_'.
+ */
+char	*get_temp_param_and_output_string(char *str)
 {
 	int		i;
 	int		j;
@@ -27,7 +41,8 @@ char	*get_temp_char(char *str)
 	j = 0;
 	while (str[++i])
 	{
-		if (str[i] == '>' && str[i + 1] == ' ')
+		if ((str[i] == '>' && str[i + 1] == ' ')
+			|| (str[i] == '<' && str[i + 1] == ' '))
 		{
 			res[j] = str[i];
 			res[j + 1] = '_';
@@ -40,30 +55,56 @@ char	*get_temp_char(char *str)
 	return (res);
 }
 
-char	*fill_res(char **temp_arr, int len)
+/* 
+ * fill_param_string
+ * ----------------------------
+ *	Auxiliar function that fills the arra containing the
+ *	parameters found separated by spaces.  
+ *
+ *	PARAMS:
+ *	-> array: An array of strings with all elements in command
+ *	line except cmd name and flags.
+ *
+ * 	RETURN
+ *	-> A string that contains only the parameters found in command line.
+ */
+static char	*fill_param_string(char **array, int len)
 {
+	int		i;
 	int		j;
 	int		x;
-	int		i;
 	char	*res;
 
 	res = malloc(len * sizeof(char));
 	i = -1;
 	x = 0;
-	while (temp_arr[++i] != NULL)
+	while (array[++i] != NULL)
 	{
-		if (temp_arr[i][0] == '>')
+		if (array[i][0] == '>' || array[i][0] == '<')
 			continue ;
 		j = 0;
-		while (temp_arr[i][j])
-			res[x++] = temp_arr[i][j++];
+		while (array[i][j])
+			res[x++] = array[i][j++];
 		res[x++] = ' ';
 	}
 	res[x] = '\0';
 	return (res);
 }
 
-int	get_len(char **arr)
+/* 
+ * get_params_len
+ * ----------------------------
+ *	Calculates the length that must be allocated for 
+ *	the future string with all parameters.  
+ *
+ *	PARAMS:
+ *	-> array: An array of strings with all elements in command
+ *	line except cmd name and flags.
+ *
+ * 	RETURN
+ *	-> The size of the future string mast be.
+ */
+int	get_params_len(char **array)
 {
 	int	i;
 	int	j;
@@ -71,19 +112,31 @@ int	get_len(char **arr)
 
 	i = -1;
 	len = 0;
-	while (arr[++i] != NULL)
+	while (array[++i] != NULL)
 	{
-		if (arr[i][0] == '>')
+		if (array[i][0] == '>')
 			continue ;
 		j = -1;
 		len++;
-		while (arr[i][++j])
+		while (array[i][++j])
 			len++;
 	}
 	return (len);
 }
 
-char	*del_outputs(char *str)
+/* 
+ * get_params_when_output_found
+ * ----------------------------
+ *	Returns a string with every parameters found.
+ *	(ex: echo -n hello > output world -> hello world).
+ *
+ *	PARAMS:
+ *	-> str: command line.
+ *
+ * 	RETURN
+ *	-> A string with every parameters found separated by spaces.
+ */
+char	*get_params_when_output_found(char *str)
 {
 	char	*temp;
 	char	**temp_arr;
@@ -91,11 +144,11 @@ char	*del_outputs(char *str)
 	int		len;
 	int		i;
 
-	temp = get_temp_char(str);
+	temp = get_temp_param_and_output_string(str);
 	temp_arr = ft_split_2(temp);
-	len = get_len(temp_arr);
+	len = get_params_len(temp_arr);
 	i = -1;
-	res = fill_res(temp_arr, len);
+	res = fill_param_string(temp_arr, len);
 	free(temp);
 	free_array(temp_arr);
 	return (res);

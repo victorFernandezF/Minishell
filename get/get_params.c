@@ -6,31 +6,17 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 13:08:41 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 10:53:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:02:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* static char	*fill_param_out(char *res, char *param, char *str, int i)
-{
-	int	j;
-
-	j = -1;
-	while (param[++j])
-		res[j] = param[j];
-	while (str[i])
-		res[j++] = str[i++];
-	res[j] = '\0';
-	return (res);
-} */
 
 char	*get_params_after_out(char *str, t_cmd *cmd)
 {
 	int		i;
 	int		j;
 	int		*pos;
-	//char	*res;
 
 	i = -1;
 	pos = get_output_char_positions(str, cmd);
