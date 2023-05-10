@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:18:37 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/26 10:55:01 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:18:41 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_cmd	*fill_more_than_one(t_cmd *cmd, char *str, int index)
 	(void)index;
 	aux = NULL;
 	aux = init_struct(aux);
-	aux = fill_struct(aux, str, 1);
+	aux = fill_struct(aux, str);
 	aux->index = index;
 	cmd = ft_lstadd_back_minishell(cmd, aux);
 	return (cmd);

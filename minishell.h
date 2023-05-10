@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 13:01:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:25:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,26 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command);
 
 // C O N V E R T   E N V   V A R S 
 
-void	print_error_file(char *input, char *msg, t_cmd *cmd);
-char	*transform_env_var(char *str);
+t_cmd	*check_env_param(t_cmd *cmd);
+char	*check_env_cmd(char *cmd);
+char	**check_env_input(char **input);
+char	**check_env_output(char **output);
+char	*transforming(char *str);
 char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
+void	print_error_file(char *input, char *msg, t_cmd *cmd);
 
-//	G E T   E A C H   P A R T   O F   C M D 
+//	G E T   E A C H   P A R T   O F   C M D   L I N E
 
 int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
-char	*get_flags(char *str);
-char	*get_params(char *str);
-char	*get_params_after_out(char *str, t_cmd *cmd);
 
-int		*get_output(char *str, t_cmd *cmd);
+char	*get_flags(char *str);
+
+char	*get_params(char *str);
+char	*del_outputs(char *str);
+
 int		get_nb_outputs(char *str);
+int		*get_output(char *str, t_cmd *cmd);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 char	*get_output_from_position(char *out, char *str, int pos);
 int		*output_to_fd_converter(char **output, int nb);
@@ -78,11 +84,13 @@ int		*input_filename_to_fd_converter(char **output, int nb, t_cmd *cmd);
 
 //	U T I L I T I E S
 
-int		skip_whitespaces(char *str, int i);
+int		strlen_starting_in(char *str, int i);
 int		is_redirect(char c);
 int		is_env_var(char c);
 int		skip_characters(char *str, int i);
+int		skip_whitespaces(char *str, int i);
 int		skip_characters_and_spaces(char *str, int i);
+int		skip_cmd_and_flags(char	*str);
 
 //	C H E C K S
 
@@ -99,14 +107,6 @@ void	free_array(char **array);
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 
-t_cmd	*check_env_param(t_cmd *cmd);
-char	*check_env_cmd(char *cmd);
-char	**check_env_input(char **input);
-char	**check_env_output(char **output);
-char	*transforming(char *str);
-int		is_env_var(char c);
-int		strlen_startin_in(char *str, int i);
-char	*del_outputs(char *str);
 
 
 

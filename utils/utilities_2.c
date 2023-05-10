@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 12:13:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:15:57 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,13 @@ int	skip_characters_and_spaces(char *str, int i)
 	return (i);
 }
 
-int	strlen_startin_in(char *str, int i)
+/* 
+ * strlen_starting_in
+ * ----------------------------
+ *	Returns the length of an string but
+ *	starting in the position i.
+ */
+int	strlen_starting_in(char *str, int i)
 {
 	int	len;
 
@@ -62,4 +68,27 @@ int	strlen_startin_in(char *str, int i)
 		i++;
 	}
 	return (len);
+}
+
+/* 
+ * skip_cmd_and_flags
+ * ----------------------------
+ *	Returns the position of a string skipping the
+ *	cmd name and flags.
+ */
+int	skip_cmd_and_flags(char	*str)
+{
+	int	i;
+
+	i = 0;
+	if (are_there_char(str, '-'))
+	{
+		i = ft_strlen(str);
+		while (str[i] != '-')
+			i--;
+		i = skip_characters(str, i);
+		return (i);
+	}
+	i = skip_characters(str, i);
+	return (i);
 }
