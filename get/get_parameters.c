@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 12:45:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:05:32 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,18 @@ char	*get_temp_param_and_output_string(char *str)
 	int		j;
 	int		len;
 	char	*res;
+	char	*tmp;
 
 	i = 0;
-	i = skip_cmd_and_flags(str);
+	j = 0;
+	tmp = delete_outputs_from_line(str);
+	i = skip_cmd_and_flags(tmp);
 	len = strlen_starting_in(str, i);
 	res = malloc((len + 1) * sizeof(char));
-	j = 0;
-	while (str[++i])
-	{
-		if ((str[i] == '>' && str[i + 1] == ' ')
-			|| (str[i] == '<' && str[i + 1] == ' '))
-		{
-			res[j] = str[i];
-			res[j + 1] = '_';
-			j += 2;
-			i += 2;
-		}
-		res[j++] = str[i];
-	}
+	while (tmp[++i])
+		res[j++] = tmp[i];
 	res[j] = '\0';
+	free(tmp);
 	return (res);
 }
 
