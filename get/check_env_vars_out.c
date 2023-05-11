@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 13:14:36 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 11:19:26 by victofer         ###   ########.fr       */
+/*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
+/*   Updated: 2023/05/11 10:56:31 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * transforming_out
+ * transforming_out (get/check_env_vars_out.c)
  * ----------------------------
  *	Take an string with the name of the env var
  *	and returns a new string with its value but starting with
@@ -46,7 +46,7 @@ static char	*transforming_out(char *str)
 }
 
 /* 
- * check_double_output
+ * check_double_output (get/check_env_vars_out.c)
  * ----------------------------
  *	Take an string with the name of the env var
  *	like this (>$USER) and returns a new string with its value
@@ -82,7 +82,7 @@ static char	*check_double_output(char *output)
 }
 
 /* 
- * check_env_output
+ * check_env_output (get/check_env_vars_out.c)
  * ----------------------------
  *	Take an array with the output filenames and transforms any
  *	env var to its value.

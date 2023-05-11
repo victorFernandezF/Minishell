@@ -6,14 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 10:47:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:58:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * get_input
+ * get_input (get/get_input.c)
  * ----------------------------
  *	Gets every input file found in command line, check if all
  *	of them exists and can be opened. Then returns an int
@@ -42,7 +42,7 @@ int	get_input(char *str, t_cmd *cmd)
 		input[i] = get_input_from_position(input[i], str, input_pos[i]);
 	input[i] = NULL;
 	input = check_env_input(input);
-	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs, cmd);
+	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
 	free(input_pos);
 	free(inputs_fd);
@@ -53,7 +53,7 @@ int	get_input(char *str, t_cmd *cmd)
 }
 
 /* 
- * get_input_from_position
+ * get_input_from_position (get/get_input.c)
  * ----------------------------
  *	Gets the input filename (ex: test.txt) depending on the 
  *	position of the character '<' in the string.
@@ -95,7 +95,7 @@ char	*get_input_from_position(char *input, char *str, int pos)
 }
 
 /* 
- * input_filename_to_fd_converter
+ * input_filename_to_fd_converter (get/get_input.c)
  * ----------------------------
  *	Transforms each input filename into a file descriptor (in read mode).
  *	If the file does not exist, prints a message.
@@ -109,7 +109,7 @@ char	*get_input_from_position(char *input, char *str, int pos)
  *	-> An array of ints filled with the file descriptors of each
  *		input files.
  */
-int	*input_filename_to_fd_converter(char **input, int nb, t_cmd *cmd)
+int	*input_filename_to_fd_converter(char **input, int nb)
 {
 	int		i;
 	int		j;
@@ -123,14 +123,14 @@ int	*input_filename_to_fd_converter(char **input, int nb, t_cmd *cmd)
 		res[i] = open(input[i], O_RDWR);
 		if (res[i] == -1)
 		{
-			print_error_file(input[i], "No such file or directory", cmd);
+			print_error_file(input[i], "No such file or directory");
 		}
 	}
 	return (res);
 }
 
 /* 
- * get_nb_inputs
+ * get_nb_inputs (get/get_input.c)
  * ----------------------------
  *	Counts the number of '<' inputs chars found in command line.
  *
@@ -156,7 +156,7 @@ int	get_nb_inputs(char *str)
 }
 
 /* 
- * get_input_char_positions
+ * get_input_char_positions (get/get_input.c)
  * ----------------------------
  *	Searchs each '<' in command line and returns an array
  *	of ints whith their positions in the string.

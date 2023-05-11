@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 19:30:46 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:40:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**check_env_input(char **input);
 char	**check_env_output(char **output);
 char	*transforming(char *str);
 char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
-void	print_error_file(char *input, char *msg, t_cmd *cmd);
+void	print_error_file(char *input, char *msg);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
@@ -81,7 +81,7 @@ int		get_nb_inputs(char *str);
 int		get_input(char *str, t_cmd *cmd);
 int		*get_input_char_positions(char *str, t_cmd *cmd);
 char	*get_input_from_position(char *out, char *str, int pos);
-int		*input_filename_to_fd_converter(char **output, int nb, t_cmd *cmd);
+int		*input_filename_to_fd_converter(char **output, int nb);
 
 //	U T I L I T I E S
 
@@ -92,9 +92,6 @@ int		skip_characters(char *str, int i);
 int		skip_whitespaces(char *str, int i);
 int		skip_characters_and_spaces(char *str, int i);
 int		skip_cmd_and_flags(char	*str);
-
-//	C H E C K S
-
 int		are_there_char(char *str, char c);
 int		is_pipe(char c);
 

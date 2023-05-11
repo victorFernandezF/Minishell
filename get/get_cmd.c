@@ -6,14 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 11:15:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:57:15 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * get_nb_cmd
+ * get_nb_cmd (get/get_cmd.c)
  * ----------------------------
  *	Counts the number of commands depending on the pipes.
  *
@@ -37,7 +37,7 @@ int	get_nb_cmd(char *str)
 }
 
 /* 
- * get_cmd
+ * get_cmd (get/get_cmd.c)
  * ----------------------------
  *	Splits the name of the command from the given string
  *
@@ -68,7 +68,7 @@ char	*get_cmd(char *str)
 }
 
 /* 
- * check_env_cmd
+ * check_env_cmd (get/get_cmd.c)
  * ----------------------------
  *	If an enviroment var is found in cmd name, this
  *	function converts it in its value. 

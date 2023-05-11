@@ -6,14 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 13:15:57 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:00:34 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * skip_whitespaces
+ * skip_whitespaces (utils/utilities_2.c)
  * ----------------------------
  *	Returns an int with the position of the string
  *	after skipping all spaces.
@@ -26,7 +26,7 @@ int	skip_whitespaces(char *str, int i)
 }
 
 /* 
- * skip_whitespaces
+ * skip_whitespaces (utils/utilities_2.c)
  * ----------------------------
  *	Returns an int with the position of the string
  *	after skipping all characters.
@@ -39,7 +39,7 @@ int	skip_characters(char *str, int i)
 }
 
 /* 
- * skip_characters_and_spaces
+ * skip_characters_and_spaces (utils/utilities_2.c)
  * ----------------------------
  *	Returns an int with the position of the string
  *	after skipping all character and spaces.
@@ -52,7 +52,7 @@ int	skip_characters_and_spaces(char *str, int i)
 }
 
 /* 
- * strlen_starting_in
+ * strlen_starting_in (utils/utilities_2.c)
  * ----------------------------
  *	Returns the length of an string but
  *	starting in the position i.
@@ -71,7 +71,7 @@ int	strlen_starting_in(char *str, int i)
 }
 
 /* 
- * skip_cmd_and_flags
+ * skip_cmd_and_flags (utils/utilities_2.c)
  * ----------------------------
  *	Returns the position of a string skipping the
  *	cmd name and flags.

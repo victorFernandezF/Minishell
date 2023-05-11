@@ -6,14 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 18:31:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:58:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * get_temp_param_and_output_string
+ * get_temp_param_and_output_string (get/get_parameters.c)
  * ----------------------------
  *	Create a new string with everithing except cmd name and flags
  *	and the redirection characters are followed by '_'
@@ -56,7 +56,7 @@ char	*get_temp_param_and_output_string(char *str)
 }
 
 /* 
- * fill_param_string
+ * fill_param_string (get/get_parameters.c)
  * ----------------------------
  *	Auxiliar function that fills the arra containing the
  *	parameters found separated by spaces.  
@@ -92,7 +92,7 @@ static char	*fill_param_string(char **array, int len)
 }
 
 /* 
- * get_params_len
+ * get_params_len (get/get_parameters.c)
  * ----------------------------
  *	Calculates the length that must be allocated for 
  *	the future string with all parameters.  
@@ -125,7 +125,7 @@ int	get_params_len(char **array)
 }
 
 /* 
- * get_params_when_output_found
+ * get_params_when_output_found (get/get_parameters.c)
  * ----------------------------
  *	Returns a string with every parameters found.
  *	(ex: echo -n hello > output world -> hello world).

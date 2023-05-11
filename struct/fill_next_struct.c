@@ -6,14 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:18:37 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 13:18:41 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:59:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /*
- * ft_lstlast_minishell
+ * ft_lstlast_minishell (struct/fill_next_struct.c)
  * ----------------------------
  *	Returns the last element of the list. 
  *
@@ -41,7 +41,7 @@ static t_cmd	*ft_lstlast_minishell(t_cmd *lst)
 }
 
 /*
- * ft_lstadd_back__minishell
+ * ft_lstadd_back__minishell (struct/fill_next_struct.c)
  * ----------------------------
  *	Adds a new element in the last position of the given list. 
  *
@@ -67,7 +67,7 @@ static t_cmd	*ft_lstadd_back_minishell(t_cmd *cmd, t_cmd *new)
 }
 
 /*
- * fill_more_than_one
+ * fill_more_than_one (struct/fill_next_struct.c)
  * ----------------------------
  *	If there are more than one command in command line
  *	this function will fill each one in a new node of the list.

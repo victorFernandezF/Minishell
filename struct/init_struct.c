@@ -6,13 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 10:55:59 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 12:17:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:00:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 /*
- * init_struct
+ * init_struct (struct/init_strcut.c)
  * ----------------------------
  *	Initialize a struct with all its elements to NULL 
  *

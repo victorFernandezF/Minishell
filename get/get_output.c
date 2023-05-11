@@ -6,13 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/08 17:41:15 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:58:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 /* 
- * get_output
+ * get_output (get/get_output.c)
  * ----------------------------
  *	Returns an array of ints with the fds of each output
  *	found in command line.
@@ -45,7 +45,7 @@ int	*get_output(char *str, t_cmd *cmd)
 }
 
 /* 
- * get_output_from_position
+ * get_output_from_position (get/get_output.c)
  * ----------------------------
  *	Returns a sting with the output filename depending on each
  *	character '>' position in the command line. 
@@ -86,7 +86,7 @@ char	*get_output_from_position(char *out, char *str, int pos)
 }
 
 /* 
- * output_to_fd_converteer
+ * output_to_fd_converter (get/get_output.c)
  * ----------------------------
  *	Converts each output filename into fd's.
  *	Creates the files in mode append or trunk depending
@@ -125,7 +125,7 @@ int	*output_to_fd_converter(char **output, int nb)
 }
 
 /*
- * get_nb_output
+ * get_nb_output (get/get_output.c)
  * ----------------------------
  *	Counts the number of outputs found in command line. 
  *
@@ -151,7 +151,7 @@ int	get_nb_outputs(char *str)
 }
 
 /*
- * get_output_char_positions
+ * get_output_char_positions (get/get_output.c)
  * ----------------------------
  *	Returns an array of ints with the positions of each '>' chars. 
  *

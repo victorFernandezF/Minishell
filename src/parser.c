@@ -6,14 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/10 19:29:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:59:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * fill_struct
+ * fill_struct (src/parser.c)
  * ----------------------------
  *	This function is supose to set the components of the
  *	cmd line. 
@@ -50,7 +50,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 }
 
 /* 
- * start_parser
+ * start_parser (src/parser.c)
  * ----------------------------
  *	This is the main parser function.
  *	It separate the different parts of the cmd line. 

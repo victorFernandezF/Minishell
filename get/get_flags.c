@@ -6,13 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/04/25 09:53:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:57:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 /* 
- * get_flags
+ * get_flags (get/get_flags.c)
  * ----------------------------
  *	Splits the flags of the command from the given string
  *

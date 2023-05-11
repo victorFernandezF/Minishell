@@ -6,14 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:54:54 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 11:20:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:56:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * transforming
+ * transforming (get/check_env_vars.c)
  * ----------------------------
  *	Take an string with the name of the env var
  *	and returns a new string with its value.
@@ -43,7 +43,7 @@ char	*transforming(char *str)
 }
 
 /* 
- * check_env_param
+ * check_env_param (get/check_env_vars.c)
  * ----------------------------
  *	If an enviroment var is found in any parameters, this
  *	function converts it in its value. 
@@ -83,7 +83,7 @@ t_cmd	*check_env_param(t_cmd *cmd)
 }
 
 /* 
- * check_env_input
+ * check_env_input (get/check_env_vars.c)
  * ----------------------------
  *	If a enviroment var is found in any inputs, this
  *	function converts it in its value. 
