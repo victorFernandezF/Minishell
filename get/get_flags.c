@@ -6,12 +6,25 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 13:36:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:42:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/* 
+ * fill_string_flags (get/get_flags.c)
+ * ----------------------------
+ *	Auxiliar function to help get_flags to fill
+ *	the string with the flags of the command
+ *
+ *	PARAMS:
+ *	-> array: array whith every part of the command.
+ *	-> len: calculated length of the result string.
+ *
+ * 	RETURN
+ *	-> A string with the flags separated by spaces.
+ */
 static char	*fill_fstring_flags(char **array, int len)
 {
 	int		i;
