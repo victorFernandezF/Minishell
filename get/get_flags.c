@@ -6,11 +6,39 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:57:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:36:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static char	*fill_fstring_flags(char **array, int len)
+{
+	int		i;
+	int		j;
+	int		x;
+	char	*res;
+
+	x = 0;
+	res = malloc((len) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = -1;
+	while (array[++i])
+	{
+		j = 0;
+		if (array[i][0] == '-')
+		{
+			while (array[i][j])
+				res[x++] = array[i][j++];
+			if (array[i + 1] && array[i + 1][0] == '-')
+				res[x++] = ' ';
+		}	
+	}
+	res[x] = '\0';
+	return (res);
+}
+
 /* 
  * get_flags (get/get_flags.c)
  * ----------------------------
@@ -25,26 +53,25 @@
 char	*get_flags(char *str)
 {
 	int		i;
-	int		start;
-	int		j;
+	int		len;
 	char	*res;
+	char	*tmp;
+	char	**array;
 
-	j = 0;
-	i = 0;
-	i = skip_whitespaces(str, i);
-	i = skip_characters(str, i);
-	i++;
-	if (str[i] != '-')
-		return (NULL);
-	start = i;
-	while (str[++i])
-		if (str[i] == ' ' && str[i + 1] != '-')
-			break ;
-	res = malloc(((i - start) + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
-	while (start < i)
-		res[j++] = str[start++];
-	res[j] = '\0';
+	i = -1;
+	len = 0;
+	tmp = replace_spaces_after_redirect(str);
+	array = ft_split_2(tmp);
+	while (array[++i])
+	{
+		if (array[i][0] == '-')
+		{
+			len += ft_strlen(array[i]);
+			len += 1;
+		}
+	}
+	res = fill_fstring_flags(array, len);
+	free(tmp);
+	free_array(array);
 	return (res);
 }

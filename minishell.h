@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:40:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:20:31 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	print_error_file(char *input, char *msg);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
+char	*replace_spaces_after_redirect(char *str);
 int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
 
