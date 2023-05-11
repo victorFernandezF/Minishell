@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 13:05:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:18:00 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,32 @@ int	get_nb_cmd(char *str)
 	return (cmd);
 }
 
-char	*fill_string_cmd(char **array, int i, int len)
+/* 
+ * fill_string_cmd (get/get_cmd.c)
+ * ----------------------------
+ *	Auxiliar function to help get_cmd.
+ *
+ *	PARAMS:
+ *	-> array: array of strings.
+ *	-> position: index of element of the array.
+ *
+ * 	RETURN
+ *	-> A String.
+ */
+static char	*fill_string_cmd(char **array, int position)
 {
-	int		j;
+	int		i;
+	int		len;
 	char	*res;
 
-	j = -1;
+	i = -1;
+	len = ft_strlen(array[position]);
 	res = malloc((len + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
-	while (array[i][++j])
-		res[j] = array[i][j];
-	res[j] = '\0';
+	while (array[position][++i])
+		res[i] = array[position][i];
+	res[i] = '\0';
 	return (res);
 }
 
@@ -123,7 +137,7 @@ char	*get_cmd(char *str)
 		len = ft_strlen(array[i]);
 		break ;
 	}
-	res = fill_string_cmd(array, i, len);
+	res = fill_string_cmd(array, i);
 	res = check_env_cmd(res);
 	free(tmp);
 	free_array(array);
