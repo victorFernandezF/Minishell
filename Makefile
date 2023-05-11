@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/10 19:29:56 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/11 10:38:36 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ LIBFT_D	=	libft
 SRC 	= 	src/main.c \
 		 	src/parser.c \
 			src/print_leaks_and_testing.c \
-			src/error.c \
 			struct/free_stuff.c \
 			struct/init_struct.c \
 			struct/fill_next_struct.c \
