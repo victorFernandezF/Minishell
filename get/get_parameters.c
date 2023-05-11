@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:58:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:45:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	*get_temp_param_and_output_string(char *str)
 
 	i = 0;
 	i = skip_cmd_and_flags(str);
-	printf("%i\n", i);
 	len = strlen_starting_in(str, i);
 	res = malloc((len + 1) * sizeof(char));
 	j = 0;

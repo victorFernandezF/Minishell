@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:33:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:26:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 	i = -1;
 	if (repeat == 0)
 		printf("%s LINE -> %s%s\n\n", BM, W, str);
-	printf("%s◼︎ [ NODE %i ] %s\n", B, cmd->index, W);
+	printf("%s■ [ NODE %i ] %s\n", B, cmd->index, W);
 	printf("%s⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽%s\n\n", B, W);
 	printf("%s ● NODE ID ..... ➤%s (%d)%s\n", Y, BG, cmd->index, W);
 	printf("%s ● COMMAND ..... ➤%s %s\n", Y, W, cmd->cmd);

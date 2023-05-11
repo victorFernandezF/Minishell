@@ -6,11 +6,53 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:57:15 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:05:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+/* 
+ * get_temp_param_and_output_string (get/get_parameters.c)
+ * ----------------------------
+ *	Create a new string with everithing except cmd name and flags
+ *	and the redirection characters are followed by '_'
+ *	(ex: line 'echo -n hello > out world' will become 'hello >_out world')
+ *
+ *	PARAMS:
+ *	-> str: the command line.
+ *
+ * 	RETURN
+ *	-> A string that contains everithing except cmd name and flags
+ *	and the redirection characters are followed by '_'.
+ */
+char	*replace_spaces_after_redirect(char *str)
+{
+	int		i;
+	int		j;
+	int		len;
+	char	*res;
+
+	i = 0;
+	len = strlen_starting_in(str, i);
+	res = malloc((len + 1) * sizeof(char));
+	j = 0;
+	i = -1;
+	while (str[++i])
+	{
+		if ((str[i] == '>' && str[i + 1] == ' ')
+			|| (str[i] == '<' && str[i + 1] == ' '))
+		{
+			res[j] = str[i];
+			res[j + 1] = '_';
+			j += 2;
+			i += 2;
+		}
+		res[j++] = str[i];
+	}
+	res[j] = '\0';
+	return (res);
+}
 
 /* 
  * get_nb_cmd (get/get_cmd.c)
@@ -36,6 +78,21 @@ int	get_nb_cmd(char *str)
 	return (cmd);
 }
 
+char	*fill_string_cmd(char **array, int i, int len)
+{
+	int		j;
+	char	*res;
+
+	j = -1;
+	res = malloc((len + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	while (array[i][++j])
+		res[j] = array[i][j];
+	res[j] = '\0';
+	return (res);
+}
+
 /* 
  * get_cmd (get/get_cmd.c)
  * ----------------------------
@@ -50,20 +107,26 @@ int	get_nb_cmd(char *str)
 char	*get_cmd(char *str)
 {
 	int		i;
-	int		end;
+	int		len;
 	char	*res;
+	char	*tmp;
+	char	**array;
 
-	i = 0;
-	i = skip_characters(str, i);
-	end = i;
-	res = malloc(i * sizeof(char));
-	if (!res)
-		return (NULL);
 	i = -1;
-	while (++i < end)
-		res[i] = str[i];
-	res[i] = '\0';
+	len = 0;
+	tmp = replace_spaces_after_redirect(str);
+	array = ft_split_2(tmp);
+	while (array[++i] != NULL)
+	{
+		if (array[i][0] == '>')
+			continue ;
+		len = ft_strlen(array[i]);
+		break ;
+	}
+	res = fill_string_cmd(array, i, len);
 	res = check_env_cmd(res);
+	free(tmp);
+	free_array(array);
 	return (res);
 }
 
