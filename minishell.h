@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 12:32:05 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 13:29:37 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
+// C O L O R
 # define R	"\x1B[31m"
 # define G	"\x1B[32m"
 # define BG	"\x1B[92m"
+# define BB	"\x1B[94m"
 # define Y	"\x1B[33m"
 # define B	"\x1B[36m"	
-# define W	"\x1B[37m"
+# define W	"\x1B[0m"
 # define BY	"\x1B[93m"
 # define BM	"\x1B[95m"
 
+// S T R U C T
 typedef struct s_cmd	t_cmd;
 
 typedef struct s_cmd
@@ -42,6 +45,7 @@ typedef struct s_cmd
 	int		index;
 	t_cmd	*next;
 }			t_cmd;
+//	--- F U N C T I O N S --- 
 
 //	P A R S E R
 
@@ -50,7 +54,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *str);
 t_cmd	*fill_more_than_one(t_cmd *cmd, char *str, int index);
 t_cmd	*fill_struct(t_cmd *tmp, char *command);
 
-// C O N V E R T   E N V   V A R S 
+// E N V I R O M E N T   V A R S 
 
 t_cmd	*check_env_param(t_cmd *cmd);
 char	*get_env_cmd(char *str);
@@ -98,7 +102,7 @@ int		get_position_of_last_char_found(char *str, char c);
 void	free_struct(t_cmd *cmd);
 void	free_array(char **array);
 
-//	L E A K S   T E M P 
+//	- [T E M P]   L E A K S   &   P R I N T S 
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);

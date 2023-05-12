@@ -19,3 +19,6 @@ UTILS
 	utilities.c				--> 5 (full)
 	utilities_2.c			--> 5 (full)
 	utilities_3.c			--> 5 (full)
+
+test print template
+	printf("%sparser/fill_struct: 43%s test ->%s\n", BB, W, no_output_input);
