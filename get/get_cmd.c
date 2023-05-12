@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:14:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:22:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char	*get_cmd(char *str)
 	int		j;
 	int		len;
 	char	*cmd_name;
+	char	*env;
 
 	i = -1;
 	j = 0;
@@ -106,6 +107,11 @@ char	*get_cmd(char *str)
 	while (str[i] != ' ' && str[i] != '\0')
 		cmd_name[j++] = str[i++];
 	cmd_name[j] = '\0';
+	if (is_env_var(cmd_name[0]))
+	{
+		env = get_env_cmd(cmd_name);
+		return (env);
+	}
 	return (cmd_name);
 }
 
@@ -124,7 +130,7 @@ char	*get_cmd(char *str)
  *		with the env vars transformed.
  *	-> If there are no env vars, returns the given string.
  */
-char	*check_env_cmd(char *str)
+char	*get_env_cmd(char *str)
 {
 	char	*tmp;
 	char	*env;
@@ -133,17 +139,14 @@ char	*check_env_cmd(char *str)
 	int		j;
 
 	i = -1;
-	if (is_env_var(str[0]))
-	{
-		tmp = str;
-		free(str);
-		env = transforming(tmp);
-		cmd = malloc((1 + ft_strlen(env)) * sizeof(char));
-		j = -1;
-		while (env[++j])
-			cmd[j] = env[j];
-		cmd[j] = '\0';
-		return (cmd);
-	}
-	return (str);
+	tmp = str;
+	free(str);
+	env = transforming(tmp);
+	printf("%s\n", env);
+	cmd = malloc((1 + ft_strlen(env)) * sizeof(char));
+	j = -1;
+	while (env[++j])
+		cmd[j] = env[j];
+	cmd[j] = '\0';
+	return (cmd);
 }

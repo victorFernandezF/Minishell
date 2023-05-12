@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:49:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:16:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command);
 // C O N V E R T   E N V   V A R S 
 
 t_cmd	*check_env_param(t_cmd *cmd);
-char	*check_env_cmd(char *cmd);
+char	*get_env_cmd(char *str);
 char	**check_env_input(char **input);
 char	**check_env_output(char **output);
 char	*transforming(char *str);
@@ -65,11 +65,7 @@ void	print_error_file(char *input, char *msg);
 char	*replace_spaces_after_redirect(char *str);
 int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
-
 char	*get_flags(char *str);
-
-char	*get_temp_param_and_output_string(char *str);
-int		get_params_len(char **arr);
 char	**get_parameters(char *str);
 
 int		get_nb_outputs(char *str);
