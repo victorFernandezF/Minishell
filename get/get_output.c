@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:58:25 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:34:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	*get_output(char *str, t_cmd *cmd)
 		output[i] = get_output_from_position(output[i], str, output_pos[i]);
 	output[i] = NULL;
 	output = check_env_output(output);
+	printf("%s\n", output[0]);
 	outputs_fd = output_to_fd_converter(output, cmd->nb_outputs);
 	free(output_pos);
 	free_array(output);

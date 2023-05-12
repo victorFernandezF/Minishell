@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:56:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 12:38:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	**check_env_output(char **output)
 	{
 		if (output[i][0] == '>' && is_env_var(output[i][1]))
 			output[i] = check_double_output(output[i]);
-		if (output[i][0] != '>' && is_env_var(output[i][1]))
+		if (is_env_var(output[i][0]))
 		{
 			tmp = output[i];
 			free(output[i]);
