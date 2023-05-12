@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:25:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:49:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_flags(char *str);
 
 char	*get_temp_param_and_output_string(char *str);
 int		get_params_len(char **arr);
-char	*get_params_when_output_found(char *str);
+char	**get_parameters(char *str);
 
 int		get_nb_outputs(char *str);
 int		*get_output(char *str, t_cmd *cmd);
@@ -96,6 +96,7 @@ int		skip_cmd_and_flags(char	*str);
 int		are_there_char(char *str, char c);
 int		is_pipe(char c);
 char	*delete_outputs_from_line(char *str);
+char	*delete_inputs_from_line(char *str);
 int		get_position_of_last_char_found(char *str, char c);
 
 

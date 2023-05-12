@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:17:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:52:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@
  */
 t_cmd	*fill_struct(t_cmd *tmp, char *command)
 {
-	//char	**parameters;
-	//char	*param;
 	char	*no_outputs;
+	char	*no_output_input;
 	t_cmd	*new;
 
 	new = tmp;
@@ -40,15 +39,13 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 	no_outputs = delete_outputs_from_line(command);
 	new->cmd = get_cmd(no_outputs);
 	new->flags = get_flags(no_outputs);
-/*
 	new->nb_inputs = get_nb_inputs(command);
 	new->input = get_input(command, new);
-	param = get_params_when_output_found(command);
-	parameters = ft_split_2(param);
-	free(param);
-	new->params = parameters;
+	no_output_input = delete_inputs_from_line(no_outputs);
+	new->params = get_parameters(no_output_input);
+	free(no_output_input);
+	free(no_outputs);
 	new = check_env_param(new);
-	*/
 	return (new);
 }
 
