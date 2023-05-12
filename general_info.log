@@ -1,0 +1,21 @@
+GET 
+	check_env_vars.c 		--> 3
+	check_env_vars_out.c	--> 3
+	get_cmd.c 				--> 3
+	get_flags.c				 --> 1
+	get_input.c				--> 5 (full)
+	get_output.c			--> 5 (full)
+	get_parameters.c		--> 1
+
+SRC 
+	parser.c 				--> 2
+
+STRUCT 
+	fill_next_struct.c		 --> 3
+	free_stuff.c	 		--> 2
+	init_strcut.c 			--> 1
+
+UTILS 
+	utilities.c				--> 5 (full)
+	utilities_2.c			--> 5 (full)
+	utilities_3.c			--> 5 (full)

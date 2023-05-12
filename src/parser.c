@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:52:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 13:12:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 /* 
  * fill_struct (src/parser.c)
  * ----------------------------
- *	This function is supose to set the components of the
- *	cmd line. 
+ *	This function sets the components of the
+ *	cmd line into the struct. 
  *
  *	PARAMS:
  *	-> cmd: The structure created at main. 
- *	-> command: An array of strings whith the given command
- *		if there are pipes in the line, there will be variosus
- *		elements in the array
+ *	-> command: An string whith the given command
  *
  * 	RETURN
  *	-> cmd: the given struct struct.
@@ -61,7 +59,8 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
  *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
  *
  * 	RETURN
- *	-> cmd: the given struct struct.
+ *	-> cmd: the struct filled witth the different parts of
+ *	the command.
  */
 t_cmd	*start_parser(t_cmd *cmd, char *str)
 {

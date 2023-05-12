@@ -6,53 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 12:34:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 13:04:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/* 
- * get_temp_param_and_output_string (get/get_parameters.c)
- * ----------------------------
- *	Create a new string with everithing except cmd name and flags
- *	and the redirection characters are followed by '_'
- *	(ex: line 'echo -n hello > out world' will become 'hello >_out world')
- *
- *	PARAMS:
- *	-> str: the command line.
- *
- * 	RETURN
- *	-> A string that contains everithing except cmd name and flags
- *	and the redirection characters are followed by '_'.
- */
-char	*replace_spaces_after_redirect(char *str)
-{
-	int		i;
-	int		j;
-	int		len;
-	char	*res;
-
-	i = 0;
-	len = strlen_starting_in(str, i);
-	res = malloc((len + 1) * sizeof(char));
-	j = 0;
-	i = -1;
-	while (str[++i])
-	{
-		if ((str[i] == '>' && str[i + 1] == ' ')
-			|| (str[i] == '<' && str[i + 1] == ' '))
-		{
-			res[j] = str[i];
-			res[j + 1] = '_';
-			j += 2;
-			i += 2;
-		}
-		res[j++] = str[i];
-	}
-	res[j] = '\0';
-	return (res);
-}
 
 /* 
  * get_nb_cmd (get/get_cmd.c)
