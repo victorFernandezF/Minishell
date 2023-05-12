@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 19:02:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:21:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	skip_cmd_and_flags(char	*str)
 		while (str[i] != '-')
 			i--;
 		i = skip_characters(str, i);
-		//printf("%s %i\n",str, i);
 		return (i);
 	}
 	i = skip_characters(str, i);
