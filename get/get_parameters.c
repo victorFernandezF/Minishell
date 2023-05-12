@@ -6,23 +6,23 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:55:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:05:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * get_params_when_output_found (get/get_parameters.c)
+ * get_parameters (get/get_parameters.c)
  * ----------------------------
- *	Returns a string with every parameters found.
- *	(ex: echo -n hello > output world -> hello world).
+ *	creates an array of strings with the parameters found
+ *	in the command line given by user..
  *
  *	PARAMS:
  *	-> str: command line.
  *
  * 	RETURN
- *	-> A string with every parameters found separated by spaces.
+ *	-> An array of strings with every parameters found.
  */
 char	**get_parameters(char *str)
 {
