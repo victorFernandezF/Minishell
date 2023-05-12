@@ -6,12 +6,25 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:08:29 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 18:55:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:27:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/* 
+ * fill_string (utils/utilities_3.c)
+ * ----------------------------
+ *	Auxiliar function to help 'delete_outputs_from_line'
+ *	filling a string.
+ *
+ *	PARAMS:
+ *	-> array: an array with every element except outputs.
+ *	-> len: Length of the future string.
+ *
+ * 	RETURN
+ *	-> A string.
+ */
 static char	*fill_string(char **array, int len)
 {
 	int		j;
@@ -37,6 +50,17 @@ static char	*fill_string(char **array, int len)
 	return (res);
 }
 
+/* 
+ * delete_outputs_from_line (utils/utilities_3.c)
+ * ----------------------------
+ *	Returns a string with everything except outputs 
+ *
+ *	PARAMS:
+ *	-> str: command line. 
+ *
+ * 	RETURN
+ *	-> A string.
+ */
 char	*delete_outputs_from_line(char *str)
 {
 	int		i;
@@ -60,4 +84,15 @@ char	*delete_outputs_from_line(char *str)
 	free(tmp);
 	free_array(array);
 	return (res);
+}
+
+int	get_position_of_last_char_found(char *str, char c)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	while (str[--i])
+		if (str[i] == c)
+			return (i);
+	return (0);
 }
