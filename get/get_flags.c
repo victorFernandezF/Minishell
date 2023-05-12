@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:31:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:33:36 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  *	-> str: string given by user.
  *
  * 	RETURN
- *	-> A string with the flags name.
+ *	-> A string with the flags.
  */
 char	*get_flags(char *str)
 {

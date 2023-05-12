@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 11:22:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:33:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*replace_spaces_after_redirect(char *str)
  *	-> str: string given by user.
  *
  * 	RETURN
- *	-> An integer with the number of commands found.
+ *	-> The number of commands found.
  */
 int	get_nb_cmd(char *str)
 {
@@ -116,19 +116,16 @@ char	*get_cmd(char *str)
 }
 
 /* 
- * check_env_cmd (get/get_cmd.c)
+ * get_env_cmd (get/get_cmd.c)
  * ----------------------------
- *	If an enviroment var is found in cmd name, this
- *	function converts it in its value. 
- *	(ex: $USER becomes 'victofer' 
+ *	This function converts the enviroment var in
+ *	cmd name in its value. (ex: $USER becomes 'victofer'). 
  *
  *	PARAMS:
  *	-> str: the string that contains the cmd name.
  *
  * 	RETURN
- *	-> If a envirmoent var if found, returns a string 
- *		with the env vars transformed.
- *	-> If there are no env vars, returns the given string.
+ *	-> Returns a string with the env vars transformed.
  */
 char	*get_env_cmd(char *str)
 {

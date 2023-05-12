@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:08:29 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:39:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:40:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,20 @@ char	*delete_inputs_from_line(char *str)
 	return (res);
 }
 
+/* 
+ * get_position_of_last_char_found (utils/utilities_3.c)
+ * ----------------------------
+ *	Returns the position of the last occurrence of a char
+ *	in a string. 
+ *
+ *	PARAMS:
+ *	-> str: string in which the given char will be searched. 
+ *	-> c: Character that will be searched in str. 
+ *
+ * 	RETURN
+ *	-> if c is found inside str, returns the position of c in str.
+ *	-> if c not found, returns 0.
+ */
 int	get_position_of_last_char_found(char *str, char c)
 {
 	int	i;
