@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 18:12:53 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:25:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int		skip_cmd_and_flags(char	*str);
 int		are_there_char(char *str, char c);
 int		is_pipe(char c);
 char	*delete_outputs_from_line(char *str);
+int		get_position_of_last_char_found(char *str, char c);
+
 
 //	F R E E   S T U F F 
 

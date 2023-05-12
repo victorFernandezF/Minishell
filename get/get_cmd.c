@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 13:18:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/12 10:14:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,35 +79,6 @@ int	get_nb_cmd(char *str)
 }
 
 /* 
- * fill_string_cmd (get/get_cmd.c)
- * ----------------------------
- *	Auxiliar function to help get_cmd.
- *
- *	PARAMS:
- *	-> array: array of strings.
- *	-> position: index of element of the array.
- *
- * 	RETURN
- *	-> A String.
- */
-static char	*fill_string_cmd(char **array, int position)
-{
-	int		i;
-	int		len;
-	char	*res;
-
-	i = -1;
-	len = ft_strlen(array[position]);
-	res = malloc((len + 1) * sizeof(char));
-	if (!res)
-		return (NULL);
-	while (array[position][++i])
-		res[i] = array[position][i];
-	res[i] = '\0';
-	return (res);
-}
-
-/* 
  * get_cmd (get/get_cmd.c)
  * ----------------------------
  *	Splits the name of the command from the given string
@@ -121,27 +92,21 @@ static char	*fill_string_cmd(char **array, int position)
 char	*get_cmd(char *str)
 {
 	int		i;
+	int		j;
 	int		len;
-	char	*res;
-	char	*tmp;
-	char	**array;
+	char	*cmd_name;
 
 	i = -1;
-	len = 0;
-	tmp = replace_spaces_after_redirect(str);
-	array = ft_split_2(tmp);
-	while (array[++i] != NULL)
-	{
-		if (array[i][0] == '>')
-			continue ;
-		len = ft_strlen(array[i]);
-		break ;
-	}
-	res = fill_string_cmd(array, i);
-	res = check_env_cmd(res);
-	free(tmp);
-	free_array(array);
-	return (res);
+	j = 0;
+	i = skip_whitespaces(str, 0);
+	len = skip_characters(str, i);
+	cmd_name = malloc((len + 1) * sizeof(char));
+	if (!cmd_name)
+		return (NULL);
+	while (str[i] != ' ' && str[i] != '\0')
+		cmd_name[j++] = str[i++];
+	cmd_name[j] = '\0';
+	return (cmd_name);
 }
 
 /* 
