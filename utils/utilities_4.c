@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 13:38:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:26:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,15 @@ char	*delete_inputs_from_line(char *str)
 	free(tmp);
 	free_array(array);
 	return (res);
+}
+
+int	is_there_env_var(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '#')
+			return (1);
+	return (0);
 }
