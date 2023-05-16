@@ -1,6 +1,6 @@
 GET 
 	check_env_vars.c 		--> 3
-	check_env_vars_out.c	--> 3
+	check_env_vars_out.c	--> 5 (fill)
 	get_cmd.c 				--> 3
 	get_flags.c				 --> 1
 	get_input.c				--> 5 (full)

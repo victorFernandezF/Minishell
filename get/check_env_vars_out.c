@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/16 10:12:34 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 19:02:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,40 @@ static char	*check_double_output(char *output)
 	return (output);
 }
 
+static char	*fill_string(char *str, char *env)
+{
+	int		len;
+	int		i;
+	int		j;
+	char	*out;
+
+	len = 0;
+	while (!is_env_var(str[len]))
+		len++;
+	len += ft_strlen(env);
+	out = malloc((len + 1) * sizeof(char));
+	i = -1;
+	while (!is_env_var(str[++i]))
+		out[i] = str[i];
+	j = -1;
+	while (env[++j])
+		out[i++] = env[j];
+	out[i] = '\0';
+	return (out);
+}
+
+static char	*get_temporal_output(char *str)
+{
+	int		j;
+	char	*tmp;
+
+	j = 0;
+	while (!is_env_var(str[j]))
+		j++;
+	tmp = ft_substr(str, j, ft_strlen(str) - j);
+	return (tmp);
+}
+
 /* 
  * check_env_output (get/check_env_vars_out.c)
  * ----------------------------
@@ -101,24 +135,22 @@ char	**check_env_output(char **output)
 	char	*env;
 	char	*out;
 	int		i;
-	int		j;
 
 	i = -1;
 	while (output[++i])
 	{
 		if (output[i][0] == '>' && is_env_var(output[i][1]))
 			output[i] = check_double_output(output[i]);
-		if (is_env_var(output[i][0]))
+		if (is_there_env_var(output[i]))
 		{
-			tmp = output[i];
-			free(output[i]);
+			tmp = get_temporal_output(output[i]);
 			env = transforming(tmp);
-			out = malloc((1 + ft_strlen(env)) * sizeof(char));
-			j = -1;
-			while (env[++j])
-				out[j] = env[j];
-			out[j] = '\0';
+			if (env == NULL)
+				print_error_file(tmp, "ambiguous redirect");
+			out = fill_string(output[i], env);
+			free(output[i]);
 			output[i] = out;
+			free(tmp);
 		}
 	}
 	return (output);
