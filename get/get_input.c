@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:58:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:17:57 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	get_input(char *str, t_cmd *cmd)
 
 	input_pos = get_input_char_positions(str, cmd);
 	input = malloc((cmd->nb_inputs + 1) * sizeof(char **));
+	if (!input)
+		return (0);
 	i = -1;
 	while (++i < cmd->nb_inputs)
 		input[i] = get_input_from_position(input[i], str, input_pos[i]);
@@ -118,6 +120,8 @@ int	*input_filename_to_fd_converter(char **input, int nb)
 	i = -1;
 	j = 0;
 	res = malloc((nb + 1) * sizeof(int));
+	if (!res)
+		return (NULL);
 	while (++i < nb)
 	{
 		res[i] = open(input[i], O_RDWR);

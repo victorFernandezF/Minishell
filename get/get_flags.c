@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 11:33:36 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:13:37 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ char	*get_flags(char *str)
 	end = get_position_of_last_char_found(str, '-');
 	end = skip_characters(str, end);
 	flags = malloc ((end - start +1) * sizeof(char));
-	i = 0;
 	if (!flags)
 		return (NULL);
+	i = 0;
 	while (start < end)
 		flags[i++] = str[start++];
 	flags[i] = '\0';

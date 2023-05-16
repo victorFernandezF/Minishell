@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 12:38:48 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:12:34 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static char	*check_double_output(char *output)
 	i = 1;
 	env = transforming_out(tmp);
 	out = malloc((2 + ft_strlen(env)) * sizeof(char));
+	if (!out)
+		return (NULL);
 	out[0] = '>';
 	while (env[j])
 		out[i++] = env[j++];

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 13:30:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:43:01 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 	new->nb_inputs = get_nb_inputs(command);
 	new->input = get_input(command, new);
 	no_output_input = delete_inputs_from_line(no_outputs);
-	printf("%sparser/fill_struct: 43%s test ->%s\n", BB, W, no_output_input);
 	new->params = get_parameters(no_output_input);
 	free(no_output_input);
 	free(no_outputs);

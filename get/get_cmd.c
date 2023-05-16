@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 13:04:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:13:13 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ char	*get_env_cmd(char *str)
 	free(str);
 	env = transforming(tmp);
 	cmd = malloc((1 + ft_strlen(env)) * sizeof(char));
+	if (!cmd)
+		return (NULL);
 	j = -1;
 	while (env[++j])
 		cmd[j] = env[j];

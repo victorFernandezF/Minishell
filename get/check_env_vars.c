@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:54:54 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 10:56:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:12:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	*transforming(char *str)
 	i = 0;
 	j = 0;
 	temp = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!temp)
+		return (NULL);
 	while (str[++i])
 		temp[j++] = str[i];
 	temp[j] = '\0';
