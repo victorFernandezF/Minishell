@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/12 13:39:22 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/16 13:32:42 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ norminette:
 	@echo "$(Y)------- $(G)EVERITHING OK$(Y) -------$(E)"
 
 $(NAME): $(OBJS)
+	@mkdir -p redir
 	@gcc $(CFLAGS) libft/libft.a $(OBJS) -o $(NAME) 
 	@echo "$(Y)0-----------------------0"
 	@echo "$(Y)|$(G)    MINISHELL CREATED $(Y) |"
@@ -83,6 +84,7 @@ fclean: clean
 	@echo "$(E)"
 	@/bin/rm -f $(NAME)
 	@make -C libft/ fclean
+	@rm -rf redir
 	@find . -type f ! -name "*.*" ! -name "Makefile" -not -path "./.git/*" -delete	
 
 re: fclean all
