@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 13:24:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:12:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	*get_output(char *str, t_cmd *cmd)
 	int		i;
 
 	output = malloc((cmd->nb_outputs + 1) * sizeof(char **));
+	if (!output)
+		return (NULL);
 	output_pos = get_output_char_positions(str, cmd);
 	i = -1;
 	while (++i < cmd->nb_outputs)
@@ -109,6 +111,8 @@ int	*output_to_fd_converter(char **output, int nb)
 	i = -1;
 	j = 0;
 	res = malloc((nb + 1) * sizeof(int));
+	if (!res)
+		return (NULL);
 	while (++i < nb)
 	{
 		if (output[i][0] == '>')
@@ -120,6 +124,8 @@ int	*output_to_fd_converter(char **output, int nb)
 		}
 		else
 			res[i] = open(output[i], O_CREAT | O_RDWR | O_TRUNC, 0644);
+		if (res[i] == -1)
+			print_error_file(output[i], "No such file or directory");
 	}
 	return (res);
 }
