@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/15 17:43:01 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:02:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 {
 	char	*no_outputs;
 	char	*no_output_input;
+	char	*spanded;
 	t_cmd	*new;
 
 	new = tmp;
-	new->nb_outputs = get_nb_outputs(command);
-	new->output = get_output(command, new);
-	no_outputs = delete_outputs_from_line(command);
+	spanded = spand_all_env_vasr(command);
+	new->nb_outputs = get_nb_outputs(spanded);
+	new->output = get_output(spanded, new);
+	no_outputs = delete_outputs_from_line(spanded);
 	new->cmd = get_cmd(no_outputs);
 	new->flags = get_flags(no_outputs);
 	new->nb_inputs = get_nb_inputs(command);

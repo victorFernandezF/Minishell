@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 12:40:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:16:13 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,7 @@ void	free_array(char **array);
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
+
+char	*spand_all_env_vasr( char *str);
 
 #endif
