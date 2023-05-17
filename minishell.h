@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 11:01:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:40:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command);
 
 t_cmd	*check_env_param(t_cmd *cmd);
 char	*get_env_cmd(char *str);
-char	**check_env_input(char **input);
 char	**check_env_redirection(char **output);
 char	*transforming(char *str);
-char	*replace_env_by_value(char	*str, int pos, char *tmp, int i);
 void	print_error_file(char *input, char *msg);
+char	*get_temporal_redirection(char *str);
+char	*fill_string_redirection(char *str, char *env);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
@@ -81,9 +81,6 @@ int		get_input(char *str, t_cmd *cmd);
 int		*get_input_char_positions(char *str, t_cmd *cmd);
 char	*get_input_from_position(char *out, char *str, int pos);
 int		*input_filename_to_fd_converter(char **output, int nb);
-
-char	*get_temporal_redirection(char *str);
-char	*fill_string_redirection(char *str, char *env);
 
 //	U T I L I T I E S
 

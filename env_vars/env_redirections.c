@@ -6,35 +6,60 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 12:20:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:35:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/* 
+ * fill_string_redirection (env_vars/env_redirections.c)
+ * ----------------------------
+ *	Joins the first part os original string (till env var char '$')
+ *	and the enviroment va value. (str: redir/ env: -R -> redir/-R)
+ *
+ *	PARAMS:
+ *	-> str: String with inputs/outputs.
+ *	-> env: String with the value of the env var.
+ *
+ * 	RETURN
+ *	-> A new string with the two strings joined.
+  */
 char	*fill_string_redirection(char *str, char *env)
 {
 	int		len;
 	int		i;
 	int		j;
-	char	*out;
+	char	*redi;
 
 	len = 0;
 	while (!is_env_var(str[len]))
 		len++;
 	len += ft_strlen(env);
-	out = malloc((len + 1) * sizeof(char));
+	redi = malloc((len + 1) * sizeof(char));
 	i = -1;
 	while (!is_env_var(str[++i]))
-		out[i] = str[i];
+		redi[i] = str[i];
 	j = -1;
 	while (env[++j])
-		out[i++] = env[j];
-	out[i] = '\0';
-	return (out);
+		redi[i++] = env[j];
+	redi[i] = '\0';
+	return (redi);
 }
 
-
+/* 
+ * get_temporal_redirection (env_vars/env_redirections.c)
+ * ----------------------------
+ *	Creates a substring with the content of the original string
+ *	from the env var character '$' to the end of string.
+ *	(ex: redir/$USER -> $USER).	
+ *
+ *	PARAMS:
+ *	-> str: String with the redirection.
+ *
+ * 	RETURN
+ *	-> The substring created.
+  */
 char	*get_temporal_redirection(char *str)
 {
 	int		j;
@@ -78,7 +103,7 @@ char	**check_env_redirection(char **redirection)
 			env = transforming(tmp);
 			if (env == NULL)
 				print_error_file(tmp, "ambiguous redirect");
-			final = fill_string_redirection(redirection[i], env);
+			final = ft_strjoin(redirection[i], env);
 			free(redirection[i]);
 			redirection[i] = final;
 			free(tmp);

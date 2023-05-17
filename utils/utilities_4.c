@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/16 13:26:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:42:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,18 @@ char	*delete_inputs_from_line(char *str)
 	return (res);
 }
 
+/* 
+ * is_there_env_var (utils/utilities_4.c)
+ * ----------------------------
+ *	Returns 1 if an env var is found in the string. 
+ *
+ *	PARAMS:
+ *	-> str: string. 
+ *
+ * 	RETURN
+ *	-> 1 if an env var is found in the string.
+ *	-> 0 if not.
+ */
 int	is_there_env_var(char *str)
 {
 	int	i;
