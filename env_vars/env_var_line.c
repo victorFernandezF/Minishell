@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 19:00:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:18:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,24 @@ static char	*fill_new_line_with_array_values(char **array, int len)
 	return (new_line);
 }
 
+static char	*not_first_env_var(char	*str)
+{
+	char	*tmp;
+	char	*env;
+	char	*final;
+
+	tmp = get_temporal_redirection(str);
+	env = transforming(tmp);
+	if (env == NULL)
+		print_error_file(tmp, "ambiguous redirect");
+	final = fill_string_redirection(str, env);
+	printf("aaa %s\n", final);
+	free(str);
+	str = final;
+	free(tmp);
+	return (final);
+}
+
 char	*spand_all_env_vasr(char *str)
 {
 	int		i;
@@ -69,8 +87,10 @@ char	*spand_all_env_vasr(char *str)
 	{
 		if (is_there_env_var(array[i]))
 		{
-			if (temp != NULL)
-			temp = get_env_cmd(array[i]);
+			if (!is_env_var(array[i][0]))
+				temp = not_first_env_var(array[i]);
+			else
+				temp = get_env_cmd(array[i]);
 			array[i] = temp;
 		}
 	}
