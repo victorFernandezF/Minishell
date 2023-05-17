@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 10:54:54 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/16 13:40:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 10:54:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,45 +82,4 @@ t_cmd	*check_env_param(t_cmd *cmd)
 		}
 	}
 	return (cmd);
-}
-
-/* 
- * check_env_input (get/check_env_vars.c)
- * ----------------------------
- *	If a enviroment var is found in any inputs, this
- *	function converts it in its value. 
- *	(ex: $USER becomes 'victofer' 
- *
- *	PARAMS:
- *	-> input: Array of strings with the input filenames.
- *
- * 	RETURN
- *	-> An array of strings with the input filenames correctly
- *		formatted.
- */
-char	**check_env_input(char **input)
-{
-	char	*tmp;
-	char	*env;
-	char	*in;
-	int		i;
-	int		j;
-
-	i = -1;
-	while (input[++i])
-	{
-		if (is_env_var(input[i][0]))
-		{
-			tmp = input[i];
-			free(input[i]);
-			env = transforming(tmp);
-			in = malloc((1 + ft_strlen(env)) * sizeof(char));
-			j = -1;
-			while (env[++j])
-				in[j] = env[j];
-			in[j] = '\0';
-			input[i] = in;
-		}
-	}
-	return (input);
 }

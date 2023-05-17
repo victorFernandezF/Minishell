@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_env_vars_out.c                               :+:      :+:    :+:   */
+/*   env_redirections.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/16 19:07:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:10:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char	*check_double_output(char *output)
 	return (output);
 }
 
-static char	*fill_string(char *str, char *env)
+char	*fill_string_redirection(char *str, char *env)
 {
 	int		len;
 	int		i;
@@ -105,7 +105,7 @@ static char	*fill_string(char *str, char *env)
 	return (out);
 }
 
-static char	*get_temporal_output(char *str)
+char	*get_temporal_redirection(char *str)
 {
 	int		j;
 	char	*tmp;
@@ -118,40 +118,43 @@ static char	*get_temporal_output(char *str)
 }
 
 /* 
- * check_env_output (get/check_env_vars_out.c)
+ * check_env_redirection (env_vars/env_redirections.c)
  * ----------------------------
- *	Take an array with the output filenames and transforms any
- *	env var to its value.
+ *	Take each redirection files (inputs or outputs) and
+ *	transforms each enviroment var in its value.
+ *	This function can handle somethin like that (> redir/$USER)
+ *	For that, it creates a temporal string splitting the directory part
+ *	and the enviroment var part.
  *
  *	PARAMS:
- *	-> output: Array of strings with the outputs.
+ *	-> output: Array of strings with the inputs/outputs.
  *
  * 	RETURN
- *	-> A new array of strings with the ouputs correctly formatted.
+ *	-> A new array of strings with the inputs/outputs correctly formatted.
   */
-char	**check_env_output(char **output)
+char	**check_env_redirection(char **redirection)
 {
 	char	*tmp;
 	char	*env;
-	char	*out;
+	char	*final;
 	int		i;
 
 	i = -1;
-	while (output[++i])
+	while (redirection[++i])
 	{
-		if (output[i][0] == '>' && is_env_var(output[i][1]))
-			output[i] = check_double_output(output[i]);
-		if (is_there_env_var(output[i]))
+		if (redirection[i][0] == '>' && is_env_var(redirection[i][1]))
+			redirection[i] = check_double_output(redirection[i]);
+		if (is_there_env_var(redirection[i]))
 		{
-			tmp = get_temporal_output(output[i]);
+			tmp = get_temporal_redirection(redirection[i]);
 			env = transforming(tmp);
 			if (env == NULL)
 				print_error_file(tmp, "ambiguous redirect");
-			out = fill_string(output[i], env);
-			free(output[i]);
-			output[i] = out;
+			final = fill_string_redirection(redirection[i], env);
+			free(redirection[i]);
+			redirection[i] = final;
 			free(tmp);
 		}
 	}
-	return (output);
+	return (redirection);
 }
