@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/12 10:51:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 12:22:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 	while (++i < cmd->nb_outputs)
 		printf("%s ● OUTPUT FD [%s%i%s] ➤%s %i\n",
 			Y, B, i, Y, W, cmd->output[i]);
-
 	printf("\n");
 	if (cmd->next != NULL)
 		print_test(str, cmd->next, 1);

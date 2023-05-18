@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 10:06:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 12:20:01 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*transforming(char *str)
  *
  * 	RETURN
  *	-> A new string with the two strings joined.
-  */
+*/
 char	*fill_string_redirection(char *str, char *env)
 {
 	int		len;

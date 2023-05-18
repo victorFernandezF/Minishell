@@ -6,48 +6,25 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 10:13:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 12:19:34 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 /* 
- * get_env_cmd (get/get_cmd.c)
+ * get_total_len (env_vars/env_var_line.c)
  * ----------------------------
- *	This function converts the enviroment var in
- *	cmd name in its value. (ex: $USER becomes 'victofer'). 
+ *	Calculates the necesary amount of chars to create a
+ *	null terminated string with the elements of an array separated by spaces. 
  *
  *	PARAMS:
- *	-> str: the string that contains the cmd name.
+ *	-> array: An array of strings with the words that will be
+ *	joined in the string.
  *
  * 	RETURN
- *	-> Returns a string with the env vars transformed.
+ *	-> Returns the length that the new string must be.
  */
-char	*get_env_var_when_is_first_char(char *str)
-{
-	char	*tmp;
-	char	*env;
-	char	*cmd;
-	int		i;
-	int		j;
-
-	i = -1;
-	tmp = str;
-	free(str);
-	env = transforming(tmp);
-	if (env == NULL)
-		env = "";
-	cmd = malloc((1 + ft_strlen(env)) * sizeof(char));
-	if (!cmd)
-		return (NULL);
-	j = -1;
-	while (env[++j])
-		cmd[j] = env[j];
-	cmd[j] = '\0';
-	return (cmd);
-}
-
 static int	get_total_len(char **array)
 {
 	int	i;
@@ -66,7 +43,19 @@ static int	get_total_len(char **array)
 	return (len);
 }
 
-static char	*get_env_var_when_is_not_first_char(char *str)
+/* 
+ * convert_env_var_in_its_value (env_vars/env_var_line.c)
+ * ----------------------------
+ *	This function converts the enviroment var in
+ *	in its value. (ex: $USER becomes 'victofer'). 
+ *
+ *	PARAMS:
+ *	-> str: A string that could have a env_var (or not).
+ *
+ * 	RETURN
+ *	-> Returns a string with the env vars transformed.
+ */
+static char	*convert_env_var_in_its_value(char *str)
 {
 	char	*tmp;
 	char	*env;
@@ -77,13 +66,24 @@ static char	*get_env_var_when_is_not_first_char(char *str)
 	if (env == NULL)
 		print_error_file(tmp, "ambiguous redirect");
 	final = fill_string_redirection(str, env);
-	printf("aaa %s\n", final);
 	free(str);
 	str = final;
 	free(tmp);
 	return (final);
 }
 
+/* 
+ * spand_all_env_vasr (env_vars/env_var_line.c)
+ * ----------------------------
+ *	This function spands the enviroment var found
+ *	in the command line (ex: $USER becomes 'victofer'). 
+ *
+ *	PARAMS:
+ *	-> str: A string that could have a env_var (or not).
+ *
+ * 	RETURN
+ *	-> Returns a string with the env vars transformed.
+ */
 char	*spand_all_env_vasr(char *str)
 {
 	int		i;
@@ -99,10 +99,7 @@ char	*spand_all_env_vasr(char *str)
 	{
 		if (is_there_env_var(array[i]))
 		{
-			if (!is_env_var(array[i][0]))
-				temp = get_env_var_when_is_not_first_char(array[i]);
-			else
-				temp = get_env_var_when_is_first_char(array[i]);
+			temp = convert_env_var_in_its_value(array[i]);
 			array[i] = temp;
 		}
 	}
