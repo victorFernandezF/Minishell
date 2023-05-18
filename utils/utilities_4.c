@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 10:13:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:22:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,22 @@ int	is_there_env_var(char *str)
 	return (0);
 }
 
+/* 
+ * ft_splitnt (utils/utilities_4.c)
+ * ----------------------------
+ *	It's the oposite of ft_split. (ft_splitn't xd)
+ *	It take an array of strings and the length of the array
+ *	and returns a null terminated string with every elements of
+ *	the array separated by spaces.
+ *
+ *	PARAMS:
+ *	-> array: the array to convert to string.
+ *	-> len: the length of the array. 
+ *
+ * 	RETURN
+ *	-> A null terminated string with every elements of
+ *	the array separated by spaces.
+ */
 char	*ft_splitnt(char **array, int len)
 {
 	char	*new_line;

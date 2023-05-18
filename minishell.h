@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 10:13:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:17:32 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*ft_splitnt(char **array, int len);
 void	free_struct(t_cmd *cmd);
 void	free_array(char **array);
 
-//	- [T E M P]   L E A K S   &   P R I N T S 
+//	[T E M P]   L E A K S   &   P R I N T S 
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
