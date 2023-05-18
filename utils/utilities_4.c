@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 12:42:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:13:29 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static char	*fill_string(char **array, int len)
 	res[x - 1] = '\0';
 	return (res);
 }
-
 
 /* 
  * delete_outputs_from_line (utils/utilities_3.c)
@@ -108,4 +107,28 @@ int	is_there_env_var(char *str)
 		if (str[i] == '#')
 			return (1);
 	return (0);
+}
+
+char	*ft_splitnt(char **array, int len)
+{
+	char	*new_line;
+	int		i;
+	int		j;
+	int		x;
+
+	i = -1;
+	x = 0;
+	new_line = malloc(len * sizeof(char));
+	if (!new_line)
+		return (NULL);
+	while (array[++i])
+	{
+		j = -1;
+		while (array[i][++j])
+			new_line[x++] = array[i][j];
+		if (array[i + 1])
+			new_line[x++] = ' ';
+	}
+	new_line[x] = '\0';
+	return (new_line);
 }

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/16 10:13:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:08:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ char	*get_cmd(char *str)
 	int		j;
 	int		len;
 	char	*cmd_name;
-	char	*env;
 
 	i = -1;
 	j = 0;
@@ -65,44 +64,5 @@ char	*get_cmd(char *str)
 	while (str[i] != ' ' && str[i] != '\0')
 		cmd_name[j++] = str[i++];
 	cmd_name[j] = '\0';
-	if (is_env_var(cmd_name[0]))
-	{
-		env = get_env_cmd(cmd_name);
-		return (env);
-	}
 	return (cmd_name);
-}
-
-/* 
- * get_env_cmd (get/get_cmd.c)
- * ----------------------------
- *	This function converts the enviroment var in
- *	cmd name in its value. (ex: $USER becomes 'victofer'). 
- *
- *	PARAMS:
- *	-> str: the string that contains the cmd name.
- *
- * 	RETURN
- *	-> Returns a string with the env vars transformed.
- */
-char	*get_env_cmd(char *str)
-{
-	char	*tmp;
-	char	*env;
-	char	*cmd;
-	int		i;
-	int		j;
-
-	i = -1;
-	tmp = str;
-	free(str);
-	env = transforming(tmp);
-	cmd = malloc((1 + ft_strlen(env)) * sizeof(char));
-	if (!cmd)
-		return (NULL);
-	j = -1;
-	while (env[++j])
-		cmd[j] = env[j];
-	cmd[j] = '\0';
-	return (cmd);
 }

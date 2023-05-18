@@ -6,11 +6,43 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 18:03:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:06:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+/* 
+ * transforming (get/check_env_vars.c)
+ * ----------------------------
+ *	Take an string with the name of the env var
+ *	and returns a new string with its value.
+ *
+ *	PARAMS:
+ *	-> str: string with env var name without '$' (ex: USER)
+ *
+ * 	RETURN
+ *	-> A string with the value of the enviroment var. (ex: victofer)
+ */
+char	*transforming(char *str)
+{
+	int		i;
+	int		j;
+	char	*temp;
+	char	*env;
+
+	i = 0;
+	j = 0;
+	temp = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!temp)
+		return (NULL);
+	while (str[++i])
+		temp[j++] = str[i];
+	temp[j] = '\0';
+	env = getenv(temp);
+	free(temp);
+	return (env);
+}
 
 /* 
  * fill_string_redirection (env_vars/env_redirections.c)

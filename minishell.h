@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 18:16:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:13:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command);
 // E N V I R O M E N T   V A R S 
 
 t_cmd	*check_env_param(t_cmd *cmd);
-char	*get_env_cmd(char *str);
+char	*get_env_var_when_is_first_char(char *str);
 char	**check_env_redirection(char **output);
 char	*transforming(char *str);
 void	print_error_file(char *input, char *msg);
@@ -97,7 +97,7 @@ char	*delete_outputs_from_line(char *str);
 char	*delete_inputs_from_line(char *str);
 int		get_position_of_last_char_found(char *str, char c);
 int		is_there_env_var(char *str);
-
+char	*ft_splitnt(char **array, int len);
 
 //	F R E E   S T U F F 
 

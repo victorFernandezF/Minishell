@@ -6,11 +6,47 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/17 19:18:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:13:14 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+/* 
+ * get_env_cmd (get/get_cmd.c)
+ * ----------------------------
+ *	This function converts the enviroment var in
+ *	cmd name in its value. (ex: $USER becomes 'victofer'). 
+ *
+ *	PARAMS:
+ *	-> str: the string that contains the cmd name.
+ *
+ * 	RETURN
+ *	-> Returns a string with the env vars transformed.
+ */
+char	*get_env_var_when_is_first_char(char *str)
+{
+	char	*tmp;
+	char	*env;
+	char	*cmd;
+	int		i;
+	int		j;
+
+	i = -1;
+	tmp = str;
+	free(str);
+	env = transforming(tmp);
+	if (env == NULL)
+		env = "";
+	cmd = malloc((1 + ft_strlen(env)) * sizeof(char));
+	if (!cmd)
+		return (NULL);
+	j = -1;
+	while (env[++j])
+		cmd[j] = env[j];
+	cmd[j] = '\0';
+	return (cmd);
+}
 
 static int	get_total_len(char **array)
 {
@@ -30,31 +66,7 @@ static int	get_total_len(char **array)
 	return (len);
 }
 
-static char	*fill_new_line_with_array_values(char **array, int len)
-{
-	char	*new_line;
-	int		i;
-	int		j;
-	int		x;
-
-	i = -1;
-	x = 0;
-	new_line = malloc(len * sizeof(char));
-	if (!new_line)
-		return (NULL);
-	while (array[++i])
-	{
-		j = -1;
-		while (array[i][++j])
-			new_line[x++] = array[i][j];
-		if (array[i + 1])
-			new_line[x++] = ' ';
-	}
-	new_line[x] = '\0';
-	return (new_line);
-}
-
-static char	*not_first_env_var(char	*str)
+static char	*get_env_var_when_is_not_first_char(char *str)
 {
 	char	*tmp;
 	char	*env;
@@ -88,14 +100,14 @@ char	*spand_all_env_vasr(char *str)
 		if (is_there_env_var(array[i]))
 		{
 			if (!is_env_var(array[i][0]))
-				temp = not_first_env_var(array[i]);
+				temp = get_env_var_when_is_not_first_char(array[i]);
 			else
-				temp = get_env_cmd(array[i]);
+				temp = get_env_var_when_is_first_char(array[i]);
 			array[i] = temp;
 		}
 	}
 	len = get_total_len(array);
-	new_line = fill_new_line_with_array_values(array, len);
+	new_line = ft_splitnt(array, len);
 	free_array(array);
 	return (new_line);
 }
