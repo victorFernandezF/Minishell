@@ -6,20 +6,17 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 10:55:59 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 11:00:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 10:32:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-/*
- * init_struct (struct/init_strcut.c)
- * ----------------------------
- *	Initialize a struct with all its elements to NULL 
- *
- *	PARAMS:
- *	-> struct: A struct to be initialized
- * 	RETURN
- *	-> The struct initialized.
+
+/**
+ * @brief Initialize a struct with all its elements to NULL or 0
+ * 
+ * @param structure The struct to initialize.
+ * @return The initilized struct.
  */
 t_cmd	*init_struct(t_cmd *structure)
 {

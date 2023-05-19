@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 19:22:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 10:07:31 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ int	are_there_char(char *str, char c)
  */
 void	print_error_file(char *name, char *msg)
 {
-	printf("%s: %s\n", input, msg);
+	printf("%s: %s\n", name, msg);
 	exit(-1);
 }

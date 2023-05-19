@@ -6,24 +6,18 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 10:04:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 10:46:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* 
- * fill_struct (src/parser.c)
- * ----------------------------
- *	This function sets the components of the
- *	cmd line into the struct. 
- *
- *	PARAMS:
- *	-> cmd: The structure created at main. 
- *	-> command: An string whith the given command
- *
- * 	RETURN
- *	-> cmd: the given struct struct.
+/**
+ * @brief Sets the components of the line into the struct.
+ * 
+ * @param tmp The struct created in main.
+ * @param command An string whith the given command
+ * @return The given struct filled with the datas from line.
  */
 t_cmd	*fill_struct(t_cmd *tmp, char *command)
 {
@@ -49,22 +43,15 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 	return (new);
 }
 
-/* 
- * start_parser (src/parser.c)
- * ----------------------------
- *	This is the main parser function.
- *	It separate the different parts of the cmd line. 
- *
- *	PARAMS:
- *	-> cmd: The structure created at main. 
- *		At this point it has nothing.
- *	-> str: A string whith the whole commad (ex: echo -n "hello" > out)
- *
- * 	RETURN
- *	-> cmd: the struct filled witth the different parts of
- *	the command.
+/**
+ * @brief Separates the different parts of the commmand line
+ *	and save them in the given structure.
+ * 
+ * @param cmd struct
+ * @param cmd_line line with the command 
+ * @return given struct whith all elements from cmd_line.
  */
-t_cmd	*start_parser(t_cmd *cmd, char *str)
+t_cmd	*start_parser(t_cmd *cmd, char *cmd_line)
 {
 	int		nb_cmd;
 	char	**command;
@@ -73,8 +60,8 @@ t_cmd	*start_parser(t_cmd *cmd, char *str)
 
 	og_cmd = cmd;
 	i = -1;
-	nb_cmd = get_nb_cmd(str);
-	command = ft_split(str, '|');
+	nb_cmd = get_nb_cmd(cmd_line);
+	command = ft_split(cmd_line, '|');
 	cmd = fill_struct(cmd, command[0]);
 	i = 0;
 	if (nb_cmd > 1)

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 12:26:15 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 10:46:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ typedef struct s_cmd
 	int		index;
 	t_cmd	*next;
 }			t_cmd;
-//	--- F U N C T I O N S --- 
 
-//	P A R S E R
+// S T R U C T   S T U F F 
 
 t_cmd	*init_struct(t_cmd *structure);
-t_cmd	*start_parser(t_cmd *cmd, char *str);
-t_cmd	*fill_more_than_one(t_cmd *cmd, char *str, int index);
+t_cmd	*fill_more_than_one(t_cmd *cmd, char *cmd_line, int index);
+
+//	P A R S E R 
+
+t_cmd	*start_parser(t_cmd *cmd, char *cmd_line);
 t_cmd	*fill_struct(t_cmd *tmp, char *command);
 
 // E N V I R O M E N T   V A R S 
