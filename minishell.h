@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 10:46:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 10:52:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_cmd
 // S T R U C T   S T U F F 
 
 t_cmd	*init_struct(t_cmd *structure);
-t_cmd	*fill_more_than_one(t_cmd *cmd, char *cmd_line, int index);
+t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *cmd_line, int index);
 
 //	P A R S E R 
 

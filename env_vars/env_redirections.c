@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 10:08:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:17:38 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ char	*fill_string_redirection(char *str, char *env)
 	char	*redi;
 
 	len = 0;
+	if (env == NULL)
+		print_error_file(str, "ambiguous redirect");
 	while (!is_env_var(str[len]))
 		len++;
 	len += ft_strlen(env);

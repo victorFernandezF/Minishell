@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 18:28:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:08:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	*get_output(char *str, t_cmd *cmd)
 	int		*output_pos;
 	char	**output;
 	int		i;
-
 	output = malloc((cmd->nb_outputs + 1) * sizeof(char **));
 	if (!output)
 		return (NULL);

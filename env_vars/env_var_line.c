@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 12:19:34 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:17:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,48 +43,35 @@ static int	get_total_len(char **array)
 	return (len);
 }
 
-/* 
- * convert_env_var_in_its_value (env_vars/env_var_line.c)
- * ----------------------------
- *	This function converts the enviroment var in
- *	in its value. (ex: $USER becomes 'victofer'). 
- *
- *	PARAMS:
- *	-> str: A string that could have a env_var (or not).
- *
- * 	RETURN
- *	-> Returns a string with the env vars transformed.
+/**
+ * @brief Converts the enviroment var in its value.
+ * 
+ * @param cmd_line the line with the command.
+ * @return a line with the spanded env vars. 
  */
-static char	*convert_env_var_in_its_value(char *str)
+static char	*convert_env_var_in_its_value(char *cmd_line)
 {
 	char	*tmp;
 	char	*env;
 	char	*final;
 
-	tmp = get_temporal_redirection(str);
+	tmp = get_temporal_redirection(cmd_line);
 	env = transforming(tmp);
-	if (env == NULL)
-		print_error_file(tmp, "ambiguous redirect");
-	final = fill_string_redirection(str, env);
-	free(str);
-	str = final;
+	final = fill_string_redirection(cmd_line, env);
+	free(cmd_line);
+	cmd_line = final;
 	free(tmp);
 	return (final);
 }
 
-/* 
- * spand_all_env_vasr (env_vars/env_var_line.c)
- * ----------------------------
- *	This function spands the enviroment var found
- *	in the command line (ex: $USER becomes 'victofer'). 
- *
- *	PARAMS:
- *	-> str: A string that could have a env_var (or not).
- *
- * 	RETURN
- *	-> Returns a string with the env vars transformed.
+/**
+ * @brief Spands the enviroment var found in the command line. 
+ * 
+ * @param cmd_line line with the command.
+ * @return The command line with the env vars spanded 
+ * 	(their value instead or the var name)
  */
-char	*spand_all_env_vasr(char *str)
+char	*spand_all_env_vasr(char *cmd_line)
 {
 	int		i;
 	int		len;
@@ -93,7 +80,7 @@ char	*spand_all_env_vasr(char *str)
 	char	*temp;
 
 	i = -1;
-	array = ft_split_2(str);
+	array = ft_split_2(cmd_line);
 	i = -1;
 	while (array[++i])
 	{
