@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 13:11:53 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:35:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ int		*get_output_char_positions(char *str, t_cmd *cmd);
 char	*get_output_from_position(char *out, char *str, int pos);
 int		*output_to_fd_converter(char **output, int nb);
 
-int		get_nb_inputs(char *str);
-int		get_input(char *str, t_cmd *cmd);
-int		*get_input_char_positions(char *str, t_cmd *cmd);
-char	*get_input_from_position(char *out, char *str, int pos);
-int		*input_filename_to_fd_converter(char **output, int nb);
+int		get_nb_inputs(char *cmd_line);
+int		get_input(char *cmd_line, t_cmd *cmd);
+char	*get_input_from_position(char *cmd_line, int pos);
+int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
+int		*input_filename_to_fd_converter(char **input, int nb_inputs);
 
 //	U T I L I T I E S
 
