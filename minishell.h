@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 10:52:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:11:53 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,24 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command);
 char	*spand_all_env_vasr( char *str);
 char	**check_env_redirection(char **output);
 char	*transforming(char *str);
-void	print_error_file(char *input, char *msg);
-char	*get_temporal_redirection(char *str);
-char	*fill_string_redirection(char *str, char *env);
+char	*get_temporal_redirection(char *redirection);
+char	*fill_string_redirection(char *redirection, char *env);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
-char	*replace_spaces_after_redirect(char *str);
 int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
+
 char	*get_flags(char *str);
+
 char	**get_parameters(char *str);
+
 int		get_nb_outputs(char *str);
 int		*get_output(char *str, t_cmd *cmd);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 char	*get_output_from_position(char *out, char *str, int pos);
 int		*output_to_fd_converter(char **output, int nb);
+
 int		get_nb_inputs(char *str);
 int		get_input(char *str, t_cmd *cmd);
 int		*get_input_char_positions(char *str, t_cmd *cmd);
@@ -85,19 +87,24 @@ int		*input_filename_to_fd_converter(char **output, int nb);
 
 //	U T I L I T I E S
 
-int		strlen_starting_in(char *str, int i);
-int		is_redirect(char c);
-int		is_env_var(char c);
-int		skip_characters(char *str, int i);
-int		skip_whitespaces(char *str, int i);
-int		skip_characters_and_spaces(char *str, int i);
-int		skip_cmd_and_flags(char	*str);
-int		are_there_char(char *str, char c);
 int		is_pipe(char c);
-char	*delete_outputs_from_line(char *str);
-char	*delete_inputs_from_line(char *str);
-int		get_position_of_last_char_found(char *str, char c);
+int		is_env_var(char c);
+int		is_redirect(char c);
 int		is_there_env_var(char *str);
+int		are_there_char(char *str, char c);
+
+int		skip_whitespaces(char *str, int start);
+int		skip_characters(char *str, int start);
+int		skip_characters_and_spaces(char *str, int start);
+int		skip_cmd_and_flags(char	*cmd_line);
+int		strlen_starting_in(char *str, int i);
+
+int		get_position_of_last_char_found(char *str, char c);
+char	*replace_spaces_after_redirect(char *cmd_line);
+char	*delete_outputs_from_line(char *cmd_line);
+char	*delete_inputs_from_line(char *str);
+
+void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
 
 //	F R E E   S T U F F 

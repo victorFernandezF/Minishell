@@ -6,123 +6,33 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/18 12:23:36 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:10:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* 
- * fill_string (utils/utilities_3.c)
- * ----------------------------
- *	Auxiliar function to help 'delete_outputs_from_line'
- *	filling a string.
- *
- *	PARAMS:
- *	-> array: an array with every element except outputs.
- *	-> len: Length of the future string.
- *
- * 	RETURN
- *	-> A string.
+/**
+ * @brief Prints an error mesage and exit the program.
+ * 
+ * @param name name of the error.
+ * @param msg message to display before exit.
  */
-static char	*fill_string(char **array, int len)
+void	print_error_file(char *name, char *msg)
 {
-	int		j;
-	int		i;
-	int		x;
-	char	*res;
-
-	x = 0;
-	res = malloc(len * sizeof(char));
-	if (!res)
-		return (NULL);
-	i = -1;
-	while (array[++i])
-	{
-		j = -1;
-		if (array[i][0] == '<')
-			continue ;
-		while (array[i][++j])
-			res[x++] = array[i][j];
-		res[x++] = ' ';
-	}
-	res[x - 1] = '\0';
-	return (res);
+	printf("%s: %s\n", name, msg);
+	exit(-1);
 }
 
-/* 
- * delete_outputs_from_line (utils/utilities_3.c)
- * ----------------------------
- *	Returns a string with everything except outputs 
- *
- *	PARAMS:
- *	-> str: command line. 
- *
- * 	RETURN
- *	-> A string.
- */
-char	*delete_inputs_from_line(char *str)
-{
-	int		i;
-	int		len;
-	char	*tmp;
-	char	**array;
-	char	*res;
-
-	i = -1;
-	len = 0;
-	tmp = replace_spaces_after_redirect(str);
-	array = ft_split_2(tmp);
-	while (array[++i])
-	{
-		if (array[i][0] == '<')
-			continue ;
-		len += ft_strlen(array[i]);
-		len += 1;
-	}
-	res = fill_string(array, len);
-	free(tmp);
-	free_array(array);
-	return (res);
-}
-
-/* 
- * is_there_env_var (utils/utilities_4.c)
- * ----------------------------
- *	Returns 1 if an env var is found in the string. 
- *
- *	PARAMS:
- *	-> str: string. 
- *
- * 	RETURN
- *	-> 1 if an env var is found in the string.
- *	-> 0 if not.
- */
-int	is_there_env_var(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == '#')
-			return (1);
-	return (0);
-}
-
-/* 
- * ft_splitnt (utils/utilities_4.c)
- * ----------------------------
- *	It's the oposite of ft_split. (ft_splitn't xd)
+/**
+ * @brief It's the oposite of ft_split. (ft_splitn't xd)
  *	It take an array of strings and the length of the array
  *	and returns a null terminated string with every elements of
  *	the array separated by spaces.
- *
- *	PARAMS:
- *	-> array: the array to convert to string.
- *	-> len: the length of the array. 
- *
- * 	RETURN
- *	-> A null terminated string with every elements of
+ * 
+ * @param array Array to convert to string.
+ * @param len Length of the array. 
+ * @return A null terminated string with every elements of
  *	the array separated by spaces.
  */
 char	*ft_splitnt(char **array, int len)

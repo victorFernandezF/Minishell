@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities.c                                        :+:      :+:    :+:   */
+/*   utilities_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 10:07:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:09:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ int	is_redirect(char c)
 }
 
 /**
+ * @brief Returns 1 if an env var is found in the string. 
+ * 
+ * @param str String
+ * @return 1 if an env var is found. If not 0.
+ */
+int	is_there_env_var(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '#')
+			return (1);
+	return (0);
+}
+
+/**
  * @brief Returns 1 if char c is found in string str.
  *	If not, returns 0.
  * 
@@ -65,16 +82,4 @@ int	are_there_char(char *str, char c)
 		if (str[i] == c)
 			return (1);
 	return (0);
-}
-
-/**
- * @brief Prints an error mesage and exit the program.
- * 
- * @param name name of the error.
- * @param msg message to display before exit.
- */
-void	print_error_file(char *name, char *msg)
-{
-	printf("%s: %s\n", name, msg);
-	exit(-1);
 }

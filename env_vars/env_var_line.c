@@ -6,24 +6,19 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 11:17:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:15:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* 
- * get_total_len (env_vars/env_var_line.c)
- * ----------------------------
- *	Calculates the necesary amount of chars to create a
- *	null terminated string with the elements of an array separated by spaces. 
- *
- *	PARAMS:
- *	-> array: An array of strings with the words that will be
+/**
+ * @brief Calculates the necesary amount of chars to create a
+ *	null terminated string with the elements of an array separated by spaces.
+ * 
+ * @param array Array of strings with the words that will be
  *	joined in the string.
- *
- * 	RETURN
- *	-> Returns the length that the new string must be.
+ * @return Length that must be the string with every element from the array
  */
 static int	get_total_len(char **array)
 {

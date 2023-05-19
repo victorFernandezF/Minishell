@@ -6,25 +6,20 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 11:17:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:32:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* 
- * transforming (get/check_env_vars.c)
- * ----------------------------
- *	Take an string with the name of the env var
+/**
+ * @brief Take an string with the name of the env var
  *	and returns a new string with its value.
- *
- *	PARAMS:
- *	-> str: string with env var name without '$' (ex: USER)
- *
- * 	RETURN
- *	-> A string with the value of the enviroment var. (ex: victofer)
+ * 
+ * @param str String with env var name starrting with '$'
+ * @return String with the enviroment var value.
  */
-char	*transforming(char *str)
+char	*transforming(char *env_name)
 {
 	int		i;
 	int		j;
@@ -33,31 +28,26 @@ char	*transforming(char *str)
 
 	i = 0;
 	j = 0;
-	temp = malloc((ft_strlen(str) + 1) * sizeof(char));
+	temp = malloc((ft_strlen(env_name) + 1) * sizeof(char));
 	if (!temp)
 		return (NULL);
-	while (str[++i])
-		temp[j++] = str[i];
+	while (env_name[++i])
+		temp[j++] = env_name[i];
 	temp[j] = '\0';
 	env = getenv(temp);
 	free(temp);
 	return (env);
 }
 
-/* 
- * fill_string_redirection (env_vars/env_redirections.c)
- * ----------------------------
- *	Joins the first part os original string (till env var char '$')
- *	and the enviroment va value. (str: redir/ env: -R -> redir/-R)
- *
- *	PARAMS:
- *	-> str: String with inputs/outputs.
- *	-> env: String with the value of the env var.
- *
- * 	RETURN
- *	-> A new string with the two strings joined.
-*/
-char	*fill_string_redirection(char *str, char *env)
+/**
+ * @brief Joins the first part os original string untill env var char '$'
+ *	and the enviroment var value. (str: redir/ env: -R -> redir/-R)
+ * 
+ * @param redirection String with inputs/outputs.
+ * @param env String with the value of the env var.
+ * @return String with the two strings joined.
+ */
+char	*fill_string_redirection(char *redirection, char *env)
 {
 	int		len;
 	int		i;
@@ -66,14 +56,14 @@ char	*fill_string_redirection(char *str, char *env)
 
 	len = 0;
 	if (env == NULL)
-		print_error_file(str, "ambiguous redirect");
-	while (!is_env_var(str[len]))
+		print_error_file(redirection, "ambiguous redirect");
+	while (!is_env_var(redirection[len]))
 		len++;
 	len += ft_strlen(env);
 	redi = malloc((len + 1) * sizeof(char));
 	i = -1;
-	while (!is_env_var(str[++i]))
-		redi[i] = str[i];
+	while (!is_env_var(redirection[++i]))
+		redi[i] = redirection[i];
 	j = -1;
 	while (env[++j])
 		redi[i++] = env[j];
@@ -81,46 +71,35 @@ char	*fill_string_redirection(char *str, char *env)
 	return (redi);
 }
 
-/* 
- * get_temporal_redirection (env_vars/env_redirections.c)
- * ----------------------------
- *	Creates a substring with the content of the original string
- *	from the env var character '$' to the end of string.
- *	(ex: redir/$USER -> $USER).	
- *
- *	PARAMS:
- *	-> str: String with the redirection.
- *
- * 	RETURN
- *	-> The substring created.
-  */
-char	*get_temporal_redirection(char *str)
+/**
+ * @brief Creates a substring with the content of the original 
+ * 	string from the env var character '$' to the end of string.
+ * 
+ * @param redirection String with the redirection.
+ * @return The substring created. 
+ */
+char	*get_temporal_redirection(char *redirection)
 {
 	int		j;
 	char	*tmp;
 
 	j = 0;
-	while (!is_env_var(str[j]))
+	while (!is_env_var(redirection[j]))
 		j++;
-	tmp = ft_substr(str, j, ft_strlen(str) - j);
+	tmp = ft_substr(redirection, j, ft_strlen(redirection) - j);
 	return (tmp);
 }
 
-/* 
- * check_env_redirection (env_vars/env_redirections.c)
- * ----------------------------
- *	Take each redirection files (inputs or outputs) and
+/**
+ * @brief Take each redirection files (inputs or outputs) and
  *	transforms each enviroment var in its value.
  *	This function can handle somethin like that (> redir/$USER)
  *	For that, it creates a temporal string splitting the directory part
  *	and the enviroment var part.
- *
- *	PARAMS:
- *	-> output: Array of strings with the inputs/outputs.
- *
- * 	RETURN
- *	-> A new array of strings with the inputs/outputs correctly formatted.
-  */
+ * 
+ * @param redirection Array of strings with the inputs/outputs.
+ * @return Array of strings with the inputs/outputs correctly formatted. 
+ */
 char	**check_env_redirection(char **redirection)
 {
 	char	*tmp;
