@@ -6,79 +6,71 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 11:08:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/19 13:47:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* 
- * get_output (get/get_output.c)
- * ----------------------------
- *	Returns an array of ints with the fds of each output
+/**
+ * @brief Returns an array of ints with the fds of each output
  *	found in command line.
- *
- *	PARAMS:
- *	-> str: string given by user.
- *	-> cmd: struct.
- *
- * 	RETURN
- *	-> An arrray of ints with the fds of the ouput files.
+ * 
+ * @param cmd_line Command line
+ * @param cmd Struct.
+ * @return Array of ints with the fds of each output
+ *	found in command line.
  */
-int	*get_output(char *str, t_cmd *cmd)
+int	*get_output(char *cmd_line, t_cmd *cmd)
 {
 	int		*outputs_fd;
-	int		*output_pos;
+	int		*out_pos;
 	char	**output;
 	int		i;
+
 	output = malloc((cmd->nb_outputs + 1) * sizeof(char **));
 	if (!output)
 		return (NULL);
-	output_pos = get_output_char_positions(str, cmd);
+	out_pos = get_output_char_positions(cmd_line, cmd);
 	i = -1;
 	while (++i < cmd->nb_outputs)
-		output[i] = get_output_from_position(output[i], str, output_pos[i]);
+		output[i] = get_output_from_position(cmd_line, out_pos[i]);
 	output[i] = NULL;
 	outputs_fd = output_to_fd_converter(output, cmd->nb_outputs);
-	free(output_pos);
+	free(out_pos);
 	free_array(output);
 	return (outputs_fd);
 }
 
-/* 
- * get_output_from_position (get/get_output.c)
- * ----------------------------
- *	Returns a sting with the output filename depending on each
- *	character '>' position in the command line. 
- *
- *	PARAMS:
- *	-> str: the command line given by user.
- *	-> cmd: Struct.
- *
- * 	RETURN
- *	-> A string with the output filename (rady to convert to fd).
+/**
+ * @brief Returns a sting with the output filename depending on each
+ *	character '>' position in the command line.
+ * 
+ * @param cmd_line the command line given by user.
+ * @param Position where input starts.
+ * @return A string with the input filename. 
  */
-char	*get_output_from_position(char *out, char *str, int pos)
+char	*get_output_from_position(char *cmd_line, int position)
 {
 	int		i;
 	int		aux;
 
 	i = 0;
-	aux = pos + 1;
-	while (str[++pos])
+	aux = position + 1;
+	while (cmd_line[++position])
 		i++;
 	out = malloc((i + 1) * sizeof(char));
 	i = 0;
-	if (str[aux] == '>')
+	if (cmd_line[aux] == '>')
 	{
 		aux ++;
 		out[0] = '>';
 		i++;
 	}
-	aux = skip_whitespaces(str, aux);
-	while (str[aux] != ' ' && str[aux] != '\0')
+	aux = skip_whitespaces(cmd_line, aux);
+	while (cmd_line[aux] != ' ' && cmd_line[aux] != '\0')
 	{
-		out[i] = str[aux];
+		out[i] = cmd_line[aux];
 		aux++;
 		i++;
 	}
@@ -86,21 +78,15 @@ char	*get_output_from_position(char *out, char *str, int pos)
 	return (out);
 }
 
-/* 
- * output_to_fd_converter (get/get_output.c)
- * ----------------------------
- *	Converts each output filename into fd's.
- *	Creates the files in mode append or trunk depending
- *	on the redirections used '>' or '>>'
- *
- *	PARAMS:
- *	-> output: array with outputs filenames. 
- *	-> nb: Number of files to be openned.
- *
- * 	RETURN
- *	-> An Array of ints with the fd's ready to work..
+/**
+ * @brief Transforms each output filename into a file descriptor (in read mode).
+ *	If the file does not exist, prints a message.
+ * 
+ * @param input An array of strings with every output filenames.
+ * @param nb_inputs The number of output filenames found in command line.
+ * @return An array with the files descriptor (fd's) of each output file. 
  */
-int	*output_to_fd_converter(char **output, int nb)
+int	*input_filename_to_fd_converter(char **output, int nb_outputs)
 {
 	int		i;
 	int		j;
@@ -112,7 +98,7 @@ int	*output_to_fd_converter(char **output, int nb)
 	res = malloc((nb + 1) * sizeof(int));
 	if (!res)
 		return (NULL);
-	while (++i < nb)
+	while (++i < nb_output)
 	{
 		if (output[i][0] == '>')
 		{
