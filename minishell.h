@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 13:47:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:18:18 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,14 @@ char	*fill_string_redirection(char *redirection, char *env);
 
 int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
-
 char	*get_flags(char *str);
-
 char	**get_parameters(char *str);
 
 int		get_nb_outputs(char *str);
 int		*get_output(char *str, t_cmd *cmd);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 char	*get_output_from_position(char *cmd_line, int pos);
-int		*input_filename_to_fd_converter(char **output, int nb_outputs);
+int		*output_filename_to_fd_converter(char **output, int nb_outputs);
 
 int		get_nb_inputs(char *cmd_line);
 int		get_input(char *cmd_line, t_cmd *cmd);

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 13:47:33 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:21:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	*get_output(char *cmd_line, t_cmd *cmd)
 	while (++i < cmd->nb_outputs)
 		output[i] = get_output_from_position(cmd_line, out_pos[i]);
 	output[i] = NULL;
-	outputs_fd = output_to_fd_converter(output, cmd->nb_outputs);
+	outputs_fd = output_filename_to_fd_converter(output, cmd->nb_outputs);
 	free(out_pos);
 	free_array(output);
 	return (outputs_fd);
@@ -54,6 +54,7 @@ char	*get_output_from_position(char *cmd_line, int position)
 {
 	int		i;
 	int		aux;
+	char	*out;
 
 	i = 0;
 	aux = position + 1;
@@ -86,7 +87,7 @@ char	*get_output_from_position(char *cmd_line, int position)
  * @param nb_inputs The number of output filenames found in command line.
  * @return An array with the files descriptor (fd's) of each output file. 
  */
-int	*input_filename_to_fd_converter(char **output, int nb_outputs)
+int	*output_filename_to_fd_converter(char **output, int nb_outputs)
 {
 	int		i;
 	int		j;
@@ -95,10 +96,10 @@ int	*input_filename_to_fd_converter(char **output, int nb_outputs)
 
 	i = -1;
 	j = 0;
-	res = malloc((nb + 1) * sizeof(int));
+	res = malloc((nb_outputs + 1) * sizeof(int));
 	if (!res)
 		return (NULL);
-	while (++i < nb_output)
+	while (++i < nb_outputs)
 	{
 		if (output[i][0] == '>')
 		{
@@ -115,46 +116,35 @@ int	*input_filename_to_fd_converter(char **output, int nb_outputs)
 	return (res);
 }
 
-/*
- * get_nb_output (get/get_output.c)
- * ----------------------------
- *	Counts the number of outputs found in command line. 
- *
- *	PARAMS:
- *	-> str: The command line.
- *
- * 	RETURN
- *	-> The number of outputs found in the given line.
- *
+/**
+ * @brief Counts the number of outputs found in command line.
+ * 
+ * @param cmd_line 
+ * @return The number of outputs found.
  */
-int	get_nb_outputs(char *str)
+int	get_nb_outputs(char *cmd_line)
 {
 	int	i;
 	int	nb;
 
 	i = -1;
 	nb = 0;
-	if (are_there_char(str, '>'))
-		while (str[++i])
-			if (str[i] == '>' && str[i + 1] != '>')
+	if (are_there_char(cmd_line, '>'))
+		while (cmd_line[++i])
+			if (cmd_line[i] == '>' && cmd_line[i + 1] != '>')
 				nb++;
 	return (nb);
 }
 
-/*
- * get_output_char_positions (get/get_output.c)
- * ----------------------------
- *	Returns an array of ints with the positions of each '>' chars. 
- *
- *	PARAMS:
- *	-> str: The command line.
- *	-> cmd: struct.
- *
- * 	RETURN
- *	-> An array of ints with the positions of each '>' chars.
- *
+/**
+ * @brief Returns an array of ints with the positions
+ *  of each '>' chars found in the command line.
+ * 
+ * @param cmd_line Command line.
+ * @param cmd Struct
+ * @return An array of ints with the positions of each '>' chars.
  */
-int	*get_output_char_positions(char *str, t_cmd *cmd)
+int	*get_output_char_positions(char *cmd_line, t_cmd *cmd)
 {
 	int	*output_pos;
 	int	pos;
@@ -165,9 +155,9 @@ int	*get_output_char_positions(char *str, t_cmd *cmd)
 		return (NULL);
 	i = -1;
 	pos = 0;
-	while (str[++i])
+	while (cmd_line[++i])
 	{
-		if (str[i] == '>' && str[i - 1] != '>')
+		if (cmd_line[i] == '>' && cmd_line[i - 1] != '>')
 			output_pos[pos++] = i;
 	}
 	return (output_pos);

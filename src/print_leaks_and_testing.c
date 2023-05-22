@@ -6,17 +6,18 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 10:16:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:24:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* 
- * print_test (TEST)
- * ----------------------------
- *	Prints all elements of the struct cms
- *	JUST FOR TESTING.
+/**
+ * @brief Prints every par of the struct [TEMPORAL]
+ * 
+ * @param str 
+ * @param cmd 
+ * @param repeat 
  */
 void	print_test(char *str, t_cmd *cmd, int repeat)
 {
@@ -45,11 +46,9 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 		print_test(str, cmd->next, 1);
 }
 
-/* 
- * leaks (TEST)
- * ----------------------------
- *	Shows the memory leaks.
- *	JUST FOR TESTING.
+/**
+ * @brief Shows the leaks [TEMPORAL]
+ * 
  */
 void	leaks(void)
 {

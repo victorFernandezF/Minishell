@@ -6,16 +6,17 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/11 11:00:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:26:22 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/* 
- * free_struct (struct/free_stuff.c)
- * ----------------------------
- *	Frees the struct and all its elements.
+/**
+ * @brief Frees every element of the struct that needs to
+ * be freed. and frees the struct itself
+ * 
+ * @param cmd Struct.
  */
 void	free_struct(t_cmd *cmd)
 {
@@ -43,10 +44,11 @@ void	free_struct(t_cmd *cmd)
 	cmd = NULL;
 }
 
-/* 
- * free_array (struct/free_stuff.c)
- * ----------------------------
- *	Frees an array of chars and all its elements.
+/**
+ * @brief Frees every strings inside of an array of strings and
+ * frees the array itself.
+ * 
+ * @param array Array of strings.
  */
 void	free_array(char **array)
 {
