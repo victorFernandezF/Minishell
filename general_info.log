@@ -1,9 +1,9 @@
 ENV_VARS
-	env_cmd_param.c 		--> 2
-	env_redirections.c 		--> 3
+	env_cmd_param.c 		--> 3
+	env_redirections.c 		--> 4
 
 GET 
-	get_cmd.c 				--> 3
+	get_cmd.c 				--> 2
 	get_flags.c				 --> 1
 	get_input.c				--> 5 (full)
 	get_output.c			--> 5 (full)
@@ -18,9 +18,10 @@ STRUCT
 	init_strcut.c 			--> 1
 
 UTILS 
-	utilities.c				--> 5 (full)
+	utilities_1.c			--> 5 (full)
 	utilities_2.c			--> 5 (full)
 	utilities_3.c			--> 5 (full)
+	utilities_4.c			--> 4
 
 test print template
 	printf("%s%s:%s %s\n", BY, __func__, W, str);
