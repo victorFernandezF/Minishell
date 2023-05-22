@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 13:35:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:11:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,23 @@ int	get_nb_inputs(char *cmd_line)
  */
 int	get_input(char *cmd_line, t_cmd *cmd)
 {
-	int		*inputs_fd;
-	int		*input_pos;
-	int		last_input;
-	char	**input;
 	int		i;
+	char	**input;
+	int		last_input;
+	int		*inputs_fd;
+	int		*in_pos;
 
-	input_pos = get_input_char_positions(cmd_line, cmd);
+	in_pos = get_input_char_positions(cmd_line, cmd);
 	input = malloc((cmd->nb_inputs + 1) * sizeof(char **));
 	if (!input)
 		return (0);
 	i = -1;
 	while (++i < cmd->nb_inputs)
-		input[i] = get_input_from_position(cmd_line, input_pos[i]);
+		input[i] = get_input_from_position(cmd_line, in_pos[i], in_pos[i] + 1);
 	input[i] = NULL;
 	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
-	free(input_pos);
+	free(in_pos);
 	free(inputs_fd);
 	free_array(input);
 	if (cmd->nb_inputs == 0)
@@ -75,14 +75,12 @@ int	get_input(char *cmd_line, t_cmd *cmd)
  * @param pos Position where input starts.
  * @return A string with the input filename. 
  */
-char	*get_input_from_position(char *cmd_line, int pos)
+char	*get_input_from_position(char *cmd_line, int pos, int aux)
 {
 	int		i;
-	int		aux;
 	char	*input;
 
 	i = 0;
-	aux = pos + 1;
 	while (cmd_line[++pos])
 		i++;
 	input = malloc((i + 1) * sizeof(char));
@@ -101,6 +99,8 @@ char	*get_input_from_position(char *cmd_line, int pos)
 		i++;
 	}
 	input[i] = '\0';
+	if (is_there_env_var(input))
+		print_error_file_ambiguous(input);
 	return (input);
 }
 
@@ -144,15 +144,15 @@ int	*input_filename_to_fd_converter(char **input, int nb_inputs)
  */
 int	*get_input_char_positions(char *cmd_line, t_cmd *cmd)
 {
-	int	*input_pos;
 	int	i;
 	int	pos;
+	int	*input_pos;
 
 	i = -1;
+	pos = 0;
 	input_pos = malloc((cmd->nb_inputs + 1) * sizeof(int));
 	if (!input_pos)
 		return (NULL);
-	pos = 0;
 	while (cmd_line[++i])
 	{
 		if (cmd_line[i] == '<' && cmd_line[i - 1] != '<')

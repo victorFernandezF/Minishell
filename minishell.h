@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 10:18:18 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:12:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ char	**get_parameters(char *str);
 int		get_nb_outputs(char *str);
 int		*get_output(char *str, t_cmd *cmd);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
-char	*get_output_from_position(char *cmd_line, int pos);
+char	*get_output_from_position(char *cmd_line, int pos, int aux);
 int		*output_filename_to_fd_converter(char **output, int nb_outputs);
 
 int		get_nb_inputs(char *cmd_line);
 int		get_input(char *cmd_line, t_cmd *cmd);
-char	*get_input_from_position(char *cmd_line, int pos);
+char	*get_input_from_position(char *cmd_line, int pos, int aux);
 int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
 int		*input_filename_to_fd_converter(char **input, int nb_inputs);
 
@@ -104,6 +104,8 @@ char	*delete_inputs_from_line(char *str);
 
 void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
+void	print_error_file_ambiguous(char	*str);
+
 
 //	F R E E   S T U F F 
 

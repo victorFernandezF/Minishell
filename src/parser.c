@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 11:11:42 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:12:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@
  */
 t_cmd	*fill_struct(t_cmd *tmp, char *command)
 {
+	t_cmd	*new;
+	char	*spanded;
 	char	*no_outputs;
 	char	*no_output_input;
-	char	*spanded;
-	t_cmd	*new;
 
 	new = tmp;
 	spanded = spand_all_env_vasr(command);
+	no_outputs = delete_outputs_from_line(spanded);
+	no_output_input = delete_inputs_from_line(no_outputs);
 	new->nb_outputs = get_nb_outputs(spanded);
 	new->output = get_output(spanded, new);
-	no_outputs = delete_outputs_from_line(spanded);
 	new->cmd = get_cmd(no_outputs);
 	new->flags = get_flags(no_outputs);
 	new->nb_inputs = get_nb_inputs(spanded);
 	new->input = get_input(spanded, new);
-	no_output_input = delete_inputs_from_line(no_outputs);
 	new->params = get_parameters(no_output_input);
 	free(no_output_input);
 	free(no_outputs);
@@ -47,19 +47,18 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
  * @brief Separates the different parts of the commmand line
  *	and save them in the given structure.
  * 
- * @param cmd struct
- * @param cmd_line line with the command 
- * @return given struct whith all elements from cmd_line.
+ * @param cmd Struct
+ * @param cmd_line Line with the command 
+ * @return Given struct whith all elements from cmd_line.
  */
 t_cmd	*start_parser(t_cmd *cmd, char *cmd_line)
 {
+	int		i;
 	int		nb_cmd;
 	char	**command;
-	int		i;
 	t_cmd	*og_cmd;
 
 	og_cmd = cmd;
-	i = -1;
 	nb_cmd = get_nb_cmd(cmd_line);
 	command = ft_split(cmd_line, '|');
 	cmd = fill_struct(cmd, command[0]);

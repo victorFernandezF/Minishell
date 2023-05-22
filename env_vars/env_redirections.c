@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 12:32:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 11:45:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ char	*transforming(char *env_name)
 		return (NULL);
 	while (env_name[++i])
 		temp[j++] = env_name[i];
-	temp[j] = '\0';
+	temp[i] = '\0';
 	env = getenv(temp);
 	free(temp);
+	if (env == NULL)
+		return (env_name);
 	return (env);
 }
 
@@ -49,22 +51,20 @@ char	*transforming(char *env_name)
  */
 char	*fill_string_redirection(char *redirection, char *env)
 {
-	int		len;
 	int		i;
 	int		j;
+	int		len;
 	char	*redi;
 
 	len = 0;
-	if (env == NULL)
-		print_error_file(redirection, "ambiguous redirect");
+	i = -1;
+	j = -1;
 	while (!is_env_var(redirection[len]))
 		len++;
 	len += ft_strlen(env);
 	redi = malloc((len + 1) * sizeof(char));
-	i = -1;
 	while (!is_env_var(redirection[++i]))
 		redi[i] = redirection[i];
-	j = -1;
 	while (env[++j])
 		redi[i++] = env[j];
 	redi[i] = '\0';
@@ -100,12 +100,12 @@ char	*get_temporal_redirection(char *redirection)
  * @param redirection Array of strings with the inputs/outputs.
  * @return Array of strings with the inputs/outputs correctly formatted. 
  */
-char	**check_env_redirection(char **redirection)
+/* char	**check_env_redirection(char **redirection)
 {
+	int		i;
 	char	*tmp;
 	char	*env;
 	char	*final;
-	int		i;
 
 	i = -1;
 	while (redirection[++i] != NULL)
@@ -123,4 +123,4 @@ char	**check_env_redirection(char **redirection)
 		}
 	}
 	return (redirection);
-}
+} */

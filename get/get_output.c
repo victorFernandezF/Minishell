@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 10:21:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:00:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@
  */
 int	*get_output(char *cmd_line, t_cmd *cmd)
 {
-	int		*outputs_fd;
-	int		*out_pos;
-	char	**output;
 	int		i;
+	char	**out;
+	int		*out_pos;
+	int		*outputs_fd;
 
-	output = malloc((cmd->nb_outputs + 1) * sizeof(char **));
-	if (!output)
+	i = -1;
+	out = malloc((cmd->nb_outputs + 1) * sizeof(char **));
+	if (!out)
 		return (NULL);
 	out_pos = get_output_char_positions(cmd_line, cmd);
-	i = -1;
 	while (++i < cmd->nb_outputs)
-		output[i] = get_output_from_position(cmd_line, out_pos[i]);
-	output[i] = NULL;
-	outputs_fd = output_filename_to_fd_converter(output, cmd->nb_outputs);
+		out[i] = get_output_from_position(cmd_line, out_pos[i], out_pos[i] + 1);
+	out[i] = NULL;
+	outputs_fd = output_filename_to_fd_converter(out, cmd->nb_outputs);
 	free(out_pos);
-	free_array(output);
+	free_array(out);
 	return (outputs_fd);
 }
 
@@ -50,14 +50,12 @@ int	*get_output(char *cmd_line, t_cmd *cmd)
  * @param Position where input starts.
  * @return A string with the input filename. 
  */
-char	*get_output_from_position(char *cmd_line, int position)
+char	*get_output_from_position(char *cmd_line, int position, int aux)
 {
 	int		i;
-	int		aux;
 	char	*out;
 
 	i = 0;
-	aux = position + 1;
 	while (cmd_line[++position])
 		i++;
 	out = malloc((i + 1) * sizeof(char));
@@ -76,6 +74,8 @@ char	*get_output_from_position(char *cmd_line, int position)
 		i++;
 	}
 	out[i] = '\0';
+	if (is_there_env_var(out))
+		print_error_file_ambiguous(out);
 	return (out);
 }
 
@@ -146,15 +146,15 @@ int	get_nb_outputs(char *cmd_line)
  */
 int	*get_output_char_positions(char *cmd_line, t_cmd *cmd)
 {
-	int	*output_pos;
-	int	pos;
 	int	i;
+	int	pos;
+	int	*output_pos;
 
+	i = -1;
+	pos = 0;
 	output_pos = malloc((cmd->nb_outputs + 1) * sizeof(int));
 	if (!output_pos)
 		return (NULL);
-	i = -1;
-	pos = 0;
 	while (cmd_line[++i])
 	{
 		if (cmd_line[i] == '>' && cmd_line[i - 1] != '>')
