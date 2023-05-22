@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 12:09:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 19:20:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	print_error_file(char *name, char *msg)
 {
 	printf("%s: %s\n", name, msg);
 	free(name);
-	exit(-1);
 }
 
 /**

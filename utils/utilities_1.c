@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 13:09:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 19:17:18 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_pipe(char c)
  */
 int	is_env_var(char c)
 {
-	return (c == '#');
+	return (c == '$');
 }
 
 /**
@@ -60,7 +60,7 @@ int	is_there_env_var(char *str)
 
 	i = -1;
 	while (str[++i])
-		if (str[i] == '#')
+		if (is_env_var(str[i]))
 			return (1);
 	return (0);
 }
