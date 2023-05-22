@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:08:29 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 13:06:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:41:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,22 @@ static char	*fill_string(char **array, int len)
 int	get_position_of_last_char_found(char *str, char c)
 {
 	int	i;
+	int	pos;
 
-	i = ft_strlen(str);
-	while (str[--i])
+	i = 0;
+	pos = 0;
+	i = skip_characters(str, i);
+	i = skip_whitespaces(str, i);
+	while (str[i])
+	{
 		if (str[i] == c)
-			return (i);
-	return (0);
+			pos = i;
+		i = skip_characters(str, i);
+		i = skip_whitespaces(str, i);
+		if (str[i] != c)
+			break ;
+	}
+	return (pos);
 }
 
 /**

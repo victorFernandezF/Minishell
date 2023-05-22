@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/19 12:58:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:43:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,7 @@ int	skip_cmd_and_flags(char	*cmd_line)
 	i = 0;
 	if (are_there_char(cmd_line, '-'))
 	{
-		i = ft_strlen(cmd_line);
-		while (cmd_line[i] != '-')
-			i--;
+		i = get_position_of_last_char_found(cmd_line, '-');
 		i = skip_characters(cmd_line, i);
 		return (i);
 	}
