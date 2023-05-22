@@ -6,13 +6,12 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/19 12:43:48 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/22 19:02:45 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	minishell
-CFLAGS 	= 	-Wall -Wextra -Werror -g
-
+CFLAGS 	:= 	-Wall -Wextra -Werror -g
 LIBFT_D	=	libft
 SRC 	= 	src/main.c \
 		 	src/parser.c \
@@ -46,6 +45,9 @@ E		= \033[0m
 
 NICE_TEST = compiling
 
+READLINE_DIR = $(shell brew --prefix readline)
+READLINE_LIB = -lreadline -lhistory -L $(READLINE_DIR)/lib
+
 all: nice_text lib $(NAME)
 
 lib:
@@ -67,7 +69,7 @@ norminette:
 
 $(NAME): $(OBJS)
 	@mkdir -p redir
-	@gcc $(CFLAGS) libft/libft.a $(OBJS) -o $(NAME) 
+	@gcc $(CFLAGS) $(LDFLAGS) libft/libft.a $(OBJS) $(READLINE_LIB) -o $(NAME) 
 	@echo "$(Y)0-----------------------0"
 	@echo "$(Y)|$(G)    MINISHELL CREATED $(Y) |"
 	@echo "$(Y)0-----------------------0"

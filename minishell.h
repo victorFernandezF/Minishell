@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 12:12:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/22 18:44:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft/libft.h"
+# include <readline/readline.h>
+# include <readline/history.h>
 
 // C O L O R
 # define R	"\x1B[31m"
@@ -114,6 +116,8 @@ void	free_array(char **array);
 
 //	[T E M P]   L E A K S   &   P R I N T S 
 
+void	rl_replace_line(const char *text, int clear_undo);
+char	*readline(const char *prompt);
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 
