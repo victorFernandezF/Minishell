@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/09 18:23:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:20:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,23 @@ int	space(char c)
 int	count_words(char *str)
 {
 	int	cont;
+	int	quot;
 
 	cont = 0;
+	quot = 0;
 	while (*str)
 	{
 		while (*str && space(*str))
 			str++;
-		if (*str && !space(*str))
+		if (*str == 34)
+		{
+			cont++;
+			str++;
+			while (*str && *str != 34)
+				str++;
+			str++;
+		}
+		else if (*str && !space(*str))
 		{
 			cont++;
 			while (*str && !space(*str))
@@ -34,6 +44,26 @@ int	count_words(char *str)
 		}
 	}
 	return (cont);
+}
+
+char	*quot_manager(char *str)
+{
+	int		i;
+	int		j;
+	char	*word;
+
+	i = 1;
+	j = 0;
+	while (str[i] != 34)
+		i++;
+	word = malloc((i) * sizeof(char));
+	if (!word)
+		return (NULL);
+	i = 1;
+	while (str[i] != 34)
+		word[j++] = str[i++];
+	word[j] = '\0';
+	return (word);
 }
 
 char	*write_word(char *str)
@@ -72,8 +102,15 @@ char	**ft_split_2(char *str)
 	while (*str)
 	{
 		while (*str && space(*str))
-		str++;
-		if (*str && !space(*str))
+			str++;
+		/* if (*str && *str == 34)
+		{
+			split[i] = quot_manager(str);
+			i++;
+			while (*str && *str != 34)
+				str++;
+		}
+		else */ if (*str && !space(*str))
 		{
 			split[i] = write_word(str);
 			i++;
