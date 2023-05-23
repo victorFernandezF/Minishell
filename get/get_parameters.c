@@ -6,11 +6,21 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 11:47:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:48:51 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+char	*fill_string_param(char *param, char *cmd_line, int i)
+{
+	int	j;
+
+	j = 0;
+	while (cmd_line[++i] != 34)
+		param[j++] = cmd_line[i];
+	return (param);
+}
 
 /**
  * @brief creates an array of strings with the parameters found
@@ -38,7 +48,7 @@ char	**get_parameters(char *cmd_line)
 		if (is_env_var(cmd_line[i]))
 			i = skip_characters(cmd_line, i);
 		else
-		param_line[j++] = cmd_line[i++];
+			param_line[j++] = cmd_line[i++];
 	}
 	param_line[j] = '\0';
 	param_array = ft_split_2(param_line);

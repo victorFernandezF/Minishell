@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 19:23:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:09:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	main(void)
 	cmd = init_struct(cmd);
 	while (1)
 	{
-		read = readline("\x1B[32m[ MINISHELL ]: \x1B[0m");
-		add_history(read);
+		read = readline("\x1B[32m[MINISHELL]: \x1B[0m");
+		if (read[0] != '\0')
+			add_history(read);
 		if (read[0])
 		{
 			cmd = start_parser(cmd, read);
