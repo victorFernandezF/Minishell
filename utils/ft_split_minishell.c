@@ -6,16 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 13:21:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:03:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-static int	space_minishel(char c)
-{
-	return (c == ' ' || c == '\n' || c == '\t');
-}
 
 static int	count_words_minishell(char *str)
 {
@@ -95,38 +90,45 @@ char	*write_word_minishell(char *str, int start)
 	return (word);
 }
 
+char	**fill_split_array(char **split, char *str, int nb_words)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = 0;
+	while (++i < nb_words)
+	{
+		j = skip_whitespaces(str, j);
+		if (str[j] == 34 && !is_there_open_quotes(str, j))
+		{
+			split[i] = quot_manager(str, j);
+			j = skip_everything_til_quotes(str, j + 1);
+		}
+		else
+		{	
+			j = skip_whitespaces(str, j);
+			split[i] = write_word_minishell(str, j);
+			j = skip_characters(str, j);
+		}
+	}
+	split[i] = NULL;
+	return (split);
+}
+
 char	**ft_split_minishell(char *str)
 {
 	int		i;
 	int		j;
-	int		quot;
 	int		nb_words;
 	char	**split;
 
 	i = -1;
 	j = 0;
-	quot = 0;
 	nb_words = count_words_minishell(str);
 	split = (char **)malloc((nb_words + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
-	while (++i < nb_words)
-	{
-		j = skip_whitespaces(str, j);
-		if (str[j] == 34 && quot == 0)
-		{
-			split[i] = quot_manager(str, j);
-			j = skip_characters(str, j);
-			quot = 1;
-		}
-		else
-		{	
-			while (str[j] == ' ')
-				j++;
-			split[i] = write_word_minishell(str, j);
-			while (str[j] != ' ')
-				j++;
-		}
-	}
+	split = fill_split_array(split, str, nb_words);
 	return (split);
 }

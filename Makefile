@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/24 11:02:55 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/24 18:58:33 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC 	= 	src/main.c \
 			utils/utilities_2.c \
 			utils/utilities_3.c \
 			utils/utilities_4.c \
+			utils/utilities_5.c \
 			utils/ft_split_minishell.c \
 	
 OBJS	=	$(SRC:.c=.o)

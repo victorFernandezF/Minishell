@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 11:02:41 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:58:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
 void	print_error_file_ambiguous(char	*str);
 char	**ft_split_minishell(char *str);
+int		space_minishel(char c);
+
+int		skip_everything_til_quotes(char	*str, int j);
 
 //	F R E E   S T U F F 
 
@@ -120,5 +123,7 @@ void	rl_replace_line(const char *text, int clear_undo);
 char	*readline(const char *prompt);
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
+int		is_there_open_quotes(char *str, int end);
+
 
 #endif

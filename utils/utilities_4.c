@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 19:20:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:57:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ char	*ft_splitnt(char **array, int len)
 	return (new_line);
 }
 
+int	space_minishel(char c)
+{
+	return (c == ' ' || c == '\n' || c == '\t');
+}
+
 void	print_error_file_ambiguous(char	*str)
 {
 	int		i;
@@ -75,4 +80,13 @@ void	print_error_file_ambiguous(char	*str)
 		bad_env[j++] = str[i];
 	bad_env[j] = '\0';
 	print_error_file(bad_env, "ambiguous redirect");
+}
+
+int	is_there_open_quotes(char *str, int end)
+{
+	end--;
+	while (str[end] && str[end] != ' ')
+		if (str[end--] == 34)
+			return (1);
+	return (0);
 }
