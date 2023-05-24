@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 13:01:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:21:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*quot_manager(char *str, int start)
 	char	*word;
 
 	i = 0;
-	aux = start;
+	aux = start + 1;
 	while (str[aux] && str[aux] != 34)
 	{
 		i++;
@@ -63,6 +63,7 @@ static char	*quot_manager(char *str, int start)
 	if (!word)
 		return (NULL);
 	i = 0;
+	start += 1;
 	while (str[start] && str[start] != 34)
 		word[i++] = str[start++];
 	word[i] = '\0';
@@ -98,24 +99,25 @@ char	**ft_split_minishell(char *str)
 {
 	int		i;
 	int		j;
+	int		quot;
 	int		nb_words;
 	char	**split;
 
 	i = -1;
 	j = 0;
+	quot = 0;
 	nb_words = count_words_minishell(str);
 	split = (char **)malloc((nb_words + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
 	while (++i < nb_words)
 	{
-		if (str[j]	== 34)
+		j = skip_whitespaces(str, j);
+		if (str[j] == 34 && quot == 0)
 		{
-			while (str[j] == ' ')
-				j++;
 			split[i] = quot_manager(str, j);
-			while (str[j] != ' ')
-				j++;
+			j = skip_characters(str, j);
+			quot = 1;
 		}
 		else
 		{	
