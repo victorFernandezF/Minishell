@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 18:57:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:21:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,6 @@ char	*ft_splitnt(char **array, int len)
 	return (new_line);
 }
 
-int	space_minishel(char c)
-{
-	return (c == ' ' || c == '\n' || c == '\t');
-}
-
 void	print_error_file_ambiguous(char	*str)
 {
 	int		i;
@@ -82,11 +77,23 @@ void	print_error_file_ambiguous(char	*str)
 	print_error_file(bad_env, "ambiguous redirect");
 }
 
-int	is_there_open_quotes(char *str, int end)
+/**
+ * @brief Get the length of a string but starting in an specific
+ * position instead of since the begining as ft_strlen doues.
+ * 
+ * @param str String.
+ * @param start position since where start counting chars.
+ * @return The length of the portion of string.
+ */
+int	strlen_starting_in(char *str, int start)
 {
-	end--;
-	while (str[end] && str[end] != ' ')
-		if (str[end--] == 34)
-			return (1);
-	return (0);
+	int	len;
+
+	len = 0;
+	while (str[start])
+	{
+		len++;
+		start++;
+	}
+	return (len);
 }

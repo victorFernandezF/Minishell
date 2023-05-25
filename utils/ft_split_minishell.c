@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 19:03:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:23:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	count_words_minishell(char *str)
 	quot = 0;
 	while (*str)
 	{
-		while (*str && space_minishel(*str))
+		while (*str && is_space_minishel(*str))
 			str++;
 		if (*str == 34)
 		{
@@ -31,10 +31,10 @@ static int	count_words_minishell(char *str)
 				str++;
 			str++;
 		}
-		else if (*str && !space_minishel(*str))
+		else if (*str && !is_space_minishel(*str))
 		{
 			cont++;
-			while (*str && !space_minishel(*str))
+			while (*str && !is_space_minishel(*str))
 				str++;
 		}
 	}
@@ -74,7 +74,7 @@ char	*write_word_minishell(char *str, int start)
 
 	i = start;
 	len = 0;
-	while (str[i] && !space_minishel(str[i]))
+	while (str[i] && !is_space_minishel(str[i]))
 	{
 		i++;
 		len++;
@@ -84,7 +84,7 @@ char	*write_word_minishell(char *str, int start)
 		return (NULL);
 	j = 0;
 	i = start;
-	while (str[i] && !space_minishel(str[i]))
+	while (str[i] && !is_space_minishel(str[i]))
 		word[j++] = str[i++];
 	word[i] = '\0';
 	return (word);

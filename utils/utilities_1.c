@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 19:17:18 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:17:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,12 @@ int	is_there_env_var(char *str)
 }
 
 /**
- * @brief Returns 1 if char c is found in string str.
- *	If not, returns 0.
+ * @brief Checks if a character is an space.
  * 
- * @param str line.
- * @param c character to search.
- * @return int 0 or 1.
+ * @param c character to check
+ * @return 1 if c is a space, 0 if not. 
  */
-int	are_there_char(char *str, char c)
+int	is_space_minishel(char c)
 {
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == c)
-			return (1);
-	return (0);
+	return (c == ' ' || c == '\n' || c == '\t');
 }

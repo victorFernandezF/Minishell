@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 10:43:44 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:14:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,17 @@ int	skip_cmd_and_flags(char	*cmd_line)
 }
 
 /**
- * @brief Get the length of a string but starting in an specific
- * position instead of since the begining as ft_strlen doues.
+ * @brief Returns the position in the string after skipping
+ * 	everithing that is not the quotes.
  * 
- * @param str String.
- * @param start position since where start counting chars.
- * @return The length of the portion of string.
+ * @param str String
+ * @param starting Starting position.
+ * @return The position after skipping some characters. 
  */
-int	strlen_starting_in(char *str, int start)
+int	skip_everything_til_quotes(char	*str, int starting)
 {
-	int	len;
-
-	len = 0;
-	while (str[start])
-	{
-		len++;
-		start++;
-	}
-	return (len);
+	while (str[starting] && str[starting] != 34)
+		starting++;
+	starting++;
+	return (starting);
 }

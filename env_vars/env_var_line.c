@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 19:30:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:03:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,5 @@ char	*spand_all_env_vasr(char *cmd_line)
 	len = get_total_len(array);
 	new_line = ft_splitnt(array, len);
 	free_array(array);
-	printf("%s\n", new_line);
 	return (new_line);
 }
