@@ -6,12 +6,19 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 11:23:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:21:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/**
+ * @brief Counts thenumber of words that are in the string.
+ * 	Things inside double quotes count as one.
+ * 
+ * @param str String to be splitted.
+ * @return thhe nomber of elements that the final array will have.
+ */
 static int	count_words_minishell(char *str)
 {
 	int	cont;
@@ -41,6 +48,13 @@ static int	count_words_minishell(char *str)
 	return (cont);
 }
 
+/**
+ * @brief Writes the elements that are inside the quotes.
+ * 
+ * @param str String.
+ * @param start Position in wich each word starts.
+ * @return A string with the things that were inside the quotes.
+ */
 static char	*quot_manager(char *str, int start)
 {
 	int		i;
@@ -65,7 +79,14 @@ static char	*quot_manager(char *str, int start)
 	return (word);
 }
 
-char	*write_word_minishell(char *str, int start)
+/**
+ * @brief Writes each word.
+ * 
+ * @param str String.
+ * @param start Position in which each word starts.
+ * @return String with the word ready to be stored in array.
+ */
+static char	*write_word_minishell(char *str, int start)
 {
 	int		i;
 	int		len;
@@ -90,7 +111,16 @@ char	*write_word_minishell(char *str, int start)
 	return (word);
 }
 
-char	**fill_split_array(char **split, char *str, int nb_words)
+/**
+ * @brief Auxiliary function to help ft_split_minishell to fill
+ * the array with the each word.
+ * 
+ * @param split Array to be filled (malloc in split function). 
+ * @param str String to be splitted.
+ * @param nb_words Nomber of words in str (things inside quotes count as one).
+ * @return Array given in arg but filled with the words of str. 
+ */
+static char	**fill_split_array(char **split, char *str, int nb_words)
 {
 	int	i;
 	int	j;
@@ -116,6 +146,14 @@ char	**fill_split_array(char **split, char *str, int nb_words)
 	return (split);
 }
 
+/**
+ * @brief An special version of ft_split that manages double
+ *  quotes. If double quotes are found the words inside them won't
+ * be splitted and will be stored in the array all together.
+ * 
+ * @param str String to be splitted.
+ * @return An array with eacha word (or words) splitted by spaces.
+ */
 char	**ft_split_minishell(char *str)
 {
 	int		i;
