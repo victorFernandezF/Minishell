@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 11:21:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:35:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,30 @@ void	print_error_file(char *name, char *msg)
 {
 	printf("%s: %s\n", name, msg);
 	free(name);
+}
+
+/**
+ * @brief If enviroment var is bad written or not found in redirection
+ * prints an error message.
+ * 
+ * @param str String.
+ */
+void	print_error_file_ambiguous(char	*str)
+{
+	int		i;
+	int		j;
+	char	*bad_env;
+
+	i = -1;
+	j = 0;
+	while (!is_env_var(str[i]))
+		i++;
+	i--;
+	bad_env = malloc(strlen_starting_in(str, i) * sizeof(char));
+	while (str[++i])
+		bad_env[j++] = str[i];
+	bad_env[j] = '\0';
+	print_error_file(bad_env, "ambiguous redirect");
 }
 
 /**
@@ -57,24 +81,6 @@ char	*ft_splitnt(char **array, int len)
 	}
 	new_line[x] = '\0';
 	return (new_line);
-}
-
-void	print_error_file_ambiguous(char	*str)
-{
-	int		i;
-	int		j;
-	char	*bad_env;
-
-	i = -1;
-	j = 0;
-	while (!is_env_var(str[i]))
-		i++;
-	i--;
-	bad_env = malloc(strlen_starting_in(str, i) * sizeof(char));
-	while (str[++i])
-		bad_env[j++] = str[i];
-	bad_env[j] = '\0';
-	print_error_file(bad_env, "ambiguous redirect");
 }
 
 /**

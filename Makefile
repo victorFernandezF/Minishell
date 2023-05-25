@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/24 18:58:33 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/25 12:36:48 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,11 @@ SRC 	= 	src/main.c \
 			get/get_parameters.c \
 			env_vars/env_var_line.c \
 			env_vars/env_redirections.c \
-			utils/utilities_1.c \
-			utils/utilities_2.c \
-			utils/utilities_3.c \
-			utils/utilities_4.c \
-			utils/utilities_5.c \
+			utils/utils_checks_1.c \
+			utils/utils_checks_2.c \
+			utils/utils_skip.c \
+			utils/utils_various.c \
+			utils/utils_redirections.c \
 			utils/ft_split_minishell.c \
 	
 OBJS	=	$(SRC:.c=.o)

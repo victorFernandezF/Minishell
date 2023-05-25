@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 11:17:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:18:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ int	is_redirect(char c)
 }
 
 /**
+ * @brief Checks if a character is an space.
+ * 
+ * @param c character to check
+ * @return 1 if c is a space, 0 if not. 
+ */
+int	is_space_minishel(char c)
+{
+	return (c == ' ' || c == '\n' || c == '\t');
+}
+
+/**
  * @brief Returns 1 if an env var is found in the string. 
  * 
  * @param str String
@@ -63,15 +74,4 @@ int	is_there_env_var(char *str)
 		if (is_env_var(str[i]))
 			return (1);
 	return (0);
-}
-
-/**
- * @brief Checks if a character is an space.
- * 
- * @param c character to check
- * @return 1 if c is a space, 0 if not. 
- */
-int	is_space_minishel(char c)
-{
-	return (c == ' ' || c == '\n' || c == '\t');
 }

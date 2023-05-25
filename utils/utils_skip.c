@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities_2.c                                      :+:      :+:    :+:   */
+/*   utilities_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 11:14:48 by victofer         ###   ########.fr       */
+/*   Created: 2023/05/11 18:08:29 by victofer          #+#    #+#             */
+/*   Updated: 2023/05/25 12:19:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	skip_cmd_and_flags(char	*cmd_line)
  * @brief Returns the position in the string after skipping
  * 	everithing that is not the quotes.
  * 
- * @param str String
+ * @param str String.
  * @param starting Starting position.
  * @return The position after skipping some characters. 
  */

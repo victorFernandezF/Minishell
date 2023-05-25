@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 11:15:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:38:15 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		is_env_var(char c);
 int		is_redirect(char c);
 int		is_there_env_var(char *str);
 int		is_space_minishel(char c);
-
+int		is_there_open_quotes(char *str, int end);
 int		are_there_char(char *str, char c);
 
 int		skip_whitespaces(char *str, int start);
@@ -101,6 +101,7 @@ int		skip_characters_and_spaces(char *str, int start);
 int		skip_cmd_and_flags(char	*cmd_line);
 int		skip_everything_til_quotes(char	*str, int j);
 
+char	*get_string_without_redirections(char **array, int len);
 int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);
 char	*delete_outputs_from_line(char *cmd_line);
@@ -110,7 +111,6 @@ void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
 void	print_error_file_ambiguous(char	*str);
 char	**ft_split_minishell(char *str);
-
 int		strlen_starting_in(char *str, int i);
 
 //	F R E E   S T U F F 
@@ -120,11 +120,8 @@ void	free_array(char **array);
 
 //	[T E M P]   L E A K S   &   P R I N T S 
 
-void	rl_replace_line(const char *text, int clear_undo);
-char	*readline(const char *prompt);
+//char	*readline(const char *prompt);
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
-int		is_there_open_quotes(char *str, int end);
-
 
 #endif

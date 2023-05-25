@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:57:23 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 11:21:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:32:29 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param len Length of the future string.
  * @return A string. 
  */
-static char	*fill_string(char **array, int len)
+char	*get_string_without_redirections(char **array, int len)
 {
 	int		j;
 	int		i;
@@ -136,7 +136,7 @@ char	*delete_outputs_from_line(char *cmd_line)
 		len += ft_strlen(array[i]);
 		len += 1;
 	}
-	res = fill_string(array, len);
+	res = get_string_without_redirections(array, len);
 	free(tmp);
 	free_array(array);
 	return (res);
@@ -167,7 +167,7 @@ char	*delete_inputs_from_line(char *cmd_line)
 		len += ft_strlen(array[i]);
 		len += 1;
 	}
-	res = fill_string(array, len);
+	res = get_string_without_redirections(array, len);
 	free(tmp);
 	free_array(array);
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 10:26:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:56:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	free_struct(t_cmd *cmd)
 	free(cmd->cmd);
 	if (cmd->flags != NULL)
 		free(cmd->flags);
-	free_array(cmd->params);
+	if (cmd->params != NULL)
+		free_array(cmd->params);
 	free(cmd->output);
 	while (cmd->next != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/23 12:09:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:49:22 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 
 	i = -1;
 	(void)repeat;
+	(void)str;
 	//if (repeat == 0)
 		//printf("%s LINE -> %s%s\n\n", BM, W, str);
 	printf("%s\n■ [ NODE %i ] %s\n", B, cmd->index, W);
@@ -32,9 +33,10 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 	printf("%s ● NODE ID ..... ➤%s (%d)%s\n", Y, BG, cmd->index, W);
 	printf("%s ● COMMAND ..... ➤%s %s\n", Y, W, cmd->cmd);
 	printf("%s ● FLAGS ....... ➤%s %s\n", Y, W, cmd->flags);
-	while (cmd->params[++i] != NULL)
-		printf("%s ● PARAM [%s%i%s] ... ➤%s %s\n", Y, B, i,
-			Y, W, cmd->params[i]);
+	if (cmd->params != NULL)
+		while (cmd->params[++i] != NULL)
+			printf("%s ● PARAM [%s%i%s] ... ➤%s %s\n", Y, B, i,
+				Y, W, cmd->params[i]);
 	printf("%s ● NB INPUTS ... ➤%s %i\n", Y, W, cmd->nb_inputs);
 	printf("%s ● LAST INPUT FD ➤%s %i\n", Y, W, cmd->input);
 	printf("%s ● NB OUTPUTS .. ➤%s %i\n", Y, W, cmd->nb_outputs);
