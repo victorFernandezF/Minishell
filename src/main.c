@@ -6,13 +6,19 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 11:11:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:32:32 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	count_words(char *str);
+void	sighandler(int sig)
+{
+	if (sig == 2)
+	{
+		exit(0);
+	}
+}
 
 int	main(void)
 {
@@ -22,6 +28,7 @@ int	main(void)
 	atexit(leaks);
 	cmd = NULL;
 	cmd = init_struct(cmd);
+	signal(SIGINT, sighandler);
 	while (1)
 	{
 		read = readline("\x1B[32m[MINISHELL]: \x1B[0m");
