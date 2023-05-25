@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 13:27:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:09:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,14 @@ int		strlen_starting_in(char *str, int i);
 void	free_struct(t_cmd *cmd);
 void	free_array(char **array);
 
+// L O O P P I N G   A N D   S I G N A L S
+
+void	mini_loop(void);
+void	signal_handler(int sig);
+void	rl_replace_line(const char *text, int clear_undo);
+
 //	[T E M P]   L E A K S   &   P R I N T S 
 
-//char	*readline(const char *prompt);
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 
