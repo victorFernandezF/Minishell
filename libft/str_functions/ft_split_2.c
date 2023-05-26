@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 11:04:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:48:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,7 @@ int	count_words(char *str)
 	{
 		while (*str && space(*str))
 			str++;
-		if (*str == 34)
-		{
-			cont++;
-			str++;
-			while (*str && *str != 34)
-				str++;
-			str++;
-		}
-		else if (*str && !space(*str))
+		if (*str && !space(*str))
 		{
 			cont++;
 			while (*str && !space(*str))
