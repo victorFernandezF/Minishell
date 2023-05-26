@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/24 19:31:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:12:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,37 +90,4 @@ char	*get_temporal_redirection(char *redirection)
 	return (tmp);
 }
 
-/**
- * @brief Take each redirection files (inputs or outputs) and
- *	transforms each enviroment var in its value.
- *	This function can handle somethin like that (> redir/$USER)
- *	For that, it creates a temporal string splitting the directory part
- *	and the enviroment var part.
- * 
- * @param redirection Array of strings with the inputs/outputs.
- * @return Array of strings with the inputs/outputs correctly formatted. 
- */
-/* char	**check_env_redirection(char **redirection)
-{
-	int		i;
-	char	*tmp;
-	char	*env;
-	char	*final;
 
-	i = -1;
-	while (redirection[++i] != NULL)
-	{
-		if (is_there_env_var(redirection[i]))
-		{
-			tmp = get_temporal_redirection(redirection[i]);
-			env = transforming(tmp);
-			if (env == NULL)
-				print_error_file(tmp, "ambiguous redirect");
-			final = ft_strjoin(redirection[i], env);
-			free(redirection[i]);
-			redirection[i] = final;
-			free(tmp);
-		}
-	}
-	return (redirection);
-} */

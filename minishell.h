@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 19:09:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:51:00 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	free_array(char **array);
 
 void	mini_loop(void);
 void	signal_handler(int sig);
+void	check_ctrl_d(char *read);
 void	rl_replace_line(const char *text, int clear_undo);
 
 //	[T E M P]   L E A K S   &   P R I N T S 

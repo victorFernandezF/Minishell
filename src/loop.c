@@ -6,12 +6,18 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 11:08:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:25:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/**
+ * @brief Controls the signal 'SIGINT' so when user press ctrl-c
+ * 	a new line will be displayed.
+ * 
+ * @param sig Signal id.
+ */
 void	signal_handler(int sig)
 {
 	if (sig == 2)
@@ -23,6 +29,26 @@ void	signal_handler(int sig)
 	}
 }
 
+/**
+ * @brief checks if readline takes EOF character which means
+ * 	that shell must exit. (ctrl-d: exit the program). 
+ * 
+ * @param read The read line.
+ */
+void	check_ctrl_d(char *read)
+{
+	if (read == 0)
+	{
+		printf("\x1B[32m[MINISHELL]$\x1B[0m exit\n");
+		exit(0);
+	}
+}
+
+/**
+ * @brief A loop that shows the prompt and wait a command
+ *  from the user.
+ * 
+ */
 void	mini_loop(void)
 {
 	t_cmd	*cmd;
@@ -31,20 +57,15 @@ void	mini_loop(void)
 	while (1)
 	{
 		signal(SIGINT, signal_handler);
-		signal(SIGQUIT, signal_handler);
 		read = readline("\x1B[32m[MINISHELL]$ \x1B[0m");
-		if (read == 0)
-		{
-			printf("\x1B[32m[MINISHELL]$\x1B[0m exit\n");
-			exit(0);
-		}
+		check_ctrl_d(read);
 		if (read[0] != '\0')
 			add_history(read);
 		if (read[0])
 		{
 			cmd = init_struct(cmd);
 			cmd = start_parser(cmd, read);
-			if (cmd != NULL)
+			if (cmd != NULL && cmd->output[cmd->nb_outputs - 1] != -1)
 				print_test(read, cmd, 0);
 			free_struct(cmd);
 			free(read);
