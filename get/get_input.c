@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 12:11:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:27:03 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int	get_input(char *cmd_line, t_cmd *cmd)
 	input[i] = NULL;
 	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
+	i = -1;
+	while (++i < cmd->nb_inputs)
+		close(inputs_fd[i]);
 	free(in_pos);
 	free(inputs_fd);
 	free_array(input);

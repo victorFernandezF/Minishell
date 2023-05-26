@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 19:20:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:08:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	signal_handler(int sig)
 	{
 		printf("\n");
 		rl_on_new_line();
-		rl_replace_line("", 3);
+		rl_replace_line("", 0);
 		rl_redisplay();
 	}
 }
@@ -31,9 +31,13 @@ void	mini_loop(void)
 	while (1)
 	{
 		signal(SIGINT, signal_handler);
-		read = readline("\x1B[32m[MINISHELL]: \x1B[0m");
+		signal(SIGQUIT, signal_handler);
+		read = readline("\x1B[32m[MINISHELL]$ \x1B[0m");
 		if (read == 0)
+		{
+			printf("\x1B[32m[MINISHELL]$\x1B[0m exit\n");
 			exit(0);
+		}
 		if (read[0] != '\0')
 			add_history(read);
 		if (read[0])
