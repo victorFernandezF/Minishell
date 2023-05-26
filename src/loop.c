@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 12:25:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:31:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,18 @@ void	check_ctrl_d(char *read)
 }
 
 /**
- * @brief A loop that shows the prompt and wait a command
+ * @brief A loop that shows the prompt and wait for a command
  *  from the user.
  * 
  */
-void	mini_loop(void)
+void	mini_loop(char **env)
 {
 	t_cmd	*cmd;
 	char	*read;
+	int		i;
 
+	i = -1;
+	(void)env;
 	while (1)
 	{
 		signal(SIGINT, signal_handler);

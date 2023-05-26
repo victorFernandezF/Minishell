@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 11:51:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:37:47 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_cmd	t_cmd;
 
 typedef struct s_cmd
 {
+	int		nb_cmd;
 	char	*cmd;
 	char	*flags;
 	char	**params;
@@ -52,7 +53,7 @@ typedef struct s_cmd
 // S T R U C T   S T U F F 
 
 t_cmd	*init_struct(t_cmd *structure);
-t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *cmd_line, int index);
+t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *cmd_line, int id, int nb);
 
 //	P A R S E R 
 
@@ -121,7 +122,7 @@ void	free_array(char **array);
 
 // L O O P P I N G   A N D   S I G N A L S
 
-void	mini_loop(void);
+void	mini_loop(char **env);
 void	signal_handler(int sig);
 void	check_ctrl_d(char *read);
 void	rl_replace_line(const char *text, int clear_undo);
