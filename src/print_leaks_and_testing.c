@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 17:33:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:46:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 	printf("%s ● NB INPUTS ... ➤%s %i\n", Y, W, cmd->nb_inputs);
 	printf("%s ● LAST INPUT FD ➤%s %i\n", Y, W, cmd->input);
 	printf("%s ● NB OUTPUTS .. ➤%s %i\n", Y, W, cmd->nb_outputs);
-	i = -1;
-	while (++i < cmd->nb_outputs)
-		printf("%s ● OUTPUT FD [%s%i%s] ➤%s %i\n",
-			Y, B, i, Y, W, cmd->output[i]);
+	printf("%s ● OUTPUT [FD] .. ➤%s %i\n", Y, W, cmd->output);
 	printf("\n");
 	if (cmd->next != NULL)
 		print_test(str, cmd->next, 1);

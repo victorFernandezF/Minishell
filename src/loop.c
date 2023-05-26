@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 17:31:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:44:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	mini_loop(char **env)
 		{
 			cmd = init_struct(cmd);
 			cmd = start_parser(cmd, read);
-			if (cmd != NULL && cmd->output[cmd->nb_outputs - 1] != -1)
+			if (cmd != NULL && cmd->output != -1 && cmd->input != -1)
 				print_test(read, cmd, 0);
 			free_struct(cmd);
 			free(read);

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/22 19:20:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:48:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,31 @@
  * @return Array of ints with the fds of each output
  *	found in command line.
  */
-int	*get_output(char *cmd_line, t_cmd *cmd)
+int	get_output(char *cmd_line, t_cmd *cmd)
 {
 	int		i;
 	char	**out;
 	int		*out_pos;
 	int		*outputs_fd;
+	int		last_output;
 
 	i = -1;
 	out = malloc((cmd->nb_outputs + 1) * sizeof(char **));
 	if (!out)
-		return (NULL);
+		return (0);
 	out_pos = get_output_char_positions(cmd_line, cmd);
 	while (++i < cmd->nb_outputs)
 		out[i] = get_output_from_position(cmd_line, out_pos[i], out_pos[i] + 1);
 	out[i] = NULL;
 	outputs_fd = output_filename_to_fd_converter(out, cmd->nb_outputs);
+	last_output = outputs_fd[cmd->nb_outputs - 1];
+	i = -1;
+	while (++i < cmd->nb_outputs)
+		close(outputs_fd[i]);
 	free(out_pos);
 	free_array(out);
-	return (outputs_fd);
+	free(outputs_fd);
+	return (last_output);
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 17:37:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:42:51 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_cmd
 	int		nb_inputs;
 	int		input;
 	int		nb_outputs;
-	int		*output;
+	int		output;
 	int		index;
 	t_cmd	*next;
 }			t_cmd;
@@ -76,7 +76,7 @@ char	*get_flags(char *str);
 char	**get_parameters(char *str);
 
 int		get_nb_outputs(char *str);
-int		*get_output(char *str, t_cmd *cmd);
+int		get_output(char *str, t_cmd *cmd);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 char	*get_output_from_position(char *cmd_line, int pos, int aux);
 int		*output_filename_to_fd_converter(char **output, int nb_outputs);
