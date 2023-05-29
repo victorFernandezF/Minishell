@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/25 19:12:22 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/29 17:49:00 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ LIBFT_D	=	libft
 SRC 	= 	src/loop.c \
 			src/main.c \
 		 	src/parser.c \
+		 	src/initial_checks.c \
 			src/print_leaks_and_testing.c \
 			struct/free_stuff.c \
 			struct/init_struct.c \

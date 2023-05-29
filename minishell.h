@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 17:42:51 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:08:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ void	free_array(char **array);
 
 // L O O P P I N G   A N D   S I G N A L S
 
+int		check_invalid_characters(char *str);
+int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
 void	mini_loop(char **env);
 void	signal_handler(int sig);
 void	check_ctrl_d(char *read);
