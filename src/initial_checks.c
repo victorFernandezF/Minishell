@@ -6,12 +6,19 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/29 19:20:41 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/29 19:36:36 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/**
+ * @brief Checks if there are no more characters after a pipe
+ * 	skipping spaces.
+ * 
+ * @param str 
+ * @return 1 is there are no more chars. 0 if there are more chars. 
+ */
 int	is_pipe_at_end_of_line(char	*str)
 {
 	int	i;
@@ -21,10 +28,25 @@ int	is_pipe_at_end_of_line(char	*str)
 	return (str[i] == '\0');
 }
 
+/**
+ * @brief Checks if there are two or more pipes in a row
+ * 
+ * @param str 
+ * @param i 
+ * @return int 
+ */
 int	check_two_pipes_in_a_row(char *str, int i)
 {
-	if (str[i] == '|' && str[i + 1] == '|')
+	while (str[i])
+	{
+		if (str[i] == '|')
+		{
+			i = skip_whitespaces(str, i);
+			if (str[i] == '|')
+				return (1);
+		}
 		return (1);
+	}
 	return (0);
 }
 
@@ -39,9 +61,11 @@ int	check_bad_redirection_chars(char *str, int i)
 
 int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
 {
-	if (cmd == NULL && cmd->output == -1 && cmd->input == -1)
+	if (cmd == NULL || cmd->output == -1 || cmd->input == -1)
 		return (1);
 	if (cmd->nb_outputs > 0 && cmd->cmd[0] == '\0')
+		return (1);
+	if (cmd->nb_inputs > 0 && cmd->cmd[0] == '\0')
 		return (1);
 	return (0);
 }
