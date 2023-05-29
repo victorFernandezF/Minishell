@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 17:48:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/29 18:28:15 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	get_output(char *cmd_line, t_cmd *cmd)
 	int		last_output;
 
 	i = -1;
+	if (!are_there_char(cmd_line, '>'))
+		return (0);
 	out = malloc((cmd->nb_outputs + 1) * sizeof(char **));
 	if (!out)
 		return (0);
