@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:36:17 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/10 12:14:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 13:39:55 by Victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static int	ft_ptr_len(uintptr_t ptr)
+static int	ft_ptr_len(unsigned int ptr)
 {
 	int	len;
 
@@ -25,7 +25,7 @@ static int	ft_ptr_len(uintptr_t ptr)
 	return (len);
 }
 
-static void	ft_put_ptr(uintptr_t ptr)
+static void	ft_put_ptr(unsigned int ptr)
 {
 	if (ptr >= 16)
 	{

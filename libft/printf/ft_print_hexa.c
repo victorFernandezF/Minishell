@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 19:22:04 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/10 12:14:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 13:38:41 by Victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ int	ft_print_hexa(unsigned int num, char format)
 		return (ret);
 	}
 	else
+	{
 		ft_print_hexadecimal(num, format);
 		ret += ft_hexa_len(num);
+	}
 	return (ret);
 }

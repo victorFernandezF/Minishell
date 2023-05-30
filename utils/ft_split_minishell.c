@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_minishell.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/30 10:56:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 13:42:54 by Victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,13 +154,9 @@ static char	**fill_split_array(char **split, char *str, int nb_words)
  */
 char	**ft_split_minishell(char *str)
 {
-	int		i;
-	int		j;
 	int		nb_words;
 	char	**split;
 
-	i = -1;
-	j = 0;
 	nb_words = count_words_minishell(str);
 	split = (char **)malloc((nb_words + 1) * sizeof(char *));
 	if (!split)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_output.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/30 10:31:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 13:41:37 by Victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,10 @@ char	*get_output_from_position(char *cmd_line, int position, int aux)
 int	*output_filename_to_fd_converter(char **output, int nb_outputs)
 {
 	int		i;
-	int		j;
 	int		*res;
 	char	*out;
 
 	i = -1;
-	j = 0;
 	res = malloc((nb_outputs + 1) * sizeof(int));
 	if (!res)
 		return (NULL);

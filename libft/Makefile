@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:14:33 by victofer          #+#    #+#              #
-#    Updated: 2023/05/08 18:14:35 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/30 13:41:08 by Victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC		=	mem_functions/ft_memcpy.c mem_functions/ft_memmove.c mem_functions/ft_mem
 			printf/ft_print_unsigned.c printf/ft_print_hexa.c printf/ft_print_ptr.c \
 	 		printf/ft_print_number.c \
 			gnl/get_next_line_utils.c gnl/get_next_line.c \
-			gnl/get_next_line_bonus.c gnl/get_next_line_utils_bonus.c
 
 BONUS 	=	list_functions/ft_lstnew.c list_functions/ft_lstadd_front.c list_functions/ft_lstsize.c \
 			list_functions/ft_lstlast.c list_functions/ft_lstadd_back.c list_functions/ft_lstdelone.c \
