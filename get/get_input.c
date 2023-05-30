@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 11:27:03 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:22:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,9 @@ char	*get_input_from_position(char *cmd_line, int pos, int aux)
 int	*input_filename_to_fd_converter(char **input, int nb_inputs)
 {
 	int		i;
-	int		j;
 	int		*res;
 
 	i = -1;
-	j = 0;
 	res = malloc((nb_inputs + 1) * sizeof(int));
 	if (!res)
 		return (NULL);

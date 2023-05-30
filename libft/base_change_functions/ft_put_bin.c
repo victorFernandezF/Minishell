@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/10 12:05:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:48:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_put_bin(unsigned int num)
 {
-	int	i;
-
-	i = 0;
 	if (num >= 2)
 	{
 		ft_put_bin(num / 2);

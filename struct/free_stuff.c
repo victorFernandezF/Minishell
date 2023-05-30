@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 17:46:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:55:53 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@
  */
 void	free_struct(t_cmd *cmd)
 {
-	int		i;
 	t_cmd	*og;
 
 	og = cmd;
-	i = -1;
 	free(cmd->cmd);
 	if (cmd->flags != NULL)
 		free(cmd->flags);

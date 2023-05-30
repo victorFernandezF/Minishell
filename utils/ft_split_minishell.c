@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 13:21:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:56:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
 static int	count_words_minishell(char *str)
 {
 	int	cont;
-	int	quot;
 
 	cont = 0;
-	quot = 0;
 	while (*str)
 	{
 		while (*str && is_space_minishel(*str))

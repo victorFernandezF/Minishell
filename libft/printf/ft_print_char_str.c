@@ -6,17 +6,16 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:29:14 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/10 12:14:25 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:53:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static void	ft_putstr(char *s, int fd)
+static void	ft_putstr(char *s)
 {
 	int	i;
 
-	fd = 1;
 	i = 0;
 	while (s[i])
 	{
@@ -38,7 +37,7 @@ int	ft_print_string(char *s)
 	i = 0;
 	if (s == NULL)
 	{
-		ft_putstr("(null)", 1);
+		ft_putstr("(null)");
 		return (6);
 	}
 	i = 0;

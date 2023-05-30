@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/29 19:11:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:54:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ void	mini_loop(char **env)
 {
 	t_cmd	*cmd;
 	char	*read;
-	int		i;
 
-	i = -1;
 	(void)env;
 	while (1)
 	{

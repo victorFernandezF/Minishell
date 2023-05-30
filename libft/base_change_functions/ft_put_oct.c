@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:27:58 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/10 12:05:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:49:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_put_oct(unsigned int num)
 {
-	int	i;
-
-	i = 0;
 	if (num >= 8)
 	{
 		ft_put_oct(num / 8);
