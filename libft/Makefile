@@ -6,7 +6,7 @@
 #    By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:14:33 by victofer          #+#    #+#              #
-#    Updated: 2023/05/30 13:41:08 by Victofer         ###   ########.fr        #
+#    Updated: 2023/05/30 14:07:09 by Victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC		=	mem_functions/ft_memcpy.c mem_functions/ft_memmove.c mem_functions/ft_mem
 			str_functions/ft_strtrim.c str_functions/ft_itoa.c str_functions/ft_strmapi.c \
 			str_functions/ft_striteri.c str_functions/ft_putchar_fd.c str_functions/ft_putstr_fd.c \
 			str_functions/ft_putendl_fd.c str_functions/ft_putnbr_fd.c\
-			str_functions/ft_split_2.c \
+			str_functions/ft_split_2.c str_functions/ft_split.c \
 			nbr_functions/max.c nbr_functions/min.c nbr_functions/ft_atoi.c \
 			base_change_functions/ft_put_hexa.c base_change_functions/ft_put_bin.c \
 			base_change_functions/ft_put_oct.c base_change_functions/ft_atoi_base.c\

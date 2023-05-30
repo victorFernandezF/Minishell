@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/30 11:04:18 by victofer         ###   ########.fr        #
+#    Updated: 2023/05/30 15:08:01 by Victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	minishell
 CFLAGS 	= 	-Wall -Wextra -Werror -g
-LIBFT_D	=	libft
 SRC 	= 	src/loop.c \
 			src/main.c \
 		 	src/parser.c \
@@ -36,6 +35,9 @@ SRC 	= 	src/loop.c \
 			utils/ft_split_minishell.c \
 	
 OBJS	=	$(SRC:.c=.o)
+LIBFT_PATH 	=  libft/
+LIBFT		= -L./libft -lft
+LIBFT		= libft/libft.a
 
 # T E X T   S T U F F
 G		= \033[0;92m
@@ -55,7 +57,7 @@ READLINE_LIB = -lreadline -lhistory -L $(READLINE_DIR)/lib
 all: nice_text lib $(NAME)
 
 lib:
-	@make -C $(LIBFT_D)
+	@make -C $(LIBFT_PATH)
 
 nice_text:
 	@echo "$(B)"
@@ -73,7 +75,7 @@ norminette:
 
 $(NAME): $(OBJS)
 	@mkdir -p redir
-	@gcc $(CFLAGS) $(LDFLAGS) libft/libft.a $(OBJS) $(READLINE_LIB) -o $(NAME) 
+	@gcc $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFT) $(READLINE_LIB) -o $(NAME) 
 	@echo "$(Y)0-----------------------0"
 	@echo "$(Y)|$(G)    MINISHELL CREATED $(Y) |"
 	@echo "$(Y)0-----------------------0"
