@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/30 12:10:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:32:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief Checks if there are no more characters after a pipe
- * 	skipping spaces.
+ * 	(skipping spaces).
  * 
  * @param str 
  * @return 1 is there are no more chars. 0 if there are more chars. 
@@ -76,6 +76,13 @@ int	check_bad_redirection_chars(char *str, int i)
 	return (0);
 }
 
+/**
+ * @brief Checks if cmd line only contents a redirection without
+ * 	the rest of the command (ex: [minishell]$ > output).
+ * 
+ * @param cmd 
+ * @return 1 if somethin goes wrong. 0 if not. 
+ */
 int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
 {
 	if (cmd == NULL || cmd->output == -1 || cmd->input == -1)
@@ -87,6 +94,14 @@ int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
 	return (0);
 }
 
+/**
+ * @brief Checks if there are any errors or invalid
+ * 	chars combination before do anything.
+ * 
+ * @param str 
+ * @return 0 if everything is ok. Some int Bigger than 0 if something
+ * 	is worng and the execution must stop.
+ */
 int	check_invalid_characters(char *str)
 {
 	int	i;
@@ -95,11 +110,11 @@ int	check_invalid_characters(char *str)
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))
-			return (printf("Syntax error 1.\n"));
+			return (printf("Syntax error.\n"));
 		if (check_bad_redirection_chars(str, i))
-			return (printf("Syntax error 2.\n"));
+			return (printf("Syntax error.\n"));
 		if (str[0] == '|' || is_pipe_at_end_of_line(str))
-			return (printf("Syntax error 3.\n"));
+			return (printf("Syntax error.\n"));
 	}
 	return (0);
 }

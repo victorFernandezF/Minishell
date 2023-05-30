@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/29 18:08:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:20:05 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef struct s_cmd
 
 t_cmd	*init_struct(t_cmd *structure);
 t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *cmd_line, int id, int nb);
+
+// I N I T I A L   C H E C K S
+
+int		is_pipe_at_end_of_line(char	*str);
+int		check_two_pipes_in_a_row(char *str, int i);
+int		check_bad_redirection_chars(char *str, int i);
+int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
+int		check_invalid_characters(char *str);
 
 //	P A R S E R 
 
@@ -122,8 +130,6 @@ void	free_array(char **array);
 
 // L O O P P I N G   A N D   S I G N A L S
 
-int		check_invalid_characters(char *str);
-int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
 void	mini_loop(char **env);
 void	signal_handler(int sig);
 void	check_ctrl_d(char *read);
