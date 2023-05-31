@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 13:58:01 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:16:29 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,4 +141,5 @@ void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 
 int		get_next_char(char *str, int i);
+int		is_between_quotes(char *cmd_line, int end);
 #endif

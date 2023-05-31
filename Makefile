@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+         #
+#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/30 15:08:01 by Victofer         ###   ########.fr        #
+#    Updated: 2023/05/31 19:16:48 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC 	= 	src/loop.c \
 			utils/utils_checks_2.c \
 			utils/utils_skip.c \
 			utils/utils_various.c \
+			utils/utils_various_2.c \
 			utils/utils_redirections.c \
 			utils/ft_split_minishell.c \
 	

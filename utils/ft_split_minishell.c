@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 18:41:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:51:13 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ static char	**fill_split_array(char **split, char *str, int nb_words)
 		j = skip_whitespaces(str, j);
 		if (str[j] != '\0' && str[j] != 34)
 		{
+			j = skip_whitespaces(str, j);
 			split[i] = write_word_minishell(str, j);
 			j = skip_characters(str, j);
 		}

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/30 10:22:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:17:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	get_nb_inputs(char *cmd_line)
 	if (are_there_char(cmd_line, '<'))
 		while (cmd_line[++i])
 			if (cmd_line[i] == '<' && cmd_line[i + 1] != '<')
-				nb++;
+				if (!is_between_quotes(cmd_line, i))
+					nb++;
 	return (nb);
 }
 
