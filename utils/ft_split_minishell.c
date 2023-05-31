@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 11:27:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:34:56 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static char	*write_word_minishell(char *str, int start)
 		return (NULL);
 	j = 0;
 	i = start;
-	while (str[i] && !is_space_minishel(str[i]))
+	while (str[i] != '\0' && !is_space_minishel(str[i]))
 		word[j++] = str[i++];
 	word[i] = '\0';
 	return (word);
