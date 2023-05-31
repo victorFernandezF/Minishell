@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 12:12:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 11:32:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,3 @@ char	*get_temporal_redirection(char *redirection)
 	tmp = ft_substr(redirection, j, ft_strlen(redirection) - j);
 	return (tmp);
 }
-
-

@@ -6,20 +6,27 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 10:48:51 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 11:32:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	get_next_char(char *str, int i)
+/**
+ * @brief Get the position of the next given character in the string.
+ * 
+ * @param str String where char will be searched.
+ * @param pos Position in the string of the char to be found. 
+ * @return The position of the next character that is equal to the given one. 
+ */
+int	get_next_char(char *str, int pos)
 {
 	char	c;
 
-	c = str[i];
-	while (str[++i])
-		if (str[i] == c)
-			return (i);
+	c = str[pos];
+	while (str[++pos])
+		if (str[pos] == c)
+			return (pos);
 	return (-1);
 }
 

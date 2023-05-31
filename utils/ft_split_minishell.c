@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 11:21:03 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 11:27:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ static char	*quot_manager(char *str, int start)
 	while (str[start] && str[start] != 34)
 		word[i++] = str[start++];
 	word[i] = '\0';
-
 	return (word);
 }
 
@@ -126,7 +125,6 @@ static char	**fill_split_array(char **split, char *str, int nb_words)
 
 	i = -1;
 	j = 0;
-
 	while (++i < nb_words)
 	{
 		j = skip_whitespaces(str, j);
