@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 10:49:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:58:01 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*spand_all_env_vasr( char *str);
 char	**check_env_redirection(char **output);
 char	*transforming(char *str);
 char	*get_temporal_redirection(char *redirection);
-char	*fill_string_redirection(char *redirection, char *env);
+char	*fill_string_redirection(char *redirection, char *env, int flag);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 

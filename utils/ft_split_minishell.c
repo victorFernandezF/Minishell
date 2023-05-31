@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 13:34:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:41:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ static char	*write_word_minishell(char *str, int start)
 		i++;
 		len++;
 	}
-	word = (char *)malloc(sizeof(char) * (len + 1));
+	word = (char *)malloc(sizeof(char) * (len));
 	if (!word)
 		return (NULL);
 	j = 0;
 	i = start;
 	while (str[i] != '\0' && !is_space_minishel(str[i]))
 		word[j++] = str[i++];
-	word[i] = '\0';
+	word[j] = '\0';
 	return (word);
 }
 
@@ -128,9 +128,8 @@ static char	**fill_split_array(char **split, char *str, int nb_words)
 	while (++i < nb_words)
 	{
 		j = skip_whitespaces(str, j);
-		if (str[j] != 34)
-		{	
-			j = skip_whitespaces(str, j);
+		if (str[j] != '\0' && str[j] != 34)
+		{
 			split[i] = write_word_minishell(str, j);
 			j = skip_characters(str, j);
 		}

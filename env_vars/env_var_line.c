@@ -6,11 +6,31 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 12:52:15 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:23:01 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static char	*del_last_quote(char *str)
+{
+	int		i;
+	int		len;
+	char	*res;
+
+	i = 0;
+	len = ft_strlen(str);
+	res = malloc(len * sizeof(char));
+	if (!res)
+		return (NULL);
+	while (str[i] != '\0' && str[i] != 34)
+	{
+		res[i] = str[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (res);
+}
 
 /**
  * @brief Calculates the necesary amount of chars to create a
@@ -47,14 +67,20 @@ static int	get_total_len(char **array)
 static char	*convert_env_var_in_its_value(char *cmd_line)
 {
 	char	*tmp;
+	char	*no_end_quotes;
+	int		add_last_quote;
 	char	*env;
 	char	*final;
 
+	add_last_quote = 0;
 	tmp = get_temporal_redirection(cmd_line);
+	if (tmp[ft_strlen(tmp) - 1] == 34)
+		add_last_quote = 1;
+	no_end_quotes = del_last_quote(tmp);
 	env = transforming(tmp);
-	final = fill_string_redirection(cmd_line, env);
+	final = fill_string_redirection(cmd_line, env, add_last_quote);
+	free(no_end_quotes);
 	free(cmd_line);
-	cmd_line = final;
 	free(tmp);
 	return (final);
 }

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 11:32:42 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:23:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*transforming(char *env_name)
  * @param env String with the value of the env var.
  * @return String with the two strings joined.
  */
-char	*fill_string_redirection(char *redirection, char *env)
+char	*fill_string_redirection(char *redirection, char *env, int flag)
 {
 	int		i;
 	int		j;
@@ -62,11 +62,18 @@ char	*fill_string_redirection(char *redirection, char *env)
 	while (!is_env_var(redirection[len]))
 		len++;
 	len += ft_strlen(env);
+	if (flag == 1)
+		len++;
 	redi = malloc((len + 1) * sizeof(char));
 	while (!is_env_var(redirection[++i]))
 		redi[i] = redirection[i];
 	while (env[++j])
 		redi[i++] = env[j];
+	if (flag == 1)
+	{
+		redi[i] = 34;
+		i++;
+	}
 	redi[i] = '\0';
 	return (redi);
 }
