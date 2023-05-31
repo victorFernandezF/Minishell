@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_minishell.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Victofer <victofer@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/30 13:42:54 by Victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 11:21:03 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	*quot_manager(char *str, int start)
 		i++;
 		aux++;
 	}
-	word = malloc(i * sizeof(char));
+	word = malloc((i + 1) * sizeof(char));
 	if (!word)
 		return (NULL);
 	i = 0;
@@ -74,6 +74,7 @@ static char	*quot_manager(char *str, int start)
 	while (str[start] && str[start] != 34)
 		word[i++] = str[start++];
 	word[i] = '\0';
+
 	return (word);
 }
 
@@ -93,7 +94,7 @@ static char	*write_word_minishell(char *str, int start)
 
 	i = start;
 	len = 0;
-	while (str[i] && !is_space_minishel(str[i]))
+	while (str[i] != '\0' && !is_space_minishel(str[i]))
 	{
 		i++;
 		len++;
@@ -125,19 +126,22 @@ static char	**fill_split_array(char **split, char *str, int nb_words)
 
 	i = -1;
 	j = 0;
+
 	while (++i < nb_words)
 	{
 		j = skip_whitespaces(str, j);
-		if (str[j] == 34 && !is_there_open_quotes(str, j))
-		{
-			split[i] = quot_manager(str, j);
-			j = skip_everything_til_quotes(str, j + 1);
-		}
-		else
+		if (str[j] != 34)
 		{	
 			j = skip_whitespaces(str, j);
 			split[i] = write_word_minishell(str, j);
 			j = skip_characters(str, j);
+		}
+		else
+		{
+			j = skip_whitespaces(str, j);
+			split[i] = quot_manager(str, j);
+			j = get_next_char(str, j);
+			j++;
 		}
 	}
 	split[i] = NULL;

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/30 12:20:05 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:49:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,4 +140,5 @@ void	rl_replace_line(const char *text, int clear_undo);
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 
+int		get_next_char(char *str, int i);
 #endif

@@ -25,3 +25,5 @@ UTILS
 
 test print template
 	printf("%s%s:%s %s\n", BY, __func__, W, str);
+
+	echo a "hola mundo adios" hello world

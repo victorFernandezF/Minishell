@@ -6,11 +6,22 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 12:26:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/05/31 10:48:51 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	get_next_char(char *str, int i)
+{
+	char	c;
+
+	c = str[i];
+	while (str[++i])
+		if (str[i] == c)
+			return (i);
+	return (-1);
+}
 
 /**
  * @brief Prints an error mesage and exit the program.
