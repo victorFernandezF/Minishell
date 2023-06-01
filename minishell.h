@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:01:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:17:37 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
 void	print_error_file_ambiguous(char	*str);
 char	**ft_split_minishell(char *str, int quot);
+int		count_words_minishell(char *str);
 int		strlen_starting_in(char *str, int i);
 
 //	F R E E   S T U F F 
