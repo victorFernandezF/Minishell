@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 11:11:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:14:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,11 @@ int	check_invalid_characters(char *str)
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))
-			return (printf("Syntax error 1.\n"));
+			return (printf("Syntax error.\n"));
 		if (check_bad_redirection_chars(str, i))
-			return (printf("Syntax error 2.\n"));
+			return (printf("Syntax error.\n"));
 		if (str[0] == '|' || is_pipe_at_end_of_line(str))
-			return (printf("Syntax error 3.\n"));
+			return (printf("Syntax error.\n"));
 	}
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities_5.c                                      :+:      :+:    :+:   */
+/*   utils_redirections.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:57:23 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 12:32:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:07:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,9 @@ char	*replace_spaces_after_redirect(char *cmd_line)
 	i = -1;
 	while (cmd_line[++i])
 	{
-		if ((cmd_line[i] == '>' && cmd_line[i + 1] == ' ')
-			|| (cmd_line[i] == '<' && cmd_line[i + 1] == ' '))
+		if ((!is_between_quotes(cmd_line, i))
+			&& ((cmd_line[i] == '>' && cmd_line[i + 1] == ' ')
+				|| (cmd_line[i] == '<' && cmd_line[i + 1] == ' ')))
 		{
 			res[j] = cmd_line[i];
 			res[j + 1] = '_';
@@ -128,7 +129,7 @@ char	*delete_outputs_from_line(char *cmd_line)
 	i = -1;
 	len = 0;
 	tmp = replace_spaces_after_redirect(cmd_line);
-	array = ft_split_2(tmp);
+	array = ft_split_minishell(tmp, 1);
 	while (array[++i])
 	{
 		if (array[i][0] == '>')
@@ -159,7 +160,7 @@ char	*delete_inputs_from_line(char *cmd_line)
 	i = -1;
 	len = 0;
 	tmp = replace_spaces_after_redirect(cmd_line);
-	array = ft_split_2(tmp);
+	array = ft_split_minishell(tmp, 1);
 	while (array[++i])
 	{
 		if (array[i][0] == '<')
