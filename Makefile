@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/05/31 19:16:48 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/01 18:31:55 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC 	= 	src/loop.c \
 			get/get_output.c \
 			get/get_input.c \
 			get/get_parameters.c \
-			env_vars/env_var_line.c \
+			env_vars/spander.c \
 			env_vars/env_redirections.c \
 			utils/utils_checks_1.c \
 			utils/utils_checks_2.c \

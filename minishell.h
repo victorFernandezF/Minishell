@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:41:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:11:36 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
+#include <termios.h>
 # include "libft/libft.h"
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -123,7 +124,7 @@ void	print_error_file_ambiguous(char	*str);
 char	**ft_split_minishell(char *str, int quot);
 int		count_words_minishell(char *str);
 int		strlen_starting_in(char *str, int i);
-int		skip_chars_between_quotes(char *str, int start);
+int		skip_cmd_name(char *str, int start);
 
 //	F R E E   S T U F F 
 

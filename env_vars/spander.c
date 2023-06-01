@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_var_line.c                                     :+:      :+:    :+:   */
+/*   spander.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/31 18:51:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:51:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*del_last_quote(char *str)
 	}
 	str[i] = '\0';
 	return (res);
-}
+} 
 
 /**
  * @brief Calculates the necesary amount of chars to create a
@@ -74,6 +74,8 @@ static char	*convert_env_var_in_its_value(char *cmd_line)
 
 	add_last_quote = 0;
 	tmp = get_temporal_redirection(cmd_line);
+	if (!tmp)
+		return (NULL);
 	if (tmp[ft_strlen(tmp) - 1] == 34)
 		add_last_quote = 1;
 	no_end_quotes = del_last_quote(tmp);

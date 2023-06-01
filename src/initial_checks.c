@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 11:14:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:19:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ int	check_bad_redirection_chars(char *str, int i)
 int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
 {
 	if (cmd == NULL || cmd->output == -1 || cmd->input == -1)
+		return (1);
+	if (cmd->nb_inputs > 0 && cmd->input < 2)
+		return (1);
+	if (cmd->nb_outputs > 0 && cmd->output < 2)
 		return (1);
 	if (cmd->nb_outputs > 0 && cmd->cmd[0] == '\0')
 		return (1);
