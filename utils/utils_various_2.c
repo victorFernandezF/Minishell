@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:07:02 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:17:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:45:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,24 @@ int	is_between_quotes(char *str, int end)
 	if (nb_quotes % 2 == 0)
 		return (0);
 	return (1);
+}
+
+/**
+ * @brief Skips whitespaces and chars at the begining of a string.
+ * 
+ * @param str string to be spacechar-skipped.
+ * @param start position where start skipping spaces and chars. 
+ * @return Integer whith the position of the string
+ * 	after skipping spaces and chars. 
+ */
+int	skip_chars_between_quotes(char *str, int start)
+{
+	if (str[start] != 34)
+		return (start);
+	start++;
+	while (str[start] && str[start] != 34)
+		start++;
+	start++;
+	start = skip_whitespaces(str, start);
+	return (start);
 }

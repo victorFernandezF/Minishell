@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 11:10:44 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:56:57 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ int	get_nb_cmd(char *cmd_line)
 char	*get_cmd(char *cmd_line)
 {
 	int		i;
-	int		j;
 	int		len;
 	char	*cmd_name;
+	char	**temp_array;
 
 	i = -1;
-	j = 0;
-	i = skip_whitespaces(cmd_line, 0);
-	len = skip_characters(cmd_line, i);
-	cmd_name = malloc((len + 1) * sizeof(char));
+	temp_array = ft_split_minishell(cmd_line, 0);
+	len = ft_strlen(temp_array[0]);
+	cmd_name = malloc((len * sizeof(char)));
 	if (!cmd_name)
 		return (NULL);
-	while (cmd_line[i] != ' ' && cmd_line[i] != '\0')
-		cmd_name[j++] = cmd_line[i++];
-	cmd_name[j] = '\0';
+	while (temp_array[0][++i])
+		cmd_name[i] = temp_array[0][i];
+	cmd_name[i] = '\0';
+	free_array(temp_array);
 	return (cmd_name);
 }

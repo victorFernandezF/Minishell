@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:26:57 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:33:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ static char	*quot_manager(char *str, int start, int quot)
 static char	*write_word_minishell(char *str, int start)
 {
 	int		i;
-	int		len;
 	int		j;
+	int		len;
 	char	*word;
 
 	i = start;
