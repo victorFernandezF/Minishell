@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:17:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 12:26:57 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,11 +153,15 @@ static char	**fill_split_array(char **split, char *str, int nb_words, int quot)
 
 /**
  * @brief An special version of ft_split that manages double
- *  quotes. If double quotes are found the words inside them won't
+ * quotes. If double quotes are found the words inside them won't
  * be splitted and will be stored in the array all together.
  * 
  * @param str String to be splitted.
- * @return An array with eacha word (or words) splitted by spaces.
+ * @param quot Flag if 1 the part inside quotes are stored in the array
+ * 	including the quootes. If 0 the part inside the quotes are strored
+ * 	without the quotes.
+ * @return Array with the parts of the string separated by spaces but having in
+ * 	mind that the parts that are inside the quotes are considered as one element.
  */
 char	**ft_split_minishell(char *str, int quot)
 {
