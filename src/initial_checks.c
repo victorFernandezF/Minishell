@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/30 12:32:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:11:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	is_pipe_at_end_of_line(char	*str)
 	int	i;
 
 	i = get_position_of_last_char_found(str, '|');
+	if (get_nb_cmd(str) == 1)
+		return (0);
 	i = skip_whitespaces(str, i + 1);
 	return (str[i] == '\0');
 }
@@ -99,7 +101,7 @@ int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
  * 	chars combination before do anything.
  * 
  * @param str 
- * @return 0 if everything is ok. Some int Bigger than 0 if something
+ * @return 0 if everything is ok. Something different than 0 if something
  * 	is worng and the execution must stop.
  */
 int	check_invalid_characters(char *str)
@@ -110,11 +112,11 @@ int	check_invalid_characters(char *str)
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))
-			return (printf("Syntax error.\n"));
+			return (printf("Syntax error 1.\n"));
 		if (check_bad_redirection_chars(str, i))
-			return (printf("Syntax error.\n"));
+			return (printf("Syntax error 2.\n"));
 		if (str[0] == '|' || is_pipe_at_end_of_line(str))
-			return (printf("Syntax error.\n"));
+			return (printf("Syntax error 3.\n"));
 	}
 	return (0);
 }

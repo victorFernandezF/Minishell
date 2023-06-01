@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/26 17:33:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:10:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	get_nb_cmd(char *cmd_line)
 	int	i;
 	int	cmd;
 
-	printf("%s\n", cmd_line);
 	i = -1;
 	cmd = 1;
 	while (cmd_line[++i])
