@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:02:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 11:36:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	**get_parameters(char *cmd_line)
 	char	**param_array;
 
 	j = 0;
+	if (ft_strlen(cmd_line) == 0)
+		return (NULL);
 	i = skip_cmd_and_flags(cmd_line);
 	len = strlen_starting_in(cmd_line, i);
 	param_line = malloc(len * sizeof(char));

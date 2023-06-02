@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:57:23 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 10:43:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 11:23:46 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param len Length of the future string.
  * @return A string. 
  */
-char	*get_string_without_redirections(char **array, int len)
+char	*get_string_without_outputs(char **array, int len)
 {
 	int		j;
 	int		i;
@@ -35,7 +35,40 @@ char	*get_string_without_redirections(char **array, int len)
 	while (array[++i])
 	{
 		j = -1;
-		if (array[i][0] == '>' || array[i][0] == '<')
+		if (array[i][0] == '>')
+			continue ;
+		while (array[i][++j])
+			res[x++] = array[i][j];
+		res[x++] = ' ';
+	}
+	res[x - 1] = '\0';
+	return (res);
+}
+
+/**
+ * @brief Auxiliar function to help 'delete_outputs_from_line'
+ *	filling a string.
+ * 
+ * @param array An array with every element except outputs.
+ * @param len Length of the future string.
+ * @return A string. 
+ */
+char	*get_string_without_inputs(char **array, int len)
+{
+	int		j;
+	int		i;
+	int		x;
+	char	*res;
+
+	x = 0;
+	res = malloc(len * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = -1;
+	while (array[++i])
+	{
+		j = -1;
+		if (array[i][0] == '<')
 			continue ;
 		while (array[i][++j])
 			res[x++] = array[i][j];
@@ -139,7 +172,7 @@ char	*delete_outputs_from_line(char *cmd_line)
 	}
 	if (len == 0)
 		len++;
-	res = get_string_without_redirections(array, len);
+	res = get_string_without_outputs(array, len);
 	free(tmp);
 	free_array(array);
 	return (res);
@@ -170,7 +203,9 @@ char	*delete_inputs_from_line(char *cmd_line)
 		len += ft_strlen(array[i]);
 		len += 1;
 	}
-	res = get_string_without_redirections(array, len);
+	if (len == 0)
+		len++;
+	res = get_string_without_inputs(array, len);
 	free(tmp);
 	free_array(array);
 	return (res);

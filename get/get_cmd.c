@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 10:45:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 11:24:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*get_cmd(char *cmd_line)
 	char	**temp_array;
 
 	i = -1;
+
 	if (ft_strlen(cmd_line) == 0)
 		return (NULL);
 	temp_array = ft_split_minishell(cmd_line, 0);
