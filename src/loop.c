@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 12:08:01 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:44:36 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	check_ctrl_d(char *read)
 	if (read == 0)
 	{
 		printf("\x1B[32m[MINISHELL]$\x1B[0m exit\n");
+		settings(1);
 		exit(0);
 	}
 }
