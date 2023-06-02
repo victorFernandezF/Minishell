@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 18:19:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 10:46:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
 		return (1);
 	if (cmd->nb_outputs > 0 && cmd->output < 2)
 		return (1);
-	if (cmd->nb_outputs > 0 && cmd->cmd[0] == '\0')
+	if (cmd->nb_outputs > 0 && cmd->cmd == NULL)
 		return (1);
-	if (cmd->nb_inputs > 0 && cmd->cmd[0] == '\0')
+	if (cmd->nb_inputs > 0 && cmd->cmd == NULL)
 		return (1);
 	return (0);
 }
