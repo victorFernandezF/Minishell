@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 11:36:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:20:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,20 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 	no_outputs = delete_outputs_from_line(spanded);
 	no_output_input = delete_inputs_from_line(no_outputs);
 	new->nb_outputs = get_nb_outputs(spanded);
+	new->nb_inputs = get_nb_inputs(spanded);
+	if (ft_strlen(no_output_input) == 0)
+	{
+		free_parser(no_output_input, no_outputs, spanded);
+		return (new);
+	}
 	if (new->nb_outputs > 0)
 		new->output = get_output(spanded, new);
 	new->cmd = get_cmd(no_output_input);
 	new->flags = get_flags(no_outputs);
-	new->nb_inputs = get_nb_inputs(spanded);
 	if (new->nb_inputs > 0)
 		new->input = get_input(spanded, new);
 	new->params = get_parameters(no_output_input);
-	free(no_output_input);
-	free(no_outputs);
-	free(spanded);
+	free_parser(no_output_input, no_outputs, spanded);
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 19:11:36 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:22:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ int		skip_cmd_name(char *str, int start);
 
 void	free_struct(t_cmd *cmd);
 void	free_array(char **array);
+void	free_parser(char *str1, char *str2, char *str3);
+
 
 // L O O P P I N G   A N D   S I G N A L S
 

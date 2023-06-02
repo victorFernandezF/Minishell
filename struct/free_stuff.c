@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:47:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 12:21:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,11 @@ void	free_array(char **array)
 	}
 	free(array);
 	array = NULL;
+}
+
+void	free_parser(char *str1, char *str2, char *str3)
+{
+	free(str1);
+	free(str2);
+	free(str3);
 }
