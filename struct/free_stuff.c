@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 12:21:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/02 13:24:14 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,17 @@ void	free_array(char **array)
 	array = NULL;
 }
 
-void	free_parser(char *str1, char *str2, char *str3)
+/**
+ * @brief An auxiliar function to free every *chars used
+ * 	in parser/fill_struct function.
+ * 
+ * @param no_in_out thing to be freed;
+ * @param no_out thing to be freed;
+ * @param spanded thing to be freed;
+ */
+void	free_parser(char *no_in_out, char *no_out, char *spanded)
 {
-	free(str1);
-	free(str2);
-	free(str3);
+	free(no_in_out);
+	free(no_out);
+	free(spanded);
 }
