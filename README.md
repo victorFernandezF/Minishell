@@ -1,8 +1,12 @@
 # Minishell
 A little shell
 
-struct info so far:
+CLONE REPO
+~~~~
+git clone https://github.com/victorFernandezF/Minishell.git
+~~~~
 
+struct info so far:
 
 t_cmd
 *	cmd -> string with the command (ex: **<ins>echo</ins>** -n hello world > output_1.txt)
