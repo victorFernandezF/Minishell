@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 11:36:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:21:22 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,7 @@ char	**get_parameters(char *cmd_line)
 	if (!param_line)
 		return (NULL);
 	while (cmd_line[i])
-	{
-		if (is_env_var(cmd_line[i]))
-			i = skip_characters(cmd_line, i);
-		else
-			param_line[j++] = cmd_line[i++];
-	}
+		param_line[j++] = cmd_line[i++];
 	param_line[j] = '\0';
 	param_array = ft_split_minishell(param_line, 0);
 	free(param_line);
