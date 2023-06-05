@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 18:36:41 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:03:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param str String with env var name starrting with '$'
  * @return String with the enviroment var value.
  */
-char	*transforming(char *env_name)
+char	*transforming(char *env_name, t_env *envar)
 {
 	int		i;
 	int		j;
@@ -34,7 +34,7 @@ char	*transforming(char *env_name)
 	while (env_name[++i])
 		temp[j++] = env_name[i];
 	temp[i] = '\0';
-	env = getenv(temp);
+	env = find_env_from_srruct(envar, temp);
 	free(temp);
 	if (env == NULL)
 		return (env_name);

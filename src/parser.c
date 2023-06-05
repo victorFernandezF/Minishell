@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 12:20:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 10:56:46 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param command An string whith the given command
  * @return The given struct filled with the datas from line.
  */
-t_cmd	*fill_struct(t_cmd *tmp, char *command)
+t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 {
 	t_cmd	*new;
 	char	*spanded;
@@ -27,7 +27,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
 	char	*no_output_input;
 
 	new = tmp;
-	spanded = spand_all_env_vasr(command);
+	spanded = spand_all_env_vasr(command, envar);
 	no_outputs = delete_outputs_from_line(spanded);
 	no_output_input = delete_inputs_from_line(no_outputs);
 	new->nb_outputs = get_nb_outputs(spanded);
@@ -56,7 +56,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command)
  * @param cmd_line Line with the command 
  * @return Given struct whith all elements from cmd_line.
  */
-t_cmd	*start_parser(t_cmd *cmd, char *cmd_line)
+t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 {
 	int		i;
 	int		nb_cmd;
@@ -65,7 +65,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line)
 	nb_cmd = get_nb_cmd(cmd_line);
 	cmd->nb_cmd = nb_cmd;
 	command = ft_split(cmd_line, '|');
-	cmd = fill_struct(cmd, command[0]);
+	cmd = fill_struct(cmd, command[0], envar);
 	i = 0;
 	if (nb_cmd > 1)
 		while (command[++i] != NULL)

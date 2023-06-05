@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 18:51:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 10:46:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*del_last_quote(char *str)
 	}
 	str[i] = '\0';
 	return (res);
-} 
+}
 
 /**
  * @brief Calculates the necesary amount of chars to create a
@@ -64,7 +64,7 @@ static int	get_total_len(char **array)
  * @param cmd_line the line with the command.
  * @return a line with the spanded env vars. 
  */
-static char	*convert_env_var_in_its_value(char *cmd_line)
+static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 {
 	char	*tmp;
 	char	*no_end_quotes;
@@ -79,7 +79,7 @@ static char	*convert_env_var_in_its_value(char *cmd_line)
 	if (tmp[ft_strlen(tmp) - 1] == 34)
 		add_last_quote = 1;
 	no_end_quotes = del_last_quote(tmp);
-	env = transforming(tmp);
+	env = transforming(tmp, envar);
 	final = fill_string_redirection(cmd_line, env, add_last_quote);
 	free(no_end_quotes);
 	free(cmd_line);
@@ -94,7 +94,7 @@ static char	*convert_env_var_in_its_value(char *cmd_line)
  * @return The command line with the env vars spanded 
  * 	(their value instead or the var name)
  */
-char	*spand_all_env_vasr(char *cmd_line)
+char	*spand_all_env_vasr(char *cmd_line, t_env *envar)
 {
 	int		i;
 	int		len;
@@ -109,7 +109,7 @@ char	*spand_all_env_vasr(char *cmd_line)
 	{
 		if (is_there_env_var(array[i]))
 		{
-			temp = convert_env_var_in_its_value(array[i]);
+			temp = convert_env_var_in_its_value(array[i], envar);
 			array[i] = temp;
 		}
 	}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
+#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/05 08:33:19 by fortega-         ###   ########.fr        #
+#    Updated: 2023/06/05 10:50:01 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC 	= 	src/loop.c \
 			get/get_parameters.c \
 			env_vars/spander.c \
 			env_vars/env_redirections.c \
+			env_vars/env_var_utils.c \
 			utils/utils_checks_1.c \
 			utils/utils_checks_2.c \
 			utils/utils_skip.c \

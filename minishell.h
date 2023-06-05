@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 08:35:46 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:01:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_env
 // S T R U C T   S T U F F 
 
 t_cmd	*init_struct(t_cmd *structure);
-t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *cmd_line, int id, int nb);
+t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int nb, int id, t_env *envar);
 
 // I N I T I A L   C H E C K S
 
@@ -74,17 +74,18 @@ int		check_invalid_characters(char *str);
 
 //	P A R S E R 
 
-t_cmd	*start_parser(t_cmd *cmd, char *cmd_line);
-t_cmd	*fill_struct(t_cmd *tmp, char *command);
+t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar);
+t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar);
 void	settings(int set);
 
 // E N V I R O M E N T   V A R S 
 
-char	*spand_all_env_vasr( char *str);
+char	*spand_all_env_vasr(char *cmd_line, t_env *envar);
 char	**check_env_redirection(char **output);
-char	*transforming(char *str);
+char	*transforming(char *env_name, t_env *envar);
 char	*get_temporal_redirection(char *redirection);
 char	*fill_string_redirection(char *redirection, char *env, int flag);
+char	*find_env_from_srruct(t_env *envar, char *tmp);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
@@ -135,6 +136,7 @@ char	**ft_split_minishell(char *str, int quot);
 int		count_words_minishell(char *str);
 int		strlen_starting_in(char *str, int i);
 int		get_next_char(char *str, int i);
+int		are_str_equals(char *str1, char *str2);
 
 //	F R E E   S T U F F 
 
