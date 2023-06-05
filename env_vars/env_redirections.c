@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 11:12:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:42:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ char	*fill_string_redirection(char *redirection, char *env, int flag)
 	if (flag == 1)
 		len++;
 	redi = malloc((len + 1) * sizeof(char));
+	while (redirection[++i])
+		if (redirection[i] == 39)
+			redirection[i] = 34;
+	i = -1;
 	while (!is_env_var(redirection[++i]))
 		redi[i] = redirection[i];
 	while (env[++j])

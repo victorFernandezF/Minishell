@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 10:46:42 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:54:46 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*del_last_quote(char *str)
 	res = malloc(len * sizeof(char));
 	if (!res)
 		return (NULL);
-	while (str[i] != '\0' && str[i] != 34)
+	while (str[i] != '\0' && (str[i] != 34 && str[i] != 39))
 	{
 		res[i] = str[i];
 		i++;
@@ -67,7 +67,6 @@ static int	get_total_len(char **array)
 static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 {
 	char	*tmp;
-	char	*no_end_quotes;
 	int		add_last_quote;
 	char	*env;
 	char	*final;
@@ -78,12 +77,19 @@ static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 		return (NULL);
 	if (tmp[ft_strlen(tmp) - 1] == 34)
 		add_last_quote = 1;
-	no_end_quotes = del_last_quote(tmp);
-	env = transforming(tmp, envar);
+	if (tmp[ft_strlen(tmp) - 1] == 39)
+	{
+		env = del_last_quote(tmp);
+	}
+	else
+	{
+		env = del_last_quote(tmp);
+		env = transforming(tmp, envar);
+	}
 	final = fill_string_redirection(cmd_line, env, add_last_quote);
-	free(no_end_quotes);
 	free(cmd_line);
 	free(tmp);
+	free(env);
 	return (final);
 }
 
