@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 13:54:46 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:12:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static int	get_total_len(char **array)
 static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 {
 	char	*tmp;
+	char	*no_end_quotes;
 	int		add_last_quote;
 	char	*env;
 	char	*final;
@@ -77,20 +78,24 @@ static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 		return (NULL);
 	if (tmp[ft_strlen(tmp) - 1] == 34)
 		add_last_quote = 1;
-	if (tmp[ft_strlen(tmp) - 1] == 39)
-	{
-		env = del_last_quote(tmp);
-	}
-	else
-	{
-		env = del_last_quote(tmp);
-		env = transforming(tmp, envar);
-	}
+	no_end_quotes = del_last_quote(tmp);
+	env = transforming(tmp, envar);
 	final = fill_string_redirection(cmd_line, env, add_last_quote);
+	free(no_end_quotes);
 	free(cmd_line);
 	free(tmp);
-	free(env);
 	return (final);
+}
+
+char	*replaced(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == 39)
+			str[i] = 34;
+	return (str);
 }
 
 /**
@@ -122,5 +127,5 @@ char	*spand_all_env_vasr(char *cmd_line, t_env *envar)
 	len = get_total_len(array);
 	new_line = ft_splitnt(array, len);
 	free_array(array);
-	return (new_line);
+	return (replaced(new_line));
 }
