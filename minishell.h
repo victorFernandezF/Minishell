@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 13:25:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/05 08:35:46 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 
 // S T R U C T
 typedef struct s_cmd	t_cmd;
+typedef struct s_env	t_env;
 
 typedef struct s_cmd
 {
@@ -50,6 +51,13 @@ typedef struct s_cmd
 	int		index;
 	t_cmd	*next;
 }			t_cmd;
+
+typedef struct s_env
+{
+	char	*var;
+	char	**vals;
+	t_env	*next;
+}			t_env;
 
 // S T R U C T   S T U F F 
 
@@ -138,12 +146,20 @@ void	free_parser(char *str1, char *str2, char *str3);
 
 void	mini_loop(char **env);
 void	signal_handler(int sig);
-void	check_ctrl_d(char *read);
+void	check_ctrl_d(char *read, t_env *envars);
 void	rl_replace_line(const char *text, int clear_undo);
 
 //	[T E M P]   L E A K S   &   P R I N T S 
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
+
+// PROCESSING AND EXECUTE
+
+void	processing(t_cmd *cmd, t_env *env);
+t_env	*ft_envar(char **env);
+char	**ft_splitf(char const *s);
+void	freeenv(t_env *env);
+void	freevals(char **vals);
 
 #endif

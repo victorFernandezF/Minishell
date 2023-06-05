@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/01 18:31:55 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/05 08:33:19 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ SRC 	= 	src/loop.c \
 			utils/utils_various_2.c \
 			utils/utils_redirections.c \
 			utils/ft_split_minishell.c \
+			srcexe/processing.c \
+			srcexe/utils/split_first.c \
+			srcexe/envar/envar.c
 	
 OBJS	=	$(SRC:.c=.o)
 LIBFT_PATH 	=  libft/
