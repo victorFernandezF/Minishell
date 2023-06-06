@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 10:38:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:08:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void	settings(int set);
 
 // E N V I R O M E N T   V A R S 
 
-char	*spand_all_env_vasr(char *cmd_line, t_env *envar);
+char	*expand_environment_variables(char *cmd_line, t_env *envar);
 char	**check_env_redirection(char **output);
 char	*transforming(char *env_name, t_env *envar);
-char	*get_temporal_redirection(char *redirection);
+char	*get_env_var_name_including_dollar(char *redirection);
 char	*fill_string_redirection(char *redirection, char *env, int flag);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
 

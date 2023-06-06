@@ -6,12 +6,20 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 10:43:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:13:14 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/**
+ * @brief Checks if a specific word inside an array is between
+ *  simple quotes.
+ * 
+ * @param array Array
+ * @param pos Postition of the word in the array
+ * @return 1 if it is inside simple quotes. 0 if not.
+ */
 int	is_inside_simple_quotes(char **array, int pos)
 {
 	int	i;
@@ -27,6 +35,12 @@ int	is_inside_simple_quotes(char **array, int pos)
 	return (1);
 }
 
+/**
+ * @brief Checks if a simple word is inside simple quotes.
+ * 
+ * @param str Word to be checked
+ * @return 1 if it is between quotes. 0 if not.
+ */
 int	check_simple_quotes(char *str)
 {
 	int	len;

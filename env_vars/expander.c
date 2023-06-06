@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   spander.c                                          :+:      :+:    :+:   */
+/*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 10:48:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:20:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*del_last_quote(char *str)
  * 
  * @param array Array of strings with the words that will be
  *	joined in the string.
- * @return Length that must be the string with every element from the array
+ * @return The length of the future string with every element from the array
  */
 static int	get_total_len(char **array)
 {
@@ -59,35 +59,45 @@ static int	get_total_len(char **array)
 }
 
 /**
- * @brief Converts the enviroment var in its value.
+ * @brief Converts each environment variable in its value.
  * 
  * @param cmd_line the line with the command.
- * @return a line with the spanded env vars. 
+ * @param envar Struct whith the enviroment vars.
+ * @return A line with the expanded env vars. 
  */
 static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 {
-	char	*tmp;
+	char	*env_var_name;
 	char	*no_end_quotes;
 	int		add_last_quote;
 	char	*env;
 	char	*final;
 
 	add_last_quote = 0;
-	tmp = get_temporal_redirection(cmd_line);
-	if (!tmp)
+	env_var_name = get_env_var_name_including_dollar(cmd_line);
+	if (!env_var_name)
 		return (NULL);
-	if (tmp[ft_strlen(tmp) - 1] == 34 || tmp[ft_strlen(tmp) - 1] == 39)
+	if (env_var_name[ft_strlen(env_var_name) - 1] == 34
+		|| env_var_name[ft_strlen(env_var_name) - 1] == 39)
 		add_last_quote = 1;
-	no_end_quotes = del_last_quote(tmp);
-	env = transforming(tmp, envar);
+	no_end_quotes = del_last_quote(env_var_name);
+	env = transforming(env_var_name, envar);
 	final = fill_string_redirection(cmd_line, env, add_last_quote);
 	free(no_end_quotes);
 	free(cmd_line);
-	free(tmp);
+	free(env_var_name);
 	return (final);
 }
 
-char	*replaced(char *str)
+/**
+ * @brief Replaces every simple quote (ascii: 39) found in string
+ *  by double quotes (ascii 34) which are managed by ft_split_minishell
+ *  in future functions
+ * 
+ * @param str String.
+ * @return The given string with quotes replaced. 
+ */
+static char	*replace_simple_quotes_by_double_quotes(char *str)
 {
 	int	i;
 
@@ -99,13 +109,13 @@ char	*replaced(char *str)
 }
 
 /**
- * @brief Spands the enviroment var found in the command line. 
+ * @brief Expands the environment var found in the command line. 
  * 
  * @param cmd_line line with the command.
- * @return The command line with the env vars spanded 
+ * @return The command line with the env vars expanded 
  * 	(their value instead or the var name)
  */
-char	*spand_all_env_vasr(char *cmd_line, t_env *envar)
+char	*expand_environment_variables(char *cmd_line, t_env *envar)
 {
 	int		i;
 	int		len;
@@ -130,5 +140,5 @@ char	*spand_all_env_vasr(char *cmd_line, t_env *envar)
 	len = get_total_len(array);
 	new_line = ft_splitnt(array, len);
 	free_array(array);
-	return (replaced(new_line));
+	return (replace_simple_quotes_by_double_quotes(new_line));
 }

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 13:42:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:07:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,17 @@ char	*fill_string_redirection(char *redirection, char *env, int flag)
  * @brief Creates a substring with the content of the original 
  * 	string from the env var character '$' to the end of string.
  * 
- * @param redirection String with the redirection.
+ * @param str String with the str.
  * @return The substring created. 
  */
-char	*get_temporal_redirection(char *redirection)
+char	*get_env_var_name_including_dollar(char *str)
 {
 	int		j;
 	char	*tmp;
 
 	j = 0;
-	while (!is_env_var(redirection[j]))
+	while (!is_env_var(str[j]))
 		j++;
-	tmp = ft_substr(redirection, j, ft_strlen(redirection) - j);
+	tmp = ft_substr(str, j, ft_strlen(str) - j);
 	return (tmp);
 }
