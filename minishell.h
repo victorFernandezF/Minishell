@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 18:48:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:04:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_env
 // S T R U C T   S T U F F 
 
 t_cmd	*init_struct(t_cmd *structure);
-t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int nb, int id, t_env *envar);
+t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int id, t_env *envar);
 
 // I N I T I A L   C H E C K S
 

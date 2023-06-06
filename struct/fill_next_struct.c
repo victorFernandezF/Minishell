@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:18:37 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 11:02:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:04:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ static t_cmd	*ft_lstadd_back_minishell(t_cmd *cmd, t_cmd *new)
  * @param index index of the new node we are creating.
  * @return The list created.  
  */
-t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int nb, int id, t_env *envar)
+t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int id, t_env *envar)
 {
-	t_cmd	*aux;
+	t_cmd		*aux;
 
 	aux = NULL;
 	aux = init_struct(aux);
 	aux = fill_struct(aux, str, envar);
 	aux->index = id;
-	aux->nb_cmd = nb;
+	aux->nb_cmd = cmd->nb_cmd;
 	cmd = ft_lstadd_back_minishell(cmd, aux);
 	return (cmd);
 }
