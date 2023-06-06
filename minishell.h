@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 18:36:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:48:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);
 char	*delete_outputs_from_line(char *cmd_line);
 char	*delete_inputs_from_line(char *str);
-
 void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
 void	print_error_file_ambiguous(char	*str);

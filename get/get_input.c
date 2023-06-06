@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 11:36:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:50:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ int	*input_filename_to_fd_converter(char **input, int nb_inputs)
 		return (NULL);
 	while (++i < nb_inputs)
 	{
-
 		res[i] = open(input[i], O_RDWR);
 		if (res[i] == -1)
 		{

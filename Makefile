@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/06 18:41:00 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/06 18:45:00 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRC 	= 	src/loop.c \
 			utils/utils_various_2.c \
 			utils/utils_redirections.c \
 			utils/utils_env_vars.c \
-			utils/ft_split_minishell.c \
+			utils/utils_split_quotes.c \
 			srcexe/processing.c \
 			srcexe/utils/split_first.c \
 			srcexe/envar/envar.c
