@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 11:08:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:36:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,12 @@ void	settings(int set);
 
 // E N V I R O M E N T   V A R S 
 
+char	*replace_simple_quotes_by_double_quotes(char *str);
 char	*expand_environment_variables(char *cmd_line, t_env *envar);
 char	**check_env_redirection(char **output);
-char	*transforming(char *env_name, t_env *envar);
+char	*env_var_transformation(char *env_name, t_env *envar);
 char	*get_env_var_name_including_dollar(char *redirection);
-char	*fill_string_redirection(char *redirection, char *env, int flag);
+char	*fill_string_with_env_var_value(char *redirection, char *env, int flag);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
@@ -139,6 +140,7 @@ int		get_next_char(char *str, int i);
 int		are_str_equals(char *str1, char *str2);
 int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
+int		get_total_length_of_words_in_array(char **array);
 
 //	F R E E   S T U F F 
 
@@ -157,6 +159,7 @@ void	rl_replace_line(const char *text, int clear_undo);
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
+void	print_array(char **array);
 
 // PROCESSING AND EXECUTE
 

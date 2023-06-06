@@ -6,11 +6,30 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 11:13:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:35:34 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+/**
+ * @brief Replaces every simple quote (ascii: 39) found in string
+ *  by double quotes (ascii 34) which are managed by ft_split_minishell
+ *  in future functions
+ * 
+ * @param str String.
+ * @return The given string with quotes replaced. 
+ */
+char	*replace_simple_quotes_by_double_quotes(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == 39)
+			str[i] = 34;
+	return (str);
+}
 
 /**
  * @brief Checks if a specific word inside an array is between
@@ -88,4 +107,30 @@ char	*find_env_from_srruct(t_env *envar, char *name)
 		vari = tmp;
 	}
 	return (NULL);
+}
+
+/**
+ * @brief Calculates the necesary amount of chars to create a
+ *	null terminated string with the elements of an array separated by spaces.
+ * 
+ * @param array Array of strings with the words that will be
+ *	joined in the string.
+ * @return The length of the future string with every element from the array
+ */
+int	get_total_length_of_words_in_array(char **array)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = -1;
+	len = 0;
+	while (array[++i])
+	{
+		j = -1;
+		while (array[i][++j])
+			len++;
+	}
+	len += i;
+	return (len);
 }

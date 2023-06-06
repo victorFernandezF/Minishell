@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 11:07:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:21:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param str String with env var name starrting with '$'
  * @return String with the enviroment var value.
  */
-char	*transforming(char *env_name, t_env *envar)
+char	*env_var_transformation(char *env_name, t_env *envar)
 {
 	int		i;
 	int		j;
@@ -45,11 +45,11 @@ char	*transforming(char *env_name, t_env *envar)
  * @brief Joins the first part os original string untill env var char '$'
  *	and the enviroment var value. (str: redir/ env: -R -> redir/-R)
  * 
- * @param redirection String with inputs/outputs.
+ * @param env_name String with inputs/outputs.
  * @param env String with the value of the env var.
  * @return String with the two strings joined.
  */
-char	*fill_string_redirection(char *redirection, char *env, int flag)
+char	*fill_string_with_env_var_value(char *env_name, char *env, int flag)
 {
 	int		i;
 	int		j;
@@ -59,25 +59,19 @@ char	*fill_string_redirection(char *redirection, char *env, int flag)
 	len = 0;
 	i = -1;
 	j = -1;
-	while (!is_env_var(redirection[len]))
+	while (!is_env_var(env_name[len]))
 		len++;
 	len += ft_strlen(env);
 	if (flag == 1)
 		len++;
 	redi = malloc((len + 1) * sizeof(char));
-	while (redirection[++i])
-		if (redirection[i] == 39)
-			redirection[i] = 34;
-	i = -1;
-	while (!is_env_var(redirection[++i]))
-		redi[i] = redirection[i];
+	env_name = replace_simple_quotes_by_double_quotes(env_name);
+	while (!is_env_var(env_name[++i]))
+		redi[i] = env_name[i];
 	while (env[++j])
 		redi[i++] = env[j];
 	if (flag == 1)
-	{
-		redi[i] = 34;
-		i++;
-	}
+		redi[i++] = 34;
 	redi[i] = '\0';
 	return (redi);
 }

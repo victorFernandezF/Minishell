@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/29 18:30:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:26:13 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 	printf("\n");
 	if (cmd->next != NULL)
 		print_test(str, cmd->next, 1);
+}
+
+void	print_array(char **array)
+{
+	int	i;
+
+	i = -1;
+	printf("\nARRAY PRITNTATION\n");
+	while (array[++i])
+		printf("%sarr[%i]:%s %s\n", G, i, W, array[i]);
 }
 
 /**
