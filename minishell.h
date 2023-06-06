@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 11:01:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:38:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ int		count_words_minishell(char *str);
 int		strlen_starting_in(char *str, int i);
 int		get_next_char(char *str, int i);
 int		are_str_equals(char *str1, char *str2);
+int		is_inside_simple_quotes(char **array, int pos);
+int		check_simple_quotes(char *str);
 
 //	F R E E   S T U F F 
 

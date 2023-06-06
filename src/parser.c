@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 11:14:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:48:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,29 @@
 t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 {
 	t_cmd	*new;
-	char	*spanded;
+	char	*expanded;
 	char	*no_outputs;
 	char	*no_output_input;
 
 	new = tmp;
-	spanded = spand_all_env_vasr(command, envar);
-	no_outputs = delete_outputs_from_line(spanded);
+	expanded = spand_all_env_vasr(command, envar);
+	no_outputs = delete_outputs_from_line(expanded);
 	no_output_input = delete_inputs_from_line(no_outputs);
-	new->nb_outputs = get_nb_outputs(spanded);
-	new->nb_inputs = get_nb_inputs(spanded);
+	new->nb_outputs = get_nb_outputs(expanded);
+	new->nb_inputs = get_nb_inputs(expanded);
 	if (ft_strlen(no_output_input) == 0)
 	{
-		free_parser(no_output_input, no_outputs, spanded);
+		free_parser(no_output_input, no_outputs, expanded);
 		return (new);
 	}
 	if (new->nb_outputs > 0)
-		new->output = get_output(spanded, new);
+		new->output = get_output(expanded, new);
 	new->cmd = get_cmd(no_output_input);
 	new->flags = get_flags(no_outputs);
 	if (new->nb_inputs > 0)
-		new->input = get_input(spanded, new);
+		new->input = get_input(expanded, new);
 	new->params = get_parameters(no_output_input);
-	free_parser(no_output_input, no_outputs, spanded);
+	free_parser(no_output_input, no_outputs, expanded);
 	return (new);
 }
 

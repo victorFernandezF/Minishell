@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 19:12:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:48:56 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 	tmp = get_temporal_redirection(cmd_line);
 	if (!tmp)
 		return (NULL);
-	if (tmp[ft_strlen(tmp) - 1] == 34)
+	if (tmp[ft_strlen(tmp) - 1] == 34 || tmp[ft_strlen(tmp) - 1] == 39)
 		add_last_quote = 1;
 	no_end_quotes = del_last_quote(tmp);
 	env = transforming(tmp, envar);
@@ -118,8 +118,11 @@ char	*spand_all_env_vasr(char *cmd_line, t_env *envar)
 	i = -1;
 	while (array[++i])
 	{
-		if (is_there_env_var(array[i]))
+		if (is_there_env_var(array[i])
+			&& !is_inside_simple_quotes(array, i))
 		{
+			if (check_simple_quotes(array[i]))
+				continue ;
 			temp = convert_env_var_in_its_value(array[i], envar);
 			array[i] = temp;
 		}
