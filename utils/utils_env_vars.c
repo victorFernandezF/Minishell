@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 18:49:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:14:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,21 @@ char	*replace_simple_quotes_by_double_quotes(char *str)
 int	is_inside_simple_quotes(char **array, int pos)
 {
 	int	i;
+	int	j;
 	int	nb_q;
 
 	i = -1;
 	nb_q = 0;
 	while (++i < pos)
+	{
 		if (are_there_char(array[i], 39))
-			nb_q++;
+		{
+			j = -1;
+			while (array[i][++j])
+				if (array[i][j] == 39)
+					nb_q++;
+		}
+	}
 	if (nb_q % 2 == 0)
 		return (0);
 	return (1);
