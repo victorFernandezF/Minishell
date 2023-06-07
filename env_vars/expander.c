@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/07 11:07:51 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:19:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 	char	*env;
 	char	*final;
 
-	printf("convert %s\n", cmd_line);
 	add_last_quote = 0;
 	env_var_name = get_env_var_name_including_dollar(cmd_line);
 	if (!env_var_name)
