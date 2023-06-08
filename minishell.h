@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/08 18:17:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/08 19:18:00 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	rl_replace_line(const char *text, int clear_undo);
 
 int		heredoc_detector(char *str);
 char	*get_delimiter(char *str);
-t_cmd	*heredoc(t_cmd *cmd, char *cmd_line);
+char	*heredoc(char *cmd_line);
 
 
 
