@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 19:11:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:16:41 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ void	mini_loop(char **env)
 			add_history(read);
 		if (check_invalid_characters(read) == 0 && read[0])
 		{
+			if (heredoc_detector(read))
+				cmd = heredoc(cmd, read);
 			cmd = init_struct(cmd);
 			cmd = start_parser(cmd, read, envars);
+				//t_cmd = heredoc(cmd);
 			if (check_empty_cmd_or_bad_input_output(cmd) == 0)
 			{
 				print_test(read, cmd, 0);
