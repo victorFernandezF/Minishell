@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 10:14:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:44:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	check_ctrl_d(char *read, t_env *envars)
 {
 	if (read == 0)
 	{
-		freeenv(envars);
+		if (envars != NULL)
+			freeenv(envars);
 		printf("\x1B[32m[MINISHELL]$\x1B[0m exit\n");
 		settings(1);
 		exit(0);

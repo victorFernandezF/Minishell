@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 12:30:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:49:26 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ char	*heredoc(char *cmd_line)
 	while (1)
 	{
 		read_here = readline(">");
+		if (read_here == 0)
+			break ;
 		write(heredoc_fd, read_here, ft_strlen(read_here));
 		write(heredoc_fd, "\n", 1);
 		free(read_here);
