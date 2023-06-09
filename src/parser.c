@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 19:05:03 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:04:29 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,15 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 	nb_cmd = get_nb_cmd(cmd_line);
 	cmd->nb_cmd = nb_cmd;
 	command = ft_split(cmd_line, '|');
+	i = -1;
+	while (command[++i])
+	{
+		if (heredoc_detector(command[i]))
+		{
+			free(command[i]);
+			command[i] = heredoc(command[i]);
+		}
+	}
 	cmd = fill_struct(cmd, command[0], envar);
 	i = 0;
 	if (nb_cmd > 1)

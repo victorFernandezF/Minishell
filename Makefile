@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/08 18:11:25 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/09 11:02:45 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC 	= 	src/loop.c \
 			get/get_output.c \
 			get/get_input.c \
 			get/get_parameters.c \
-			get/heredoc.c \
+			heredoc/heredoc.c \
+			heredoc/heredoc_utils.c \
 			env_vars/expander.c \
 			env_vars/env_redirections.c \
 			utils/utils_checks_1.c \
@@ -67,7 +68,12 @@ lib:
 
 nice_text:
 	@echo "$(B)"
-	@echo "Minishell / parser"
+	@echo "  ██╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗ "    
+	@echo " ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║  "   
+	@echo " ██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     "
+	@echo " ██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     "
+	@echo " ██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗ "
+	@echo " ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ "                                                             	
 	@echo "$(E)"
 
 norminette:
