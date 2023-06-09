@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 12:15:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:20:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*replace_heredoc(char *line)
 	char	**arr_tmp;
 	char	*new;
 
-	temp = create_temp_var(line);
+	temp = ft_copy_str(line);
 	i = -1;
 	temp = convert_heredoc_in_input(temp);
 	arr_tmp = ft_split_minishell(temp, 0);
@@ -62,13 +62,13 @@ int	heredoc_detector(char *str)
 	return (0);
 }
 
-/**
+/* *
  * @brief Copy a string but doing the malloc stuff first.
  * 
  * @param str_to_copy The string to be copied.
  * @return A mallocked string with the value of str_to_copy
  */
-char	*create_temp_var(char *str_to_copy)
+/* char	*ft_copy_str(char *str_to_copy)
 {
 	int		len;
 	char	*copy;
@@ -79,7 +79,7 @@ char	*create_temp_var(char *str_to_copy)
 		return (NULL);
 	copy = ft_strcpy(copy, str_to_copy);
 	return (copy);
-}
+} */
 
 /**
  * @brief Returns the delimiter of the heredoc.
@@ -133,7 +133,7 @@ char	*heredoc(char *cmd_line)
 	char	*new_line;
 	int		heredoc_fd;
 
-	tmp = create_temp_var(cmd_line);
+	tmp = ft_copy_str(cmd_line);
 	delimiter = get_delimiter(tmp);
 	heredoc_fd = open("#tmp", O_CREAT | O_RDWR | O_APPEND, 0644);
 	while (1)
