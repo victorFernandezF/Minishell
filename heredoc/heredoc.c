@@ -6,12 +6,18 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 11:04:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:22:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../minishell.h"
 
+/**
+ * @brief Replace heredoc by normal input in the command line.
+ * 
+ * @param line Commmand_line.
+ * @return A string with the new command line.
+ */
 static char	*replace_heredoc(char *line)
 {
 	int		i;
@@ -39,6 +45,12 @@ static char	*replace_heredoc(char *line)
 	return (new);
 }
 
+/**
+ * @brief Checks if there is an heredoc sign "<<"
+ * 
+ * @param str String with the command.
+ * @return 1 if there are a heredoc. 0 if not.
+ */
 int	heredoc_detector(char *str)
 {
 	int		i;
@@ -50,19 +62,31 @@ int	heredoc_detector(char *str)
 	return (0);
 }
 
-char	*create_temp_var(char *cmd_line)
+/**
+ * @brief Copy a string but doing the malloc stuff first.
+ * 
+ * @param str_to_copy The string to be copied.
+ * @return A mallocked string with the value of str_to_copy
+ */
+char	*create_temp_var(char *str_to_copy)
 {
 	int		len;
-	char	*temp;
+	char	*copy;
 
-	len = ft_strlen(cmd_line);
-	temp = malloc(len * sizeof(char));
-	if (!temp)
+	len = ft_strlen(str_to_copy);
+	copy = malloc(len * sizeof(char));
+	if (!tecopymcopyp)
 		return (NULL);
-	temp = ft_strcpy(temp, cmd_line);
-	return (temp);
+	copy = ft_strcpy(copy, str_to_copy);
+	return (copy);
 }
 
+/**
+ * @brief Returns the delimiter of the heredoc.
+ * 
+ * @param str Command line. 
+ * @return A string with the delimiter of the heredoc.
+ */
 char	*get_delimiter(char *str)
 {
 	int		i;
@@ -92,6 +116,15 @@ char	*get_delimiter(char *str)
 	return (NULL);
 }
 
+/**
+ * @brief Makes the heredoc magic. creates a temp file where
+ * all heredocs inputs are stored. After that transform the
+ * heredoc in a normal input in order to be read in the future.
+ * 
+ * @param cmd_line Command line.
+ * @return A string with command line transforming the heredoc 
+ * into a normal input.
+ */
 char	*heredoc(char *cmd_line)
 {
 	char	*delimiter;
