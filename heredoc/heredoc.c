@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 11:22:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:15:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*create_temp_var(char *str_to_copy)
 
 	len = ft_strlen(str_to_copy);
 	copy = malloc(len * sizeof(char));
-	if (!tecopymcopyp)
+	if (!copy)
 		return (NULL);
 	copy = ft_strcpy(copy, str_to_copy);
 	return (copy);
