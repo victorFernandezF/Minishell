@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 12:22:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:35:05 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,5 +175,6 @@ t_env	*ft_envar(char **env);
 char	**ft_splitf(char const *s);
 void	freeenv(t_env *env);
 void	freevals(char **vals);
+int		ft_cd(t_cmd *cmd, t_env *env);
 
 #endif
