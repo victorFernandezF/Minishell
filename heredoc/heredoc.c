@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 12:49:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:08:51 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,16 @@ char	*get_delimiter(char *str)
 	return (NULL);
 }
 
+int	open_heredoc_file(void)
+{
+	int	fd;
+
+	if (open("#tmp", O_RDONLY) > 0)
+		unlink("#tmp");
+	fd = open("#tmp", O_CREAT | O_RDWR | O_APPEND, 0644);
+	return (fd);
+}
+
 /**
  * @brief Makes the heredoc magic. creates a temp file where
  * all heredocs inputs are stored. After that transform the
@@ -116,7 +126,7 @@ char	*heredoc(char *cmd_line)
 
 	tmp = ft_copy_str(cmd_line);
 	delimiter = get_delimiter(tmp);
-	heredoc_fd = open("#tmp", O_CREAT | O_RDWR | O_APPEND, 0644);
+	heredoc_fd = open_heredoc_file();
 	while (1)
 	{
 		read_here = readline(">");
