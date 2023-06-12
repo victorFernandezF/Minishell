@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/12 14:35:05 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:13:46 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ char	*get_delimiter(char *str);
 char	*heredoc(char *cmd_line);
 char	*convert_heredoc_in_input(char *temp);
 void	free_heredoc_stuff(char *temp, char **arr_tmp);
+char	*heredoc_signs_without_spaces(char *temp);
+
 
 //	[T E M P]   L E A K S   &   P R I N T S 
 

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 11:04:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:16:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,34 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 	return (new);
 }
 
+char	*manage_heredoc(char *str)
+{
+	int		i;
+	int		len;
+	char	*new;
+	char	*tmp;
+	char	**arr;
+
+	i = -1;
+	tmp = heredoc_signs_without_spaces(str);
+	arr = ft_split_minishell(tmp, 0);
+	free(tmp);
+	while (arr[++i])
+	{
+		if (arr[i][0] == '<' && arr[i][1] == '<')
+		{
+			tmp = ft_copy_str(arr[i]);
+			free(arr[i]);
+			arr[i] = heredoc(tmp);
+			free (tmp);
+		}
+	}
+	len = get_total_length_of_words_in_array(arr);
+	new = ft_splitnt(arr, len);
+	free_array(arr);
+	return (new);
+}
+
 /**
  * @brief Separates the different parts of the commmand line
  *	and save them in the given structure.
@@ -60,6 +88,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 {
 	int		i;
 	int		nb_cmd;
+	char	*tmp;
 	char	**command;
 
 	nb_cmd = get_nb_cmd(cmd_line);
@@ -70,8 +99,9 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 	{
 		if (heredoc_detector(command[i]))
 		{
+			tmp = command[i];
 			free(command[i]);
-			command[i] = heredoc(command[i]);
+			command[i] = manage_heredoc(tmp);
 		}
 	}
 	cmd = fill_struct(cmd, command[0], envar);

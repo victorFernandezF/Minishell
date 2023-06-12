@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:01:12 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 12:29:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:35:15 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,36 @@ char	*convert_heredoc_in_input(char *temp)
 		if (temp[i] == '<' && temp [i + 1] == '<')
 			if (temp[i + 2] == ' ')
 				temp[i + 2] = '_';
+	return (temp);
+}
+
+char	*heredoc_signs_without_spaces(char *temp)
+{
+	int		i;
+	int		j;
+	int		nb;
+	int		len;
+	char	*new;
+
+	nb = 0;
+	i = -1;
+	j = 0;
+	while (temp[++i])
+		if (temp[i] == '<' && temp [i + 1] == '<')
+			if (temp[i + 2] == ' ')
+				nb++;
+	len = ft_strlen(temp) - nb;
+	new = malloc (len * sizeof(char));
+	if (!new)
+		return (NULL);
+	i = -1;
+	while (temp[++i])
+	{
+		if (temp[i] == ' ' && temp[i - 1] == '<' && temp[i - 2] == '<')
+			continue ;
+		new[j++] = temp[i];
+	}
+	new[j] = '\0';
+	printf("before %s\n", new);
 	return (temp);
 }
