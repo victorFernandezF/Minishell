@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/12 14:25:19 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:58:29 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,28 @@ int	check_bi(t_cmd *cmd, t_env *env)
 void	processing(t_cmd *cmd, t_env *env)
 {
 	int	out;
+/*	int		i;
+	t_env	*vari;
+	t_env	*tmp;
 
-	(void)env;
+	(void)cmd;
+	vari = env;
+	while (vari)
+	{
+		i = 0;
+		printf("Variable:\n%s\n", vari->var);
+		printf("Valores: \n");
+		while (vari->vals[i])
+		{
+			printf("%i. %s\n", i, vari->vals[i]);
+			i++;
+		}
+		tmp = vari->next;
+		vari = tmp;
+	}
+*/
+
+	//(void)env;
 	if (cmd->nb_cmd == 1)
 	{
 		if (check_bi(cmd, env) == 0)

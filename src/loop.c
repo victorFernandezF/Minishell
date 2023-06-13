@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/12 19:13:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:01:40 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief Controls the signal 'SIGINT' so when user press ctrl-c
  * 	a new line will be displayed.
- * 
+ *
  * @param sig Signal id.
  */
 void	signal_handler(int sig)
@@ -31,8 +31,8 @@ void	signal_handler(int sig)
 
 /**
  * @brief checks if readline takes EOF character which means
- * 	that shell must exit. (ctrl-d: exit the program). 
- * 
+ * 	that shell must exit. (ctrl-d: exit the program).
+ *
  * @param read The read line.
  */
 void	check_ctrl_d(char *read, t_env *envars)
@@ -50,7 +50,7 @@ void	check_ctrl_d(char *read, t_env *envars)
 /**
  * @brief A loop that shows the prompt and wait for a command
  *  from the user.
- * 
+ *
  */
 void	mini_loop(char **env)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/12 18:13:46 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:14:20 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define BG	"\x1B[92m"
 # define BB	"\x1B[94m"
 # define Y	"\x1B[33m"
-# define B	"\x1B[36m"	
+# define B	"\x1B[36m"
 # define W	"\x1B[0m"
 # define BY	"\x1B[93m"
 # define BM	"\x1B[95m"
@@ -59,7 +59,7 @@ typedef struct s_env
 	t_env	*next;
 }			t_env;
 
-// S T R U C T   S T U F F 
+// S T R U C T   S T U F F
 
 t_cmd	*init_struct(t_cmd *structure);
 t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int id, t_env *envar);
@@ -72,13 +72,13 @@ int		check_bad_redirection_chars(char *str, int i);
 int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
 int		check_invalid_characters(char *str);
 
-//	P A R S E R 
+//	P A R S E R
 
 t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar);
 t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar);
 void	settings(int set);
 
-// E N V I R O M E N T   V A R S 
+// E N V I R O M E N T   V A R S
 
 char	*replace_simple_quotes_by_double_quotes(char *str);
 char	*expand_environment_variables(char *cmd_line, t_env *envar);
@@ -141,7 +141,7 @@ int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
 int		get_total_length_of_words_in_array(char **array);
 
-//	F R E E   S T U F F 
+//	F R E E   S T U F F
 
 void	free_struct(t_cmd *cmd);
 void	free_array(char **array);
@@ -164,7 +164,7 @@ void	free_heredoc_stuff(char *temp, char **arr_tmp);
 char	*heredoc_signs_without_spaces(char *temp);
 
 
-//	[T E M P]   L E A K S   &   P R I N T S 
+//	[T E M P]   L E A K S   &   P R I N T S
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
@@ -178,5 +178,6 @@ char	**ft_splitf(char const *s);
 void	freeenv(t_env *env);
 void	freevals(char **vals);
 int		ft_cd(t_cmd *cmd, t_env *env);
+int		cmd_error(char *cmd, char *error);
 
 #endif

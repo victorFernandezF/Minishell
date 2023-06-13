@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/12 17:53:37 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/13 14:09:49 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,10 @@ SRC 	= 	src/loop.c \
 			utils/utils_split_quotes.c \
 			srcexe/processing.c \
 			srcexe/utils/split_first.c \
+			srcexe/utils/errors.c \
 			srcexe/envar/envar.c \
 			srcexe/builtin/ft_cd.c
-	
+
 OBJS	=	$(SRC:.c=.o)
 LIBFT_PATH 	=  libft/
 LIBFT		= -L./libft -lft
@@ -50,7 +51,7 @@ LIBFT		= libft/libft.a
 # T E X T   S T U F F
 G		= \033[0;92m
 R		= \033[0;31m
-B		= \033[0;96m	
+B		= \033[0;96m
 Y		= \033[0;33m
 WY		= \033[0;93m
 M		= \033[0;95m
@@ -69,12 +70,12 @@ lib:
 
 nice_text:
 	@echo "$(Y)"
-	@echo " ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗ "    
-	@echo " ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║  "   
+	@echo " ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗ "
+	@echo " ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║  "
 	@echo " ██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     "
 	@echo " ██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     "
 	@echo " ██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗ "
-	@echo " ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ "                                                             	
+	@echo " ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ "
 	@echo "$(E)"
 
 norminette:
@@ -88,7 +89,7 @@ norminette:
 
 $(NAME): $(OBJS)
 	@mkdir -p redir
-	@gcc $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFT) $(READLINE_LIB) -o $(NAME) 
+	@gcc $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFT) $(READLINE_LIB) -o $(NAME)
 	@echo "$(Y)0-----------------------0"
 	@echo "$(Y)|$(G)    MINISHELL CREATED $(Y) |"
 	@echo "$(Y)0-----------------------0"
@@ -105,7 +106,7 @@ fclean: clean
 	@echo "$(E)"
 	@/bin/rm -f $(NAME)
 	@make -C libft/ fclean
-	@find . -type f ! -name "*.*" ! -name "Makefile" -not -path "./.git/*" -delete	
+	@find . -type f ! -name "*.*" ! -name "Makefile" -not -path "./.git/*" -delete
 
 superclean: fclean
 	@rm -rf redir
