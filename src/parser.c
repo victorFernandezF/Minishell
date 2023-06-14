@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/12 19:16:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:38:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ char	*manage_heredoc(char *str)
 	int		i;
 	int		len;
 	char	*new;
-	char	*tmp;
+	char	*temporal;
 	char	**arr;
 
 	i = -1;
-	tmp = heredoc_signs_without_spaces(str);
-	arr = ft_split_minishell(tmp, 0);
-	free(tmp);
+	temporal = heredoc_signs_without_spaces(str);
+	arr = ft_split_minishell(temporal, 0);
+	free(temporal);
 	while (arr[++i])
 	{
 		if (arr[i][0] == '<' && arr[i][1] == '<')
 		{
-			tmp = ft_copy_str(arr[i]);
+			new = ft_copy_str(arr[i]);
 			free(arr[i]);
-			arr[i] = heredoc(tmp);
-			free (tmp);
+			arr[i] = heredoc(new);
+			free (new);
 		}
 	}
 	len = get_total_length_of_words_in_array(arr);

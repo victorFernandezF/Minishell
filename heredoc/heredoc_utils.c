@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:01:12 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/12 18:35:15 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:51:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,17 @@ char	*convert_heredoc_in_input(char *temp)
 	return (temp);
 }
 
+int	check_heredoc_stop_condition(char *read_here, char *delimiter)
+{	
+	if (are_str_equals(read_here, delimiter) || read_here == 0)
+	{
+		if (are_str_equals(read_here, delimiter))
+			free(read_here);
+		return (1);
+	}
+	return (0);
+}
+
 char	*heredoc_signs_without_spaces(char *temp)
 {
 	int		i;
@@ -78,6 +89,5 @@ char	*heredoc_signs_without_spaces(char *temp)
 		new[j++] = temp[i];
 	}
 	new[j] = '\0';
-	printf("before %s\n", new);
-	return (temp);
+	return (new);
 }
