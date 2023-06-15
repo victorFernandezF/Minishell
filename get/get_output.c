@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/07 11:03:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:09:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	get_output(char *cmd_line, t_cmd *cmd)
 	int		last_output;
 
 	i = -1;
-	if (!are_there_char(cmd_line, '>'))
+	if (!search_char_in_str(cmd_line, '>'))
 		return (0);
 	out = malloc((cmd->nb_outputs + 1) * sizeof(char **));
 	if (!out)
@@ -82,7 +82,7 @@ char	*get_output_from_position(char *cmd_line, int position, int aux)
 		i++;
 	}
 	out[i] = '\0';
-	if (is_there_env_var(out))
+	if (env_var_detector(out))
 		print_error_file_ambiguous(out);
 	return (out);
 }
@@ -135,7 +135,7 @@ int	get_nb_outputs(char *cmd_line)
 
 	i = -1;
 	nb = 0;
-	if (are_there_char(cmd_line, '>'))
+	if (search_char_in_str(cmd_line, '>'))
 		while (cmd_line[++i])
 			if (cmd_line[i] == '>' && cmd_line[i + 1] != '>')
 				if (!is_between_quotes(cmd_line, i))

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 10:52:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:01:38 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*expand_environment_variables(char *cmd_line, t_env *envar)
 	i = -1;
 	while (array[++i])
 	{
-		if (is_there_env_var(array[i]))
+		if (env_var_detector(array[i]))
 		{
 			if (check_simple_quotes(array[i])
 				|| is_inside_simple_quotes(array, i))

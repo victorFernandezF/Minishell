@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities_3.c                                      :+:      :+:    :+:   */
+/*   utils_skip.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:08:29 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 12:19:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:10:00 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	skip_cmd_and_flags(char	*cmd_line)
 	int	i;
 
 	i = 0;
-	if (are_there_char(cmd_line, '-'))
+	if (search_char_in_str(cmd_line, '-'))
 	{
 		i = get_position_of_last_char_found(cmd_line, '-');
 		i = skip_characters(cmd_line, i);

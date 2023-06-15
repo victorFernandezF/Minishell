@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 18:11:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:09:37 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*get_flags(char *cmd_line)
 	int		end;
 	char	*flags;
 
-	if (!are_there_char(cmd_line, '-'))
+	if (!search_char_in_str(cmd_line, '-'))
 		return (NULL);
 	start = skip_cmd_name(cmd_line, 0);
 	end = get_position_of_last_char_found(cmd_line, '-');

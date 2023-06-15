@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 11:53:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:09:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,11 @@ int		*input_filename_to_fd_converter(char **input, int nb_inputs);
 int		is_pipe(char c);
 int		is_env_var(char c);
 int		is_redirect(char c);
-int		is_there_env_var(char *str);
+int		env_var_detector(char *str);
 int		is_space_minishel(char c);
 int		is_there_open_quotes(char *str, int end);
 int		is_between_quotes(char *cmd_line, int end);
-int		are_there_char(char *str, char c);
+int		search_char_in_str(char *str, char c);
 
 int		skip_whitespaces(char *str, int start);
 int		skip_characters(char *str, int start);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities_1.c                                      :+:      :+:    :+:   */
+/*   utils_checks_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 12:18:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:06:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ int	is_space_minishel(char c)
 }
 
 /**
- * @brief Returns 1 if an env var is found in the string. 
+ * @brief Returns 1 if detects any environment variable sign($) in the string. 
  * 
  * @param str String
  * @return 1 if an env var is found. If not 0.
  */
-int	is_there_env_var(char *str)
+int	env_var_detector(char *str)
 {
 	int	i;
 

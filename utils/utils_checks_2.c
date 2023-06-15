@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities_2.c                                      :+:      :+:    :+:   */
+/*   utils_checks_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/05/25 12:18:29 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:09:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_there_open_quotes(char *str, int end)
  * @param c character to search.
  * @return int 0 or 1.
  */
-int	are_there_char(char *str, char c)
+int	search_char_in_str(char *str, char c)
 {
 	int	i;
 
