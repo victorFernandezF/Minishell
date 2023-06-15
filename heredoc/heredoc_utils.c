@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:01:12 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 11:20:52 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:03:22 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,20 @@ char	*heredoc_signs_without_spaces(char *temp)
 
 void	write_int_heredoc_temp_file(int fd, char *read_here)
 {
-	write(fd, read_here, ft_strlen(read_here));
-	write(fd, "\n", 1);
+	int	i;
+
+	i = -1;
+	if (is_there_env_var(read_here))
+	{
+		while (!is_env_var(read_here[++i]))
+			write(fd, &read_here[i], 1);
+		write(fd, " ", 1);
+		write(fd, "\n", 1);
+	}
+	else
+	{
+		write(fd, read_here, ft_strlen(read_here));
+		write(fd, "\n", 1);
+	}
 	free(read_here);
 }
