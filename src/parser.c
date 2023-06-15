@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/14 18:38:52 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 10:37:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 	return (new);
 }
 
-char	*manage_heredoc(char *str)
+char	*manage_heredoc(char *str, t_env *envar)
 {
 	int		i;
 	int		len;
@@ -66,7 +66,7 @@ char	*manage_heredoc(char *str)
 		{
 			new = ft_copy_str(arr[i]);
 			free(arr[i]);
-			arr[i] = heredoc(new);
+			arr[i] = heredoc(new, envar);
 			free (new);
 		}
 	}
@@ -101,7 +101,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 		{
 			tmp = command[i];
 			free(command[i]);
-			command[i] = manage_heredoc(tmp);
+			command[i] = manage_heredoc(tmp, envar);
 		}
 	}
 	cmd = fill_struct(cmd, command[0], envar);

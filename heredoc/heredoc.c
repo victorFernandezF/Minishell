@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/14 19:28:01 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:54:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	open_heredoc_file(void)
  * @return A string with command line transforming the heredoc 
  * into a normal input.
  */
-char	*heredoc(char *cmd_line)
+char	*heredoc(char *cmd_line, t_env *envar)
 {
 	char	*delimiter;
 	char	*tmp;
@@ -130,15 +130,17 @@ char	*heredoc(char *cmd_line)
 	while (1)
 	{
 		read_here = readline("> ");
-		if (check_heredoc_stop_condition(read_here, delimiter))
+		if (read_here == 0)
 			break ;
-		write(heredoc_fd, read_here, ft_strlen(read_here));
-		write(heredoc_fd, "\n", 1);
-		free(read_here);
+		read_here = expand_heredoc_env_vars(read_here, envar);
+		if (are_str_equals(read_here, delimiter))
+		{
+			free(read_here);
+			break ;
+		}
+		write_int_heredoc_temp_file(heredoc_fd, read_here);
 	}
-	free(delimiter);
 	new_line = replace_heredoc(cmd_line);
-	close(heredoc_fd);
-	free(tmp);
+	free_and_close_heredoc_stuff(tmp, delimiter, heredoc_fd);
 	return (new_line);
 }
