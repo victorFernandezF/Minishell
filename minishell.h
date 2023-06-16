@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 10:33:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:06:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ char	*convert_heredoc_in_input(char *temp);
 void	free_heredoc_stuff(char *temp, char **arr_tmp);
 char	*heredoc_signs_without_spaces(char *temp);
 void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
-void	write_int_heredoc_temp_file(int fd, char *read_here);
+void	write_in_heredoc_temp_file(int fd, char *read_here);
 char	*expand_heredoc_env_vars(char *here_line, t_env *envar);
 char	*del_last_quote(char *str);
 char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar);

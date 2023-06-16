@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 11:54:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:06:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ char	*heredoc(char *cmd_line, t_env *envar)
 			free(read_here);
 			break ;
 		}
-		write_int_heredoc_temp_file(heredoc_fd, read_here);
+		write_in_heredoc_temp_file(heredoc_fd, read_here);
 	}
 	new_line = replace_heredoc(cmd_line);
 	free_and_close_heredoc_stuff(tmp, delimiter, heredoc_fd);
