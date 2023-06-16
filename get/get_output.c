@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:09:52 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:54:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	get_nb_outputs(char *cmd_line)
 	if (search_char_in_str(cmd_line, '>'))
 		while (cmd_line[++i])
 			if (cmd_line[i] == '>' && cmd_line[i + 1] != '>')
-				if (!is_between_quotes(cmd_line, i))
+				if (!is_between_double_quotes(cmd_line, i))
 					nb++;
 	return (nb);
 }
@@ -164,7 +164,7 @@ int	*get_output_char_positions(char *cmd_line, t_cmd *cmd)
 		return (NULL);
 	while (cmd_line[++i])
 	{
-		if ((!is_between_quotes(cmd_line, i))
+		if ((!is_between_double_quotes(cmd_line, i))
 			&& (cmd_line[i] == '>' && cmd_line[i - 1] != '>'))
 			output_pos[pos++] = i;
 	}
