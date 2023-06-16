@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:17:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:57:38 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ int		is_redirect(char c);
 int		env_var_detector(char *str);
 int		is_space_minishel(char c);
 int		is_there_open_quotes(char *str, int end);
-int		is_between_quotes(char *cmd_line, int end);
+int		is_between_double_quotes(char *cmd_line, int end);
+int		is_between_simple_quotes(char *cmd_line, int end);
 int		search_char_in_str(char *str, char c);
 
 int		skip_whitespaces(char *str, int start);

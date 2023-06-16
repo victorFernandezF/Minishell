@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:07:02 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 09:59:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:54:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,48 +47,13 @@ int	count_words_minishell(char *str)
 }
 
 /**
- * @brief Counts thenumber of words that are in the string.
- * 	Things inside double quotes count as one.
- * 
- * @param str String to be splitted.
- * @return thhe nomber of elements that the final array will have.
- */
-int	count_words_pipes(char *str)
-{
-	int	cont;
-
-	cont = 0;
-	while (*str)
-	{
-		while (*str && is_pipe(*str))
-			str++;
-		if (*str == 34)
-		{
-			cont++;
-			str++;
-			while (*str && *str != 34)
-				str++;
-			str++;
-		}
-		else if (*str && !is_pipe(*str))
-		{
-			cont++;
-			while (*str && !is_pipe(*str))
-				str++;
-		}
-	}
-	return (cont);
-}
-
-
-/**
  * @brief Checks if the given string is inside quotes.
  * 
  * @param str string
  * @param end  position where word starts
  * @return 1 if the word is inside quotes. 0 if not.
  */
-int	is_between_quotes(char *str, int end)
+int	is_between_double_quotes(char *str, int end)
 {
 	int	nb_quotes;
 	int	i;
@@ -151,7 +116,7 @@ char	*replace_spaces_after_redirect(char *cmd_line)
 	i = -1;
 	while (cmd_line[++i])
 	{
-		if ((!is_between_quotes(cmd_line, i))
+		if ((!is_between_double_quotes(cmd_line, i))
 			&& ((cmd_line[i] == '>' && cmd_line[i + 1] == ' ')
 				|| (cmd_line[i] == '<' && cmd_line[i + 1] == ' ')))
 		{

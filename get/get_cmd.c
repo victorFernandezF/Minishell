@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/06 18:51:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:00:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	get_nb_cmd(char *cmd_line)
 	i = -1;
 	cmd = 1;
 	while (cmd_line[++i])
-		if (is_pipe(cmd_line[i]))
+		if (is_pipe(cmd_line[i]) && !is_between_double_quotes(cmd_line, i)
+			&& !is_between_simple_quotes(cmd_line, i))
 			cmd++;
 	return (cmd);
 }
