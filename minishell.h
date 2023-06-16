@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 13:20:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 21:55:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,9 +183,15 @@ void	print_array(char **array);
 void	processing(t_cmd *cmd, t_env *env);
 t_env	*ft_envar(char **env);
 char	**ft_splitf(char const *s);
+char	**f_split(char const *s, char c);
 void	freeenv(t_env *env);
 void	freevals(char **vals);
+void	set_env(t_env *env, char *var, char *vals);
 int		ft_cd(t_cmd *cmd, t_env *env);
+int		n_params(char **mat);
+int		n_flags(char *array);
 int		cmd_error(char *cmd, char *error);
+int		cmd_cd_error(char *cmd, char *error);
+void	free_mat(char **mat);
 
 #endif

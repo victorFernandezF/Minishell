@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/16 12:37:34 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/16 22:02:01 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,13 @@ SRC 	= 	src/loop.c \
 			utils/utils_quotation.c \
 			utils/utils_split_quotes.c \
 			srcexe/processing.c \
+			srcexe/utils/cd_utils.c \
 			srcexe/utils/split_first.c \
 			srcexe/utils/errors.c \
+			srcexe/utils/memory.c \
+			srcexe/utils/f_split.c \
 			srcexe/envar/envar.c \
+			srcexe/envar/set_env.c \
 			srcexe/builtin/ft_cd.c
 
 OBJS	=	$(SRC:.c=.o)
