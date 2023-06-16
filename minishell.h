@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 12:26:44 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:49:46 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,32 +80,33 @@ void	settings(int set);
 
 // E N V I R O M E N T   V A R S
 
+char	*del_last_quote(char *str);
+char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar);
 char	*replace_simple_quotes_by_double_quotes(char *str);
-char	*expand_environment_variables(char *cmd_line, t_env *envar);
-char	**check_env_redirection(char **output);
-char	*env_var_transformation(char *env_name, t_env *envar);
-char	*get_env_var_name_including_dollar(char *redirection);
-char	*fill_string_with_env_var_value(char *redirection, char *env, int flag);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
+char	*expand_environment_variables(char *cmd_line, t_env *envar);
+char	*env_var_transformation(char *env_name, t_env *envar);
+char	*fill_string_with_env_var_value(char *redirection, char *env, int flag);
+char	*get_env_var_name_including_dollar(char *redirection);
+int		get_total_length_of_words_in_array(char **array);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
 int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
-char	**get_parameters(char *str);
-
-int		get_nb_outputs(char *str);
-int		get_output(char *str, t_cmd *cmd);
-int		*get_output_char_positions(char *str, t_cmd *cmd);
-char	*get_output_from_position(char *cmd_line, int pos, int aux);
-int		*output_filename_to_fd_converter(char **output, int nb_outputs);
-
 int		get_nb_inputs(char *cmd_line);
-int		get_input(char *cmd_line, t_cmd *cmd);
 char	*get_input_from_position(char *cmd_line, int pos, int aux);
 int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
 int		*input_filename_to_fd_converter(char **input, int nb_inputs);
+int		get_input(char *cmd_line, t_cmd *cmd);
+int		get_nb_outputs(char *str);
+char	*get_output_from_position(char *cmd_line, int pos, int aux);
+int		*get_output_char_positions(char *str, t_cmd *cmd);
+int		*output_filename_to_fd_converter(char **output, int nb_outputs);
+int		get_output(char *str, t_cmd *cmd);
+char	**get_parameters(char *str);
+char	*fill_string_param(char *param, char *cmd_line, int i);
 
 //	U T I L I T I E S
 
@@ -144,7 +145,6 @@ int		get_next_char(char *str, int i);
 int		are_str_equals(char *str1, char *str2);
 int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
-int		get_total_length_of_words_in_array(char **array);
 
 //	F R E E   S T U F F
 
@@ -171,14 +171,13 @@ void	free_heredoc_stuff(char *temp, char **arr_tmp);
 char	*heredoc_signs_without_spaces(char *temp);
 void	write_in_heredoc_temp_file(int fd, char *read_here);
 char	*expand_heredoc_env_vars(char *here_line, t_env *envar);
-char	*del_last_quote(char *str);
 
 //	[T E M P]   L E A K S   &   P R I N T S
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 void	print_array(char **array);
-char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar);
+char	**check_env_redirection(char **output);
 
 // PROCESSING AND EXECUTE
 

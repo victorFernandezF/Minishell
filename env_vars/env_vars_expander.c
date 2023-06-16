@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 12:36:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:39:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,40 +64,6 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 }
 
 /**
- * @brief Expands the environment var found in the command line. 
- * 
- * @param cmd_line line with the command.
- * @return The command line with the env vars expanded 
- * 	(their value instead or the var name)
- */
-char	*expand_environment_variables(char *cmd_line, t_env *envar)
-{
-	int		i;
-	int		len;
-	char	*new_line;
-	char	**array;
-	char	*temp;
-
-	array = ft_split_2(cmd_line);
-	i = -1;
-	while (array[++i])
-	{
-		if (env_var_detector(array[i]))
-		{
-			if (check_simple_quotes(array[i])
-				|| is_inside_simple_quotes(array, i))
-				continue ;
-			temp = convert_env_var_in_its_value(array[i], envar);
-			array[i] = temp;
-		}
-	}
-	len = get_total_length_of_words_in_array(array);
-	new_line = ft_splitnt(array, len);
-	free_array(array);
-	return (replace_simple_quotes_by_double_quotes(new_line));
-}
-
-/**
  * @brief Replaces every simple quote (ascii: 39) found in string
  *  by double quotes (ascii 34) which are managed by ft_split_minishell
  *  in future functions
@@ -143,4 +109,38 @@ char	*find_env_from_srruct(t_env *envar, char *name)
 		vari = tmp;
 	}
 	return (NULL);
+}
+
+/**
+ * @brief Expands the environment var found in the command line. 
+ * 
+ * @param cmd_line line with the command.
+ * @return The command line with the env vars expanded 
+ * 	(their value instead or the var name)
+ */
+char	*expand_environment_variables(char *cmd_line, t_env *envar)
+{
+	int		i;
+	int		len;
+	char	*new_line;
+	char	**array;
+	char	*temp;
+
+	array = ft_split_2(cmd_line);
+	i = -1;
+	while (array[++i])
+	{
+		if (env_var_detector(array[i]))
+		{
+			if (check_simple_quotes(array[i])
+				|| is_inside_simple_quotes(array, i))
+				continue ;
+			temp = convert_env_var_in_its_value(array[i], envar);
+			array[i] = temp;
+		}
+	}
+	len = get_total_length_of_words_in_array(array);
+	new_line = ft_splitnt(array, len);
+	free_array(array);
+	return (replace_simple_quotes_by_double_quotes(new_line));
 }
