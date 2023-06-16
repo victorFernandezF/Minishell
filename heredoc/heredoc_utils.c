@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:01:12 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:08:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:20:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,33 +51,31 @@ char	*convert_heredoc_in_input(char *temp)
 	return (temp);
 }
 
-void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd)
-{	
-	free(delimiter);
-	free(tmp);
-	close(fd);
-}
-
+/**
+ * @brief Deletes the spaces after heredoc signs(<<).
+ * 
+ * @param temp String to be modified.
+ * @return A String whit the heredocs sings following by their delimiters
+ */
 char	*heredoc_signs_without_spaces(char *temp)
 {
 	int		i;
 	int		j;
 	int		nb;
-	int		len;
 	char	*new;
 
 	nb = 0;
 	i = -1;
-	j = 0;
 	while (temp[++i])
 		if (temp[i] == '<' && temp [i + 1] == '<')
 			if (temp[i + 2] == ' ')
 				nb++;
-	len = ft_strlen(temp) - nb;
-	new = malloc (len * sizeof(char));
+	j = ft_strlen(temp) - nb;
+	new = malloc (j * sizeof(char));
 	if (!new)
 		return (NULL);
 	i = -1;
+	j = 0;
 	while (temp[++i])
 	{
 		if (temp[i] == ' ' && temp[i - 1] == '<' && temp[i - 2] == '<')
@@ -88,6 +86,13 @@ char	*heredoc_signs_without_spaces(char *temp)
 	return (new);
 }
 
+/**
+ * @brief Writes the heredoc lines given by user in a temp
+ * file that will be used as input later. 
+ * 
+ * @param fd fd of temp file.
+ * @param read_here line read by heredoc.
+ */
 void	write_in_heredoc_temp_file(int fd, char *read_here)
 {
 	int	i;

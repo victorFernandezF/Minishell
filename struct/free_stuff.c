@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 13:24:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:17:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,19 @@ void	free_parser(char *no_in_out, char *no_out, char *spanded)
 	free(no_in_out);
 	free(no_out);
 	free(spanded);
+}
+
+/**
+ * @brief Frees the heredoc delimiter, frees the tmp string and
+ * closes the fd of the temporal file of the heredoc.
+ * 
+ * @param tmp String to free 
+ * @param delimiter String to free
+ * @param fd Fd to close
+ */
+void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd)
+{	
+	free(delimiter);
+	free(tmp);
+	close(fd);
 }
