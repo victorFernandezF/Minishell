@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:09:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 10:33:32 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ int		skip_characters_and_spaces(char *str, int start);
 int		skip_cmd_and_flags(char	*cmd_line);
 int		skip_everything_til_quotes(char	*str, int j);
 int		skip_cmd_name(char *str, int start);
+int		skip_characters_until_char(char *str, int start, char limit);
+
 
 int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);
@@ -134,6 +136,9 @@ char	*ft_splitnt(char **array, int len);
 void	print_error_file_ambiguous(char	*str);
 char	**ft_split_minishell(char *str, int quot);
 int		count_words_minishell(char *str);
+char	**ft_split_pipes(char *str, int quot);
+int		count_words_pipes(char *str);
+
 int		strlen_starting_in(char *str, int i);
 int		get_next_char(char *str, int i);
 int		are_str_equals(char *str1, char *str2);

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 10:37:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 10:53:03 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,29 @@ char	*manage_heredoc(char *str, t_env *envar)
 	return (new);
 }
 
+static char	**split_by_pipes(char *str)
+{
+	int		i;
+	int		j;
+	char	**arr;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '|')
+			if (is_between_quotes(str, i))
+				str[i] = '!';
+	arr = ft_split(str, '|');
+	i = -1;
+	while (arr[++i])
+	{
+		j = -1;
+		while (arr[i][++j])
+			if (arr[i][j] == '!')
+				arr[i][j] = '|';
+	}
+	return (arr);
+}
+
 /**
  * @brief Separates the different parts of the commmand line
  *	and save them in the given structure.
@@ -93,7 +116,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 
 	nb_cmd = get_nb_cmd(cmd_line);
 	cmd->nb_cmd = nb_cmd;
-	command = ft_split(cmd_line, '|');
+	command = split_by_pipes(cmd_line);
 	i = -1;
 	while (command[++i])
 	{
