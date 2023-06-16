@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 12:49:46 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 13:20:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,13 +146,6 @@ int		are_str_equals(char *str1, char *str2);
 int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
 
-//	F R E E   S T U F F
-
-void	free_struct(t_cmd *cmd);
-void	free_array(char **array);
-void	free_parser(char *str1, char *str2, char *str3);
-void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
-
 // L O O P P I N G   A N D   S I G N A L S
 
 void	mini_loop(char **env);
@@ -172,12 +165,18 @@ char	*heredoc_signs_without_spaces(char *temp);
 void	write_in_heredoc_temp_file(int fd, char *read_here);
 char	*expand_heredoc_env_vars(char *here_line, t_env *envar);
 
+//	F R E E   S T U F F
+
+void	free_struct(t_cmd *cmd);
+void	free_array(char **array);
+void	free_parser(char *str1, char *str2, char *str3);
+void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
+
 //	[T E M P]   L E A K S   &   P R I N T S
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 void	print_array(char **array);
-char	**check_env_redirection(char **output);
 
 // PROCESSING AND EXECUTE
 
