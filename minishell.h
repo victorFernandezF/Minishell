@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:57:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:06:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int		skip_cmd_and_flags(char	*cmd_line);
 int		skip_everything_til_quotes(char	*str, int j);
 int		skip_cmd_name(char *str, int start);
 int		skip_characters_until_char(char *str, int start, char limit);
-
 
 int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:17:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:05:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	free_struct(t_cmd *cmd)
 	cmd = og;
 	free(og);
 	cmd = NULL;
+	unlink("#tmp");
 }
 
 /**
