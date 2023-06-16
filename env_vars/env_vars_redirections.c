@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_redirections.c                                 :+:      :+:    :+:   */
+/*   env_vars_redirections.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 11:53:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:36:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,30 @@ char	*get_env_var_name_including_dollar(char *str)
 		j++;
 	tmp = ft_substr(str, j, ft_strlen(str) - j);
 	return (tmp);
+}
+
+/**
+ * @brief Calculates the necesary amount of chars to create a
+ *	null terminated string with the elements of an array separated by spaces.
+ * 
+ * @param array Array of strings with the words that will be
+ *	joined in the string.
+ * @return The length of the future string with every element from the array
+ */
+int	get_total_length_of_words_in_array(char **array)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = -1;
+	len = 0;
+	while (array[++i])
+	{
+		j = -1;
+		while (array[i][++j])
+			len++;
+	}
+	len += i;
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 12:06:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:26:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,19 +166,19 @@ int		heredoc_detector(char *str);
 char	*get_delimiter(char *str);
 char	*heredoc(char *cmd_line, t_env *envar);
 char	*convert_heredoc_in_input(char *temp);
+char	*convert_heredoc_env_var_in_its_value(char *here_line, t_env *envar);
 void	free_heredoc_stuff(char *temp, char **arr_tmp);
 char	*heredoc_signs_without_spaces(char *temp);
 void	write_in_heredoc_temp_file(int fd, char *read_here);
 char	*expand_heredoc_env_vars(char *here_line, t_env *envar);
 char	*del_last_quote(char *str);
-char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar);
-char	*convert_heredoc_env_var_in_its_value(char *here_line, t_env *envar);
 
 //	[T E M P]   L E A K S   &   P R I N T S
 
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 void	print_array(char **array);
+char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar);
 
 // PROCESSING AND EXECUTE
 

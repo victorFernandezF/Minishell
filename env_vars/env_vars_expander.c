@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   env_vars_expander.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:01:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:36:26 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,52 @@ char	*expand_environment_variables(char *cmd_line, t_env *envar)
 	new_line = ft_splitnt(array, len);
 	free_array(array);
 	return (replace_simple_quotes_by_double_quotes(new_line));
+}
+
+/**
+ * @brief Replaces every simple quote (ascii: 39) found in string
+ *  by double quotes (ascii 34) which are managed by ft_split_minishell
+ *  in future functions
+ * 
+ * @param str String.
+ * @return The given string with quotes replaced. 
+ */
+char	*replace_simple_quotes_by_double_quotes(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == 39)
+			str[i] = 34;
+	return (str);
+}
+
+char	*find_env_from_srruct(t_env *envar, char *name)
+{
+	int		i;
+	int		len;
+	t_env	*vari;
+	t_env	*tmp;
+
+	vari = envar;
+	len = 0;
+	while (vari)
+	{
+		i = 0;
+		if (are_str_equals(vari->var, name))
+		{
+			if (vari->vals[i + 1] == NULL)
+				return (vari->vals[0]);
+			while (vari->vals[i])
+			{
+				len += ft_strlen(vari->vals[i]) - 1;
+				i++;
+			}
+			return (vari->vals[0]);
+		}
+		tmp = vari->next;
+		vari = tmp;
+	}
+	return (NULL);
 }

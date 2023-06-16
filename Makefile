@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/16 11:57:49 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/16 12:37:34 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,19 +25,18 @@ SRC 	= 	src/loop.c \
 			get/get_output.c \
 			get/get_input.c \
 			get/get_parameters.c \
+			get/redirections_utils.c \
 			heredoc/heredoc.c \
 			heredoc/heredoc_utils.c \
 			heredoc/heredoc_expander.c \
-			env_vars/expander.c \
-			env_vars/env_redirections.c \
+			env_vars/env_vars_expander.c \
+			env_vars/env_vars_redirections.c \
 			utils/utils_checks_1.c \
 			utils/utils_checks_2.c \
 			utils/utils_skip.c \
-			utils/utils_various.c \
+			utils/utils_various_1.c \
 			utils/utils_various_2.c \
-			utils/utils_various_3.c \
-			utils/utils_redirections.c \
-			utils/utils_env_vars.c \
+			utils/utils_quotation.c \
 			utils/utils_split_quotes.c \
 			srcexe/processing.c \
 			srcexe/utils/split_first.c \

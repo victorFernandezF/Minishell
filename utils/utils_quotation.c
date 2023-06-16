@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_env_vars.c                                   :+:      :+:    :+:   */
+/*   utils_quotation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 10:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:09:58 by victofer         ###   ########.fr       */
+/*   Created: 2023/06/16 11:56:49 by victofer          #+#    #+#             */
+/*   Updated: 2023/06/16 12:34:05 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/**
- * @brief Replaces every simple quote (ascii: 39) found in string
- *  by double quotes (ascii 34) which are managed by ft_split_minishell
- *  in future functions
- * 
- * @param str String.
- * @return The given string with quotes replaced. 
- */
-char	*replace_simple_quotes_by_double_quotes(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == 39)
-			str[i] = 34;
-	return (str);
-}
 
 /**
  * @brief Checks if a specific word inside an array is between
@@ -88,57 +69,26 @@ int	check_simple_quotes(char *str)
 	return (res);
 }
 
-char	*find_env_from_srruct(t_env *envar, char *name)
-{
-	int		i;
-	int		len;
-	t_env	*vari;
-	t_env	*tmp;
-
-	vari = envar;
-	len = 0;
-	while (vari)
-	{
-		i = 0;
-		if (are_str_equals(vari->var, name))
-		{
-			if (vari->vals[i + 1] == NULL)
-				return (vari->vals[0]);
-			while (vari->vals[i])
-			{
-				len += ft_strlen(vari->vals[i]) - 1;
-				i++;
-			}
-			return (vari->vals[0]);
-		}
-		tmp = vari->next;
-		vari = tmp;
-	}
-	return (NULL);
-}
-
 /**
- * @brief Calculates the necesary amount of chars to create a
- *	null terminated string with the elements of an array separated by spaces.
+ * @brief Checks if the given string is inside quotes.
  * 
- * @param array Array of strings with the words that will be
- *	joined in the string.
- * @return The length of the future string with every element from the array
+ * @param str string
+ * @param end  position where word starts
+ * @return 1 if the word is inside quotes. 0 if not.
  */
-int	get_total_length_of_words_in_array(char **array)
+int	is_between_simple_quotes(char *str, int end)
 {
+	int	nb_quotes;
 	int	i;
-	int	j;
-	int	len;
 
 	i = -1;
-	len = 0;
-	while (array[++i])
-	{
-		j = -1;
-		while (array[i][++j])
-			len++;
-	}
-	len += i;
-	return (len);
+	nb_quotes = 0;
+	while (++i < end)
+		if (str[i] == 39)
+			nb_quotes++;
+	if (nb_quotes == 0)
+		return (0);
+	if (nb_quotes % 2 == 0)
+		return (0);
+	return (1);
 }
