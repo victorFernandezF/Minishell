@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 12:09:25 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:05:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,13 @@ int	check_bad_redirection_chars(char *str, int i)
 		if (!ft_isalnum(str[i]) && !is_space_minishel(str[i]) && str[i] != '$')
 			return (1);
 	}
+	if (str[i] == '<' && str[i + 1] != '<')
+	{
+		i++;
+		i = skip_whitespaces(str, i);
+		if (!ft_isalnum(str[i]) && !is_space_minishel(str[i]) && str[i] != '$')
+			return (1);
+	}
 	return (0);
 }
 
@@ -111,16 +118,20 @@ int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
 int	check_invalid_characters(char *str)
 {
 	int	i;
+	int	res;
 
 	i = -1;
+	res = 0;
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))
-			return (printf("Syntax error.\n"));
+			res += 1;
 		if (check_bad_redirection_chars(str, i))
-			return (printf("Syntax error.\n"));
+			res += 1;
 		if (str[0] == '|' || is_pipe_at_end_of_line(str))
-			return (printf("Syntax error.\n"));
+			res += 1;
 	}
+	if (res > 0)
+		return (printf("Syntax error\n"));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 12:14:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:20:57 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	get_input(char *cmd_line, t_cmd *cmd)
 	input[i] = NULL;
 	if (cmd->error == 1)
 		return (free_output_stuff(in_pos, input, NULL, NULL), 0);
-	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs);
+	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs, cmd);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
 	i = -1;
 	while (++i < cmd->nb_inputs)
@@ -116,21 +116,22 @@ char	*get_input_from_pos(char *cmd_line, int pos, int aux, t_cmd *cmd)
  * @param nb_inputs The number of input filenames found in command line.
  * @return An array with the files descriptor (fd's) of each input file. 
  */
-int	*input_filename_to_fd_converter(char **input, int nb_inputs)
+int	*input_filename_to_fd_converter(char **input, int nb_in, t_cmd *cmd)
 {
 	int		i;
 	int		*res;
 
 	i = -1;
-	res = malloc((nb_inputs) * sizeof(int));
+	res = malloc((nb_in) * sizeof(int));
 	if (!res)
 		return (NULL);
-	while (++i < nb_inputs)
+	while (++i < nb_in)
 	{
 		res[i] = open(input[i], O_RDWR);
 		if (res[i] == -1)
 		{
 			print_error_file(input[i], "No such file or directory");
+			cmd->error = 1;
 		}
 	}
 	return (res);

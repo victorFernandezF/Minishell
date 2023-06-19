@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 12:08:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:29:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	free_struct(t_cmd *cmd)
 {
 	t_cmd	*og;
 
+	if (cmd == NULL)
+		return ;
 	og = cmd;
 	free(cmd->cmd);
 	free(cmd->flags);
@@ -104,4 +106,12 @@ void	free_output_stuff(int *out_pos, char **out, int *out_fd, char *line)
 	}
 	if (line != NULL)
 		free(line);
+}
+
+void	free_loop_things(char *read, char *prompt)
+{
+	if (read != NULL)
+		free(read);
+	if (prompt != NULL)
+		free(prompt);
 }
