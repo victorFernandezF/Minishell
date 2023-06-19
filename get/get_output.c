@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:54:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 11:52:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,17 @@ int	get_output(char *cmd_line, t_cmd *cmd)
 		return (0);
 	out_pos = get_output_char_positions(cmd_line, cmd);
 	while (++i < cmd->nb_outputs)
-		out[i] = get_output_from_position(cmd_line, out_pos[i], out_pos[i] + 1);
+		out[i] = get_output_from_pos(cmd, cmd_line, out_pos[i], out_pos[i] + 1);
 	out[i] = NULL;
+	if (cmd->error == 1)
+		return (free_output_stuff(out_pos, out, NULL, NULL), 0);
+	printf("out  -> %s\n", out[0]);
 	outputs_fd = output_filename_to_fd_converter(out, cmd->nb_outputs);
 	last_output = outputs_fd[cmd->nb_outputs - 1];
 	i = -1;
 	while (++i < cmd->nb_outputs)
 		close(outputs_fd[i]);
-	free(out_pos);
-	free_array(out);
-	free(outputs_fd);
+	free_output_stuff(out_pos, out, outputs_fd, NULL);
 	return (last_output);
 }
 
@@ -58,14 +59,12 @@ int	get_output(char *cmd_line, t_cmd *cmd)
  * @param Position where input starts.
  * @return A string with the input filename. 
  */
-char	*get_output_from_position(char *cmd_line, int position, int aux)
+char	*get_output_from_pos(t_cmd *cmd, char *cmd_line, int position, int aux)
 {
 	int		i;
 	char	*out;
 
-	i = 0;
-	while (cmd_line[++position])
-		i++;
+	i = strlen_starting_in(cmd_line, position);
 	out = malloc((i + 1) * sizeof(char));
 	i = 0;
 	if (cmd_line[aux] == '>')
@@ -83,7 +82,7 @@ char	*get_output_from_position(char *cmd_line, int position, int aux)
 	}
 	out[i] = '\0';
 	if (env_var_detector(out))
-		print_error_file_ambiguous(out);
+		print_error_file_ambiguous(out, cmd);
 	return (out);
 }
 

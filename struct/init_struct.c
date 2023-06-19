@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 10:55:59 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 12:08:05 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:38:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_cmd	*init_struct(t_cmd *structure)
 	structure->output = 0;
 	structure->input = 0;
 	structure->index = 1;
+	structure->error = 0;
 	structure->next = NULL;
 	return (structure);
 }

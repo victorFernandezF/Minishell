@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 22:11:08 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/19 11:44:03 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	mini_loop(char **env)
 		{
 			cmd = init_struct(cmd);
 			cmd = start_parser(cmd, read, envars);
-			if (check_empty_cmd_or_bad_input_output(cmd) == 0)
+			if (cmd->error == 0)
 			{
 				print_test(read, cmd, 0);
 				//processing(cmd, envars);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_various.c                                    :+:      :+:    :+:   */
+/*   utils_various_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 13:17:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 11:51:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	print_error_file(char *name, char *msg)
  * 
  * @param str String.
  */
-void	print_error_file_ambiguous(char	*str)
+void	print_error_file_ambiguous(char	*str, t_cmd *cmd)
 {
 	int		i;
 	int		j;
@@ -63,6 +63,8 @@ void	print_error_file_ambiguous(char	*str)
 		bad_env[j++] = str[i];
 	bad_env[j] = '\0';
 	print_error_file(bad_env, "ambiguous redirect");
+	cmd->error = 1;
+	free(bad_env);
 }
 
 /**

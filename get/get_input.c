@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:53:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:59:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*get_input_from_position(char *cmd_line, int pos, int aux)
 	}
 	input[i] = '\0';
 	if (env_var_detector(input))
-		print_error_file_ambiguous(input);
+		print_error_file_ambiguous(input, NULL);
 	return (input);
 }
 

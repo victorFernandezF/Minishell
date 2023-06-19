@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 21:55:01 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/19 11:13:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_cmd
 	int		nb_outputs;
 	int		output;
 	int		index;
+	int		error;
 	t_cmd	*next;
 }			t_cmd;
 
@@ -101,7 +102,7 @@ int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
 int		*input_filename_to_fd_converter(char **input, int nb_inputs);
 int		get_input(char *cmd_line, t_cmd *cmd);
 int		get_nb_outputs(char *str);
-char	*get_output_from_position(char *cmd_line, int pos, int aux);
+char	*get_output_from_pos(t_cmd *cmd, char *cmd_line, int pos, int aux);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 int		*output_filename_to_fd_converter(char **output, int nb_outputs);
 int		get_output(char *str, t_cmd *cmd);
@@ -134,7 +135,7 @@ char	*delete_outputs_from_line(char *cmd_line);
 char	*delete_inputs_from_line(char *str);
 void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
-void	print_error_file_ambiguous(char	*str);
+void	print_error_file_ambiguous(char	*str, t_cmd *cmd);
 char	**ft_split_minishell(char *str, int quot);
 int		count_words_minishell(char *str);
 char	**ft_split_pipes(char *str, int quot);
@@ -171,6 +172,7 @@ void	free_struct(t_cmd *cmd);
 void	free_array(char **array);
 void	free_parser(char *str1, char *str2, char *str3);
 void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
+void	free_output_stuff(int *out_pos, char **out, int *outputs_fd, char *line);
 
 //	[T E M P]   L E A K S   &   P R I N T S
 
