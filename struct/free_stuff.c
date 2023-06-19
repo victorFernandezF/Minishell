@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 11:51:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:08:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,15 +92,15 @@ void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd)
 	close(fd);
 }
 
-void	free_output_stuff(int *out_pos, char **out, int *outputs_fd, char *line)
+void	free_output_stuff(int *out_pos, char **out, int *out_fd, char *line)
 {
 	free(out_pos);
 	out_pos = NULL;
 	free_array(out);
-	if (outputs_fd != NULL)
+	if (out_fd != NULL)
 	{
-		free(outputs_fd);
-		outputs_fd = NULL;
+		free(out_fd);
+		out_fd = NULL;
 	}
 	if (line != NULL)
 		free(line);

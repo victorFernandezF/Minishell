@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 10:59:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:14:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@ int	get_input(char *cmd_line, t_cmd *cmd)
 		return (0);
 	i = -1;
 	while (++i < cmd->nb_inputs)
-		input[i] = get_input_from_position(cmd_line, in_pos[i], in_pos[i] + 1);
+		input[i] = get_input_from_pos(cmd_line, in_pos[i], in_pos[i] + 1, cmd);
 	input[i] = NULL;
+	if (cmd->error == 1)
+		return (free_output_stuff(in_pos, input, NULL, NULL), 0);
 	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
 	i = -1;
 	while (++i < cmd->nb_inputs)
 		close(inputs_fd[i]);
-	free(in_pos);
-	free(inputs_fd);
-	free_array(input);
+	free_output_stuff(in_pos, input, inputs_fd, NULL);
 	if (cmd->nb_inputs == 0)
 		return (0);
 	return (last_input);
@@ -79,7 +79,7 @@ int	get_input(char *cmd_line, t_cmd *cmd)
  * @param pos Position where input starts.
  * @return A string with the input filename. 
  */
-char	*get_input_from_position(char *cmd_line, int pos, int aux)
+char	*get_input_from_pos(char *cmd_line, int pos, int aux, t_cmd *cmd)
 {
 	int		i;
 	char	*input;
@@ -104,7 +104,7 @@ char	*get_input_from_position(char *cmd_line, int pos, int aux)
 	}
 	input[i] = '\0';
 	if (env_var_detector(input))
-		print_error_file_ambiguous(input, NULL);
+		print_error_file_ambiguous(input, cmd);
 	return (input);
 }
 

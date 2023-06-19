@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 11:52:21 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:13:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	get_output(char *cmd_line, t_cmd *cmd)
 	out[i] = NULL;
 	if (cmd->error == 1)
 		return (free_output_stuff(out_pos, out, NULL, NULL), 0);
-	printf("out  -> %s\n", out[0]);
 	outputs_fd = output_filename_to_fd_converter(out, cmd->nb_outputs);
 	last_output = outputs_fd[cmd->nb_outputs - 1];
 	i = -1;

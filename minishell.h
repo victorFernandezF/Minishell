@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 12:05:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:15:29 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
 int		get_nb_inputs(char *cmd_line);
-char	*get_input_from_position(char *cmd_line, int pos, int aux);
+char	*get_input_from_pos(char *cmd_line, int pos, int aux, t_cmd *cmd);
 int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
 int		*input_filename_to_fd_converter(char **input, int nb_inputs);
 int		get_input(char *cmd_line, t_cmd *cmd);
@@ -172,7 +172,7 @@ void	free_struct(t_cmd *cmd);
 void	free_array(char **array);
 void	free_parser(char *str1, char *str2, char *str3);
 void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
-void	free_output_stuff(int *out_pos, char **out, int *outputs_fd, char *line);
+void	free_output_stuff(int *out_pos, char **out, int *out_fd, char *line);
 
 //	[T E M P]   L E A K S   &   P R I N T S
 
