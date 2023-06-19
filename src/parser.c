@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:58:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:17:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 	new->nb_outputs = get_nb_outputs(expanded);
 	new->nb_inputs = get_nb_inputs(expanded);
 	if (ft_strlen(no_output_input) == 0)
-	{
-		free_parser(no_output_input, no_outputs, expanded);
-		return (new);
-	}
+		new->error = 2;
 	if (new->nb_outputs > 0)
 		new->output = get_output(expanded, new);
 	new->cmd = get_cmd(no_output_input);
