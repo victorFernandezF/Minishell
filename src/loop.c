@@ -55,7 +55,7 @@ static char	*get_prompt(t_env *envars)
 
 	pwd = find_env_from_srruct(envars, "PWD");
 	tmp = ft_strjoin("\x1B[32m", pwd);
-	res = ft_strjoin(tmp, "\x1B[0m ");
+	res = ft_strjoin(tmp, "$\x1B[0m ");
 	free(tmp);
 	return (res);
 }
