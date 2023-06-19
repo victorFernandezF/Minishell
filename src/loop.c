@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 11:44:03 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:04:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,29 @@ void	signal_handler(int sig)
  *
  * @param read The read line.
  */
-void	check_ctrl_d(char *read, t_env *envars)
+void	check_ctrl_d(char *read, t_env *envars, char *prompt)
 {
 	if (read == 0)
 	{
 		if (envars != NULL)
 			freeenv(envars);
-		printf("\x1B[32m[MINISHELL]$\x1B[0m exit\n");
+		printf("%s exit\n", prompt);
 		settings(1);
 		exit(0);
 	}
+}
+
+static char	*get_prompt(t_env *envars)
+{
+	char	*tmp;
+	char	*res;
+	char	*pwd;
+
+	pwd = find_env_from_srruct(envars, "PWD");
+	tmp = ft_strjoin("\x1B[32m", pwd);
+	res = ft_strjoin(tmp, "\x1B[0m ");
+	free(tmp);
+	return (res);
 }
 
 /**
@@ -56,14 +69,16 @@ void	mini_loop(char **env)
 {
 	t_cmd	*cmd;
 	t_env	*envars;
+	char	*prompt;
 	char	*read;
 
 	envars = ft_envar(env);
 	while (1)
 	{
+		prompt = get_prompt(envars);
 		signal(SIGINT, signal_handler);
-		read = readline("\x1B[32m[MINISHELL]$ \x1B[0m");
-		check_ctrl_d(read, envars);
+		read = readline(prompt);
+		check_ctrl_d(read, envars, prompt);
 		if (read[0] != '\0')
 			add_history(read);
 		if (check_invalid_characters(read) == 0 && read[0])
@@ -78,5 +93,6 @@ void	mini_loop(char **env)
 			free_struct(cmd);
 		}
 		free(read);
+		free(prompt);
 	}
 }

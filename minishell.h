@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 11:13:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:05:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int		check_simple_quotes(char *str);
 
 void	mini_loop(char **env);
 void	signal_handler(int sig);
-void	check_ctrl_d(char *read, t_env *envars);
+void	check_ctrl_d(char *read, t_env *envars, char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
 
 // H E R E D O C
