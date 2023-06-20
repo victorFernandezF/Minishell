@@ -85,12 +85,12 @@ char	*replace_simple_quotes_by_double_quotes(char *str)
 char	*find_env_from_srruct(t_env *envar, char *name)
 {
 	int		i;
-	int		len;
+	//int		len;
 	t_env	*vari;
 	t_env	*tmp;
 
 	vari = envar;
-	len = 0;
+	//len = 0;
 	while (vari)
 	{
 		i = 0;
