@@ -84,14 +84,14 @@ static char	**split_by_pipes(char *str)
 		if (str[i] == '|')
 			if (is_between_double_quotes(str, i)
 				|| is_between_simple_quotes(str, i))
-				str[i] = '!';
+				str[i] = '^';
 	arr = ft_split(str, '|');
 	i = -1;
 	while (arr[++i])
 	{
 		j = -1;
 		while (arr[i][++j])
-			if (arr[i][j] == '!')
+			if (arr[i][j] == '^')
 				arr[i][j] = '|';
 	}
 	return (arr);
