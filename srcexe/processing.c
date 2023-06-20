@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/13 14:58:29 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:07:30 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ int	check_bi(t_cmd *cmd, t_env *env)
 	if (!(ft_strncmp((cmd->cmd), "cd", 3)))
 		return (ft_cd(cmd, env));
 	else if (!(ft_strncmp((cmd->cmd), "echo", 5)))
-		return (1);
-	else if (!(ft_strncmp((cmd->cmd), "env", 4)))
-		return (1);
-	else if (!(ft_strncmp((cmd->cmd), "export", 7)))
-		return (1);
-	else if (!(ft_strncmp((cmd->cmd), "pwd", 4)))
-		return (1);
-	else if (!(ft_strncmp((cmd->cmd), "unset", 6)))
-		return (1);
-	else if (!(ft_strncmp((cmd->cmd), "exit", 5)))
-		return (1);
-	else
 		return (0);
+	else if (!(ft_strncmp((cmd->cmd), "env", 4)))
+		return (0);
+	else if (!(ft_strncmp((cmd->cmd), "export", 7)))
+		return (0);
+	else if (!(ft_strncmp((cmd->cmd), "pwd", 4)))
+		return (0);
+	else if (!(ft_strncmp((cmd->cmd), "unset", 6)))
+		return (0);
+	else if (!(ft_strncmp((cmd->cmd), "exit", 5)))
+		return (0);
+	else
+		return (2);
 }
 
 void	processing(t_cmd *cmd, t_env *env)
@@ -53,13 +53,13 @@ void	processing(t_cmd *cmd, t_env *env)
 		}
 		tmp = vari->next;
 		vari = tmp;
-	}
-*/
+	}*/
+
 
 	//(void)env;
 	if (cmd->nb_cmd == 1)
 	{
-		if (check_bi(cmd, env) == 0)
+		if (check_bi(cmd, env) == 2)
 			printf("EXECV\n");
 	}
 	else

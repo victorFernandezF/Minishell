@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/05 08:22:15 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:36:59 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ t_env	*ft_new_envar(char *envar)
 	new->var = tmp[0];
 	if (!(ft_strncmp("PATH", tmp[0], ft_strlen("PATH"))))
 		new->vals = ft_split(tmp[1], ':');
+	else if (!(ft_strncmp("OLDPWD", tmp[0], ft_strlen("OLDPWD"))))
+		new->vals = ft_split("", '\0');
 	else
 		if (tmp[1])
 			new->vals = ft_split(tmp[1], '\0');
