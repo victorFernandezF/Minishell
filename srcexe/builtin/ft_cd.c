@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:55:38 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/16 22:09:16 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:12:34 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ char	*cd_nav_to(t_cmd *cmd, t_env *env)
 	if ((!cmd->params || !cmd->params[0]
 			|| cmd->params[0][0] == '\0')
 			&& ft_strncmp(cmd->flags, "-", 2) == 0)
+	{
+		printf("entra -\n");
 		return (expand_environment_variables("$OLDPWD", env));
+	}
 	if (!cmd->params || !cmd->params[0])
 		return (ft_strdup("NADA"));
 	else
@@ -61,7 +64,8 @@ int	cd_nav(char *dir, t_env *env)
 	printf("dir enter: %s\n", dir);
 	if (!(ft_strncmp("$HOME", dir, ft_strlen("$HOME"))))
 		return (cmd_error("cd", "HOME not set\n"));
-	if (!(ft_strncmp("$OLDPWD", dir, ft_strlen("$OLDPWD"))))
+	if (!(ft_strncmp("$OLDPWD", dir, ft_strlen("$OLDPWD")))
+		|| expand_environment_variables("$OLDPWD", env) == NULL)
 		return (cmd_error("cd", "OLDPWD not set\n"));
 	printf("nav to: %s\n", dir);
 	cd_go(env, dir);

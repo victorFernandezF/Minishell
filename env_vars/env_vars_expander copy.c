@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/20 13:38:55 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/20 08:18:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*find_env_from_srruct(t_env *envar, char *name)
 				return (vari->vals[0]);
 			while (vari->vals[i])
 			{
-				//len += ft_strlen(vari->vals[i]) - 1;
+				len += ft_strlen(vari->vals[i]) - 1;
 				i++;
 			}
 			return (vari->vals[0]);
