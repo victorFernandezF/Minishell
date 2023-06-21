@@ -67,13 +67,9 @@ int	skip_cmd_and_flags(char	*cmd_line)
 	int	i;
 
 	i = 0;
-	if (search_char_in_str(cmd_line, '-'))
-	{
-		i = get_position_of_last_char_found(cmd_line, '-');
-		i = skip_characters(cmd_line, i);
-		return (i);
-	}
-	i = skip_characters(cmd_line, i);
+	i = skip_cmd_name(cmd_line, 0);
+	while (cmd_line[i] == '-')
+		i = skip_characters_and_spaces(cmd_line, i);
 	return (i);
 }
 

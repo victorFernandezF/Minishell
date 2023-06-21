@@ -25,9 +25,9 @@ char	*get_flags(char *cmd_line)
 	int		start;
 	char	*flags;
 
-	if (!search_char_in_str(cmd_line, '-'))
-		return (NULL);
 	start = skip_cmd_name(cmd_line, 0);
+	if (cmd_line[start] != '-')
+		return (NULL);
 	end = get_position_of_last_char_found(cmd_line, '-');
 	end = skip_characters(cmd_line, end);
 	flags = malloc ((end - start +1) * sizeof(char));

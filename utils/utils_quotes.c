@@ -35,13 +35,11 @@ static char	*fill_without_last_quote(char *dest, char *str, int nb_quotes)
 char	*delete_unclosed_quotes(char *str)
 {
 	int		i;
-	int		j;
 	int		len;
 	int		nb_quot;
 	char	*no_last_quot;
 
 	i = -1;
-	j = 0;
 	nb_quot = 0;
 	while (str[++i])
 		if (str[i] == 39 || str[i] == 34)
