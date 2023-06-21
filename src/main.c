@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 18:13:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:14:26 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ void	settings(int set)
 int	main(int argc, char **argv, char **env)
 {
 	t_cmd	*cmd;
+	t_env	*envars;
 
 	(void)argv;
 	cmd = NULL;
+	envars = ft_envar(env);
 	settings(0);
 	atexit(leaks);
 	printf("%i\n", (int)getpid());
 	if (argc == 1)
-		mini_loop(cmd, env);
+		mini_loop(cmd, envars);
 	else
 		printf("Error: execute minishell without parameters\n");
 	return (0);
