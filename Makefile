@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+         #
+#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/16 22:02:01 by fortega-         ###   ########.fr        #
+#    Updated: 2023/06/20 17:49:25 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC 	= 	src/loop.c \
 			utils/utils_various_1.c \
 			utils/utils_various_2.c \
 			utils/utils_quotation.c \
+			utils/utils_quotes.c \
 			utils/utils_split_quotes.c \
 			srcexe/processing.c \
 			srcexe/utils/cd_utils.c \

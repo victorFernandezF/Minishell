@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 18:29:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:07:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,12 @@ void	free_output_stuff(int *out_pos, char **out, int *out_fd, char *line)
 		free(line);
 }
 
-void	free_loop_things(char *read, char *prompt)
+void	free_loop_things(char *read, char *quotes, char *prompt)
 {
 	if (read != NULL)
 		free(read);
 	if (prompt != NULL)
 		free(prompt);
+	if (quotes != NULL)
+		free(quotes);
 }

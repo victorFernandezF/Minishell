@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_vars_expander.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/20 13:38:55 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:45:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,10 @@ char	*replace_simple_quotes_by_double_quotes(char *str)
 char	*find_env_from_srruct(t_env *envar, char *name)
 {
 	int		i;
-	//int		len;
 	t_env	*vari;
 	t_env	*tmp;
 
 	vari = envar;
-	//len = 0;
 	while (vari)
 	{
 		i = 0;
@@ -99,10 +97,7 @@ char	*find_env_from_srruct(t_env *envar, char *name)
 			if (vari->vals[i + 1] == NULL)
 				return (vari->vals[0]);
 			while (vari->vals[i])
-			{
-				//len += ft_strlen(vari->vals[i]) - 1;
 				i++;
-			}
 			return (vari->vals[0]);
 		}
 		tmp = vari->next;

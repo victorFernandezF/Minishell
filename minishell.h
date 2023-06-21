@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 18:58:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:14:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,10 +146,11 @@ int		get_next_char(char *str, int i);
 int		are_str_equals(char *str1, char *str2);
 int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
+char	*delete_unclosed_quotes(char *str);
 
 // L O O P P I N G   A N D   S I G N A L S
 
-void	mini_loop(t_cmd *cmd, char **env);
+void	mini_loop(t_cmd *cmd, t_env *envars);
 void	signal_handler(int sig);
 void	check_ctrl_d(char *read, t_env *envars, char *prompt);
 void	rl_replace_line(const char *text, int clear_undo);
@@ -173,7 +174,7 @@ void	free_array(char **array);
 void	free_parser(char *str1, char *str2, char *str3);
 void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
 void	free_output_stuff(int *out_pos, char **out, int *out_fd, char *line);
-void	free_loop_things(char *read, char *prompt);
+void	free_loop_things(char *read, char *quotes, char *prompt);
 
 //	[T E M P]   L E A K S   &   P R I N T S
 
