@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/21 11:33:03 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/21 18:26:23 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SRC 	= 	src/loop.c \
 			srcexe/utils/f_split.c \
 			srcexe/envar/envar.c \
 			srcexe/envar/set_env.c \
-			srcexe/builtin/ft_cd.c
+			srcexe/envar/getvarcd.c \
+			srcexe/builtin/ft_cd.c \
+			srcexe/builtin/ft_echo.c
 
 OBJS	=	$(SRC:.c=.o)
 LIBFT_PATH 	=  libft/

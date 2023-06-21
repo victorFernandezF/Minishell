@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 11:00:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:49:44 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <signal.h>
 # include <termios.h>
@@ -193,6 +194,7 @@ void	freeenv(t_env *env);
 void	freevals(char **vals);
 void	set_env(t_env *env, char *var, char *vals);
 int		ft_cd(t_cmd *cmd, t_env *env);
+int		ft_echo(t_cmd *cmd);
 int		n_params(char **mat);
 int		n_flags(char *array);
 int		cmd_error(char *cmd, char *error);

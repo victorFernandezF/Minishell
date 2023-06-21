@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 21:18:19 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/16 21:18:49 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:26:29 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ int	n_flags(char *array)
 	while (tmp[i])
 		i++;
 	free_mat(tmp);
-	printf("n_flags = %d\n", i);
 	return (i);
 }
