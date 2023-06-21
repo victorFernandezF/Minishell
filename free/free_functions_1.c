@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 11:03:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:29:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,13 @@ void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd)
 	close(fd);
 }
 
+/**
+ * @brief Frees things used in redirection functions.
+ * 
+ * @param i1 array of ints
+ * @param i2 array of ints
+ * @param arr arrat of strings
+ */
 void	free_redirection(int *i1, int *i2, char **arr)
 {
 	if (i1 != NULL)
@@ -89,6 +96,15 @@ void	free_redirection(int *i1, int *i2, char **arr)
 		free_array(arr);
 }
 
+/**
+ * @brief Frees a maximun of four memory allocated strings.
+ * Four is a maximunbut it will work with less if you put NULL in the rest.
+ * 
+ * @param s1 String to be freed. Could be NULL.
+ * @param s2 String to be freed. Could be NULL.
+ * @param s3 String to be freed. Could be NULL.
+ * @param s4 String to be freed. Could be NULL.
+ */
 void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4)
 {
 	if (s1 != NULL)
