@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:56:51 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:36:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ static char	**split_by_pipes(char *str)
 		if (str[i] == '|')
 			if (is_between_double_quotes(str, i)
 				|| is_between_simple_quotes(str, i))
-				str[i] = '^';
+				str[i] = 25;
 	arr = ft_split(str, '|');
 	i = -1;
 	while (arr[++i])
 	{
 		j = -1;
 		while (arr[i][++j])
-			if (arr[i][j] == '^')
+			if (arr[i][j] == 25)
 				arr[i][j] = '|';
 	}
 	return (arr);
