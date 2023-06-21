@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:44:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:00:26 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,9 @@ char	*expand_heredoc_env_vars(char *here_line, t_env *envar);
 //	F R E E   S T U F F
 
 void	free_struct(t_cmd *cmd);
+void	free_int_array(int *array);
 void	free_array(char **array);
+void	free_array_and_str(char **array, char *str);
 void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
 void	free_redirection(int *i1, int *i2, char **arr);
 void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4);

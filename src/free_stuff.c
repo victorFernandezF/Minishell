@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:44:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:01:18 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,4 @@ void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4)
 		free(s3);
 	if (s4 != NULL)
 		free(s4);
-
 }

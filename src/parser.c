@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:29:32 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:56:51 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 	if (nb_cmd > 1)
 		while (command[++i] != NULL)
 			cmd = add_new_node_to_the_list(cmd, command[i], i + 1, envar);
-	free_array(command);
-	free(tmp);
+	free_array_and_str(command, tmp);
 	return (cmd);
 }
