@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_redirections.c                               :+:      :+:    :+:   */
+/*   redirections_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:57:23 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/02 13:26:44 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:10:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
  * @param len Length of the future string.
  * @return A string. 
  */
-char	*get_string_without_outputs(char **array, int len)
+static char	*get_string_without_redir(char **array, int len, char sign)
 {
-	int		j;
 	int		i;
+	int		j;
 	int		x;
 	char	*res;
 
@@ -35,40 +35,7 @@ char	*get_string_without_outputs(char **array, int len)
 	while (array[++i])
 	{
 		j = -1;
-		if (array[i][0] == '>')
-			continue ;
-		while (array[i][++j])
-			res[x++] = array[i][j];
-		res[x++] = ' ';
-	}
-	res[x - 1] = '\0';
-	return (res);
-}
-
-/**
- * @brief Auxiliar function to help 'delete_outputs_from_line'
- *	filling a string.
- * 
- * @param array An array with every element except outputs.
- * @param len Length of the future string.
- * @return A string. 
- */
-char	*get_string_without_inputs(char **array, int len)
-{
-	int		j;
-	int		i;
-	int		x;
-	char	*res;
-
-	x = 0;
-	res = malloc(len * sizeof(char));
-	if (!res)
-		return (NULL);
-	i = -1;
-	while (array[++i])
-	{
-		j = -1;
-		if (array[i][0] == '<')
+		if (array[i][0] == sign)
 			continue ;
 		while (array[i][++j])
 			res[x++] = array[i][j];
@@ -117,14 +84,14 @@ char	*delete_outputs_from_line(char *cmd_line)
 {
 	int		i;
 	int		len;
-	char	*tmp;
 	char	**array;
-	char	*res;
+	char	*no_spaces;
+	char	*no_outputs;
 
 	i = -1;
 	len = 0;
-	tmp = replace_spaces_after_redirect(cmd_line);
-	array = ft_split_minishell(tmp, 1);
+	no_spaces = replace_spaces_after_redirect(cmd_line);
+	array = ft_split_minishell(no_spaces, 1);
 	while (array[++i])
 	{
 		if (array[i][0] == '>')
@@ -134,10 +101,9 @@ char	*delete_outputs_from_line(char *cmd_line)
 	}
 	if (len == 0)
 		len++;
-	res = get_string_without_outputs(array, len);
-	free(tmp);
-	free_array(array);
-	return (res);
+	no_outputs = get_string_without_redir(array, len, '>');
+	free_array_and_str(array, no_spaces);
+	return (no_outputs);
 }
 
 /**
@@ -150,14 +116,14 @@ char	*delete_inputs_from_line(char *cmd_line)
 {
 	int		i;
 	int		len;
-	char	*tmp;
 	char	**array;
-	char	*res;
+	char	*no_space;
+	char	*no_inputs;
 
 	i = -1;
 	len = 0;
-	tmp = replace_spaces_after_redirect(cmd_line);
-	array = ft_split_minishell(tmp, 1);
+	no_space = replace_spaces_after_redirect(cmd_line);
+	array = ft_split_minishell(no_space, 1);
 	while (array[++i])
 	{
 		if (array[i][0] == '<')
@@ -167,8 +133,7 @@ char	*delete_inputs_from_line(char *cmd_line)
 	}
 	if (len == 0)
 		len++;
-	res = get_string_without_inputs(array, len);
-	free(tmp);
-	free_array(array);
-	return (res);
+	no_inputs = get_string_without_redir(array, len, '<');
+	free_array_and_str(array, no_space);
+	return (no_inputs);
 }

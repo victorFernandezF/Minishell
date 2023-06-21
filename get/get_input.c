@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:44:36 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:57:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	get_nb_inputs(char *cmd_line)
 int	get_input(char *cmd_line, t_cmd *cmd)
 {
 	int		i;
-	char	**input;
+	int		*in_pos;
 	int		last_input;
 	int		*inputs_fd;
-	int		*in_pos;
+	char	**input;
 
 	in_pos = get_input_char_positions(cmd_line, cmd);
 	input = malloc((cmd->nb_inputs + 1) * sizeof(char **));

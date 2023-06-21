@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 11:51:04 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:17:18 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void	print_error_file_ambiguous(char	*str, t_cmd *cmd)
  */
 char	*ft_splitnt(char **array, int len)
 {
-	char	*new_line;
 	int		i;
 	int		j;
 	int		x;
+	char	*new_line;
 
 	i = -1;
 	x = 0;

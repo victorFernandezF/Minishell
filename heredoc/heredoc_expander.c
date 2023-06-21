@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:26:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:51:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:12:31 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ static char	*fill_hd_str_with_env_var_value(char *env_name, char *env, int flag)
  */
 char	*convert_heredoc_env_var_in_its_value(char *here_line, t_env *envar)
 {
-	char	*env_var_name;
-	char	*no_end_quotes;
-	int		add_last_quote;
 	char	*env;
 	char	*final;
+	char	*no_end_quotes;
+	int		add_last_quote;
+	char	*env_var_name;
 
 	add_last_quote = 0;
 	env_var_name = get_env_var_name_including_dollar(here_line);
@@ -86,9 +86,9 @@ char	*expand_heredoc_env_vars(char *here_line, t_env *envar)
 {
 	int		i;
 	int		len;
-	char	*new_line;
-	char	**array;
 	char	*temp;
+	char	**array;
+	char	*new_line;
 
 	array = ft_split_2(here_line);
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:06:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:27:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,14 @@ int	open_heredoc_file(void)
  */
 char	*heredoc(char *cmd_line, t_env *envar)
 {
+	int		heredoc_fd;
+	char	*temporary;
 	char	*delimiter;
-	char	*tmp;
 	char	*read_here;
 	char	*new_line;
-	int		heredoc_fd;
 
-	tmp = ft_copy_str(cmd_line);
-	delimiter = get_delimiter(tmp);
+	temporary = ft_copy_str(cmd_line);
+	delimiter = get_delimiter(temporary);
 	heredoc_fd = open_heredoc_file();
 	while (1)
 	{
@@ -141,6 +141,6 @@ char	*heredoc(char *cmd_line, t_env *envar)
 		write_in_heredoc_temp_file(heredoc_fd, read_here);
 	}
 	new_line = replace_heredoc(cmd_line);
-	free_and_close_heredoc_stuff(tmp, delimiter, heredoc_fd);
+	free_and_close_heredoc_stuff(temporary, delimiter, heredoc_fd);
 	return (new_line);
 }

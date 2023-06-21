@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 11:36:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:30:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,48 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 	return (new);
 }
 
+/**
+ * @brief If a heredoc is found. the function creates a temp
+ * file to store the heredoc.
+ * 
+ * @param str 
+ * @param envar 
+ * @return command with the heredoc replaced by a normal input.
+ */
 char	*manage_heredoc(char *str, t_env *envar)
 {
 	int		i;
 	int		len;
 	char	*new;
-	char	*temporal;
-	char	**arr;
+	char	*temp;
+	char	**array;
 
 	i = -1;
-	temporal = heredoc_signs_without_spaces(str);
-	arr = ft_split_minishell(temporal, 0);
-	free(temporal);
-	while (arr[++i])
+	temp = heredoc_signs_without_spaces(str);
+	array = ft_split_minishell(temp, 0);
+	free(temp);
+	while (array[++i])
 	{
-		if (arr[i][0] == '<' && arr[i][1] == '<')
+		if (array[i][0] == '<' && array[i][1] == '<')
 		{
-			new = ft_copy_str(arr[i]);
-			free(arr[i]);
-			arr[i] = heredoc(new, envar);
+			new = ft_copy_str(array[i]);
+			free(array[i]);
+			array[i] = heredoc(new, envar);
 			free (new);
 		}
 	}
-	len = get_total_length_of_words_in_array(arr);
-	new = ft_splitnt(arr, len);
-	free_array(arr);
+	len = get_total_length_of_words_in_array(array);
+	new = ft_splitnt(array, len);
+	free_array(array);
 	return (new);
 }
 
+/**
+ * @brief Split command by pipes only if the pipe is not inside quotes
+ * 
+ * @param str 
+ * @return An array with the different commands found in str. 
+ */
 static char	**split_by_pipes(char *str)
 {
 	int		i;
@@ -109,20 +123,20 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 {
 	int		i;
 	int		nb_cmd;
-	char	*tmp;
+	char	*aux_var;
 	char	**command;
 
+	i = -1;
 	nb_cmd = get_nb_cmd(cmd_line);
 	cmd->nb_cmd = nb_cmd;
 	command = split_by_pipes(cmd_line);
-	i = -1;
 	while (command[++i])
 	{
 		if (heredoc_detector(command[i]))
 		{
-			tmp = command[i];
+			aux_var = command[i];
 			free(command[i]);
-			command[i] = manage_heredoc(tmp, envar);
+			command[i] = manage_heredoc(aux_var, envar);
 		}
 	}
 	cmd = fill_struct(cmd, command[0], envar);
@@ -130,6 +144,6 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 	if (nb_cmd > 1)
 		while (command[++i] != NULL)
 			cmd = add_new_node_to_the_list(cmd, command[i], i + 1, envar);
-	free_array_and_str(command, tmp);
+	free_array(command);
 	return (cmd);
 }

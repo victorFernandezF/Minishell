@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:07:02 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:54:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:17:46 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	count_words_minishell(char *str)
  */
 int	is_between_double_quotes(char *str, int end)
 {
-	int	nb_quotes;
 	int	i;
+	int	nb_quotes;
 
 	i = -1;
 	nb_quotes = 0;
@@ -133,9 +133,9 @@ char	*replace_spaces_after_redirect(char *cmd_line)
 
 int	are_str_equals(char *str1, char *str2)
 {
+	int	i;
 	int	len_s1;
 	int	len_s2;
-	int	i;
 
 	i = -1;
 	len_s1 = ft_strlen(str1);

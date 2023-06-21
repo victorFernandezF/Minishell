@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:56:49 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 12:34:05 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:15:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	is_inside_simple_quotes(char **array, int pos)
 int	check_simple_quotes(char *str)
 {
 	int	len;
-	int	begin;
-	int	end;
 	int	res;
+	int	end;
+	int	begin;
 
 	len = ft_strlen(str) -1;
 	begin = 0;
@@ -78,8 +78,8 @@ int	check_simple_quotes(char *str)
  */
 int	is_between_simple_quotes(char *str, int end)
 {
-	int	nb_quotes;
 	int	i;
+	int	nb_quotes;
 
 	i = -1;
 	nb_quotes = 0;

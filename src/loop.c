@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:27:52 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:53:20 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static char	*get_prompt(t_env *envars)
  */
 void	mini_loop(t_cmd *cmd, t_env *envars)
 {
-	char	*prompt;
 	char	*read;
+	char	*prompt;
 	char	*quotes;
 
 	while (1)
