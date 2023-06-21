@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:07:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:44:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,6 @@ void	free_array(char **array)
 }
 
 /**
- * @brief An auxiliar function to free every *chars used
- * 	in parser/fill_struct function.
- * 
- * @param no_in_out thing to be freed;
- * @param no_out thing to be freed;
- * @param spanded thing to be freed;
- */
-void	free_parser(char *no_in_out, char *no_out, char *spanded)
-{
-	free(no_in_out);
-	free(no_out);
-	free(spanded);
-}
-
-/**
  * @brief Frees the heredoc delimiter, frees the tmp string and
  * closes the fd of the temporal file of the heredoc.
  * 
@@ -94,26 +79,27 @@ void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd)
 	close(fd);
 }
 
-void	free_output_stuff(int *out_pos, char **out, int *out_fd, char *line)
+void	free_redirection(int *i1, int *i2, char **arr)
 {
-	free(out_pos);
-	out_pos = NULL;
-	free_array(out);
-	if (out_fd != NULL)
+	free(i1);
+	i1 = NULL;
+	free_array(arr);
+	if (i2 != NULL)
 	{
-		free(out_fd);
-		out_fd = NULL;
+		free(i2);
+		i2 = NULL;
 	}
-	if (line != NULL)
-		free(line);
 }
 
-void	free_loop_things(char *read, char *quotes, char *prompt)
+void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4)
 {
-	if (read != NULL)
-		free(read);
-	if (prompt != NULL)
-		free(prompt);
-	if (quotes != NULL)
-		free(quotes);
+	if (s1 != NULL)
+		free(s1);
+	if (s2 != NULL)
+		free(s2);
+	if (s3 != NULL)
+		free(s3);
+	if (s4 != NULL)
+		free(s4);
+
 }

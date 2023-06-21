@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 19:17:37 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:44:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	get_output(char *cmd_line, t_cmd *cmd)
 		out[i] = get_output_from_pos(cmd, cmd_line, out_pos[i], out_pos[i] + 1);
 	out[i] = NULL;
 	if (cmd->error == 1)
-		return (free_output_stuff(out_pos, out, NULL, NULL), 0);
+		return (free_redirection(out_pos, NULL, out), 0);
 	outputs_fd = output_filename_to_fd_converter(out, cmd->nb_outputs);
 	last_output = outputs_fd[cmd->nb_outputs - 1];
 	i = -1;
 	while (++i < cmd->nb_outputs)
 		close(outputs_fd[i]);
-	free_output_stuff(out_pos, out, outputs_fd, NULL);
+	free_redirection(out_pos, outputs_fd, out);
 	return (last_output);
 }
 

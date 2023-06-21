@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:26:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:01:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:51:58 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,7 @@ char	*convert_heredoc_env_var_in_its_value(char *here_line, t_env *envar)
 	no_end_quotes = del_last_quote(env_var_name);
 	env = env_var_transformation(env_var_name, envar);
 	final = fill_hd_str_with_env_var_value(here_line, env, add_last_quote);
-	free(no_end_quotes);
-	free(here_line);
-	free(env_var_name);
+	free_maximun_of_four_str(no_end_quotes, here_line, env_var_name, NULL);
 	return (final);
 }
 

@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/20 17:49:25 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/21 10:47:12 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC 	= 	src/loop.c \
 		 	src/parser.c \
 		 	src/initial_checks.c \
 			src/print_leaks_and_testing.c \
-			struct/free_stuff.c \
+			src/free_stuff.c \
 			struct/init_struct.c \
 			struct/fill_next_struct.c \
 			get/get_cmd.c \
