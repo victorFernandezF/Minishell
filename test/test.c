@@ -15,63 +15,50 @@
 #include <unistd.h>
 #include <strings.h>
 
-static char	*ft_strndup(char *str, int nb)
-{
-	int		i;
-	char	*res;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-	i = -1;
-	res = malloc(nb * sizeof(char));
-	if (!res)
-		return (NULL);
-	while (++i < nb)
-		res[i] = str[i];
-	res[i] = '\0';
-	return (res);
+char    *strndup(char *str, int nb)
+{
+    int     i;
+    char    *res;
+
+    res = malloc(nb * sizeof(char));
+    i = -1;
+    while (++i < nb)
+        res[i] = str[i];
+    res[i] = '\0';
+    return res;
 }
 
-char	**ft_split_minishell(char *str, int quot)
-{
-	int		i;
-	int		j;
-	int		x;
-	int		quotes;
-	char	**split;
-
-	(void)quot;
-	i = 0;
-	j = 0;
-	x = 0;
-	quotes = 0;
-	split = malloc(strlen(str) * sizeof(char *));
-	if (!split)
-		return (NULL);
-	while (str[i])
-	{
-		if (str[i] == '/')
-			quotes = !quotes;
-		if (!quotes && str[i] == ' ')
-		{
-			split[x++] = ft_strndup(&str[i], i + j);
-			j = i - j;
-		}
-		i++;
-	}
-	split[x++] = ft_strndup(&str[i], i + j);
-	split[x] = NULL;
-	return (split);
+char** splitString(char* str) {
+    char** result = malloc(strlen(str) * sizeof(char*));
+    int i = 0, j = 0, k = 0, in_quotes = 0;
+    while (str[i]) {
+        if (str[i] == '/')
+            in_quotes = !in_quotes;
+        if (!in_quotes && str[i] == ' ') {
+            result[k++] = strndup(&str[j], i - j);
+            j = i + 1;
+        }
+        i++;
+    }
+    result[k++] = strndup(&str[j], i - j);
+    result[k] = NULL;
+    return result;
 }
 
-int	main(void)
+int main(void)
 {
-	int		i;
-	char	*str;
-	char	**split;
+    int     i;
+    char    *str; 
+    char    **split;
 
-	str = "test split /comillas todo esto/ ac";
-	split = ft_split_minishell(str, 0);
-	i = -1;
-	while (split[++i] != NULL)
-		printf("%s\n", split[i]);
-	return (0);
+    str = "esto /dentro de comillas/ fuera";
+    split = splitString(str);
+    i = -1;
+    while (split[++i])
+        printf("%s\n", split[i]);
+    return 0;
 }
