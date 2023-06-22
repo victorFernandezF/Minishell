@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 11:35:13 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:25:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ int	check_invalid_characters(char *str)
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))
+			res += 1;
+		if (check_unclosed_quotes(str))
 			res += 1;
 		if (check_bad_redirection_chars(str, i))
 			res += 1;

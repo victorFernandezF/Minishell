@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 17:49:44 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:30:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ int		are_str_equals(char *str1, char *str2);
 int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
 char	*delete_unclosed_quotes(char *str);
+int		check_unclosed_quotes(char *str);
 
 // L O O P P I N G   A N D   S I G N A L S
 

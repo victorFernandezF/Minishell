@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 19:29:22 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:29:55 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	mini_loop(t_cmd *cmd, t_env *envars)
 {
 	char	*read;
 	char	*prompt;
-	char	*quotes;
 
 	while (1)
 	{
@@ -77,21 +76,20 @@ void	mini_loop(t_cmd *cmd, t_env *envars)
 		signal(SIGINT, signal_handler);
 		read = readline(prompt);
 		check_ctrl_d(read, envars, prompt);
-		quotes = delete_unclosed_quotes(read);
 		if (read[0] != '\0')
 			add_history(read);
-		if (check_invalid_characters(quotes) == 0 && quotes[0])
+		if (check_invalid_characters(read) == 0 && read[0])
 		{
 			cmd = init_struct(cmd);
-			cmd = start_parser(cmd, quotes, envars);
+			cmd = start_parser(cmd, read, envars);
 			if (cmd->error == 0)
 			{
-				print_test(quotes, cmd, 0);
+				print_test(read, cmd, 0);
 				//processing(cmd, envars);
 			}
 			free_struct(cmd);
 		}
-		free_maximun_of_four_str(read, quotes, prompt, NULL);
+		free_maximun_of_four_str(read, prompt, NULL, NULL);
 	}
 	free_struct(cmd);
 }
