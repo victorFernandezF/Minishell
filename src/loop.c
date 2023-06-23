@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/23 09:46:09 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:42:15 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	mini_loop(t_cmd *cmd, t_env *envars)
 			cmd = start_parser(cmd, read, envars);
 			if (cmd->error == 0)
 			{
-				print_test(read, cmd, 0);
+				//print_test(read, cmd, 0);
 				processing(cmd, envars);
 			}
 			free_struct(cmd);

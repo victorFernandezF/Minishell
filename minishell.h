@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/23 12:17:35 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:28:13 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,7 @@ void	freeenv(t_env *env);
 void	freevals(char **vals);
 void	set_env(t_env *env, char *var, char *vals);
 int		ft_cd(t_cmd *cmd, t_env *env);
-int		ft_echo(t_cmd *cmd);
+int		ft_echo(t_cmd *cmd, t_env *env);
 int		n_params(char **mat);
 int		n_flags(char *array);
 int		cmd_error(char *cmd, char *error, t_env *env);
