@@ -35,12 +35,39 @@ static char	*delete_spaces(char *str)
 	return (nosp);
 }
 
+static char	**take_only_the_good_ones(char **array)
+{
+	int		i;
+	int		j;
+	int		len;
+	char	**res;
+
+	i = -1;
+	len = 0;
+	j = 0;
+	while (array[++i])
+		if (array[i][0] != '$')
+			len++;
+	if (len == 0)
+		return (array);
+	res = malloc((len + 1) * sizeof(char *));
+	if (!res)
+		return (NULL);
+	i = -1;
+	while (array[++i])
+		if (array[i][0] != '$')
+			res[j++] = ft_copy_str(array[i]);
+	res[j] = NULL;
+	free(array);
+	return (res);
+}
+
 char	*more_than_one_env_vars(char *str, t_env *envar)
 {
 	char	**env;
+	char	**temp;
 	int		i;
 	char	*tmp;
-	int		len;
 	char	*final;
 
 	i = -1;
@@ -51,10 +78,11 @@ char	*more_than_one_env_vars(char *str, t_env *envar)
 		free(env[i]);
 		env[i] = convert_env_var_in_its_value(tmp, envar);
 	}
-	len = get_total_length_of_words_in_array(env);
-	tmp = ft_splitnt(env, len);
+	temp = take_only_the_good_ones(env);
+	i = get_total_length_of_words_in_array(temp);
+	tmp = ft_splitnt(temp, i);
 	final = delete_spaces(tmp);
-	free_array(env);
+	free_array(temp);
 	free(tmp);
 	free(str);
 	return (final);
