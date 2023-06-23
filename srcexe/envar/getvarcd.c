@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:14:53 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/21 19:26:45 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 10:32:08 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*get_home(t_env *env)
 	tmp = env;
 	while (tmp)
 	{
-		if (!(ft_strncmp("HOME", tmp->var, ft_strlen("HOME"))))
+		if (!(ft_strncmp("HOME", tmp->var, ft_strlen("HOME")))
+			&& ft_strlen(tmp->var) == 4)
 		{
 			if (!tmp->vals)
 				return ("$HOME");

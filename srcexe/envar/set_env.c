@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 21:01:28 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/21 19:05:25 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 10:20:21 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	set_env(t_env *env, char *var, char *vals)
 {
 	t_env	*tmp;
 
+	//printf("vals: %s\n", vals);
 	tmp = env;
 	while (tmp && ft_strncmp(tmp->var, var, ft_strlen(tmp->var)) != 0)
 	{

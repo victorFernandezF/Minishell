@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:53:21 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/16 21:42:31 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:17:13 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int	cmd_error(char *cmd, char *error)
+int	cmd_error(char *cmd, char *error, t_env *env)
 {
 	char	*one;
 	char	*two;
@@ -28,10 +28,11 @@ int	cmd_error(char *cmd, char *error)
 	free(three);
 	ft_putendl_fd(print, STDERR_FILENO);
 	free(print);
+	set_env(env, "?", "1");
 	return (EXIT_FAILURE);
 }
 
-int	cmd_cd_error(char *cmd, char *error)
+int	cmd_cd_error(char *cmd, char *error, t_env *env)
 {
 	char	*one;
 	char	*two;
@@ -48,5 +49,6 @@ int	cmd_cd_error(char *cmd, char *error)
 	free(three);
 	ft_putendl_fd(print, STDERR_FILENO);
 	free(print);
+	set_env(env, "?", "1");
 	return (EXIT_FAILURE);
 }

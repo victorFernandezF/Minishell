@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:55:38 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/21 19:28:49 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:18:36 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,18 @@ int	cd_go(t_cmd *cmd, t_env *env, char *dir)
 	if (chdir(dir) != 0)
 	{
 		tmp = ft_strjoin(dir, ": No such file or directory");
-		return (cmd_cd_error("cd", tmp));
+		return (cmd_cd_error("cd", tmp, env));
 	}
 	set_env(env, "OLDPWD", s);
 	getcwd(s, 100);
 	set_env(env, "PWD", s);
-	if ((!cmd->params || !cmd->params[0]
-			|| cmd->params[0][0] == '\0')
-			&& ft_strncmp(cmd->flags, "-", 2) == 0)
-		printf("%s\n", get_pwd(env));
+	if (!cmd->params || !cmd->params[0]
+		|| cmd->params[0][0] == '\0')
+	{
+		if (cmd->flags && ft_strncmp(cmd->flags, "-", 2) == 0)
+			printf("%s\n", get_pwd(env));
+	}
+	set_env(env, "?", "0");
 	return (EXIT_SUCCESS);
 }
 
@@ -51,17 +54,19 @@ char	*cd_nav_to(t_cmd *cmd, t_env *env)
 			&& ft_strncmp(cmd->flags, "-", 2) == 0)
 		return (get_oldpwd(env));
 	if (!cmd->params || !cmd->params[0])
-		return ("NADA");
+		return (NULL);
 	else
 		return (cmd->params[0]);
 }
 
 int	cd_nav(t_cmd *cmd, char *dir, t_env *env)
 {
+	if (!dir)
+		return (cmd_error("cd", "invalid option", env));
 	if (!(ft_strncmp("$HOME", dir, ft_strlen("$HOME"))))
-		return (cmd_error("cd", "HOME not set"));
+		return (cmd_error("cd", "HOME not set", env));
 	if (!(ft_strncmp("$OLDPWD", dir, ft_strlen("$OLDPWD"))))
-		return (cmd_error("cd", "OLDPWD not set"));
+		return (cmd_error("cd", "OLDPWD not set", env));
 	cd_go(cmd, env, dir);
 	return (EXIT_SUCCESS);
 }
@@ -73,7 +78,7 @@ int	ft_cd(t_cmd *cmd, t_env *env)
 	np = n_flags(cmd->flags);
 	if (np < 0)
 		return (EXIT_FAILURE);
-	if (n_params(cmd->params) > 1 || np > 1)
-		return (cmd_error("cd", "too many arguments\n"));
+	/*if (n_params(cmd->params) > 1 || np > 1)
+		return (cmd_error("cd", "too many arguments"));*/
 	return (cd_nav(cmd, cd_nav_to(cmd, env), env));
 }
