@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/23 12:28:13 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:54:26 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ char	*env_var_transformation(char *env_name, t_env *envar);
 char	*fill_string_with_env_var_value(char *redirection, char *env, int flag);
 char	*get_env_var_name_including_dollar(char *redirection);
 int		get_total_length_of_words_in_array(char **array);
+char	*more_than_one_env_vars(char *str, t_env *envar);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 

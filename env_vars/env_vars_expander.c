@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:50:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:52:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 
 	add_last_quote = 0;
 	env_var_name = get_env_var_name_including_dollar(cmd_line);
+	if (get_next_char(env_var_name, 0) > 0)
+	{
+		final = more_than_one_env_vars(cmd_line, envar);
+		free(env_var_name);
+		return (final);
+	}
 	if (!env_var_name)
 		return (NULL);
 	if (env_var_name[ft_strlen(env_var_name) - 1] == 34
