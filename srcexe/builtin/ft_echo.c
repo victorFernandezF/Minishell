@@ -6,21 +6,36 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:28:13 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/23 12:42:07 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 14:57:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int	print_echo(t_cmd *cmd, t_env *env, bool n)
+void	print_echo(t_cmd *cmd, t_env *env, bool n)
 {
+	int	i;
+
 	if ((!cmd->params || !cmd->params[0]
 			|| cmd->params[0][0] == '\0') && n == true)
-	{
 		set_env(env, "?", "0");
-		return (EXIT_SUCCESS);
+	if ((!cmd->params || !cmd->params[0]
+			|| cmd->params[0][0] == '\0') && n == false)
+	{
+		ft_putstr_fd("\n", 1);
+		set_env(env, "?", "0");
 	}
-	return (0);
+	i = -1;
+	while (++i < n_params(cmd->params))
+	{
+		if (!(ft_strncmp("$", cmd->params[i], 1)))
+			continue ;
+		ft_putstr_fd(cmd->params[i], 1);
+		if (i + 1 < n_params(cmd->params))
+			ft_putstr_fd(" ", 1);
+	}
+	if (n == false)
+		ft_putstr_fd("\n", 1);
 }
 
 int	ft_echo(t_cmd *cmd, t_env *env)
@@ -29,18 +44,15 @@ int	ft_echo(t_cmd *cmd, t_env *env)
 	{
 		if (!(ft_strncmp("-n", cmd->flags, ft_strlen("-n"))))
 		{
-			//printf("-n\n");
-			return (print_echo(cmd, env, true));
-			return (0);
+			print_echo(cmd, env, true);
+			return (EXIT_SUCCESS);
 		}
 		else
 			return (cmd_error("echo", "Only -n option permited\n", env));
 	}
 	else
 	{
-		printf("Sin flag\n");
 		print_echo(cmd, env, false);
-		return (0);
+		return (EXIT_SUCCESS);
 	}
-	return (0);
 }
