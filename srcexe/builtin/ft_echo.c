@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:28:13 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/23 14:57:01 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:24:52 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	print_echo(t_cmd *cmd, t_env *env, bool n)
 	i = -1;
 	while (++i < n_params(cmd->params))
 	{
-		if (!(ft_strncmp("$", cmd->params[i], 1)))
+		if (!(ft_strncmp("$", cmd->params[i], 1))
+			&& ft_strlen(cmd->params[i]) > 1)
 			continue ;
 		ft_putstr_fd(cmd->params[i], 1);
 		if (i + 1 < n_params(cmd->params))

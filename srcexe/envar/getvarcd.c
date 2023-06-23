@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:14:53 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/23 10:32:08 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:20:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,22 @@ char	*get_pwd(t_env *env)
 		{
 			if (!tmp->vals)
 				return (NULL);
+			return (tmp->vals[0]);
+		}
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+char	*get_lexde(t_env *env)
+{
+	t_env	*tmp;
+
+	tmp = env;
+	while (tmp)
+	{
+		if (!(ft_strncmp("?", tmp->var, ft_strlen("?"))))
+		{
 			return (tmp->vals[0]);
 		}
 		tmp = tmp->next;
