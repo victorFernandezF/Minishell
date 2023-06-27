@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:56:49 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 12:15:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:25:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,23 @@ int	is_inside_simple_quotes(char **array, int pos)
 
 	i = -1;
 	nb_q = 0;
-	while (++i < pos)
+	(void)pos;
+	print_array(array);
+	while (array[++i])
 	{
-		if (search_char_in_str(array[i], 39))
-		{
-			j = -1;
-			while (array[i][++j])
-				if (array[i][j] == 39)
-					nb_q++;
-		}
+		if (i == pos)
+			break ;
+		printf("%i %i\n", i, pos);
+		j = -1;
+		while (array[i][++j])
+			if (array[i][j] == 39)
+				nb_q++;
+		j = -1;
+ 		if (array[pos][++j])
+			if (array[pos][j] == 39)
+				nb_q++;
 	}
+	printf("%i\n", nb_q);
 	if (nb_q % 2 == 0)
 		return (0);
 	return (1);
