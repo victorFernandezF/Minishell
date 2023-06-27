@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:53:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/23 12:53:20 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:24:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	**take_only_the_good_ones(char **array)
 		if (array[i][0] != '$')
 			res[j++] = ft_copy_str(array[i]);
 	res[j] = NULL;
-	free(array);
+	free_array(array);
 	return (res);
 }
 
