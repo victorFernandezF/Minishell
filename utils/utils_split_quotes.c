@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_minishell.c                               :+:      :+:    :+:   */
+/*   utils_split_quotes.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/01 12:33:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:01:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ static char	**fill_split_array(char **split, char *str, int nb_words, int quot)
 		if (str[j] != '\0' && str[j] != 34)
 		{
 			j = skip_whitespaces(str, j);
-				split[i] = write_word_minishell(str, j);
+			split[i] = write_word_minishell(str, j);
 			j = skip_characters(str, j);
 		}
 		else

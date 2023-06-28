@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 11:12:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:17:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,29 @@ char	*fill_string_param(char *param, char *cmd_line, int i)
 	return (param);
 }
 
+static int	check_if_only_cmd_name(char *cmd_line)
+{
+	int	i;
+
+	i = skip_cmd_and_flags(cmd_line);
+	if (!cmd_line[i])
+		return (1);
+	return (0);
+}
+
+static int	count_parameters(char **param_array)
+{
+	int	i;
+
+	i = -1;
+	while (param_array[++i])
+		i++;
+	i--;
+	if (param_array[1][0] == '-')
+		i--;
+	return (i);
+}
+
 /**
  * @brief creates an array of strings with the parameters found
  *	in the command line given by user.
@@ -42,21 +65,23 @@ char	**get_parameters(char *cmd_line)
 	int		i;
 	int		j;
 	int		len;
-	char	*param_line;
+	char	**param;
 	char	**param_array;
 
+	i = 0;
 	j = 0;
-	if (ft_strlen(cmd_line) == 0)
+	if (check_if_only_cmd_name(cmd_line))
 		return (NULL);
-	i = skip_cmd_and_flags(cmd_line);
-	len = strlen_starting_in(cmd_line, i);
-	param_line = malloc(len * sizeof(char));
-	if (!param_line)
+	param_array = ft_split_minishell(cmd_line, 0);
+	len = count_parameters(param_array);
+	param = malloc((len + 1) * sizeof(char *));
+	if (!param)
 		return (NULL);
-	while (cmd_line[i])
-		param_line[j++] = cmd_line[i++];
-	param_line[j] = '\0';
-	param_array = ft_split_minishell(param_line, 0);
-	free(param_line);
-	return (param_array);
+	if (param_array[1][0] == '-')
+		i++;
+	while (param_array[++i])
+		param[j++] = ft_copy_str(param_array[i]);
+	param[j] = NULL;
+	free_array(param_array);
+	return (param);
 }
