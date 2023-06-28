@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 10:53:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:37:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*env_var_transformation(char *env_name, t_env *envar)
 	env = find_env_from_srruct(envar, temp);
 	free(temp);
 	if (env == NULL)
-		env = env_name;
+		env = " ";
 	return (env);
 }
 

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/27 19:04:53 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:32:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 
 	new = tmp;
 	expanded = expand_environment_variables(command, envar);
-	printf("%s\n", expanded);
 	no_outputs = delete_outputs_from_line(expanded);
 	no_output_input = delete_inputs_from_line(no_outputs);
 	new->nb_outputs = get_nb_outputs(expanded);
