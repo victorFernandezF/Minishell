@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_quotation.c                                  :+:      :+:    :+:   */
+/*   utils_quotation_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:56:49 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 10:31:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:26:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,28 @@ int	is_between_simple_quotes(char *str, int end)
 	if (nb_quotes == 0)
 		return (0);
 	if (nb_quotes % 2 == 0)
+		return (0);
+	return (1);
+}
+
+/**
+ * @brief Checks if there are unclosed quotation marks 
+ * 
+ * @param str string
+ * @return 0 If every quotation mark opened is closed.
+ * 	 1 if any opened quotation mark is not closed.
+ */
+int	check_unclosed_quotes(char *str)
+{
+	int		i;
+	int		nb_quot;
+
+	i = -1;
+	nb_quot = 0;
+	while (str[++i])
+		if (str[i] == 39 || str[i] == 34)
+			nb_quot++;
+	if (nb_quot % 2 == 0)
 		return (0);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/23 16:21:29 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:03:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,6 @@ int		count_words_pipes(char *str);
 
 int		strlen_starting_in(char *str, int i);
 int		get_next_char(char *str, int i);
-int		are_str_equals(char *str1, char *str2);
 int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
 char	*delete_unclosed_quotes(char *str);
