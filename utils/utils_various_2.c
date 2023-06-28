@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:07:02 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 12:17:46 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:59:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,21 +129,4 @@ char	*replace_spaces_after_redirect(char *cmd_line)
 	}
 	res[j] = '\0';
 	return (res);
-}
-
-int	are_str_equals(char *str1, char *str2)
-{
-	int	i;
-	int	len_s1;
-	int	len_s2;
-
-	i = -1;
-	len_s1 = ft_strlen(str1);
-	len_s2 = ft_strlen(str2);
-	if (len_s1 != len_s2)
-		return (0);
-	while (++i < len_s1)
-		if (str1[i] != str2[i])
-			return (0);
-	return (1);
 }
