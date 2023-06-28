@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 12:02:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:37:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,18 +125,15 @@ int	check_invalid_characters(char *str)
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))
-			res += 1;
+			return (print_error("Syntax error", NULL, 1));
 		if (check_unclosed_quotes(str))
-			res += 1;
+			return (print_error("Syntax error near '\"'", NULL, 2));
 		if (check_bad_redirection_chars(str, i))
-			res += 1;
+			res = print_error("Syntax error near unexpected token `newline'",
+					NULL, 4);
 		if (str[0] == '|' || is_pipe_at_end_of_line(str))
-			res += 1;
+			return (print_error("Syntax error near '|'", NULL, 2));
+
 	}
-	if (res > 0)
-	{
-		ft_putendl_fd("Syntax error", 2);
-		return (res);
-	}	
-	return (0);
+	return (res);
 }

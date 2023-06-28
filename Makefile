@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/28 11:26:46 by victofer         ###   ########.fr        #
+#    Updated: 2023/06/28 19:28:02 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC 	= 	src/loop.c \
 			src/main.c \
 		 	src/parser.c \
 		 	src/initial_checks.c \
+		 	src/errors.c \
 			src/print_leaks_and_testing.c \
 			free/free_functions_1.c \
 			free/free_functions_2.c \

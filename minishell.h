@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 11:03:16 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:30:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int		check_two_pipes_in_a_row(char *str, int i);
 int		check_bad_redirection_chars(char *str, int i);
 int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
 int		check_invalid_characters(char *str);
+int		print_error(char *errname, char *msg, int code);
+
 
 //	P A R S E R
 
