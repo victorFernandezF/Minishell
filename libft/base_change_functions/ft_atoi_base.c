@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 13:26:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/20 12:15:41 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 12:05:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,12 @@ static int	ft_base(char c, int base)
 	return (-1);
 }
 
-/* 
- * Function: ft_atoi_base
- * ----------------------------
- *   Convert to base x the given number in base 10
- *
- *   str: number to convert.
- *   base: base to convert.
+/**
+ * @brief Convert to base x the given number in base 10
  * 
- *   Returns: A string with the converted number;
+ * @param str number to convert.
+ * @param base base to convert.
+ * @return An integer with the converted number;
  */
 int	ft_atoi_base(char *str, int base)
 {

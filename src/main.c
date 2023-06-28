@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:14:26 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 12:00:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ int	main(int argc, char **argv, char **env)
 	if (argc == 1)
 		mini_loop(cmd, envars);
 	else
-		printf("Error: execute minishell without parameters\n");
+	{
+		ft_putendl_fd("Error: execute minishell without parameters", 2);
+		free_struct(cmd);
+		freeenv(envars);
+	}
 	return (0);
 }

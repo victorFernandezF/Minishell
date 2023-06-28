@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/22 18:25:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 12:02:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,9 @@ int	check_invalid_characters(char *str)
 			res += 1;
 	}
 	if (res > 0)
-		return (printf("Syntax error [%i]\n", res));
+	{
+		ft_putendl_fd("Syntax error", 2);
+		return (res);
+	}	
 	return (0);
 }

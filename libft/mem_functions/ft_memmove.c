@@ -6,24 +6,12 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:11:11 by victofer          #+#    #+#             */
-/*   Updated: 2023/03/20 11:59:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 12:11:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-/* 
- * Function: ft_memmove
- * ----------------------------
- *   function copies n bytes from memory area src
- *   to memory area dst.
- *
- *   dst: destination memory area.
- *   src: source memory area.
- *   n: bytes that are goint to be copied
- * 
- *   Returns: returns the original value of dst.
- */
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	char	*des_aux;
@@ -32,23 +20,18 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	if (!dst && !src)
 		return (0);
-	i = 0;
+	i = -1;
 	des_aux = (char *)dst;
 	src_aux = (char *)src;
 	if (des_aux > src_aux)
 	{
 		while (len-- > 0)
-		{
 			des_aux[len] = src_aux[len];
-		}
 	}
 	else
 	{
-		while (i < len)
-		{
+		while (++i < len)
 			des_aux[i] = src_aux[i];
-			i++;
-		}
 	}
 	return (dst);
 }
