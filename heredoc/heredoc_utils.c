@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:01:12 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 11:20:25 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:57:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_heredoc_stuff(char *temp, char **arr_tmp)
 	i = -1;
 	free(temp);
 	while (arr_tmp[++i])
-		if (!are_str_equals(arr_tmp[i], "< #tmp"))
+		if (!are_two_strs_equal(arr_tmp[i], "< #tmp"))
 			free(arr_tmp[i]);
 	free(arr_tmp);
 	arr_tmp = NULL;

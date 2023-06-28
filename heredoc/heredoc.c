@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 12:27:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:15:22 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,12 @@ char	*get_delimiter(char *str)
 	return (NULL);
 }
 
+/**
+ * @brief Opens the temporary file that will be use
+ * to store the heredoc content.
+ * 
+ * @return FD of the opened file.
+ */
 int	open_heredoc_file(void)
 {
 	int	fd;
@@ -133,7 +139,7 @@ char	*heredoc(char *cmd_line, t_env *envar)
 		if (read_here == 0)
 			break ;
 		read_here = expand_heredoc_env_vars(read_here, envar);
-		if (are_str_equals(read_here, delimiter))
+		if (are_two_strs_equal(read_here, delimiter))
 		{
 			free(read_here);
 			break ;

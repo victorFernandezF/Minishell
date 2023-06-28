@@ -1,29 +1,41 @@
 ENV_VARS
-	env_cmd_param.c 		--> 3
+	env_vars_expander.c 	--> 5 (full)
 	env_redirections.c 		--> 4
+	env_vars_utils.c		--> 3
+
+FREE 
+	free_functions_1.c		--> 5 (full)
+	free_functions_2.c		--> 2
 
 GET 
 	get_cmd.c 				--> 2
 	get_flags.c				 --> 1
 	get_input.c				--> 5 (full)
 	get_output.c			--> 5 (full)
-	get_parameters.c		--> 1
+	get_parameters.c		--> 2
+	redirections_utils.c 	--> 4
+
+HEREDOC
+	heredoc_expander.c 		--> 3
+	heredoc_utils.c 		--> 4
+	heredoc.c 				--> 5 (full)
 
 SRC 
-	parser.c 				--> 2
+	initial_checks.c 		--> 5 (full)
+	loop.c 					--> 4
+	main.c 					--> 2
+	parser.c 				--> 4
+	print_leaks_and_test.c	--> 3
 
 STRUCT 
 	fill_next_struct.c		 --> 3
-	free_stuff.c	 		--> 2
 	init_strcut.c 			--> 1
 
 UTILS 
-	utilities_1.c			--> 5 (full)
-	utilities_2.c			--> 5 (full)
-	utilities_3.c			--> 5 (full)
-	utilities_4.c			--> 4
-
-test print template
-	printf("%s%s:%s %s\n", BY, __func__, W, str);
-
-	echo a "hola mundo adios" hello world
+	utils_checks_1.c		--> 5 (full)
+	utils_checks_2.c		--> 2
+	utils_quotation.c		--> 4
+	utils_skip.c			--> 5 (full)
+	utils_split_quotes.c	--> 5 (full)
+	utils_various_1.c		--> 5 (full)
+	utils_various_2.c		--> 4

@@ -6,12 +6,18 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 10:31:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:08:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/**
+ * @brief Delete the last quote of the env var.
+ * 
+ * @param str 
+ * @return The given string without the last quote. 
+ */
 char	*del_last_quote(char *str)
 {
 	int		i;
@@ -96,7 +102,7 @@ char	*find_env_from_srruct(t_env *envar, char *name)
 	while (vari)
 	{
 		i = 0;
-		if (are_str_equals(vari->var, name))
+		if (are_two_strs_equal(vari->var, name))
 		{
 			if (vari->vals[i + 1] == NULL)
 				return (vari->vals[0]);

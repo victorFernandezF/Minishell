@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 11:32:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:44:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ void	free_array_and_str(char **array, char *str)
 	if (str != NULL)
 		free(str);
 }
-

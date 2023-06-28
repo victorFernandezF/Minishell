@@ -6,12 +6,20 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/05 11:21:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:12:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/**
+ * @brief Auxiliary function to help get_param filling the string
+ * 
+ * @param param 
+ * @param cmd_line 
+ * @param i 
+ * @return A string.
+ */
 char	*fill_string_param(char *param, char *cmd_line, int i)
 {
 	int	j;
