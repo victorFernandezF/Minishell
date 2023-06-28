@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:27:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/09 12:18:18 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:03:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_copy_str(char *str_to_copy);
+int		are_two_strs_equal(char *str1, char *str2);
 
 //	M E M O R Y   F U N C T I O N S
 
