@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 19:08:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:05:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 	if (ft_strlen(no_output_input) == 0)
 		new->error = 2;
 	if (new->nb_outputs > 0)
-		new->output = get_output(expanded, new);
+		new->output = get_output(expanded, new, envar);
 	new->cmd = get_cmd(no_output_input);
 	new->flags = get_flags(no_outputs);
 	if (new->nb_inputs > 0)
-		new->input = get_input(expanded, new);
+		new->input = get_input(expanded, new, envar);
 	new->params = get_parameters(no_output_input);
 	free_maximun_of_four_str(no_output_input, no_outputs, expanded, NULL);
 	return (new);

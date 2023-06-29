@@ -6,11 +6,20 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:57:23 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 19:02:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:12:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../minishell.h"
+
+void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output)
+{
+	if (res == -1)
+	{
+		print_error_file(output, "No such file or directory", env);
+		cmd->error = 1;
+	}
+}
 
 /**
  * @brief Auxiliar function to help 'delete_outputs_from_line'

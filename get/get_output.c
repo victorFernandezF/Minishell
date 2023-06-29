@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 10:44:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:11:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @return Array of ints with the fds of each output
  *	found in command line.
  */
-int	get_output(char *cmd_line, t_cmd *cmd)
+int	get_output(char *cmd_line, t_cmd *cmd, t_env *env)
 {
 	int		i;
 	char	**out;
@@ -37,11 +37,11 @@ int	get_output(char *cmd_line, t_cmd *cmd)
 		return (0);
 	out_pos = get_output_char_positions(cmd_line, cmd);
 	while (++i < cmd->nb_outputs)
-		out[i] = get_output_from_pos(cmd, cmd_line, out_pos[i], out_pos[i] + 1);
+		out[i] = get_output_from_pos(cmd_line, out_pos[i]);
 	out[i] = NULL;
 	if (cmd->error == 1)
 		return (free_redirection(out_pos, NULL, out), 0);
-	outputs_fd = output_filename_to_fd_converter(out, cmd->nb_outputs);
+	outputs_fd = output_filename_to_fd_converter(out, cmd, env);
 	last_output = outputs_fd[cmd->nb_outputs - 1];
 	i = -1;
 	while (++i < cmd->nb_outputs)
@@ -58,11 +58,13 @@ int	get_output(char *cmd_line, t_cmd *cmd)
  * @param Position where input starts.
  * @return A string with the input filename. 
  */
-char	*get_output_from_pos(t_cmd *cmd, char *cmd_line, int position, int aux)
+char	*get_output_from_pos(char *cmd_line, int position)
 {
 	int		i;
+	int		aux;
 	char	*out;
 
+	aux = position + 1;
 	i = strlen_starting_in(cmd_line, position);
 	out = malloc((i + 1) * sizeof(char));
 	i = 0;
@@ -80,8 +82,6 @@ char	*get_output_from_pos(t_cmd *cmd, char *cmd_line, int position, int aux)
 		i++;
 	}
 	out[i] = '\0';
-	if (env_var_detector(out))
-		print_error_file_ambiguous(out, cmd);
 	return (out);
 }
 
@@ -93,17 +93,17 @@ char	*get_output_from_pos(t_cmd *cmd, char *cmd_line, int position, int aux)
  * @param nb_inputs The number of output filenames found in command line.
  * @return An array with the files descriptor (fd's) of each output file. 
  */
-int	*output_filename_to_fd_converter(char **output, int nb_outputs)
+int	*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env)
 {
 	int		i;
 	int		*res;
 	char	*out;
 
 	i = -1;
-	res = malloc((nb_outputs + 1) * sizeof(int));
+	res = malloc((cmd->nb_outputs + 1) * sizeof(int));
 	if (!res)
 		return (NULL);
-	while (++i < nb_outputs)
+	while (++i < cmd->nb_outputs)
 	{
 		if (output[i][0] == '>')
 		{
@@ -114,8 +114,7 @@ int	*output_filename_to_fd_converter(char **output, int nb_outputs)
 		}
 		else
 			res[i] = open(output[i], O_CREAT | O_RDWR | O_TRUNC, 0644);
-		if (res[i] == -1)
-			print_error_file(output[i], "No such file or directory");
+		check_error_to_open(cmd, env, res[i], output[i]);
 	}
 	return (res);
 }

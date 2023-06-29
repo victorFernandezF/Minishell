@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/29 18:04:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:13:46 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,18 @@ int		get_nb_cmd(char *str);
 char	*get_cmd(char *str);
 char	*get_flags(char *str);
 int		get_nb_inputs(char *cmd_line);
-char	*get_input_from_pos(char *cmd_line, int pos, int aux, t_cmd *cmd);
+char	*get_input_from_pos(char *cmd_line, int pos, t_cmd *cmd, t_env *env);
 int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
-int		*input_filename_to_fd_converter(char **input, int nb_in, t_cmd *cmd);
-int		get_input(char *cmd_line, t_cmd *cmd);
+int		*input_filename_to_fd(char **input, int nb_in, t_cmd *cmd, t_env *env);
+int		get_input(char *cmd_line, t_cmd *cmd, t_env *env);
 int		get_nb_outputs(char *str);
-char	*get_output_from_pos(t_cmd *cmd, char *cmd_line, int pos, int aux);
+char	*get_output_from_pos(char *cmd_line, int pos);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
-int		*output_filename_to_fd_converter(char **output, int nb_outputs);
-int		get_output(char *str, t_cmd *cmd);
+int		*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env);
+int		get_output(char *str, t_cmd *cmd, t_env *env);
 char	**get_parameters(char *str);
 char	*fill_string_param(char *param, char *cmd_line, int i);
+void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output);
 
 //	U T I L I T I E S
 
@@ -136,9 +137,9 @@ int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);
 char	*delete_outputs_from_line(char *cmd_line);
 char	*delete_inputs_from_line(char *str);
-void	print_error_file(char *input, char *msg);
 char	*ft_splitnt(char **array, int len);
-void	print_error_file_ambiguous(char	*str, t_cmd *cmd);
+void	print_error_file(char *input, char *msg, t_env *env);
+void	print_error_file_ambiguous(char	*str, t_cmd *cmd, t_env *env);
 char	**ft_split_minishell(char *str, int quot);
 int		count_words_minishell(char *str);
 char	**ft_split_pipes(char *str, int quot);

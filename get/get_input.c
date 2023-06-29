@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 11:57:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/29 19:18:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	get_nb_inputs(char *cmd_line)
  * @param cmd Struct
  * @return A fd of the last input found.
  */
-int	get_input(char *cmd_line, t_cmd *cmd)
+int	get_input(char *cmd_line, t_cmd *cmd, t_env *env)
 {
 	int		i;
 	int		*in_pos;
@@ -56,11 +56,11 @@ int	get_input(char *cmd_line, t_cmd *cmd)
 		return (0);
 	i = -1;
 	while (++i < cmd->nb_inputs)
-		input[i] = get_input_from_pos(cmd_line, in_pos[i], in_pos[i] + 1, cmd);
+		input[i] = get_input_from_pos(cmd_line, in_pos[i], cmd, env);
 	input[i] = NULL;
 	if (cmd->error == 1)
 		return (free_redirection(in_pos, NULL, input), 0);
-	inputs_fd = input_filename_to_fd_converter(input, cmd->nb_inputs, cmd);
+	inputs_fd = input_filename_to_fd(input, cmd->nb_inputs, cmd, env);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
 	i = -1;
 	while (++i < cmd->nb_inputs)
@@ -79,14 +79,14 @@ int	get_input(char *cmd_line, t_cmd *cmd)
  * @param pos Position where input starts.
  * @return A string with the input filename. 
  */
-char	*get_input_from_pos(char *cmd_line, int pos, int aux, t_cmd *cmd)
+char	*get_input_from_pos(char *cmd_line, int pos, t_cmd *cmd, t_env *env)
 {
 	int		i;
+	int		aux;
 	char	*input;
 
-	i = 0;
-	while (cmd_line[++pos])
-		i++;
+	aux = pos + 1;
+	i = strlen_starting_in(cmd_line, pos + 1);
 	input = malloc((i + 1) * sizeof(char));
 	i = 0;
 	if (cmd_line[aux] == '>')
@@ -104,7 +104,7 @@ char	*get_input_from_pos(char *cmd_line, int pos, int aux, t_cmd *cmd)
 	}
 	input[i] = '\0';
 	if (env_var_detector(input))
-		print_error_file_ambiguous(input, cmd);
+		print_error_file_ambiguous(input, cmd, env);
 	return (input);
 }
 
@@ -116,7 +116,7 @@ char	*get_input_from_pos(char *cmd_line, int pos, int aux, t_cmd *cmd)
  * @param nb_inputs The number of input filenames found in command line.
  * @return An array with the files descriptor (fd's) of each input file. 
  */
-int	*input_filename_to_fd_converter(char **input, int nb_in, t_cmd *cmd)
+int	*input_filename_to_fd(char **input, int nb_in, t_cmd *cmd, t_env *env)
 {
 	int		i;
 	int		*res;
@@ -130,7 +130,7 @@ int	*input_filename_to_fd_converter(char **input, int nb_in, t_cmd *cmd)
 		res[i] = open(input[i], O_RDWR);
 		if (res[i] == -1)
 		{
-			print_error_file(input[i], "No such file or directory");
+			print_error_file(input[i], "No such file or directory", env);
 			cmd->error = 1;
 		}
 	}
