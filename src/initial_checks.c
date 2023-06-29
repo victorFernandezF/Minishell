@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 19:37:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:07:41 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
  * @return 0 if everything is ok. Something different than 0 if something
  * 	is worng and the execution must stop.
  */
-int	check_invalid_characters(char *str)
+int	check_invalid_characters(char *str, t_env *env)
 {
 	int	i;
 	int	res;
@@ -125,15 +125,13 @@ int	check_invalid_characters(char *str)
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))
-			return (print_error("Syntax error", NULL, 1));
+			return (print_errors_by_code(1, env));
 		if (check_unclosed_quotes(str))
-			return (print_error("Syntax error near '\"'", NULL, 2));
+			return (print_errors_by_code(1, env));
 		if (check_bad_redirection_chars(str, i))
-			res = print_error("Syntax error near unexpected token `newline'",
-					NULL, 4);
+			return (print_errors_by_code(2, env));
 		if (str[0] == '|' || is_pipe_at_end_of_line(str))
-			return (print_error("Syntax error near '|'", NULL, 2));
-
+			return (print_errors_by_code(3, env));
 	}
 	return (res);
 }

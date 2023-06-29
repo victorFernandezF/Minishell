@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 18:39:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:11:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ void	mini_loop(t_cmd *cmd, t_env *envars)
 		check_ctrl_d(read, envars, prompt);
 		if (read[0] != '\0')
 			add_history(read);
-		if (check_invalid_characters(read) == 0 && read[0])
+		if (check_invalid_characters(read, envars) == 0 && read[0])
 		{
 			cmd = init_struct(cmd);
 			cmd = start_parser(cmd, read, envars);
 			if (cmd->error == 0)
 			{
-				print_test(read, cmd, 0);
+				//print_test(read, cmd, 0);
 				processing(cmd, envars);
 			}
 			free_struct(cmd);
