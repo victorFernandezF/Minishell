@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_split.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- < fortega-@student.42malaga.co    +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:52:25 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/16 20:54:23 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 15:54:29 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	**f_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	i = 0;
+	//printf("%s: %d\n", s, ft_rows((char *) s, c));
 	mat = (char **)malloc(((ft_rows((char *) s, c)) + 1) * sizeof(char *));
 	if (mat == NULL)
 		return (NULL);

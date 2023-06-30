@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:44:00 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 14:26:02 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 16:39:57 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,20 @@ int	cntvar(t_env *var)
 	j = -1;
 	while (var->var[++i])
 		t++;
-	if (!var->vals)
+	if (var->vals[0] == NULL)
 		return (t);
 	t++;
-	i = -1;
 	while (var->vals && var->vals[++j])
 	{
+		i = -1;
 		while (var->vals[j][++i])
+		{
+			t++;
+			if (!(ft_strncmp("PATH", var->var, ft_strlen("PATH"))))
+				printf("%c ", var->vals[j][i]);
+		}
+		if (!(ft_strncmp("PATH", var->var, ft_strlen("PATH")))
+			&& var->vals[j + 1])
 			t++;
 	}
 	t += 2;
@@ -62,15 +69,25 @@ int	fillmatenv2(t_env *var, char *str, int j)
 	int	k;
 	int	t;
 
-	i = 0;
+	t = 0;
 	k = 0;
 	while (var->vals && var->vals[k])
 	{
+		i = 0;
 		while (var->vals[k][i])
+		{
 			str[j++] = var->vals[k][i++];
+			t++;
+		}
+		if (!(ft_strncmp("PATH", var->var, ft_strlen("PATH")))
+			&& var->vals[k + 1])
+		{
+			str[j++] = ':';
+			t++;
+		}
 		k++;
 	}
-	return (i);
+	return (t);
 }
 
 char	*fillmatenv(t_env *env)
@@ -79,13 +96,17 @@ char	*fillmatenv(t_env *env)
 	int		i;
 	int		j;
 
+	//printf("Entra con %s\n", env->var);
+	/*if (!(ft_strncmp("PATH", env->var, ft_strlen("PATH"))))
+		printf("size %s: %d\n", env->var, cntvar(env));*/
 	str = (char *)malloc((cntvar(env) + 1) * sizeof(char));
 	i = 0;
 	j = 0;
 	while (env->var[i])
 		str[j++] = env->var[i++];
-	if (!env->vals)
+	if (env->vals[0] == NULL)
 	{
+		//printf("sale con %s\n", env->var);
 		str[j] = '\0';
 		return (str);
 	}
@@ -97,7 +118,7 @@ char	*fillmatenv(t_env *env)
 	return (str);
 }
 
-char	**envtomat(t_env *env)
+char	**envtomatexp(t_env *env)
 {
 	int		i;
 	char	**mat;
@@ -114,6 +135,7 @@ char	**envtomat(t_env *env)
 			continue ;
 		}
 		mat[i] = fillmatenv(tmp);
+		printf("filled: %s\n", mat[i]);
 		tmp = tmp->next;
 		i++;
 	}
