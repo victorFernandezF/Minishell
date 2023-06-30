@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/23 16:22:03 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 09:40:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_bi(t_cmd *cmd, t_env *env)
 	else if (!(ft_strncmp((cmd->cmd), "echo", 5)))
 		return (ft_echo(cmd, env));
 	else if (!(ft_strncmp((cmd->cmd), "env", 4)))
-		return (0);
+		return (ft_env(env));
 	else if (!(ft_strncmp((cmd->cmd), "export", 7)))
 		return (0);
 	else if (!(ft_strncmp((cmd->cmd), "pwd", 4)))

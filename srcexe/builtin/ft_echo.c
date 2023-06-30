@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:28:13 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/28 19:41:03 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 09:42:54 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,28 @@ void	print_echo(t_cmd *cmd, t_env *env, bool n)
 	if ((!cmd->params || !cmd->params[0]
 			|| cmd->params[0][0] == '\0') && n == true)
 		set_env(env, "?", "0");
-	if ((!cmd->params || !cmd->params[0]
+	else if ((!cmd->params || !cmd->params[0]
 			|| cmd->params[0][0] == '\0') && n == false)
 	{
 		ft_putstr_fd("\n", 1);
 		set_env(env, "?", "0");
 	}
-	i = -1;
-	while (++i < n_params(cmd->params))
+	else
 	{
-		/*if (!(ft_strncmp("$", cmd->params[i], 1))
-			&& ft_strlen(cmd->params[i]) > 1)
-			continue ;*/
-		ft_putstr_fd(cmd->params[i], 1);
-		if (i + 1 < n_params(cmd->params))
-			ft_putstr_fd(" ", 1);
+		i = -1;
+		while (++i < n_params(cmd->params))
+		{
+			/*if (!(ft_strncmp("$", cmd->params[i], 1))
+				&& ft_strlen(cmd->params[i]) > 1)
+				continue ;*/
+			ft_putstr_fd(cmd->params[i], 1);
+			if (i + 1 < n_params(cmd->params))
+				ft_putstr_fd(" ", 1);
+		}
+		if (n == false)
+			ft_putstr_fd("\n", 1);
+		set_env(env, "?", "0");
 	}
-	if (n == false)
-		ft_putstr_fd("\n", 1);
 }
 
 int	ft_echo(t_cmd *cmd, t_env *env)
