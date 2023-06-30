@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 16:07:44 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:03:41 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,8 @@ void	freevals(char **vals)
 char	**emptyvar(void)
 {
 	char	**mat;
-//	char	*str;
 
-	//str = (char *)malloc(1 * sizeof(char));
-	//str[0] = NULL;
 	mat = (char **)malloc(1 * sizeof(char *));
-	//mat[0] = str;
 	mat[0] = NULL;
 	return (mat);
 }

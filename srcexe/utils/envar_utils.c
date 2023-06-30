@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:44:00 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 16:39:57 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:01:24 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int	cntvar(t_env *var)
 		while (var->vals[j][++i])
 		{
 			t++;
-			if (!(ft_strncmp("PATH", var->var, ft_strlen("PATH"))))
-				printf("%c ", var->vals[j][i]);
 		}
 		if (!(ft_strncmp("PATH", var->var, ft_strlen("PATH")))
 			&& var->vals[j + 1])
@@ -135,7 +133,7 @@ char	**envtomatexp(t_env *env)
 			continue ;
 		}
 		mat[i] = fillmatenv(tmp);
-		printf("filled: %s\n", mat[i]);
+		//printf("filled: %s\n", mat[i]);
 		tmp = tmp->next;
 		i++;
 	}
