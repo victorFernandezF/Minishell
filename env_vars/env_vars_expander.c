@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 11:08:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:48:19 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 	no_end_quotes = del_last_quote(env_var_name);
 	env = env_var_transformation(env_var_name, envar);
 	final = fill_string_with_env_var_value(cmd_line, env, add_last_quote);
-	free_maximun_of_four_str(no_end_quotes, cmd_line, env_var_name, NULL);
+	free_env_var_things(no_end_quotes, cmd_line, env_var_name, env);
 	return (final);
 }
 

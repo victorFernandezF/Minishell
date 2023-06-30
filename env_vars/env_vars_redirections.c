@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 10:37:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:29:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ char	*env_var_transformation(char *env_name, t_env *envar)
 
 	i = 0;
 	j = 0;
+	if (are_two_strs_equal(env_name, "$PATH"))
+	{
+		env = get_path(envar);
+		return (env);
+	}
 	temp = malloc((ft_strlen(env_name) + 1) * sizeof(char));
 	if (!temp)
 		return (NULL);
