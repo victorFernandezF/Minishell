@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/30 09:20:34 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:07:25 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ int		ft_echo(t_cmd *cmd, t_env *env);
 int		ft_pwd(t_cmd *cmd, t_env *env);
 int		ft_exit(t_cmd *cmd, t_env *env);
 int		ft_env(t_env *env);
+int		ft_unset(t_cmd *cmd, t_env *env);
 int		n_params(char **mat);
 int		n_flags(char *array);
 int		cmd_error(char *cmd, char *error, t_env *env);

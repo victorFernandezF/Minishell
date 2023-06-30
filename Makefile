@@ -6,7 +6,7 @@
 #    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/06/30 09:21:25 by fortega-         ###   ########.fr        #
+#    Updated: 2023/06/30 13:07:49 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ SRC 	= 	src/loop.c \
 			srcexe/builtin/ft_echo.c \
 			srcexe/builtin/ft_pwd.c \
 			srcexe/builtin/ft_exit.c \
-			srcexe/builtin/ft_env.c
+			srcexe/builtin/ft_env.c \
+			srcexe/builtin/ft_unset.c
 
 OBJS	=	$(SRC:.c=.o)
 LIBFT_PATH 	=  libft/
