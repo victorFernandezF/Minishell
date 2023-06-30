@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:39:43 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 17:19:32 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:53:20 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,28 @@ void	sort_mat(char **mat)
 	}
 }
 
+
+
+int	add_export(t_cmd *cmd, t_env *env)
+{
+	int		i;
+	int		j;
+	char	**mat;
+
+	printf("%p\n", env);
+	i = -1;
+	while (cmd->params[++i])
+	{
+		mat = ft_split(cmd->params[i], '=');
+		j = -1;
+		while (mat[++j])
+			printf("%s\n", mat[j]);
+		printf("\n");
+		free_mat(mat);
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	ft_export(t_cmd *cmd, t_env *env)
 {
 	char	**mat;
@@ -70,6 +92,8 @@ int	ft_export(t_cmd *cmd, t_env *env)
 		}
 		free_mat(mat);
 	}
+	else
+		return (add_export(cmd, env));
 	set_env(env, "?", "0");
 	return (EXIT_SUCCESS);
 }
