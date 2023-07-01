@@ -89,12 +89,13 @@ char	*replace_simple_quotes_by_double_quotes(char *str);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
 char	*expand_environment_variables(char *cmd_line, t_env *envar);
 char	*env_var_transformation(char *env_name, t_env *envar);
-char	*fill_string_with_env_var_value(char *redirection, char *env, int flag);
+char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, int flag);
 char	*get_env_var_name_including_dollar(char *redirection);
 int		get_total_length_of_words_in_array(char **array);
 char	*more_than_one_env_vars(char *str, t_env *envar);
 char	*get_path(t_env *env);
 void	free_env_var_things(char *str, char *str2, char *envname, char *env);
+char	*get_env_rest(char *complete, char *name);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 

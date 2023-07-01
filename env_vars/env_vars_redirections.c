@@ -19,7 +19,7 @@
  * @param str String with env var name starrting with '$'
  * @return String with the enviroment var value.
  */
-char	*env_var_transformation(char *env_name, t_env *envar)
+char	*env_var_transformation(char *env_complete, t_env *envar)
 {
 	int		i;
 	int		j;
@@ -28,16 +28,16 @@ char	*env_var_transformation(char *env_name, t_env *envar)
 
 	i = 0;
 	j = 0;
-	if (are_two_strs_equal(env_name, "$PATH"))
+	if (are_two_strs_equal(env_complete, "$PATH"))
 	{
 		env = get_path(envar);
 		return (env);
 	}
-	temp = malloc((ft_strlen(env_name) + 1) * sizeof(char));
+	temp = malloc((ft_strlen(env_complete) + 1) * sizeof(char));
 	if (!temp)
 		return (NULL);
-	while (env_name[++i])
-		temp[j++] = env_name[i];
+	while (env_complete[++i])
+		temp[j++] = env_complete[i];
 	temp[i] = '\0';
 	env = find_env_from_srruct(envar, temp);
 	free(temp);
@@ -50,35 +50,42 @@ char	*env_var_transformation(char *env_name, t_env *envar)
  * @brief Joins the first part os original string untill env var char '$'
  *	and the enviroment var value. (str: redir/ env: -R -> redir/-R)
  * 
- * @param env_name String with inputs/outputs.
+ * @param env_complete String with inputs/outputs.
  * @param env String with the value of the env var.
  * @return String with the two strings joined.
  */
-char	*fill_string_with_env_var_value(char *env_name, char *env, int flag)
+char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, int flag)
 {
 	int		i;
 	int		j;
 	int		len;
 	char	*redi;
+	char	*rest;
+	char	*join;
 
+	rest = get_env_rest(env_complete, name);
 	len = 0;
 	i = -1;
 	j = -1;
-	while (!is_env_var(env_name[len]))
+	while (!is_env_var(env_complete[len]))
 		len++;
 	len += ft_strlen(env);
 	if (flag == 1)
 		len++;
 	redi = malloc((len + 1) * sizeof(char));
-	env_name = replace_simple_quotes_by_double_quotes(env_name);
-	while (!is_env_var(env_name[++i]))
-		redi[i] = env_name[i];
+	env_complete = replace_simple_quotes_by_double_quotes(env_complete);
+	while (!is_env_var(env_complete[++i]))
+		redi[i] = env_complete[i];
 	while (env[++j])
 		redi[i++] = env[j];
 	if (flag == 1)
 		redi[i++] = 34;
 	redi[i] = '\0';
-	return (redi);
+	if (!rest)
+		return (redi);
+	join = ft_strjoin(redi, rest);
+	free_maximun_of_four_str(rest, redi, NULL, NULL);
+	return (join);
 }
 
 /**
@@ -91,12 +98,20 @@ char	*fill_string_with_env_var_value(char *env_name, char *env, int flag)
 char	*get_env_var_name_including_dollar(char *str)
 {
 	int		j;
+	int		end;
 	char	*tmp;
 
-	j = 0;
-	while (!is_env_var(str[j]))
+	j = 1;
+	end = 0; 
+	while (str[j] && !is_env_var(str[j]))
+	{
+		if ((ft_isalpha(str[j]) || str[j] == '_') && str[j] != '\0')
+			end = j;
+		else
+			break ;
 		j++;
-	tmp = ft_substr(str, j, ft_strlen(str) - j);
+	}
+	tmp = ft_substr(str, 0, end + 1);
 	return (tmp);
 }
 
@@ -124,4 +139,29 @@ int	get_total_length_of_words_in_array(char **array)
 	}
 	len += i;
 	return (len);
+}
+
+char	*get_env_rest(char *complete, char *name)
+{
+	char	*rest;
+	int		i;
+	int		j;
+	int		start;
+
+	i = 0;
+	j = 0;
+	while (complete[i] == name[i])
+		i++;
+	start = i;
+	while (complete[i])
+	{
+		j++;
+		i++;
+	}
+	i = 0;
+	rest = malloc((j + 1) * sizeof(char));
+	while (complete[start])
+		rest[i++] = complete[start++];
+	rest[i++] = '\0';
+	return (rest);
 }

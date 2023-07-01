@@ -68,7 +68,8 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 		add_last_quote = 1;
 	no_end_quotes = del_last_quote(env_var_name);
 	env = env_var_transformation(env_var_name, envar);
-	final = fill_string_with_env_var_value(cmd_line, env, add_last_quote);
+
+	final = fill_string_with_env_var_value(cmd_line, env_var_name, env, add_last_quote);
 	free_env_var_things(no_end_quotes, cmd_line, env_var_name, env);
 	return (final);
 }

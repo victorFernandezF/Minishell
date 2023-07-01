@@ -36,7 +36,6 @@ static char	*all_together(char **array)
  */
 char	*get_path(t_env *envar)
 {
-	int		i;
 	char	**array;
 	char	*res;
 	t_env	*vari;
@@ -45,7 +44,6 @@ char	*get_path(t_env *envar)
 	vari = envar;
 	while (vari)
 	{
-		i = 0;
 		if (are_two_strs_equal(vari->var, "PATH"))
 		{
 			array = vari->vals;
