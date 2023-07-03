@@ -17,7 +17,7 @@
  * 
  * @param str String where char will be searched.
  * @param pos Position in the string of the char to be found. 
- * @return The position of the next character that is equal to the given one. 
+ * @return [Int] The position of the next character that is equal to the given one. 
  */
 int	get_next_char(char *str, int pos)
 {
@@ -38,7 +38,7 @@ int	get_next_char(char *str, int pos)
  * 
  * @param array Array to convert to string.
  * @param len Length of the array. 
- * @return A null terminated string with every elements of
+ * @return [char *] A null terminated string with every elements of
  *	the array separated by spaces.
  */
 char	*ft_splitnt(char **array, int len)
@@ -71,7 +71,7 @@ char	*ft_splitnt(char **array, int len)
  * 
  * @param str String.
  * @param start position since where start counting chars.
- * @return The length of the portion of string.
+ * @return [Int] The length of the portion of string.
  */
 int	strlen_starting_in(char *str, int start)
 {

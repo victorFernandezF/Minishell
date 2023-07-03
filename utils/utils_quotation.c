@@ -18,7 +18,7 @@
  * 
  * @param array Array
  * @param pos Postition of the word in the array
- * @return 1 if it is inside simple quotes. 0 if not.
+ * @return [Int] 1 if it is inside simple quotes. 0 if not.
  */
 int	is_inside_simple_quotes(char **array, int pos)
 {
@@ -48,7 +48,7 @@ int	is_inside_simple_quotes(char **array, int pos)
  * @brief Checks if a simple word is inside simple quotes.
  * 
  * @param str Word to be checked
- * @return 1 if it is between quotes. 0 if not.
+ * @return [Int] 1 if it is between quotes. 0 if not.
  */
 int	check_simple_quotes(char *str)
 {
@@ -75,7 +75,7 @@ int	check_simple_quotes(char *str)
  * 
  * @param str string
  * @param end  position where word starts
- * @return 1 if the word is inside quotes. 0 if not.
+ * @return [Int] 1 if the word is inside quotes. 0 if not.
  */
 int	is_between_simple_quotes(char *str, int end)
 {
@@ -98,7 +98,7 @@ int	is_between_simple_quotes(char *str, int end)
  * @brief Checks if there are unclosed quotation marks 
  * 
  * @param str string
- * @return 0 If every quotation mark opened is closed.
+ * @return [Int] 0 If every quotation mark opened is closed.
  * 	 1 if any opened quotation mark is not closed.
  */
 int	check_unclosed_quotes(char *str)

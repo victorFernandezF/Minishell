@@ -17,7 +17,7 @@
  *	If not, returns 0.
  * 
  * @param c char
- * @return int 0 or 1. 
+ * @return [Int] 1 if '|' is found in string. 0 if not.
  */
 int	is_pipe(char c)
 {
@@ -29,7 +29,7 @@ int	is_pipe(char c)
  *	If not, returns 0.
  * 
  * @param c char.
- * @return int 0 or 1.
+ * @return [Int] 1 if '$' is found. 0 if not.
  */
 int	is_env_var(char c)
 {
@@ -41,7 +41,7 @@ int	is_env_var(char c)
  *	If not, returns 0.
  * 
  * @param c char.
- * @return int 0 or 1.
+ * @return [Int] 0 or 1.
  */
 int	is_redirect(char c)
 {
@@ -52,7 +52,7 @@ int	is_redirect(char c)
  * @brief Checks if a character is an space.
  * 
  * @param c character to check
- * @return 1 if c is a space, 0 if not. 
+ * @return [Int] 1 if c is a space, 0 if not. 
  */
 int	is_space_minishel(char c)
 {
@@ -63,7 +63,7 @@ int	is_space_minishel(char c)
  * @brief Returns 1 if detects any environment variable sign($) in the string. 
  * 
  * @param str String
- * @return 1 if an env var is found. If not 0.
+ * @return [Int] 1 if an env var is found. If not 0.
  */
 int	env_var_detector(char *str)
 {

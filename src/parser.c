@@ -17,7 +17,7 @@
  * 
  * @param tmp The struct created in main.
  * @param command An string whith the given command
- * @return The given struct filled with the datas from line.
+ * @return [t_cmd *] The given struct filled with the datas from line.
  */
 t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 {
@@ -51,7 +51,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
  * 
  * @param str 
  * @param envar 
- * @return command with the heredoc replaced by a normal input.
+ * @return [Char *] Command with the heredoc replaced by a normal input.
  */
 char	*manage_heredoc(char *str, t_env *envar)
 {
@@ -85,7 +85,7 @@ char	*manage_heredoc(char *str, t_env *envar)
  * @brief Split command by pipes only if the pipe is not inside quotes
  * 
  * @param str 
- * @return An array with the different commands found in str. 
+ * @return [Char **] An array with the different commands found in str. 
  */
 static char	**split_by_pipes(char *str)
 {
@@ -117,7 +117,7 @@ static char	**split_by_pipes(char *str)
  * 
  * @param cmd Struct
  * @param cmd_line Line with the command 
- * @return Given struct whith all elements from cmd_line.
+ * @return [t_cmd *] Given struct whith all elements from cmd_line.
  */
 t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 {

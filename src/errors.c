@@ -52,6 +52,15 @@ void	print_error_file_ambiguous(char	*str, t_cmd *cmd, t_env *env)
 	free(bad_env);
 }
 
+/**
+ * @brief Print an error message depending of the given code by the
+ * standard error output. if code is NULL it prints only 'Error.'
+ * After the printation stuff it change the value of $? to 1. 
+ * 
+ * @param code A code to print different error messages.
+ * @param env The list with the env vars.
+ * @return [Int] the given error code.
+ */
 int	print_errors_by_code(int code, t_env *env)
 {
 	char	*msg;

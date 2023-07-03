@@ -17,7 +17,7 @@
  * 
  * @param str string to be spaced-skipped.
  * @param start position where start skipping spaces. 
- * @return Integer whith the position of the string after skipping spaces. 
+ * @return [Int] The position of the string after skipping spaces. 
  */
 int	skip_whitespaces(char *str, int start)
 {
@@ -31,7 +31,7 @@ int	skip_whitespaces(char *str, int start)
  * 
  * @param str string to be char-skipped.
  * @param start position where start skipping characters. 
- * @return Integer whith the position of the string after skipping chars. 
+ * @return [Int] The position of the string after skipping chars. 
  */
 int	skip_characters(char *str, int start)
 {
@@ -45,7 +45,7 @@ int	skip_characters(char *str, int start)
  * 
  * @param str string to be spacechar-skipped.
  * @param start position where start skipping spaces and chars. 
- * @return Integer whith the position of the string
+ * @return [Int] The position of the string
  * 	after skipping spaces and chars. 
  */
 int	skip_characters_and_spaces(char *str, int start)
@@ -59,7 +59,7 @@ int	skip_characters_and_spaces(char *str, int start)
  * @brief Skips cmd name and flags from cmd line.
  * 
  * @param cmd_line command_line. 
- * @return Integer whith the position of the string 
+ * @return [Int] The position of the string 
  * 	after skipping cmd and flags.
  */
 int	skip_cmd_and_flags(char	*cmd_line)
@@ -79,7 +79,7 @@ int	skip_cmd_and_flags(char	*cmd_line)
  * 
  * @param str String.
  * @param starting Starting position.
- * @return The position after skipping some characters. 
+ * @return [Int] The position after skipping some characters. 
  */
 int	skip_everything_til_quotes(char	*str, int starting)
 {

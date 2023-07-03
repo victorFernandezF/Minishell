@@ -17,7 +17,7 @@
  * 	(skipping spaces).
  * 
  * @param str 
- * @return 1 is there are no more chars. 0 if there are more chars. 
+ * @return [Int] 1 is there are no more chars. 0 if there are more chars. 
  */
 int	is_pipe_at_end_of_line(char	*str)
 {
@@ -36,7 +36,7 @@ int	is_pipe_at_end_of_line(char	*str)
  * 
  * @param str 
  * @param i 
- * @return 1 if there are more than one pipe in a row. 0 if not.
+ * @return [Int] 1 if there are more than one pipe in a row. 0 if not.
  */
 int	check_two_pipes_in_a_row(char *str, int i)
 {
@@ -60,7 +60,7 @@ int	check_two_pipes_in_a_row(char *str, int i)
  * 
  * @param str 
  * @param i 
- * @return 1 if something is wrong. 0 if not.
+ * @return [Int] 1 if something is wrong. 0 if not.
  */
 int	check_bad_redirection_chars(char *str, int i)
 {
@@ -90,7 +90,7 @@ int	check_bad_redirection_chars(char *str, int i)
  * 	the rest of the command (ex: [minishell]$ > output).
  * 
  * @param cmd 
- * @return 1 if somethin goes wrong. 0 if not. 
+ * @return [Int] 1 if somethin goes wrong. 0 if not. 
  */
 int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
 {
@@ -112,7 +112,7 @@ int	check_empty_cmd_or_bad_input_output(t_cmd *cmd)
  * 	chars combination before do anything.
  * 
  * @param str 
- * @return 0 if everything is ok. Something different than 0 if something
+ * @return [Int] 0 if everything is ok. Something different than 0 if something
  * 	is worng and the execution must stop.
  */
 int	check_invalid_characters(char *str, t_env *env)

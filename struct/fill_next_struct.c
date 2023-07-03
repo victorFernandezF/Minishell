@@ -16,7 +16,7 @@
  * @brief Returns the last element of the list. 
  * 
  * @param lst List.
- * @return The last element of the given list.
+ * @return [t_cmd] The last element of the given list.
  */
 static t_cmd	*ft_lstlast_minishell(t_cmd *lst)
 {
@@ -41,7 +41,7 @@ static t_cmd	*ft_lstlast_minishell(t_cmd *lst)
  * 
  * @param cmd The list in wich we want to add a new node.
  * @param new The new node to add. 
- * @return list with the new element added in the back.
+ * @return [t_cmd] List with the new element added in the back.
  */
 static t_cmd	*ft_lstadd_back_minishell(t_cmd *cmd, t_cmd *new)
 {
@@ -65,7 +65,7 @@ static t_cmd	*ft_lstadd_back_minishell(t_cmd *cmd, t_cmd *new)
  * @param cmd Struct.
  * @param str line with the command.º
  * @param index index of the new node we are creating.
- * @return The list created.  
+ * @return [t_cmd] The list created.  
  */
 t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int id, t_env *envar)
 {

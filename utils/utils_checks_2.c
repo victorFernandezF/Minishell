@@ -19,7 +19,7 @@
  * @param str String.
  * @param end Position. Function will check quotes in the string
  * 	before this point.
- * @return 1 if quotes found and 0 if not. 
+ * @return [Int] 1 if quotes found and 0 if not. 
  */
 int	is_there_open_quotes(char *str, int end)
 {
@@ -36,7 +36,7 @@ int	is_there_open_quotes(char *str, int end)
  * 
  * @param str line.
  * @param c character to search.
- * @return int 0 or 1.
+ * @return [Int] 1 if char c is found in string. 0 if not.
  */
 int	search_char_in_str(char *str, char c)
 {

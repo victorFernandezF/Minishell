@@ -133,6 +133,14 @@ int	get_total_length_of_words_in_array(char **array)
 	return (len);
 }
 
+/**
+ * @brief Get whatever is next to a environment variable.
+ * ex: echo '$PATH:root' te return value will be ':root'.
+ * 
+ * @param complete The string with the complete env var
+ * @param name The name of the env var including dollar.
+ * @return The string with whatever is next to a env var.
+ */
 char	*get_env_rest(char *complete, char *name)
 {
 	int		i;

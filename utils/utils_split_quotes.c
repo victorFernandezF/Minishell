@@ -17,7 +17,7 @@
  * 
  * @param str String.
  * @param start Position in wich each word starts.
- * @return A string with the things that were inside the quotes.
+ * @return [Char *] String with the things that were inside the quotes.
  */
 static char	*quot_manager_with_quotes(char *str, int start)
 {
@@ -51,7 +51,7 @@ static char	*quot_manager_with_quotes(char *str, int start)
  * 
  * @param str String.
  * @param start Position in wich each word starts.
- * @return A string with the things that were inside the quotes.
+ * @return [Char *] String with the things that were inside the quotes.
  */
 static char	*quot_manager(char *str, int start, int quot)
 {
@@ -87,7 +87,7 @@ static char	*quot_manager(char *str, int start, int quot)
  * 
  * @param str String.
  * @param start Position in which each word starts.
- * @return String with the word ready to be stored in array.
+ * @return [Char *] String with the word ready to be stored in array.
  */
 static char	*write_word_minishell(char *str, int start)
 {
@@ -121,7 +121,7 @@ static char	*write_word_minishell(char *str, int start)
  * @param split Array to be filled (malloc in split function). 
  * @param str String to be splitted.
  * @param nb_words Nomber of words in str (things inside quotes count as one).
- * @return Array given in arg but filled with the words of str. 
+ * @return [Char **] Array given in arg but filled with the words of str. 
  */
 static char	**fill_split_array(char **split, char *str, int nb_words, int quot)
 {
@@ -160,7 +160,7 @@ static char	**fill_split_array(char **split, char *str, int nb_words, int quot)
  * @param quot Flag if 1 the part inside quotes are stored in the array
  * 	including the quootes. If 0 the part inside the quotes are strored
  * 	without the quotes.
- * @return Array with the parts of the string separated by spaces but having in
+ * @return [Char **] Array with the parts of the string separated by spaces but having in
  * 	mind that the parts that are inside the quotes are considered as one element.
  */
 char	**ft_split_minishell(char *str, int quot)

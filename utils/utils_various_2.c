@@ -12,6 +12,15 @@
 
 #include "../minishell.h"
 
+/**
+ * @brief skips all character starting in the given position
+ * until the given char is found.
+ * 
+ * @param str string
+ * @param i starting position.
+ * @param c character to search
+ * @return [int] The position after the skipping move. 
+ */
 int	skip_until_char(char *str, int i, char c)
 {
 	while (str[++i])
@@ -25,7 +34,7 @@ int	skip_until_char(char *str, int i, char c)
  * 	Things inside double quotes count as one.
  * 
  * @param str String to be splitted.
- * @return thhe nomber of elements that the final array will have.
+ * @return [int]The number of elements that the final array will have.
  */
 int	count_words_minishell(char *str)
 {
@@ -59,7 +68,7 @@ int	count_words_minishell(char *str)
  * 
  * @param str string
  * @param end  position where word starts
- * @return 1 if the word is inside quotes. 0 if not.
+ * @return [int] 1 if the word is inside quotes. 0 if not.
  */
 int	is_between_double_quotes(char *str, int end)
 {
@@ -83,7 +92,7 @@ int	is_between_double_quotes(char *str, int end)
  * 
  * @param str string to be spacechar-skipped.
  * @param start position where start skipping spaces and chars. 
- * @return Integer whith the position of the string
+ * @return [Int] The position of the string
  * 	after skipping spaces and chars. 
  */
 int	skip_cmd_name(char *str, int start)
@@ -107,7 +116,7 @@ int	skip_cmd_name(char *str, int start)
  *	(ex: line 'echo -n hello > out world' will become 'hello >_out world')
  * 
  * @param cmd_line Line with the command line. 
- * @return String that contains everithing except cmd name and flags
+ * @return [char *] String that contains everithing except cmd name and flags
  *	and the redirection characters are followed by '_'.
  */
 char	*replace_spaces_after_redirect(char *cmd_line)

@@ -52,7 +52,7 @@ void	check_ctrl_d(char *read, t_env *envars, char *prompt)
  * whith fancy colors.
  * 
  * @param envars 
- * @return The actual directory finished in $ sign. 
+ * @return [Char *] The actual directory finished in $ sign. 
  */
 static char	*get_prompt(t_env *envars)
 {

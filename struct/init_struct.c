@@ -16,7 +16,7 @@
  * @brief Initialize a struct with all its elements to NULL or 0
  * 
  * @param structure The struct to initialize.
- * @return The initilized struct.
+ * @return [t_cmd] The initilized struct.
  */
 t_cmd	*init_struct(t_cmd *structure)
 {
