@@ -12,6 +12,14 @@
 
 #include "../minishell.h"
 
+int	skip_until_char(char *str, int i, char c)
+{
+	while (str[++i])
+		if (str[i] == c)
+			return (i);
+	return (i);
+}
+
 /**
  * @brief Counts thenumber of words that are in the string.
  * 	Things inside double quotes count as one.

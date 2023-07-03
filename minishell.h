@@ -97,6 +97,7 @@ char	*get_path(t_env *env);
 void	free_env_var_things(char *str, char *str2, char *envname, char *env);
 int		env_var_counter(char *str);
 char	*get_env_rest(char *complete, char *name);
+char	*redi_string(int len, char *env_complete, char *env, int flag);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
@@ -136,6 +137,7 @@ int		skip_cmd_and_flags(char	*cmd_line);
 int		skip_everything_til_quotes(char	*str, int j);
 int		skip_cmd_name(char *str, int start);
 int		skip_characters_until_char(char *str, int start, char limit);
+int		skip_until_char(char *str, int i, char c);
 
 int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);

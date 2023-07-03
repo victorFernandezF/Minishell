@@ -57,30 +57,17 @@ char	*env_var_transformation(char *env_complete, t_env *envar)
 char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, int flag)
 {
 	int		i;
-	int		j;
-	int		len;
 	char	*redi;
 	char	*rest;
 	char	*join;
 
+	i = 0;
 	rest = get_env_rest(env_complete, name);
-	len = 0;
-	i = -1;
-	j = -1;
-	while (!is_env_var(env_complete[len]))
-		len++;
-	len += ft_strlen(env);
+	i = skip_until_char(env_complete, i, '$');
+	i += ft_strlen(env);
 	if (flag == 1)
-		len++;
-	redi = malloc((len + 1) * sizeof(char));
-	env_complete = replace_simple_quotes_by_double_quotes(env_complete);
-	while (!is_env_var(env_complete[++i]))
-		redi[i] = env_complete[i];
-	while (env[++j])
-		redi[i++] = env[j];
-	if (flag == 1)
-		redi[i++] = 34;
-	redi[i] = '\0';
+		i++;
+	redi = redi_string(i, env_complete, env, flag);
 	if (!rest)
 		return (redi);
 	join = ft_strjoin(redi, rest);
@@ -148,28 +135,27 @@ int	get_total_length_of_words_in_array(char **array)
 
 char	*get_env_rest(char *complete, char *name)
 {
-	char	*rest;
 	int		i;
 	int		j;
 	int		start;
+	char	*rest;
 
 	i = 0;
 	j = 0;
-	while (!is_env_var(complete[i]))
-		i++;
+	i = skip_until_char(complete, i, '$');
 	while (complete[i] && name[j] && complete[i] == name[j])
 	{
 		i++;
 		j++;
 	}
 	start = i;
-	while (complete[i])
-	{
+	i--;
+	while (complete[++i])
 		j++;
-		i++;
-	}
 	i = 0;
 	rest = malloc((j + 1) * sizeof(char));
+	if (!rest)
+		return (NULL);
 	while (complete[start])
 		rest[i++] = complete[start++];
 	rest[i++] = '\0';

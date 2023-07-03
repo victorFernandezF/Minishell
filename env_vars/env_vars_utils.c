@@ -100,3 +100,24 @@ int	env_var_counter(char *str)
 			res++;
 	return (res);
 }
+
+char	*redi_string(int len, char *env_complete, char *env, int flag)
+{
+	char	*result;
+	int		i;
+	int		j;
+
+	i = -1;
+	result = malloc((len + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	env_complete = replace_simple_quotes_by_double_quotes(env_complete);
+	while (!is_env_var(env_complete[++i]))
+		result[i] = env_complete[i];
+	while (env[++j])
+		result[i++] = env[j];
+	if (flag == 1)
+		result[i++] = 34;
+	result[i] = '\0';
+	return (result);
+}
