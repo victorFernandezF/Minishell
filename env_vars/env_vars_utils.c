@@ -87,3 +87,16 @@ char	*more_than_one_env_vars(char *str, t_env *envar)
 	free(str);
 	return (final);
 }
+
+int	env_var_counter(char *str)
+{
+	int	i;
+	int	res;
+
+	i = -1;
+	res = 0;
+	while(str[++i])
+		if (is_env_var(str[i]))
+			res++;
+	return (res);
+}

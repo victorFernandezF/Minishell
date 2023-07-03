@@ -55,7 +55,7 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 
 	add_last_quote = 0;
 	env_var_name = get_env_var_name_including_dollar(cmd_line);
-	if (get_next_char(env_var_name, 0) > 0)
+ 	if (env_var_counter(cmd_line) > 1)
 	{
 		final = more_than_one_env_vars(cmd_line, envar);
 		free(env_var_name);
@@ -69,7 +69,6 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 	no_end_quotes = del_last_quote(env_var_name);
 	env = env_var_transformation(env_var_name, envar);
 	final = fill_string_with_env_var_value(cmd_line, env_var_name, env, add_last_quote);
-	printf("final %s\n\n", final);
 	free_env_var_things(no_end_quotes, cmd_line, env_var_name, env);
 	return (final);
 }
@@ -141,6 +140,7 @@ char	*expand_environment_variables(char *cmd_line, t_env *envar)
 			if (check_simple_quotes(array[i])
 				|| is_inside_simple_quotes(array, i))
 				continue ;
+			temp = NULL;
 			temp = convert_env_var_in_its_value(array[i], envar);
 			array[i] = temp;
 		}

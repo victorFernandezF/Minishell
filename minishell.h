@@ -95,6 +95,7 @@ int		get_total_length_of_words_in_array(char **array);
 char	*more_than_one_env_vars(char *str, t_env *envar);
 char	*get_path(t_env *env);
 void	free_env_var_things(char *str, char *str2, char *envname, char *env);
+int		env_var_counter(char *str);
 char	*get_env_rest(char *complete, char *name);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E

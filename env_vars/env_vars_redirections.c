@@ -81,7 +81,6 @@ char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, 
 	if (flag == 1)
 		redi[i++] = 34;
 	redi[i] = '\0';
-	printf("rest -> %s\n", rest);
 	if (!rest)
 		return (redi);
 	join = ft_strjoin(redi, rest);
@@ -99,20 +98,25 @@ char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, 
 char	*get_env_var_name_including_dollar(char *str)
 {
 	int		j;
+	int		start;
 	int		end;
 	char	*tmp;
 
-	j = 1;
-	end = 0; 
+	j = 0;
+	end = 0;
+	while (!is_env_var(str[j]))
+		j++;
+	start = j;
+	j++;
 	while (str[j] && !is_env_var(str[j]))
 	{
 		if ((ft_isalpha(str[j]) || str[j] == '_') && str[j] != '\0')
-			end = j;
+			end++;
 		else
 			break ;
 		j++;
 	}
-	tmp = ft_substr(str, 0, end + 1);
+	tmp = ft_substr(str, start, end + 1);
 	return (tmp);
 }
 
@@ -151,8 +155,13 @@ char	*get_env_rest(char *complete, char *name)
 
 	i = 0;
 	j = 0;
-	while (complete[i] && name[i] && complete[i] == name[i])
+	while (!is_env_var(complete[i]))
 		i++;
+	while (complete[i] && name[j] && complete[i] == name[j])
+	{
+		i++;
+		j++;
+	}
 	start = i;
 	while (complete[i])
 	{
