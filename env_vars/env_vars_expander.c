@@ -66,7 +66,7 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 	if (env_var_name[ft_strlen(env_var_name) - 1] == 34
 		|| env_var_name[ft_strlen(env_var_name) - 1] == 39)
 		add_last_quote = 1;
-	no_end_quotes = del_last_quote(env_var_name);
+	no_end_quotes = del_last_quote(env_var_name);						
 	env = env_var_transformation(env_var_name, envar);
 	final = fill_string_with_env_var_value(cmd_line, env_var_name, env, add_last_quote);
 	free_env_var_things(no_end_quotes, cmd_line, env_var_name, env);

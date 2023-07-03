@@ -98,6 +98,7 @@ void	free_env_var_things(char *str, char *str2, char *envname, char *env);
 int		env_var_counter(char *str);
 char	*get_env_rest(char *complete, char *name);
 char	*redi_string(int len, char *env_complete, char *env, int flag);
+char	*redi_string_starting(int len, char *env_complete, char *env, int flag);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
@@ -192,6 +193,7 @@ void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4);
 void	print_test(char *str, t_cmd *cmd, int repeat);
 void	leaks(void);
 void	print_array(char **array);
+void	print_list_env(t_env *envar);
 
 // PROCESSING AND EXECUTE
 

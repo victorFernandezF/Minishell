@@ -56,6 +56,20 @@ void	print_array(char **array)
 		printf("%sarr[%i]:%s %s\n", G, i, W, array[i]);
 }
 
+void	print_list_env(t_env *envar)
+{
+	t_env	*vari;
+	t_env	*tmp;
+
+	vari = envar;
+	while (vari)
+	{
+		printf("%s -> %s\n", vari->var, vari->vals[0]);
+		tmp = vari->next;
+		vari = tmp;
+	}
+}
+
 /**
  * @brief Shows the leaks [TEMPORAL]
  * 

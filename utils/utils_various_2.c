@@ -23,9 +23,8 @@
  */
 int	skip_until_char(char *str, int i, char c)
 {
-	while (str[++i])
-		if (str[i] == c)
-			return (i);
+	while (str[i] && str[i] != c)
+		i++;
 	return (i);
 }
 

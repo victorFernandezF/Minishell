@@ -33,12 +33,12 @@ char	*env_var_transformation(char *env_complete, t_env *envar)
 		env = get_path(envar);
 		return (env);
 	}
-	temp = malloc((ft_strlen(env_complete) + 1) * sizeof(char));
+	temp = malloc(ft_strlen(env_complete) * sizeof(char));
 	if (!temp)
 		return (NULL);
 	while (env_complete[++i])
 		temp[j++] = env_complete[i];
-	temp[i] = '\0';
+	temp[j] = '\0';
 	env = find_env_from_srruct(envar, temp);
 	free(temp);
 	if (env == NULL)
@@ -63,11 +63,18 @@ char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, 
 
 	i = 0;
 	rest = get_env_rest(env_complete, name);
-	i = skip_until_char(env_complete, i, '$');
-	i += ft_strlen(env);
-	if (flag == 1)
-		i++;
-	redi = redi_string(i, env_complete, env, flag);
+	if (env_complete[0] == '$')
+	{
+		redi = redi_string_starting(ft_strlen(env), env_complete, env, flag);
+	}
+	else
+	{
+		i = skip_until_char(env_complete, i, '$');
+		i += ft_strlen(env);
+		if (flag == 1)
+			i++;
+		redi = redi_string(i, env_complete, env, flag);
+	}
 	if (!rest)
 		return (redi);
 	join = ft_strjoin(redi, rest);
