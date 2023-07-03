@@ -16,7 +16,7 @@
  * @brief Get the number of commands.
  * 
  * @param cmd_line command line
- * @return The number of commands found. 
+ * @return [Int] The number of commands found. 
  */
 int	get_nb_cmd(char *cmd_line)
 {
@@ -36,7 +36,7 @@ int	get_nb_cmd(char *cmd_line)
  * @brief Splits the name of the command from the command_line.
  * 
  * @param cmd_line Command lime.
- * @return The command name. 
+ * @return [Char *] The command name. 
  */
 char	*get_cmd(char *cmd_line)
 {

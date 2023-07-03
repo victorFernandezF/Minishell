@@ -32,7 +32,7 @@ static char	*all_together(char **array)
  *	and returns a new string with its value.
  * 
  * @param str String with env var name starrting with '$'
- * @return String with the enviroment var value.
+ * @return [Char *] String with the enviroment var value.
  */
 char	*get_path(t_env *envar)
 {

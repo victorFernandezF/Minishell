@@ -16,7 +16,7 @@
  * @brief Delete the last quote of the env var.
  * 
  * @param str 
- * @return The given string without the last quote. 
+ * @return [Char *] The given string without the last quote. 
  */
 char	*del_last_quote(char *str)
 {
@@ -43,7 +43,7 @@ char	*del_last_quote(char *str)
  * 
  * @param cmd_line the line with the command.
  * @param envar Struct whith the enviroment vars.
- * @return A line with the expanded env vars. 
+ * @return [Char *] A line with the expanded env vars. 
  */
 char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 {
@@ -79,7 +79,7 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
  *  in future functions
  * 
  * @param str String.
- * @return The given string with quotes replaced. 
+ * @return [Char *] The given string with quotes replaced. 
  */
 char	*replace_simple_quotes_by_double_quotes(char *str)
 {
@@ -120,7 +120,7 @@ char	*find_env_from_srruct(t_env *envar, char *name)
  * @brief Expands the environment var found in the command line. 
  * 
  * @param cmd_line line with the command.
- * @return The command line with the env vars expanded 
+ * @return [Char *] The command line with the env vars expanded 
  * 	(their value instead or the var name)
  */
 char	*expand_environment_variables(char *cmd_line, t_env *envar)

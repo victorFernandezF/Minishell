@@ -27,7 +27,7 @@ void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output)
  * 
  * @param array An array with every element except outputs.
  * @param len Length of the future string.
- * @return A string. 
+ * @return [Char *] A string. 
  */
 static char	*get_string_without_redir(char **array, int len, char sign)
 {
@@ -60,7 +60,7 @@ static char	*get_string_without_redir(char **array, int len, char sign)
  * 
  * @param str string in which c will be searched.
  * @param c Char that will bi searched inside str.
- * @return An int with the position of the last occurrency of c in str.
+ * @return [Int] The position of the last occurrency of c in str.
  */
 int	get_position_of_last_char_found(char *str, char c)
 {
@@ -87,7 +87,7 @@ int	get_position_of_last_char_found(char *str, char c)
  * @brief Returns a string with everything except outputs.
  * 
  * @param cmd_line Command line. 
- * @return String with everything except outputs.
+ * @return [Char *] String with everything except outputs.
  */
 char	*delete_outputs_from_line(char *cmd_line)
 {
@@ -119,7 +119,7 @@ char	*delete_outputs_from_line(char *cmd_line)
  * @brief Returns a string with everything except inputs.
  * 
  * @param cmd_line Command line. 
- * @return String with everything except input.
+ * @return [Char *] String with everything except input.
  */
 char	*delete_inputs_from_line(char *cmd_line)
 {

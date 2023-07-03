@@ -18,7 +18,7 @@
  * 
  * @param cmd_line Command line
  * @param cmd Struct.
- * @return Array of ints with the fds of each output
+ * @return [Int] Array of ints with the fds of each output
  *	found in command line.
  */
 int	get_output(char *cmd_line, t_cmd *cmd, t_env *env)
@@ -56,7 +56,7 @@ int	get_output(char *cmd_line, t_cmd *cmd, t_env *env)
  * 
  * @param cmd_line the command line given by user.
  * @param Position where input starts.
- * @return A string with the input filename. 
+ * @return [Char *] A string with the input filename. 
  */
 char	*get_output_from_pos(char *cmd_line, int position)
 {
@@ -91,7 +91,7 @@ char	*get_output_from_pos(char *cmd_line, int position)
  * 
  * @param input An array of strings with every output filenames.
  * @param nb_inputs The number of output filenames found in command line.
- * @return An array with the files descriptor (fd's) of each output file. 
+ * @return [Int *] An array with the files descriptor (fd's) of each output file. 
  */
 int	*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env)
 {
@@ -123,7 +123,7 @@ int	*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env)
  * @brief Counts the number of outputs found in command line.
  * 
  * @param cmd_line 
- * @return The number of outputs found.
+ * @return [Int] The number of outputs found.
  */
 int	get_nb_outputs(char *cmd_line)
 {
@@ -146,7 +146,7 @@ int	get_nb_outputs(char *cmd_line)
  * 
  * @param cmd_line Command line.
  * @param cmd Struct
- * @return An array of ints with the positions of each '>' chars.
+ * @return [Int *] An array of ints with the positions of each '>' chars.
  */
 int	*get_output_char_positions(char *cmd_line, t_cmd *cmd)
 {

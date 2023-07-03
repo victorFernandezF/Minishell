@@ -18,7 +18,7 @@
  * 
  * @param env_name String with inputs/outputs.
  * @param env String with the value of the env var.
- * @return String with the two strings joined.
+ * @return [Char *] String with the two strings joined.
  */
 static char	*fill_hd_str_with_env_var_value(char *env_name, char *env, int flag)
 {
@@ -51,7 +51,7 @@ static char	*fill_hd_str_with_env_var_value(char *env_name, char *env, int flag)
  * 
  * @param cmd_line the line with the command.
  * @param envar Struct whith the enviroment vars.
- * @return A line with the expanded env vars. 
+ * @return [Char *] A line with the expanded env vars. 
  */
 char	*convert_heredoc_env_var_in_its_value(char *here_line, t_env *envar)
 {
@@ -79,7 +79,7 @@ char	*convert_heredoc_env_var_in_its_value(char *here_line, t_env *envar)
  * @brief Expands the environment var found in the command line. 
  * 
  * @param cmd_line line with the command.
- * @return The command line with the env vars expanded 
+ * @return [Char *] The command line with the env vars expanded 
  * 	(their value instead or the var name)
  */
 char	*expand_heredoc_env_vars(char *here_line, t_env *envar)

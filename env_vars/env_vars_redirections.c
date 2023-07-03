@@ -17,7 +17,7 @@
  *	and returns a new string with its value.
  * 
  * @param str String with env var name starrting with '$'
- * @return String with the enviroment var value.
+ * @return [Char *] String with the enviroment var value.
  */
 char	*env_var_transformation(char *env_complete, t_env *envar)
 {
@@ -52,7 +52,7 @@ char	*env_var_transformation(char *env_complete, t_env *envar)
  * 
  * @param env_complete String with inputs/outputs.
  * @param env String with the value of the env var.
- * @return String with the two strings joined.
+ * @return [Char *] String with the two strings joined.
  */
 char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, int flag)
 {
@@ -80,7 +80,7 @@ char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, 
  * 	string from the env var character '$' to the end of string.
  * 
  * @param str String with the str.
- * @return The substring created. 
+ * @return [Char *] The substring created. 
  */
 char	*get_env_var_name_including_dollar(char *str)
 {
@@ -113,7 +113,7 @@ char	*get_env_var_name_including_dollar(char *str)
  * 
  * @param array Array of strings with the words that will be
  *	joined in the string.
- * @return The length of the future string with every element from the array
+ * @return [Int] The length of the future string with every element from the array
  */
 int	get_total_length_of_words_in_array(char **array)
 {
@@ -139,7 +139,7 @@ int	get_total_length_of_words_in_array(char **array)
  * 
  * @param complete The string with the complete env var
  * @param name The name of the env var including dollar.
- * @return The string with whatever is next to a env var.
+ * @return [Char *] The string with whatever is next to a env var.
  */
 char	*get_env_rest(char *complete, char *name)
 {

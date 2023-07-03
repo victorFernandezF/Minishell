@@ -16,7 +16,7 @@
  * @brief Replace heredoc by normal input in the command line.
  * 
  * @param line Commmand_line.
- * @return A string with the new command line.
+ * @return [Char *] A string with the new command line.
  */
 static char	*replace_heredoc(char *line)
 {
@@ -49,7 +49,7 @@ static char	*replace_heredoc(char *line)
  * @brief Checks if there is an heredoc sign "<<"
  * 
  * @param str String with the command.
- * @return 1 if there are a heredoc. 0 if not.
+ * @return [Int] 1 if there are a heredoc. 0 if not.
  */
 int	heredoc_detector(char *str)
 {
@@ -66,7 +66,7 @@ int	heredoc_detector(char *str)
  * @brief Returns the delimiter of the heredoc.
  * 
  * @param str Command line. 
- * @return A string with the delimiter of the heredoc.
+ * @return [Char *] A string with the delimiter of the heredoc.
  */
 char	*get_delimiter(char *str)
 {
@@ -101,7 +101,7 @@ char	*get_delimiter(char *str)
  * @brief Opens the temporary file that will be use
  * to store the heredoc content.
  * 
- * @return FD of the opened file.
+ * @return [Int] FD of the opened file.
  */
 int	open_heredoc_file(void)
 {
@@ -119,7 +119,7 @@ int	open_heredoc_file(void)
  * heredoc in a normal input in order to be read in the future.
  * 
  * @param cmd_line Command line.
- * @return A string with command line transforming the heredoc 
+ * @return [Char *] A string with command line transforming the heredoc 
  * into a normal input.
  */
 char	*heredoc(char *cmd_line, t_env *envar)

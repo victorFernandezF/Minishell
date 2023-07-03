@@ -16,7 +16,7 @@
  * @brief Counts the number of '<' inputs chars found in command line.
  * 
  * @param cmd_line command_line 
- * @return Number of inputs found. 
+ * @return [Int] Number of inputs found. 
  */
 int	get_nb_inputs(char *cmd_line)
 {
@@ -40,7 +40,7 @@ int	get_nb_inputs(char *cmd_line)
  * 
  * @param cmd_line command_line
  * @param cmd Struct
- * @return A fd of the last input found.
+ * @return [Int] A fd of the last input found.
  */
 int	get_input(char *cmd_line, t_cmd *cmd, t_env *env)
 {
@@ -77,7 +77,7 @@ int	get_input(char *cmd_line, t_cmd *cmd, t_env *env)
  * 
  * @param cmd_line command_line
  * @param pos Position where input starts.
- * @return A string with the input filename. 
+ * @return [Char *] A string with the input filename. 
  */
 char	*get_input_from_pos(char *cmd_line, int pos, t_cmd *cmd, t_env *env)
 {
@@ -114,7 +114,7 @@ char	*get_input_from_pos(char *cmd_line, int pos, t_cmd *cmd, t_env *env)
  * 
  * @param input An array of strings with every inputs filenames.
  * @param nb_inputs The number of input filenames found in command line.
- * @return An array with the files descriptor (fd's) of each input file. 
+ * @return [Int *] An array with the files descriptor (fd's) of each input file. 
  */
 int	*input_filename_to_fd(char **input, int nb_in, t_cmd *cmd, t_env *env)
 {
@@ -143,7 +143,7 @@ int	*input_filename_to_fd(char **input, int nb_in, t_cmd *cmd, t_env *env)
  * 
  * @param cmd_line Command_line
  * @param cmd Struct.
- * @return Array of ints whith the positions of each '<' in the string.
+ * @return [Int *] Array of ints whith the positions of each '<' in the string.
  */
 int	*get_input_char_positions(char *cmd_line, t_cmd *cmd)
 {

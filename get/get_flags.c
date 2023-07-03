@@ -16,7 +16,7 @@
  * @brief Get the flags of the command line.
  * 
  * @param cmd_line command_line
- * @return A string with the flags found.
+ * @return [Char *] A string with the flags found.
  */
 char	*get_flags(char *cmd_line)
 {

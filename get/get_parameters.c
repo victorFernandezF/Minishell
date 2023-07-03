@@ -18,7 +18,7 @@
  * @param param 
  * @param cmd_line 
  * @param i 
- * @return A string.
+ * @return [Char *] A string.
  */
 char	*fill_string_param(char *param, char *cmd_line, int i)
 {
@@ -30,6 +30,12 @@ char	*fill_string_param(char *param, char *cmd_line, int i)
 	return (param);
 }
 
+/**
+ * @brief Checks if there is only the cmd name in the line.
+ * 
+ * @param cmd_line Command line.
+ * @return [Int] 1 if only cmd name found. 0 if there are more things.
+ */
 static int	check_if_only_cmd_name(char *cmd_line)
 {
 	int	i;
@@ -40,6 +46,12 @@ static int	check_if_only_cmd_name(char *cmd_line)
 	return (0);
 }
 
+/**
+ * @brief Counts the number of parameters found.
+ * 
+ * @param param_array 
+ * @return [Int] Number of parameters. 
+ */
 static int	count_parameters(char **param_array)
 {
 	int	i;
@@ -58,7 +70,7 @@ static int	count_parameters(char **param_array)
  *	in the command line given by user.
  * 
  * @param cmd_line Command line
- * @return An array of strings with every parameters found. 
+ * @return [Char **] An array of strings with every parameters found. 
  */
 char	**get_parameters(char *cmd_line)
 {

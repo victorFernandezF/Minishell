@@ -36,7 +36,7 @@ void	free_heredoc_stuff(char *temp, char **arr_tmp)
  * intput.
  * 
  * @param temp String with the command.
- * @return A string with the command after converting the heredoc
+ * @return [Char *] A string with the command after converting the heredoc
  *  into an input. 
  */
 char	*convert_heredoc_in_input(char *temp)
@@ -55,7 +55,7 @@ char	*convert_heredoc_in_input(char *temp)
  * @brief Deletes the spaces after heredoc signs(<<).
  * 
  * @param temp String to be modified.
- * @return A String whit the heredocs sings following by their delimiters
+ * @return [Char *] A String whit the heredocs sings following by their delimiters
  */
 char	*heredoc_signs_without_spaces(char *temp)
 {
