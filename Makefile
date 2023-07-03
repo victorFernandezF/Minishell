@@ -82,6 +82,8 @@ READLINE_LIB = -lreadline -lhistory -L $(READLINE_DIR)/lib
 
 all: nice_text lib $(NAME)
 
+test: lib $(NAME)
+
 lib:
 	@make -C $(LIBFT_PATH)
 

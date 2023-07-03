@@ -81,6 +81,7 @@ char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, 
 	if (flag == 1)
 		redi[i++] = 34;
 	redi[i] = '\0';
+	printf("rest -> %s\n", rest);
 	if (!rest)
 		return (redi);
 	join = ft_strjoin(redi, rest);
@@ -150,7 +151,7 @@ char	*get_env_rest(char *complete, char *name)
 
 	i = 0;
 	j = 0;
-	while (complete[i] == name[i])
+	while (complete[i] && name[i] && complete[i] == name[i])
 		i++;
 	start = i;
 	while (complete[i])
