@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/30 17:53:41 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:17:19 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	check_ctrl_d(char *read, t_env *envars, char *prompt)
 /**
  * @brief Gets the PWD from the struct envars and combines it
  * whith fancy colors.
- * 
- * @param envars 
- * @return [Char *] The actual directory finished in $ sign. 
+ *
+ * @param envars
+ * @return [Char *] The actual directory finished in $ sign.
  */
 static char	*get_prompt(t_env *envars)
 {
@@ -91,8 +91,8 @@ void	mini_loop(t_cmd *cmd, t_env *envars)
 			cmd = start_parser(cmd, read, envars);
 			if (cmd->error == 0)
 			{
-				//print_test(read, cmd, 0);
-				processing(cmd, envars);
+				print_test(read, cmd, 0);
+				//processing(cmd, envars);
 			}
 			free_struct(cmd);
 		}

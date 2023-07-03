@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:39:43 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 17:53:20 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:04:40 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	sort_mat(char **mat)
 	}
 }
 
-
-
 int	add_export(t_cmd *cmd, t_env *env)
 {
 	int		i;
@@ -65,11 +63,15 @@ int	add_export(t_cmd *cmd, t_env *env)
 	i = -1;
 	while (cmd->params[++i])
 	{
-		mat = ft_split(cmd->params[i], '=');
+		mat = ft_splitf(cmd->params[i]);
 		j = -1;
-		while (mat[++j])
-			printf("%s\n", mat[j]);
-		printf("\n");
+		printf("matsize: %d\n", matsize(mat));
+		if (matsize(mat) > 1 && mat[1][0] != '\0')
+		{
+			while (mat[++j])
+				printf("%s\n", mat[j]);
+			printf("\n");
+		}
 		free_mat(mat);
 	}
 	return (EXIT_SUCCESS);
