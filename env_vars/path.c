@@ -56,6 +56,14 @@ char	*get_path(t_env *envar)
 	return (NULL);
 }
 
+/**
+ * @brief Frees variables used in the env var transformation
+ * 
+ * @param s1 
+ * @param s2 
+ * @param envname 
+ * @param env 
+ */
 void	free_env_var_things(char *s1, char *s2, char *envname, char *env)
 {
 	if (s1 != NULL)

@@ -189,6 +189,5 @@ char	*redi_string_starting(int len, char *env_complete, char *env, int flag)
 	if (flag == 1)
 		result[i++] = 34;
 	result[i] = '\0';
-	printf("redi medi %s\n", result);
 	return (result);
 }

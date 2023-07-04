@@ -137,7 +137,6 @@ int		skip_characters_and_spaces(char *str, int start);
 int		skip_cmd_and_flags(char	*cmd_line);
 int		skip_everything_til_quotes(char	*str, int j);
 int		skip_cmd_name(char *str, int start);
-int		skip_characters_until_char(char *str, int start, char limit);
 int		skip_until_char(char *str, int i, char c);
 
 int		get_position_of_last_char_found(char *str, char c);
@@ -149,14 +148,12 @@ void	print_error_file(char *input, char *msg, t_env *env);
 void	print_error_file_ambiguous(char	*str, t_cmd *cmd, t_env *env);
 char	**ft_split_minishell(char *str, int quot);
 int		count_words_minishell(char *str);
-char	**ft_split_pipes(char *str, int quot);
 int		count_words_pipes(char *str);
 
 int		strlen_starting_in(char *str, int i);
 int		get_next_char(char *str, int i);
 int		is_inside_simple_quotes(char **array, int pos);
 int		check_simple_quotes(char *str);
-char	*delete_unclosed_quotes(char *str);
 int		check_unclosed_quotes(char *str);
 
 // L O O P P I N G   A N D   S I G N A L S

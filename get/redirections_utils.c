@@ -12,6 +12,15 @@
 
 #include"../minishell.h"
 
+/**
+ * @brief Checks if there's an error in the openning
+ * of a file.
+ * 
+ * @param cmd Struct
+ * @param env Struct
+ * @param res Fd.
+ * @param output Filename.
+ */
 void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output)
 {
 	if (res == -1)
