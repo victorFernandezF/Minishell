@@ -47,11 +47,11 @@ char	*del_last_quote(char *str)
  */
 char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 {
-	char	*env_var_name;
-	char	*no_end_quotes;
-	int		add_last_quote;
 	char	*env;
 	char	*final;
+	char	*no_end_quotes;
+	char	*env_var_name;
+	int		add_last_quote;
 
 	add_last_quote = 0;
 	env_var_name = get_env_var_name_including_dollar(cmd_line);
