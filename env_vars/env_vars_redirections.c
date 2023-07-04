@@ -73,7 +73,7 @@ char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, 
 		i += ft_strlen(env);
 		if (flag == 1)
 			i++;
-		redi = redi_string(i, env_complete, env, flag);
+		redi = join_firts_part_str_and_env_var(i, env_complete, env, flag);
 	}
 	if (!rest)
 		return (redi);

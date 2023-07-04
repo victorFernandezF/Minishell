@@ -12,6 +12,12 @@
 
 #include "../minishell.h"
 
+/**
+ * @brief Deletes spaces from a string.
+ * 
+ * @param str string.
+ * @return [Char *] A new string with no spaces. 
+ */
 static char	*delete_spaces(char *str)
 {
 	int		nb;
@@ -35,6 +41,14 @@ static char	*delete_spaces(char *str)
 	return (nosp);
 }
 
+/**
+ * @brief Filters an array with all env vars found in
+ * cmd line and returns a new array only with the ones
+ * that are well formatted.
+ * 
+ * @param array Array to filter.
+ * @return [Char **] Filtered array. 
+ */
 static char	**take_only_the_good_ones(char **array)
 {
 	int		i;
@@ -62,13 +76,23 @@ static char	**take_only_the_good_ones(char **array)
 	return (res);
 }
 
+/**
+ * @brief If there are more than one env vars together this
+ * function returns a string with evry env vae joined.
+ * if one of them is bad formatted or not found, returns only
+ * the good one.
+ * 
+ * @param str String to transform.
+ * @param envar List with the env vars.
+ * @return [Char *] The string with the values of the env vars.
+ */
 char	*more_than_one_env_vars(char *str, t_env *envar)
 {
-	char	**env;
-	char	**temp;
 	int		i;
 	char	*tmp;
 	char	*final;
+	char	**env;
+	char	**temp;
 
 	i = -1;
 	env = ft_split(str, '$');
@@ -88,6 +112,12 @@ char	*more_than_one_env_vars(char *str, t_env *envar)
 	return (final);
 }
 
+/**
+ * @brief Counts every env vars sign '$' in the string-
+ * 
+ * @param str String (command line).
+ * @return [Int] The number of '$' found.
+ */
 int	env_var_counter(char *str)
 {
 	int	i;
@@ -101,7 +131,19 @@ int	env_var_counter(char *str)
 	return (res);
 }
 
-char	*redi_string(int len, char *env_complete, char *env, int flag)
+/**
+ * @brief If env var is preceded by some strings (ex: hello$USER).
+ * This function joins the first part of the string with the env var
+ * value.
+ * 
+ * @param len Length of the new string.
+ * @param env_complete Complete string where env var is
+ * @param env List with the env vars.
+ * @param flag Flag to control if add quote at the end.
+ * @return [char *] String with the result of joinings the
+ *  first part of the string with the env var value.
+ */
+char	*join_firts_part_str_and_env_var(int len, char *env_complete, char *env, int flag)
 {
 	char	*result;
 	int		i;
@@ -123,6 +165,15 @@ char	*redi_string(int len, char *env_complete, char *env, int flag)
 	return (result);
 }
 
+/**
+ * @brief Transform a env var in its value if it is not preceded by anything.
+ * 
+ * @param len Length of the new string.
+ * @param env_complete Complete string where env var is
+ * @param env List with the env vars.
+ * @param flag Flag to control if add quote at the end.
+ * @return [char *] String with the env var value.
+*/
 char	*redi_string_starting(int len, char *env_complete, char *env, int flag)
 {
 	char	*result;
@@ -138,5 +189,6 @@ char	*redi_string_starting(int len, char *env_complete, char *env, int flag)
 	if (flag == 1)
 		result[i++] = 34;
 	result[i] = '\0';
+	printf("redi medi %s\n", result);
 	return (result);
 }

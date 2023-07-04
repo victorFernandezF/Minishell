@@ -97,7 +97,7 @@ char	*get_path(t_env *env);
 void	free_env_var_things(char *str, char *str2, char *envname, char *env);
 int		env_var_counter(char *str);
 char	*get_env_rest(char *complete, char *name);
-char	*redi_string(int len, char *env_complete, char *env, int flag);
+char	*join_firts_part_str_and_env_var(int len, char *env_complete, char *env, int flag);
 char	*redi_string_starting(int len, char *env_complete, char *env, int flag);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E

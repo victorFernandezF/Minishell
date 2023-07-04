@@ -92,6 +92,15 @@ char	*replace_simple_quotes_by_double_quotes(char *str)
 	return (str);
 }
 
+/**
+ * @brief Search an environment variable inside the list
+ * of evn vars. if env var is found, this function returns
+ * its value. if not, returns null.
+ * 
+ * @param envar list with the environment variables.
+ * @param name Name of the variable to search in the list.
+ * @return [Char *] Value of the env var. Or Null if not found.
+ */
 char	*find_env_from_srruct(t_env *envar, char *name)
 {
 	int		i;

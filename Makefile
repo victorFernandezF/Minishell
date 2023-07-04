@@ -132,4 +132,4 @@ superclean: fclean
 re: fclean all
 
 .PHONY: all clean fclean re
-.SILENT: $(OBJS)
+.SILENT: al $(OBJS)
