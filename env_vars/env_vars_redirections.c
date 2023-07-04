@@ -104,7 +104,7 @@ char	*get_env_var_name_including_dollar(char *str)
 	j++;
 	while (str[j] && !is_env_var(str[j]))
 	{
-		if ((ft_isalpha(str[j]) || str[j] == '_') && str[j] != '\0')
+		if ((ft_isalpha(str[j]) || str[j] == '_' || str[j] == '?') && str[j] != '\0')
 			end++;
 		else
 			break ;
