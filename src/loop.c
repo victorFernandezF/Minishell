@@ -91,7 +91,7 @@ void	mini_loop(t_cmd *cmd, t_env *envars)
 			cmd = start_parser(cmd, read, envars);
 			if (cmd->error == 0)
 			{
-				//print_test(read, cmd, 0);
+				print_test(read, cmd, 0);
 				processing(cmd, envars);
 			}
 			free_struct(cmd);

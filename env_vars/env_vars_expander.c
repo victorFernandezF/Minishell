@@ -148,7 +148,10 @@ char	*expand_environment_variables(char *cmd_line, t_env *envar)
 		{
 			if (check_simple_quotes(array[i])
 				|| is_inside_simple_quotes(array, i))
+			{
+				array[i] = replace_simple_quotes_by_double_quotes(array[i]);
 				continue ;
+			}
 			temp = NULL;
 			temp = convert_env_var_in_its_value(array[i], envar);
 			array[i] = temp;
