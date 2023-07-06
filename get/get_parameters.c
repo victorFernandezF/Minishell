@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 19:17:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/06 19:09:57 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,15 @@ static int	check_if_only_cmd_name(char *cmd_line)
 static int	count_parameters(char **param_array)
 {
 	int	i;
+	int	len;
 
-	i = -1;
+	i = 0;
+	len = 0;
 	while (param_array[++i])
-		i++;
-	i--;
+		len++;
 	if (param_array[1][0] == '-')
-		i--;
-	return (i);
+		len--;
+	return (len);
 }
 
 /**
@@ -91,9 +92,13 @@ char	**get_parameters(char *cmd_line)
 		return (NULL);
 	if (param_array[1][0] == '-')
 		i++;
-	while (param_array[++i])
-		param[j++] = ft_copy_str(param_array[i]);
+	while (param_array[++i] != NULL)
+		param[j++] = param_array[i];
 	param[j] = NULL;
-	free_array(param_array);
+	print_array(param);
+	free(param_array[0]);
+	if (param_array[1][0] == '-')
+		free(param_array[1]);
+	free(param_array);
 	return (param);
 }

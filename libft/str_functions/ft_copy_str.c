@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 12:17:42 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/16 12:03:53 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/06 19:01:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,15 @@ char	*ft_copy_str(char *str_to_copy)
 {
 	int		len;
 	char	*copy;
+	int		i;
 
 	len = ft_strlen(str_to_copy);
 	copy = malloc(len * sizeof(char));
 	if (!copy)
 		return (NULL);
-	copy = ft_strcpy(copy, str_to_copy);
+	i = -1;
+	while (str_to_copy[++i] != '\0')
+		copy[i] = str_to_copy[i];
+	copy[i] = '\0';
 	return (copy);
 }

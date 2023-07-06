@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:57:23 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/29 19:12:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:30:31 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ char	*delete_outputs_from_line(char *cmd_line)
 		if (array[i][0] == '>')
 			continue ;
 		len += ft_strlen(array[i]);
-		len += 1;
 	}
+	len++;
 	if (len == 0)
 		len++;
 	no_outputs = get_string_without_redir(array, len, '>');

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/30 13:48:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:28:53 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,26 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 	char	*env;
 	char	*final;
 	char	*no_end_quotes;
-	char	*env_var_name;
-	int		add_last_quote;
+	char	*env_name;
+	int		last_quote;
 
-	add_last_quote = 0;
-	env_var_name = get_env_var_name_including_dollar(cmd_line);
- 	if (env_var_counter(cmd_line) > 1)
+	last_quote = 0;
+	env_name = get_env_var_name_including_dollar(cmd_line);
+	if (env_var_counter(cmd_line) > 1)
 	{
 		final = more_than_one_env_vars(cmd_line, envar);
-		free(env_var_name);
+		free(env_name);
 		return (final);
 	}
-	if (!env_var_name)
+	if (!env_name)
 		return (NULL);
-	if (env_var_name[ft_strlen(env_var_name) - 1] == 34
-		|| env_var_name[ft_strlen(env_var_name) - 1] == 39)
-		add_last_quote = 1;
-	no_end_quotes = del_last_quote(env_var_name);						
-	env = env_var_transformation(env_var_name, envar);
-	final = fill_string_with_env_var_value(cmd_line, env_var_name, env, add_last_quote);
-	free_env_var_things(no_end_quotes, cmd_line, env_var_name, env);
+	if (env_name[ft_strlen(env_name) - 1] == 34
+		|| env_name[ft_strlen(env_name) - 1] == 39)
+		last_quote = 1;
+	no_end_quotes = del_last_quote(env_name);
+	env = env_var_transformation(env_name, envar);
+	final = fill_string_with_env_var_value(cmd_line, env_name, env, last_quote);
+	free_env_var_things(no_end_quotes, cmd_line, env_name, env);
 	return (final);
 }
 
