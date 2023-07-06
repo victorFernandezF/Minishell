@@ -12,6 +12,20 @@
 
 #include "../minishell.h"
 
+int	check_errors_in_cmd(t_cmd *cmd)
+{
+	t_cmd *tmp;
+
+	tmp = cmd;
+	while (tmp->next != NULL)
+	{
+		if (tmp->error == 1)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 /**
  * @brief Checks if there are som quotes in the string
  * before the given position.

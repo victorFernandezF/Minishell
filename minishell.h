@@ -74,6 +74,7 @@ int		check_bad_redirection_chars(char *str, int i);
 int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
 int		check_invalid_characters(char *str, t_env *env);
 int		print_errors_by_code(int code, t_env *env);
+int		check_errors_in_cmd(t_cmd *cmd);
 
 //	P A R S E R
 
