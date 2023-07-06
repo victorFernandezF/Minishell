@@ -43,11 +43,8 @@ int	get_output(char *cmd_line, t_cmd *cmd, t_env *env)
 		return (free_redirection(out_pos, NULL, out), 0);
 	outputs_fd = output_filename_to_fd_converter(out, cmd, env);
 	last_output = outputs_fd[cmd->nb_outputs - 1];
-	i = -1;
-	while (++i < cmd->nb_outputs)
-		close(outputs_fd[i]);
 	free_redirection(out_pos, outputs_fd, out);
-	//printf("last output %i\n", last_output);
+	printf("last output %i\n", last_output);
 	return (last_output);
 }
 
