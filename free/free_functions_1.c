@@ -36,6 +36,7 @@ void	free_struct(t_cmd *cmd)
 		free(cmd->flags);
 		if (cmd->params != NULL)
 			free_array(cmd->params);
+		close_fds(cmd);
 		free(cmd);
 	}
 	cmd = og;
