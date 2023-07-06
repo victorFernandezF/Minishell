@@ -20,18 +20,20 @@
  */
 int	check_errors_in_cmd(t_cmd *cmd)
 {
-	t_cmd *tmp;
+	t_cmd	*tmp;
+	int		error;
 
 	tmp = cmd;
+	error = 0;
 	if (tmp->error == 1)
-		return (1);
+		error++;
 	while (tmp->next != NULL)
 	{
 		if (tmp->error == 1)
-			return (1);
+			error++;
 		tmp = tmp->next;
 	}
-	return (0);
+	return (error);
 }
 
 /**
