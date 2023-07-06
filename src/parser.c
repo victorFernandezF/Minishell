@@ -134,7 +134,7 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 	{
 		if (heredoc_detector(command[i]))
 		{
-			aux_var = command[i];
+			aux_var = ft_copy_str(command[i]);
 			free(command[i]);
 			command[i] = manage_heredoc(aux_var, envar);
 		}

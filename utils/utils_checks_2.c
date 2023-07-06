@@ -12,6 +12,12 @@
 
 #include "../minishell.h"
 
+/**
+ * @brief Checks if in any node of the struct the error is set to 1
+ * 
+ * @param cmd 
+ * @return [Int] 1 if finds error in any node of the struct. 0 If not.
+ */
 int	check_errors_in_cmd(t_cmd *cmd)
 {
 	t_cmd *tmp;
