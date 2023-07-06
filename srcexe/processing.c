@@ -14,9 +14,9 @@
 
 int	check_var(t_cmd *cmd)
 {
-	int	i;
+	//int	i;
 
-	i = -1;
+	//i = -1;
 	if (ft_strchr(cmd->cmd, '=')
 		&& ft_isalpha(cmd->cmd[0]))
 	{

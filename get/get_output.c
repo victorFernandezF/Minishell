@@ -47,6 +47,7 @@ int	get_output(char *cmd_line, t_cmd *cmd, t_env *env)
 	while (++i < cmd->nb_outputs)
 		close(outputs_fd[i]);
 	free_redirection(out_pos, outputs_fd, out);
+	//printf("last output %i\n", last_output);
 	return (last_output);
 }
 

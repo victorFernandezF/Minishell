@@ -21,7 +21,6 @@
 void	free_struct(t_cmd *cmd)
 {
 	t_cmd	*og;
-
 	if (cmd == NULL)
 		return ;
 	og = cmd;
@@ -34,7 +33,8 @@ void	free_struct(t_cmd *cmd)
 		cmd = cmd->next;
 		free(cmd->cmd);
 		free(cmd->flags);
-		free_array(cmd->params);
+		if (cmd->params != NULL)
+			free_array(cmd->params);
 		free(cmd);
 	}
 	cmd = og;
