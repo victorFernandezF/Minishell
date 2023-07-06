@@ -17,6 +17,8 @@ int	check_errors_in_cmd(t_cmd *cmd)
 	t_cmd *tmp;
 
 	tmp = cmd;
+	if (tmp->error == 1)
+		return (1);
 	while (tmp->next != NULL)
 	{
 		if (tmp->error == 1)

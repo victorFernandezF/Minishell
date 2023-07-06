@@ -62,6 +62,7 @@ int	get_input(char *cmd_line, t_cmd *cmd, t_env *env)
 		return (free_redirection(in_pos, NULL, input), 0);
 	inputs_fd = input_filename_to_fd(input, cmd->nb_inputs, cmd, env);
 	last_input = inputs_fd[cmd->nb_inputs - 1];
+	cmd->array_input = inputs_fd;
 	free_redirection(in_pos, inputs_fd, input);
 	if (cmd->nb_inputs == 0)
 		return (0);

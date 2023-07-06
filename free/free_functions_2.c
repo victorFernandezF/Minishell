@@ -39,3 +39,21 @@ void	free_array_and_str(char **array, char *str)
 	if (str != NULL)
 		free(str);
 }
+
+void	close_fds(t_cmd *cmd)
+{
+	int	i;
+
+	i = -1;
+	if (cmd->nb_outputs == 0)
+	{
+		while (++i < cmd->nb_outputs)
+			close(cmd->array_outut[i]);
+	}
+	i = -1;
+	if (cmd->nb_inputs == 0)
+	{
+		while (++i < cmd->nb_inputs)
+			close(cmd->array_input[i]);
+	}
+}

@@ -51,6 +51,8 @@ typedef struct s_cmd
 	int		output;
 	int		index;
 	int		error;
+	int		*array_input;
+	int		*array_outut;
 	t_cmd	*next;
 }			t_cmd;
 
@@ -185,6 +187,7 @@ void	free_array_and_str(char **array, char *str);
 void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
 void	free_redirection(int *i1, int *i2, char **arr);
 void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4);
+void	close_fds(t_cmd *cmd);
 
 //	[T E M P]   L E A K S   &   P R I N T S
 

@@ -42,9 +42,9 @@ int	get_output(char *cmd_line, t_cmd *cmd, t_env *env)
 	if (cmd->error == 1)
 		return (free_redirection(out_pos, NULL, out), 0);
 	outputs_fd = output_filename_to_fd_converter(out, cmd, env);
+	cmd->array_outut = outputs_fd;
 	last_output = outputs_fd[cmd->nb_outputs - 1];
 	free_redirection(out_pos, outputs_fd, out);
-	printf("last output %i\n", last_output);
 	return (last_output);
 }
 
