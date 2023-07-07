@@ -6,22 +6,35 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:39:43 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/03 19:04:40 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 10:09:17 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
 char	**envtomatexp(t_env *env);
+int		strmatsize(char **mat);
+int		matsize(char **mat);
 
-int	matsize(char **mat)
+char	*mattostr(char **mat)
 {
-	int	i;
+	char	*str;
+	int		i;
+	int		j;
+	int		k;
 
-	i = 0;
-	while (mat[i])
-		i++;
-	return (i);
+	str = (char *)malloc((strmatsize(mat) + 1) * sizeof(char));
+	i = -1;
+	k = 0;
+	while (mat[++i])
+	{
+		j = -1;
+		while (mat[i][++j])
+			str[k++] = mat[i][j];
+		str[k++] = '\n';
+	}
+	str[k] = '\0';
+	return (str);
 }
 
 void	sort_mat(char **mat)
@@ -80,19 +93,21 @@ int	add_export(t_cmd *cmd, t_env *env)
 int	ft_export(t_cmd *cmd, t_env *env)
 {
 	char	**mat;
-	int		i;
+	char	*str;
+	int		fd;
 
+	fd = 1;
+	if (cmd->output != 0)
+		fd = cmd->output;
 	if (!cmd->params || !cmd->params[0]
 		|| cmd->params[0][0] == '\0')
 	{
 		mat = envtomatexp(env);
 		sort_mat(mat);
-		i = -1;
-		while (mat[++i])
-		{
-			printf("%s\n", mat[i]);
-		}
+		str = mattostr(mat);
 		free_mat(mat);
+		ft_putstr_fd(str, fd);
+		free(str);
 	}
 	else
 		return (add_export(cmd, env));

@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:11:39 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 11:32:13 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 09:47:27 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,17 @@ char	*envtoarray(t_env *env, char *str)
 	return (str);
 }
 
-int	ft_env(t_env *env)
+int	ft_env(t_cmd *cmd, t_env *env)
 {
 	char	*str;
+	int		fd;
 
+	fd = 1;
+	if (cmd->output != 0)
+		fd = cmd->output;
 	str = (char *)malloc((ft_cntenv(env) + 1) * sizeof(char));
 	str = envtoarray(env, str);
-	ft_putstr_fd(str, 1);
+	ft_putstr_fd(str, fd);
 	free(str);
 	set_env(env, "?", "0");
 	return (EXIT_SUCCESS);
