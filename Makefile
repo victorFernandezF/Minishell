@@ -6,7 +6,7 @@
 #    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/07/07 10:10:29 by fortega-         ###   ########.fr        #
+#    Updated: 2023/07/07 14:05:55 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC 	= 	src/loop.c \
 			utils/utils_quotation.c \
 			utils/utils_split_quotes.c \
 			srcexe/processing.c \
+			srcexe/exegutor.c \
 			srcexe/utils/cd_utils.c \
 			srcexe/utils/split_first.c \
 			srcexe/utils/errors.c \
@@ -50,6 +51,7 @@ SRC 	= 	src/loop.c \
 			srcexe/utils/f_split.c \
 			srcexe/utils/envar_utils.c \
 			srcexe/utils/export_utils.c \
+			srcexe/utils/exe_utils.c \
 			srcexe/envar/envar.c \
 			srcexe/envar/set_env.c \
 			srcexe/envar/getvarcd.c \

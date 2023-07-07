@@ -6,26 +6,13 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 09:46:10 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:06:46 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	check_var(t_cmd *cmd)
-{
-	int	i;
-
-	i = -1;
-	if (ft_strchr(cmd->cmd, '=')
-		&& ft_isalpha(cmd->cmd[0]))
-	{
-		printf("ASIG OK\n");
-		return (EXIT_SUCCESS);
-	}
-	//printf("ASIG BAD\n");
-	return (2);
-}
+int	exegutor(t_cmd *cmd, t_env *env);
 
 int	check_bi(t_cmd *cmd, t_env *env)
 {
@@ -43,13 +30,8 @@ int	check_bi(t_cmd *cmd, t_env *env)
 		return (ft_unset(cmd, env));
 	else if (!(ft_strncmp((cmd->cmd), "exit", 5)))
 		return (ft_exit(cmd, env));
-	else if (check_var(cmd) == 0)
-		return (EXIT_SUCCESS);
 	else
-	{
-		//printf("por aqui no\n");
 		return (2);
-	}
 }
 
 void	processing(t_cmd *cmd, t_env *env)
@@ -80,7 +62,7 @@ void	processing(t_cmd *cmd, t_env *env)
 	if (cmd->nb_cmd == 1)
 	{
 		if (check_bi(cmd, env) == 2)
-			printf("EXECV\n");
+			exegutor(cmd, env);
 	}
 	else
 	{
