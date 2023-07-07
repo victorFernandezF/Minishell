@@ -6,12 +6,13 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:39:43 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 10:09:17 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:37:08 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+t_env	*ft_new_envar(char *envar);
 char	**envtomatexp(t_env *env);
 int		strmatsize(char **mat);
 int		matsize(char **mat);
@@ -66,26 +67,33 @@ void	sort_mat(char **mat)
 	}
 }
 
+void	insert_var(char *envar, t_env *env)
+{
+	t_env	*tmp;
+
+	tmp = env;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	tmp->next = ft_new_envar(envar);
+}
+
 int	add_export(t_cmd *cmd, t_env *env)
 {
 	int		i;
-	int		j;
-	char	**mat;
+	char	*tmp;
 
-	printf("%p\n", env);
 	i = -1;
 	while (cmd->params[++i])
 	{
-		mat = ft_splitf(cmd->params[i]);
-		j = -1;
-		printf("matsize: %d\n", matsize(mat));
-		if (matsize(mat) > 1 && mat[1][0] != '\0')
+		if (ft_isalpha(cmd->params[i][0]) == 0)
 		{
-			while (mat[++j])
-				printf("%s\n", mat[j]);
-			printf("\n");
+			tmp = ft_strjoin(cmd->params[i], ": not a valid identifier");
+			cmd_cd_error("export", tmp, env);
+			set_env(env, "?", "1");
+			continue ;
 		}
-		free_mat(mat);
+		insert_var(cmd->params[i], env);
+		set_env(env, "?", "0");
 	}
 	return (EXIT_SUCCESS);
 }

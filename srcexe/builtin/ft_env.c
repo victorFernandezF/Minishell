@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:11:39 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 09:47:27 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:36:10 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,14 @@ char	*envtoarray(t_env *env, char *str)
 		j = -1;
 		while (tmp->vals[++j])
 			i += ft_etaval(str, j, i, tmp);
-		if (tmp->next)
+		/*if (tmp->next)
 			str[i++] = '\n';
 		else
-			str[i] = '\0';
+			str[i] = '\0';*/
+		str[i++] = '\n';
 		tmp = tmp->next;
 	}
+	str[i] = '\0';
 	return (str);
 }
 
