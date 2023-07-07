@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 15:01:38 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:40:37 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	**argtomat(t_cmd *cmd)
 	int		i;
 	int		j;
 
-	printf("entra argtomat\n");
 	s = argsize(cmd);
 	args = (char **)malloc((s + 1) * sizeof(char *));
 	i = -1;
@@ -74,6 +73,7 @@ int	exegutor(t_cmd *cmd, t_env *env)
 	char	**arg;
 	char	*path;
 	int		pid;
+	int		status;
 
 	path = exepath(cmd->cmd, env);
 	if (!path)
@@ -82,16 +82,10 @@ int	exegutor(t_cmd *cmd, t_env *env)
 	senv = envtomatexp(env);
 	pid = fork();
 	if (pid == 0)
-	{
-		free(path);
-		free_mat(senv);
-	}
-	else
-	{
 		execve(path, arg, senv);
-		free(path);
-		free_mat(senv);
-	}
-	wait(&S)
+	free(path);
+	free_mat(arg);
+	free_mat(senv);
+	wait(&status);
 	return (EXIT_SUCCESS);
 }

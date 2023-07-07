@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/07/07 14:05:55 by fortega-         ###   ########.fr        #
-=======
-#    Updated: 2023/07/07 14:11:02 by victofer         ###   ########.fr        #
->>>>>>> c7f9bbbbab8dffb1d5ad00fe5a48be4c4fb1b242
+#    Updated: 2023/07/07 18:19:58 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

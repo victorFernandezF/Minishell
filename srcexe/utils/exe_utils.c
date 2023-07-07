@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:05:11 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 14:57:30 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 18:31:08 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	*fillargmat(char *str)
 	char	*arg;
 	int		i;
 
-	printf("Entra %s\n", str);
 	arg = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
 	i = -1;
 	while (str[++i])
