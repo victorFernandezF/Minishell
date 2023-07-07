@@ -6,50 +6,85 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:28:13 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 12:56:31 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 09:41:33 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	print_echo(t_cmd *cmd, t_env *env, bool n)
+int	echo_len(t_cmd *cmd, bool n)
 {
 	int	i;
+	int	l;
 
+	i = -1;
+	l = 0;
+	while (++i < n_params(cmd->params))
+	{
+		l += ft_strlen(cmd->params[i]);
+		if (i + 1 < n_params(cmd->params))
+			l++;
+	}
+	if (n == false)
+		l++;
+	return (l);
+}
+
+void	echo_str(t_cmd *cmd, t_env *env, bool n, int fd)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*str;
+
+	i = -1;
+	k = 0;
+	str = (char *)malloc((echo_len(cmd, n) + 1) * sizeof(char));
+	while (++i < n_params(cmd->params))
+	{
+		j = -1;
+		while (cmd->params[i][++j])
+			str[k++] = cmd->params[i][j];
+		if (i + 1 < n_params(cmd->params))
+			str[k++] = 32;
+	}
+	if (n == false)
+		str[k++] = '\n';
+	str[k] = '\0';
+	ft_putstr_fd(str, fd);
+	free(str);
+	set_env(env, "?", "0");
+}
+
+void	print_echo(t_cmd *cmd, t_env *env, bool n, int fd)
+{
 	if ((!cmd->params || !cmd->params[0]
 			|| cmd->params[0][0] == '\0') && n == true)
 		set_env(env, "?", "0");
 	else if ((!cmd->params || !cmd->params[0]
 			|| cmd->params[0][0] == '\0') && n == false)
 	{
-		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("\n", fd);
 		set_env(env, "?", "0");
 	}
 	else
 	{
-		i = -1;
-		while (++i < n_params(cmd->params))
-		{
-			/*if (!(ft_strncmp("$", cmd->params[i], 1))
-				&& ft_strlen(cmd->params[i]) > 1)
-				continue ;*/
-			ft_putstr_fd(cmd->params[i], 1);
-			if (i + 1 < n_params(cmd->params))
-				ft_putstr_fd(" ", 1);
-		}
-		if (n == false)
-			ft_putstr_fd("\n", 1);
-		set_env(env, "?", "0");
+		echo_str(cmd, env, n, fd);
 	}
 }
 
 int	ft_echo(t_cmd *cmd, t_env *env)
 {
+	int	fd;
+
+	fd = 1;
+	if (cmd->output != 0)
+		fd = cmd->output;
 	if (cmd->flags)
 	{
 		if (!(ft_strncmp("-n", cmd->flags, ft_strlen("-n"))))
 		{
-			print_echo(cmd, env, true);
+			print_echo(cmd, env, true, fd);
 			return (EXIT_SUCCESS);
 		}
 		else
@@ -57,7 +92,7 @@ int	ft_echo(t_cmd *cmd, t_env *env)
 	}
 	else
 	{
-		print_echo(cmd, env, false);
+		print_echo(cmd, env, false, fd);
 		return (EXIT_SUCCESS);
 	}
 }
