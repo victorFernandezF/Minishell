@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:28:02 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:58:25 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
  * 
  * @param str String where char will be searched.
  * @param pos Position in the string of the char to be found. 
- * @return [Int] The position of the next character that is equal to the given one. 
+ * @return [Int] The position of the next character that is equal to
+ *  the given one. 
  */
 int	get_next_char(char *str, int pos)
 {

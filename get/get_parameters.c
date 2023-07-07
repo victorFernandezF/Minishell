@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 10:41:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:55:41 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	check_if_only_cmd_name(char *cmd_line)
 	return (0);
 }
 
-static void free_param(char **param_array, int errmalloc)
+static void	free_param(char **param_array, int errmalloc)
 {
 	if (errmalloc == 1)
 	{

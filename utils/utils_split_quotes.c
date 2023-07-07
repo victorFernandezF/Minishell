@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:54:46 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 19:01:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:58:01 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,9 @@ static char	**fill_split_array(char **split, char *str, int nb_words, int quot)
  * @param quot Flag if 1 the part inside quotes are stored in the array
  * 	including the quootes. If 0 the part inside the quotes are strored
  * 	without the quotes.
- * @return [Char **] Array with the parts of the string separated by spaces but having in
- * 	mind that the parts that are inside the quotes are considered as one element.
+ * @return [Char **] Array with the parts of the string separated by spaces
+ *  but having in mind that the parts that are inside the quotes are 
+ *  considered as one element.
  */
 char	**ft_split_minishell(char *str, int quot)
 {

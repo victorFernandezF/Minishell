@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:01:12 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 10:57:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:56:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ char	*convert_heredoc_in_input(char *temp)
  * @brief Deletes the spaces after heredoc signs(<<).
  * 
  * @param temp String to be modified.
- * @return [Char *] A String whit the heredocs sings following by their delimiters
+ * @return [Char *] A String whit the heredocs sings following
+ *  by their delimiters
  */
 char	*heredoc_signs_without_spaces(char *temp)
 {

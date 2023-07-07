@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:53:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:24:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:53:34 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,25 +113,6 @@ char	*more_than_one_env_vars(char *str, t_env *envar)
 }
 
 /**
- * @brief Counts every env vars sign '$' in the string-
- * 
- * @param str String (command line).
- * @return [Int] The number of '$' found.
- */
-int	env_var_counter(char *str)
-{
-	int	i;
-	int	res;
-
-	i = -1;
-	res = 0;
-	while(str[++i])
-		if (is_env_var(str[i]))
-			res++;
-	return (res);
-}
-
-/**
  * @brief If env var is preceded by some strings (ex: hello$USER).
  * This function joins the first part of the string with the env var
  * value.
@@ -143,7 +124,7 @@ int	env_var_counter(char *str)
  * @return [char *] String with the result of joinings the
  *  first part of the string with the env var value.
  */
-char	*join_firts_part_str_and_env_var(int len, char *env_complete, char *env, int flag)
+char	*join_firt_str_and_env_var(int len, char *comp, char *env, int flag)
 {
 	char	*result;
 	int		i;
@@ -154,9 +135,9 @@ char	*join_firts_part_str_and_env_var(int len, char *env_complete, char *env, in
 	result = malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	env_complete = replace_simple_quotes_by_double_quotes(env_complete);
-	while (!is_env_var(env_complete[++i]))
-		result[i] = env_complete[i];
+	comp = replace_simple_quotes_by_double_quotes(comp);
+	while (!is_env_var(comp[++i]))
+		result[i] = comp[i];
 	while (env[++j])
 		result[i++] = env[j];
 	if (flag == 1)

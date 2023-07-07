@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:21:35 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:45:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*replace_simple_quotes_by_double_quotes(char *str);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
 char	*expand_environment_variables(char *cmd_line, t_env *envar);
 char	*env_var_transformation(char *env_name, t_env *envar);
-char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, int flag);
+char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag);
 char	*get_env_var_name_including_dollar(char *redirection);
 int		get_total_length_of_words_in_array(char **array);
 char	*more_than_one_env_vars(char *str, t_env *envar);
@@ -101,7 +101,7 @@ char	*get_path(t_env *env);
 void	free_env_var_things(char *str, char *str2, char *envname, char *env);
 int		env_var_counter(char *str);
 char	*get_env_rest(char *complete, char *name);
-char	*join_firts_part_str_and_env_var(int len, char *env_complete, char *env, int flag);
+char	*join_firt_str_and_env_var(int len, char *comp, char *env, int flag);
 char	*redi_string_starting(int len, char *env_complete, char *env, int flag);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
