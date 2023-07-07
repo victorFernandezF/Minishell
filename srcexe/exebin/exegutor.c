@@ -6,17 +6,42 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 18:40:37 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:25:10 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 char	*pathbar(char *path, char *cmd);
 char	**get_binpath(t_env *env);
 int		n_params(char **mat);
 char	*fillargmat(char *str);
 int		argsize(t_cmd *cmd);
+
+void	closeback(t_cmd *cmd)
+{
+	if (cmd->index < cmd->nb_cmd)
+		close(cmd->pipes[cmd->index - 1][1]);
+	if (cmd->index > 1)
+		close(cmd->pipes[cmd->index - 2][0]);
+}
+
+void	exepro(char *path, char **arg, char **senv, t_cmd *cmd)
+{
+	if (cmd->index > 1)
+	{
+		close(cmd->pipes[cmd->index - 2][1]);
+		dup2(cmd->pipes[cmd->index - 2][0], STDIN_FILENO);
+		close(cmd->pipes[cmd->index - 2][0]);
+	}
+	if (cmd->index < cmd->nb_cmd)
+	{
+		close(cmd->pipes[cmd->index - 1][0]);
+		dup2(cmd->pipes[cmd->index - 1][1], STDOUT_FILENO);
+		close(cmd->pipes[cmd->index - 1][1]);
+	}
+	execve(path, arg, senv);
+}
 
 char	**argtomat(t_cmd *cmd)
 {
@@ -82,10 +107,12 @@ int	exegutor(t_cmd *cmd, t_env *env)
 	senv = envtomatexp(env);
 	pid = fork();
 	if (pid == 0)
-		execve(path, arg, senv);
+		exepro(path, arg, senv, cmd);
+		//execve(path, arg, senv);
 	free(path);
 	free_mat(arg);
 	free_mat(senv);
 	wait(&status);
+	closeback(cmd);
 	return (EXIT_SUCCESS);
 }

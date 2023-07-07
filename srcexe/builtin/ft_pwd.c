@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 15:01:57 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 10:15:58 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:31:54 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_pwd(t_cmd *cmd, t_env *env)
 	char	*tmp;
 	int		fd;
 
+	if (cmd->input)
+		close(cmd->input);
 	fd = 1;
 	if (cmd->output != 0)
 		fd = cmd->output;

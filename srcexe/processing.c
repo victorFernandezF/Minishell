@@ -6,13 +6,16 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 14:06:46 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:33:26 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	exegutor(t_cmd *cmd, t_env *env);
+int		exegutor(t_cmd *cmd, t_env *env);
+int		**spipes(t_cmd *cmd);
+void	modfds(int	**pipes, t_cmd *cmd);
+void	free_pipes(int **pipes, t_cmd *cmd);
 
 int	check_bi(t_cmd *cmd, t_env *env)
 {
@@ -36,7 +39,9 @@ int	check_bi(t_cmd *cmd, t_env *env)
 
 void	processing(t_cmd *cmd, t_env *env)
 {
-	int	out;
+	//int	out;
+	int	**pipes;
+	t_cmd	*tmp;
 	/*int		i;
 	t_env	*vari;
 	t_env	*tmp;
@@ -59,6 +64,7 @@ void	processing(t_cmd *cmd, t_env *env)
 
 
 	//(void)env;
+	tmp = cmd;
 	if (cmd->nb_cmd == 1)
 	{
 		if (check_bi(cmd, env) == 2)
@@ -66,14 +72,17 @@ void	processing(t_cmd *cmd, t_env *env)
 	}
 	else
 	{
+		pipes = spipes(cmd);
 		while (cmd)
 		{
-			out = check_bi(cmd, env);
-			if (out)
-				printf("Es builtIn\n");
-			else
-				printf("NO es builtIN\n");
+			modfds(pipes, cmd);
+			if (check_bi(cmd, env) == 2)
+			{
+				//printf("NO es builtIN\n");
+				exegutor(cmd, env);
+			}
 			cmd = cmd->next;
 		}
+		free_pipes(pipes, tmp);
 	}
 }

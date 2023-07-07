@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 12:37:28 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 13:21:40 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:32:02 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_unset(t_cmd *cmd, t_env *env)
 {
 	int	i;
 
+	if (cmd->input)
+		close(cmd->input);
 	i = -1;
 	if (!cmd->params || !cmd->params[0]
 		|| cmd->params[0][0] == '\0')

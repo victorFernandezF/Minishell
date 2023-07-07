@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:55:38 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/23 12:18:36 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:29:02 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int	ft_cd(t_cmd *cmd, t_env *env)
 {
 	int	np;
 
+	if (cmd->input)
+		close(cmd->input);
 	np = n_flags(cmd->flags);
 	if (np < 0)
 		return (EXIT_FAILURE);

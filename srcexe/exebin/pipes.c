@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory.c                                           :+:      :+:    :+:   */
+/*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 20:25:25 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 20:34:31 by fortega-         ###   ########.fr       */
+/*   Created: 2023/07/07 18:47:11 by fortega-          #+#    #+#             */
+/*   Updated: 2023/07/07 19:49:31 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	free_pipes(int **pipes, t_cmd *cmd)
+void	modfds(int	**pipes, t_cmd *cmd)
 {
-	int	i;
-
-	i = cmd->nb_cmd - 1;
-	while (--i >= 0)
-		free(pipes[i]);
-	free(pipes);
+	cmd->pipes = pipes;
+	if (cmd->index > 1 && cmd->input == 0)
+		cmd->input = pipes[cmd->index - 2][0];
+	if (cmd->index < cmd->nb_cmd && cmd->output == 0)
+		cmd->output = pipes[cmd->index - 1][1];
 }
 
-void	free_mat(char **mat)
+int	**spipes(t_cmd *cmd)
 {
 	int	i;
+	int	**pipes;
 
-	i = 0;
-	while (mat[i])
-		i++;
-	while (i >= 0)
+	pipes = (int **)malloc((cmd->nb_cmd - 1) * sizeof(int *));
+	i = -1;
+	while (++i < cmd->nb_cmd - 1)
 	{
-		free(mat[i]);
-		i--;
+		pipes[i] = (int *)malloc(2 * sizeof(int));
+		pipe(pipes[i]);
 	}
-	free(mat);
+	return (pipes);
 }

@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:39:43 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 11:37:08 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:31:45 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int	ft_export(t_cmd *cmd, t_env *env)
 	char	*str;
 	int		fd;
 
+	if (cmd->input)
+		close(cmd->input);
 	fd = 1;
 	if (cmd->output != 0)
 		fd = cmd->output;

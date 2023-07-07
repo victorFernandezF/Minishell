@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:28:13 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 09:41:33 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 19:30:46 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	ft_echo(t_cmd *cmd, t_env *env)
 {
 	int	fd;
 
+	if (cmd->input)
+		close(cmd->input);
 	fd = 1;
 	if (cmd->output != 0)
 		fd = cmd->output;
