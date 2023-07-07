@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/07/07 12:49:05 by victofer         ###   ########.fr        #
+#    Updated: 2023/07/07 14:11:02 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC 	= 	src/loop.c \
 			struct/fill_next_struct.c \
 			get/get_cmd.c \
 			get/get_flags.c \
+			get/get_redirections.c \
 			get/get_output.c \
 			get/get_input.c \
 			get/get_parameters.c \

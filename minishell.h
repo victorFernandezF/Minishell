@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:45:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:11:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int		get_output(char *str, t_cmd *cmd, t_env *env);
 char	**get_parameters(char *str, t_cmd *cmd, t_env *env);
 char	*fill_string_param(char *param, char *cmd_line, int i);
 void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output);
+void	get_redirections(t_cmd *cmd, t_env *env, char *expanded);
 
 //	U T I L I T I E S
 
