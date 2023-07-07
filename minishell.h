@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 09:46:51 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 10:40:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
 int		check_invalid_characters(char *str, t_env *env);
 int		print_errors_by_code(int code, t_env *env);
 int		check_errors_in_cmd(t_cmd *cmd);
+void	err_malloc(t_cmd *cmd, t_env *env);
 
 //	P A R S E R
 
@@ -118,7 +119,7 @@ char	*get_output_from_pos(char *cmd_line, int pos);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 int		*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env);
 int		get_output(char *str, t_cmd *cmd, t_env *env);
-char	**get_parameters(char *str);
+char	**get_parameters(char *str, t_cmd *cmd, t_env *env);
 char	*fill_string_param(char *param, char *cmd_line, int i);
 void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output);
 

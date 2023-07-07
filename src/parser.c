@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/06 19:05:30 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 10:39:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param command An string whith the given command
  * @return [t_cmd *] The given struct filled with the datas from line.
  */
-t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
+t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *env)
 {
 	t_cmd	*new;
 	char	*expanded;
@@ -27,7 +27,7 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 	char	*no_output_input;
 
 	new = tmp;
-	expanded = expand_environment_variables(command, envar);
+	expanded = expand_environment_variables(command, env);
 	no_outputs = delete_outputs_from_line(expanded);
 	no_output_input = delete_inputs_from_line(no_outputs);
 	new->nb_outputs = get_nb_outputs(expanded);
@@ -35,12 +35,12 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar)
 	if (ft_strlen(no_output_input) == 0)
 		new->error = 2;
 	if (new->nb_outputs > 0)
-		new->output = get_output(expanded, new, envar);
+		new->output = get_output(expanded, new, env);
 	new->cmd = get_cmd(no_output_input);
 	new->flags = get_flags(no_outputs);
 	if (new->nb_inputs > 0)
-		new->input = get_input(expanded, new, envar);
-	new->params = get_parameters(no_output_input);
+		new->input = get_input(expanded, new, env);
+	new->params = get_parameters(no_output_input, new, env);
 	free_maximun_of_four_str(no_output_input, no_outputs, expanded, NULL);
 	return (new);
 }

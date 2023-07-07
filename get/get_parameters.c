@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/06 19:09:57 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 10:41:56 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,19 @@ static int	check_if_only_cmd_name(char *cmd_line)
 	return (0);
 }
 
+static void free_param(char **param_array, int errmalloc)
+{
+	if (errmalloc == 1)
+	{
+		free_array(param_array);
+		return ;
+	}
+	free(param_array[0]);
+	if (param_array[1][0] == '-')
+		free(param_array[1]);
+	free(param_array);
+}
+
 /**
  * @brief Counts the number of parameters found.
  * 
@@ -73,7 +86,7 @@ static int	count_parameters(char **param_array)
  * @param cmd_line Command line
  * @return [Char **] An array of strings with every parameters found. 
  */
-char	**get_parameters(char *cmd_line)
+char	**get_parameters(char *cmd_line, t_cmd *cmd, t_env *env)
 {
 	int		i;
 	int		j;
@@ -89,16 +102,15 @@ char	**get_parameters(char *cmd_line)
 	len = count_parameters(param_array);
 	param = malloc((len + 1) * sizeof(char *));
 	if (!param)
-		return (NULL);
+	{
+		free_param(param_array, 1);
+		return (err_malloc(cmd, env), NULL);
+	}
 	if (param_array[1][0] == '-')
 		i++;
 	while (param_array[++i] != NULL)
 		param[j++] = param_array[i];
 	param[j] = NULL;
-	print_array(param);
-	free(param_array[0]);
-	if (param_array[1][0] == '-')
-		free(param_array[1]);
-	free(param_array);
+	free_param(param_array, 0);
 	return (param);
 }
