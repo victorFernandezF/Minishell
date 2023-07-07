@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/28 11:15:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:25:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*replace_heredoc(char *line)
 		}
 	}
 	len = get_total_length_of_words_in_array(arr_tmp);
-	new = ft_splitnt(arr_tmp, len);
+	new = ft_splitnt(arr_tmp, len, 0);
 	free_heredoc_stuff(temp, arr_tmp);
 	return (new);
 }

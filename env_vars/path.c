@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:27:28 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/30 13:51:14 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:24:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*all_together(char **array)
 
 	i = -1;
 	len = get_total_length_of_words_in_array(array);
-	res = ft_splitnt(array, len);
+	res = ft_splitnt(array, len, 0);
 	while (res[++i])
 		if (res[i] == ' ')
 			res[i] = ':';

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:53:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/27 18:24:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:24:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*more_than_one_env_vars(char *str, t_env *envar)
 	}
 	temp = take_only_the_good_ones(env);
 	i = get_total_length_of_words_in_array(temp);
-	tmp = ft_splitnt(temp, i);
+	tmp = ft_splitnt(temp, i, 0);
 	final = delete_spaces(tmp);
 	free_array(temp);
 	free(tmp);

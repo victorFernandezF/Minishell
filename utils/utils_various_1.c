@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 13:37:53 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/29 18:19:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:28:02 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,21 @@ int	get_next_char(char *str, int pos)
  *	the array separated by spaces.
  * 
  * @param array Array to convert to string.
- * @param len Length of the array. 
+ * @param len Length of the array.
+ * @param is_len if is 0 this function calculates the length of the 
+ * string. if is 1, this function gets the length from 'len' param. 
  * @return [char *] A null terminated string with every elements of
  *	the array separated by spaces.
  */
-char	*ft_splitnt(char **array, int len)
+char	*ft_splitnt(char **array, int len, int is_len)
 {
 	int		i;
 	int		j;
 	int		x;
 	char	*new_line;
 
+	if (is_len == 0)
+		len = get_total_length_of_words_in_array(array);
 	i = -1;
 	x = 0;
 	new_line = malloc(len * sizeof(char));
