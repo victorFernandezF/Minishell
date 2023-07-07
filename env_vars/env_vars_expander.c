@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/06 18:28:53 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:39:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 		last_quote = 1;
 	no_end_quotes = del_last_quote(env_name);
 	env = env_var_transformation(env_name, envar);
-	final = fill_string_with_env_var_value(cmd_line, env_name, env, last_quote);
+	final = fill_str_with_env_value(cmd_line, env_name, env, last_quote);
 	free_env_var_things(no_end_quotes, cmd_line, env_name, env);
 	return (final);
 }
@@ -135,7 +135,6 @@ char	*find_env_from_srruct(t_env *envar, char *name)
 char	*expand_environment_variables(char *cmd_line, t_env *envar)
 {
 	int		i;
-	int		len;
 	char	*new_line;
 	char	**array;
 	char	*temp;
@@ -157,8 +156,7 @@ char	*expand_environment_variables(char *cmd_line, t_env *envar)
 			array[i] = temp;
 		}
 	}
-	len = get_total_length_of_words_in_array(array);
-	new_line = ft_splitnt(array, len);
+	new_line = ft_splitnt(array, 0, 0);
 	free_array(array);
 	return (replace_simple_quotes_by_double_quotes(new_line));
 }

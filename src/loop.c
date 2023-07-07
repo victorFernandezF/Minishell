@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 09:32:45 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:22:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	check_ctrl_d(char *read, t_env *envars, char *prompt)
 		if (envars != NULL)
 			freeenv(envars);
 		printf("%s exit\n", prompt);
-		settings(1);
 		exit(0);
 	}
 }

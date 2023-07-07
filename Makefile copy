@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
+#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/07/07 14:05:55 by fortega-         ###   ########.fr        #
+=======
+#    Updated: 2023/07/07 14:11:02 by victofer         ###   ########.fr        #
+>>>>>>> c7f9bbbbab8dffb1d5ad00fe5a48be4c4fb1b242
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +28,7 @@ SRC 	= 	src/loop.c \
 			struct/fill_next_struct.c \
 			get/get_cmd.c \
 			get/get_flags.c \
+			get/get_redirections.c \
 			get/get_output.c \
 			get/get_input.c \
 			get/get_parameters.c \
@@ -40,6 +45,7 @@ SRC 	= 	src/loop.c \
 			utils/utils_skip.c \
 			utils/utils_various_1.c \
 			utils/utils_various_2.c \
+			utils/utils_various_3.c \
 			utils/utils_quotation.c \
 			utils/utils_split_quotes.c \
 			srcexe/processing.c \

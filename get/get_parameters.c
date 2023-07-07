@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 10:41:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:53:43 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	check_if_only_cmd_name(char *cmd_line)
 	return (0);
 }
 
-static void free_param(char **param_array, int errmalloc)
+static void	free_param(char **param_array, int errmalloc)
 {
 	if (errmalloc == 1)
 	{
@@ -98,7 +98,7 @@ char	**get_parameters(char *cmd_line, t_cmd *cmd, t_env *env)
 	j = 0;
 	if (check_if_only_cmd_name(cmd_line))
 		return (NULL);
-	param_array = ft_split_minishell(cmd_line, 0);
+	param_array = ft_split_2(cmd_line);
 	len = count_parameters(param_array);
 	param = malloc((len + 1) * sizeof(char *));
 	if (!param)

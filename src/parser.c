@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 10:39:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:11:30 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,23 @@ t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *env)
 
 	new = tmp;
 	expanded = expand_environment_variables(command, env);
-	no_outputs = delete_outputs_from_line(expanded);
-	no_output_input = delete_inputs_from_line(no_outputs);
 	new->nb_outputs = get_nb_outputs(expanded);
 	new->nb_inputs = get_nb_inputs(expanded);
+	if (new->nb_outputs > 0)
+		no_outputs = delete_outputs_from_line(expanded);
+	else
+		no_outputs = expanded;
+	if (new->nb_inputs > 0)
+		no_output_input = delete_inputs_from_line(no_outputs);
+	else
+		no_output_input = expanded;
 	if (ft_strlen(no_output_input) == 0)
 		new->error = 2;
-	if (new->nb_outputs > 0)
-		new->output = get_output(expanded, new, env);
 	new->cmd = get_cmd(no_output_input);
 	new->flags = get_flags(no_outputs);
-	if (new->nb_inputs > 0)
-		new->input = get_input(expanded, new, env);
 	new->params = get_parameters(no_output_input, new, env);
-	free_maximun_of_four_str(no_output_input, no_outputs, expanded, NULL);
+	get_redirections(new, env, expanded);
+	free(expanded);
 	return (new);
 }
 
@@ -76,7 +79,7 @@ char	*manage_heredoc(char *str, t_env *envar)
 		}
 	}
 	len = get_total_length_of_words_in_array(array);
-	new = ft_splitnt(array, len);
+	new = ft_splitnt(array, len, 0);
 	free_array(array);
 	return (new);
 }

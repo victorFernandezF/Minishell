@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 10:40:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:23:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	err_malloc(t_cmd *cmd, t_env *env);
 
 t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar);
 t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar);
-void	settings(int set);
+void	settings(void);
 
 // E N V I R O M E N T   V A R S
 
@@ -93,7 +93,7 @@ char	*replace_simple_quotes_by_double_quotes(char *str);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
 char	*expand_environment_variables(char *cmd_line, t_env *envar);
 char	*env_var_transformation(char *env_name, t_env *envar);
-char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, int flag);
+char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag);
 char	*get_env_var_name_including_dollar(char *redirection);
 int		get_total_length_of_words_in_array(char **array);
 char	*more_than_one_env_vars(char *str, t_env *envar);
@@ -101,7 +101,7 @@ char	*get_path(t_env *env);
 void	free_env_var_things(char *str, char *str2, char *envname, char *env);
 int		env_var_counter(char *str);
 char	*get_env_rest(char *complete, char *name);
-char	*join_firts_part_str_and_env_var(int len, char *env_complete, char *env, int flag);
+char	*join_firt_str_and_env_var(int len, char *comp, char *env, int flag);
 char	*redi_string_starting(int len, char *env_complete, char *env, int flag);
 
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
@@ -122,6 +122,7 @@ int		get_output(char *str, t_cmd *cmd, t_env *env);
 char	**get_parameters(char *str, t_cmd *cmd, t_env *env);
 char	*fill_string_param(char *param, char *cmd_line, int i);
 void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output);
+void	get_redirections(t_cmd *cmd, t_env *env, char *expanded);
 
 //	U T I L I T I E S
 
@@ -147,7 +148,7 @@ int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);
 char	*delete_outputs_from_line(char *cmd_line);
 char	*delete_inputs_from_line(char *str);
-char	*ft_splitnt(char **array, int len);
+char	*ft_splitnt(char **array, int len, int is_len);
 void	print_error_file(char *input, char *msg, t_env *env);
 void	print_error_file_ambiguous(char	*str, t_cmd *cmd, t_env *env);
 char	**ft_split_minishell(char *str, int quot);

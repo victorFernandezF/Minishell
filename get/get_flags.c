@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/21 11:54:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:11:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_flags(char *cmd_line)
 		return (NULL);
 	end = get_position_of_last_char_found(cmd_line, '-');
 	end = skip_characters(cmd_line, end);
-	flags = malloc ((end - start +1) * sizeof(char));
+	flags = malloc((end - start +1) * sizeof(char));
 	if (!flags)
 		return (NULL);
 	i = 0;

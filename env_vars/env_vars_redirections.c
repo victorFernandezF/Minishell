@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/30 13:29:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:53:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*env_var_transformation(char *env_complete, t_env *envar)
  * @param env String with the value of the env var.
  * @return [Char *] String with the two strings joined.
  */
-char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, int flag)
+char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag)
 {
 	int		i;
 	char	*redi;
@@ -62,18 +62,18 @@ char	*fill_string_with_env_var_value(char *env_complete, char *name, char *env, 
 	char	*join;
 
 	i = 0;
-	rest = get_env_rest(env_complete, name);
-	if (env_complete[0] == '$')
+	rest = get_env_rest(comp, name);
+	if (comp[0] == '$')
 	{
-		redi = redi_string_starting(ft_strlen(env), env_complete, env, flag);
+		redi = redi_string_starting(ft_strlen(env), comp, env, flag);
 	}
 	else
 	{
-		i = skip_until_char(env_complete, i, '$');
+		i = skip_until_char(comp, i, '$');
 		i += ft_strlen(env);
 		if (flag == 1)
 			i++;
-		redi = join_firts_part_str_and_env_var(i, env_complete, env, flag);
+		redi = join_firt_str_and_env_var(i, comp, env, flag);
 	}
 	if (!rest)
 		return (redi);
@@ -104,7 +104,8 @@ char	*get_env_var_name_including_dollar(char *str)
 	j++;
 	while (str[j] && !is_env_var(str[j]))
 	{
-		if ((ft_isalpha(str[j]) || str[j] == '_' || str[j] == '?') && str[j] != '\0')
+		if ((ft_isalpha(str[j]) || str[j] == '_'
+				|| str[j] == '?') && str[j] != '\0')
 			end++;
 		else
 			break ;
@@ -116,11 +117,13 @@ char	*get_env_var_name_including_dollar(char *str)
 
 /**
  * @brief Calculates the necesary amount of chars to create a
- *	null terminated string with the elements of an array separated by spaces.
+ * null terminated string with the elements of an array 
+ * separated by spaces.
  * 
  * @param array Array of strings with the words that will be
  *	joined in the string.
- * @return [Int] The length of the future string with every element from the array
+ * @return [Int] The length of the future string with 
+ * 	every element from the array
  */
 int	get_total_length_of_words_in_array(char **array)
 {

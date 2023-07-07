@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/29 19:11:42 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:55:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,13 @@ char	*get_output_from_pos(char *cmd_line, int position)
 }
 
 /**
- * @brief Transforms each output filename into a file descriptor (in read mode).
- *	If the file does not exist, prints a message.
+ * @brief Transforms each output filename into a file descriptor 
+ * (in read mode). If the file does not exist, prints a message.
  * 
  * @param input An array of strings with every output filenames.
  * @param nb_inputs The number of output filenames found in command line.
- * @return [Int *] An array with the files descriptor (fd's) of each output file. 
+ * @return [Int *] An array with the files descriptor
+ *  (fd's) of each output file. 
  */
 int	*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env)
 {
