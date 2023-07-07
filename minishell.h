@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 14:11:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:23:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	err_malloc(t_cmd *cmd, t_env *env);
 
 t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar);
 t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar);
-void	settings(int set);
+void	settings(void);
 
 // E N V I R O M E N T   V A R S
 
