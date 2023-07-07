@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:02:52 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/19 10:38:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:16:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	print_test(char *str, t_cmd *cmd, int repeat)
 	printf("%s ● NB CMD  ..... ➤%s %i\n", Y, W, cmd->nb_cmd);
 	printf("%s ● COMMAND ..... ➤%s %s\n", Y, W, cmd->cmd);
 	printf("%s ● FLAGS ....... ➤%s %s\n", Y, W, cmd->flags);
-	if (cmd->params != NULL)
+	if (cmd->params == NULL)
+		printf("%s ● PARAM ....... ➤%s %s\n", Y, W, "(null)");
+	else
 		while (cmd->params[++i] != NULL)
 			printf("%s ● PARAM [%s%i%s] ... ➤%s %s\n", Y, B, i,
 				Y, W, cmd->params[i]);
