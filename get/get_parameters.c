@@ -98,7 +98,7 @@ char	**get_parameters(char *cmd_line, t_cmd *cmd, t_env *env)
 	j = 0;
 	if (check_if_only_cmd_name(cmd_line))
 		return (NULL);
-	param_array = ft_split_2(cmd_line);
+	param_array = ft_split_minishell(cmd_line, 0);
 	len = count_parameters(param_array);
 	param = malloc((len + 1) * sizeof(char *));
 	if (!param)

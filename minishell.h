@@ -21,6 +21,8 @@
 # include <signal.h>
 # include <termios.h>
 # include "libft/libft.h"
+  #include <sys/types.h>
+  #include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
