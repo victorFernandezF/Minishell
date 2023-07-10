@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 09:59:53 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:26:03 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ char	*exepath(char *cmd, t_env *env)
 	int		i;
 
 	i = -1;
+	fd = open(cmd, O_RDONLY);
+	if (fd > 0)
+		return (cmd);
 	pathvar = get_binpath(env);
 	if (!pathvar)
 		return (NULL);
@@ -109,7 +112,8 @@ int	exegutor(t_cmd *cmd, t_env *env)
 	if (pid == 0)
 		exepro(path, arg, senv, cmd);
 		//execve(path, arg, senv);
-	free(path);
+	if ((ft_strncmp(path, cmd->cmd, ft_strlen(cmd->cmd))))
+		free(path);
 	free_mat(arg);
 	free_mat(senv);
 	wait(&status);
