@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:28:13 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 19:30:46 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/10 10:06:44 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_echo(t_cmd *cmd, t_env *env)
 {
 	int	fd;
 
-	if (cmd->input)
+	if (cmd->input && cmd->owin == 1)
 		close(cmd->input);
 	fd = 1;
 	if (cmd->output != 0)
@@ -95,6 +95,7 @@ int	ft_echo(t_cmd *cmd, t_env *env)
 	else
 	{
 		print_echo(cmd, env, false, fd);
+		closeback(cmd);
 		return (EXIT_SUCCESS);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:55:38 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 19:29:02 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/10 10:07:26 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	cd_nav(t_cmd *cmd, char *dir, t_env *env)
 	if (!(ft_strncmp("$OLDPWD", dir, ft_strlen("$OLDPWD"))))
 		return (cmd_error("cd", "OLDPWD not set", env));
 	cd_go(cmd, env, dir);
+	closeback(cmd);
 	return (EXIT_SUCCESS);
 }
 
@@ -75,7 +76,7 @@ int	ft_cd(t_cmd *cmd, t_env *env)
 {
 	int	np;
 
-	if (cmd->input)
+	if (cmd->input && cmd->owin == 1)
 		close(cmd->input);
 	np = n_flags(cmd->flags);
 	if (np < 0)

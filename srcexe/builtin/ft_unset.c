@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 12:37:28 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 19:32:02 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/10 10:08:34 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int	ft_unset(t_cmd *cmd, t_env *env)
 			ft_delvar(cmd->params[i], env);
 	}
 	set_env(env, "?", "0");
+	closeback(cmd);
 	return (EXIT_SUCCESS);
 }

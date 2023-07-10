@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 19:53:06 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/10 10:07:12 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_cmd
 	int		*array_input;
 	int		*array_outut;
 	int		**pipes;
+	int		owin;
+	int		owout;
 	t_cmd	*next;
 }			t_cmd;
 
@@ -222,5 +224,6 @@ int		n_flags(char *array);
 int		cmd_error(char *cmd, char *error, t_env *env);
 int		cmd_cd_error(char *cmd, char *error, t_env *env);
 void	free_mat(char **mat);
+void	closeback(t_cmd *cmd);
 
 #endif
