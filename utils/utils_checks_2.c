@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:09:55 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:12:22 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,17 @@ int	search_char_in_str(char *str, char c)
 		if (str[i] == c)
 			return (1);
 	return (0);
+}
+
+int	not_empty(char *str)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	res = 0;
+	i = skip_whitespaces(str, i);
+	if ((int)ft_strlen(str) == i)
+		res = 1;
+	return (res);
 }

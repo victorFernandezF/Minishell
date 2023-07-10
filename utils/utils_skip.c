@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:08:29 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:10:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:09:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  */
 int	skip_whitespaces(char *str, int start)
 {
-	while (str[start] == ' ')
+	while (is_space_minishel(str[start]))
 		start++;
 	return (start);
 }
