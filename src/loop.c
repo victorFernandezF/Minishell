@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/10 12:04:42 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:22:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,31 @@ void	signal_handler(int sig)
  *
  * @param read The read line.
  */
-void	check_ctrl_d(char *read, t_env *envars, char *prompt)
+void	check_ctrl_d(char *read, t_env *env, char *prompt)
 {
 	if (read == 0)
 	{
-		if (envars != NULL)
-			freeenv(envars);
+		if (env != NULL)
+			freeenv(env);
 		printf("%s exit\n", prompt);
 		exit(0);
 	}
 }
 
 /**
- * @brief Gets the PWD from the struct envars and combines it
+ * @brief Gets the PWD from the struct env and combines it
  * whith fancy colors.
  *
- * @param envars
+ * @param env
  * @return [Char *] The actual directory finished in $ sign.
  */
-static char	*get_prompt(t_env *envars)
+static char	*get_prompt(t_env *env)
 {
 	char	*tmp;
 	char	*res;
 	char	*pwd;
 
-	pwd = find_env_from_srruct(envars, "PWD");
+	pwd = find_env_from_srruct(env, "PWD");
 	tmp = ft_strjoin("\x1B[32m", pwd);
 	res = ft_strjoin(tmp, "$\x1B[0m ");
 	free(tmp);
@@ -71,29 +71,28 @@ static char	*get_prompt(t_env *envars)
  *  from the user.
  *
  */
-void	mini_loop(t_cmd *cmd, t_env *envars)
+void	mini_loop(t_cmd *cmd, t_env *env)
 {
 	char	*read;
 	char	*prompt;
 
 	while (1)
 	{
-		prompt = get_prompt(envars);
+		prompt = get_prompt(env);
 		signal(SIGINT, signal_handler);
 		read = readline(prompt);
-		check_ctrl_d(read, envars, prompt);
+		check_ctrl_d(read, env, prompt);
 		if (read[0] != '\0')
 			add_history(read);
-		printf("%i\n", not_empty(read));
-		if (check_invalid_characters(read, envars) == 0
-			&& !not_empty(read) && read[0])
+		if (check_invalid_characters(read, env) == 0
+			&& !not_empty(read, env) && read[0])
 		{
 			cmd = init_struct(cmd);
-			cmd = start_parser(cmd, read, envars);
+			cmd = start_parser(cmd, read, env);
 			if (check_errors_in_cmd(cmd) == 0)
 			{
 				print_test(read, cmd, 0);
-				processing(cmd, envars);
+				processing(cmd, env);
 			}
 			free_struct(cmd);
 		}

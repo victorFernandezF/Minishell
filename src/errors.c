@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:24:11 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 10:38:46 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:21:38 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	print_errors_by_code(int code, t_env *env)
 		msg = "Syntax error near unexpected token `newline'";
 	else if (code == 3)
 		msg = "Syntax error near unexpected token `|'";
+	else if (code == 4)
+		msg = " : command not found";
 	else
 		msg = "Error.";
 	ft_putendl_fd(msg, 2);

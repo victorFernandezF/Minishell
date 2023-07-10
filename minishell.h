@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/10 11:54:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/10 12:20:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		check_invalid_characters(char *str, t_env *env);
 int		print_errors_by_code(int code, t_env *env);
 int		check_errors_in_cmd(t_cmd *cmd);
 void	err_malloc(t_cmd *cmd, t_env *env);
-int		not_empty(char *str);
+int		not_empty(char *str, t_env *env);
 
 //	P A R S E R
 
