@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
+#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/07/07 20:05:51 by fortega-         ###   ########.fr        #
+#    Updated: 2023/07/10 12:40:38 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	minishell
+COMP	= 	gcc
 CFLAGS 	= 	-Wall -Wextra -Werror -g
 SRC 	= 	src/loop.c \
 			src/main.c \
@@ -86,7 +87,7 @@ NICE_TEST = compiling
 READLINE_DIR = $(shell brew --prefix readline)
 READLINE_LIB = -lreadline -lhistory -L $(READLINE_DIR)/lib
 
-all: nice_text lib $(NAME)
+all: lib $(NAME)
 
 test: lib $(NAME)
 
@@ -114,7 +115,7 @@ norminette:
 
 $(NAME): $(OBJS)
 	@mkdir -p redir
-	@gcc $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFT) $(READLINE_LIB) -o $(NAME)
+	@$(COMP) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFT) $(READLINE_LIB) -o $(NAME)
 	@echo "$(Y)0-----------------------0"
 	@echo "$(Y)|$(G)    MINISHELL CREATED $(Y) |"
 	@echo "$(Y)0-----------------------0"
