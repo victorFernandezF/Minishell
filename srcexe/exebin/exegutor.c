@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 19:26:03 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:35:02 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	exepro(char *path, char **arg, char **senv, t_cmd *cmd)
 		dup2(cmd->pipes[cmd->index - 1][1], STDOUT_FILENO);
 		close(cmd->pipes[cmd->index - 1][1]);
 	}
+	if (cmd->nb_cmd == 1 && cmd->input != 0)
+		dup2(cmd->input, STDIN_FILENO);
+	if (cmd->nb_cmd == 1 && cmd->output != 0)
+		dup2(cmd->output, STDOUT_FILENO);
 	execve(path, arg, senv);
 }
 
