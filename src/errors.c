@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:24:11 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/10 12:21:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:08:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,6 @@ void	print_error_file(char *name, char *msg, t_env *env)
 	ft_putstr_fd(": ", 2);
 	ft_putendl_fd(msg, 2);
 	set_env(env, "?", "1");
-}
-
-void	err_malloc(t_cmd *cmd, t_env *env)
-{
-	char	*msg;
-
-	msg = "Error. Memory allocation failed.";
-	ft_putendl_fd(msg, 2);
-	cmd->error = 1;
-	if (env != NULL)
-		set_env(env, "?", "1");
 }
 
 /**

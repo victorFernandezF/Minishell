@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 11:20:37 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:18:50 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int		check_empty_cmd_or_bad_input_output(t_cmd *cmd);
 int		check_invalid_characters(char *str, t_env *env);
 int		print_errors_by_code(int code, t_env *env);
 int		check_errors_in_cmd(t_cmd *cmd);
-void	err_malloc(t_cmd *cmd, t_env *env);
 int		not_empty(char *str, t_env *env);
 
 //	P A R S E R
@@ -101,7 +100,6 @@ char	*expand_environment_variables(char *cmd_line, t_env *envar);
 char	*env_var_transformation(char *env_name, t_env *envar);
 char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag);
 char	*get_env_var_name_including_dollar(char *redirection);
-int		get_total_length_of_words_in_array(char **array);
 char	*more_than_one_env_vars(char *str, t_env *envar);
 char	*get_path(t_env *env);
 void	free_env_var_things(char *str, char *str2, char *envname, char *env);
@@ -113,24 +111,21 @@ char	*redi_string_starting(int len, char *env_complete, char *env, int flag);
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
 int		get_nb_cmd(char *str);
+int		get_nb_inputs(char *cmd_line);
+int		get_nb_outputs(char *str);
 char	*get_cmd(char *str, t_cmd *cmd);
 char	*get_flags(char *str, t_cmd *cmd);
-int		get_nb_inputs(char *cmd_line);
+char	*get_parameters(char *str, t_cmd *cmd, t_env *env);
+int		get_input(char *cmd_line, t_cmd *cmd, t_env *env);
 char	*get_input_from_pos(char *cmd_line, int pos, t_cmd *cmd, t_env *env);
 int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
 int		*input_filename_to_fd(char **input, int nb_in, t_cmd *cmd, t_env *env);
-int		get_input(char *cmd_line, t_cmd *cmd, t_env *env);
-int		get_nb_outputs(char *str);
+int		get_output(char *str, t_cmd *cmd, t_env *env);
 char	*get_output_from_pos(char *cmd_line, int pos);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 int		*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env);
-int		get_output(char *str, t_cmd *cmd, t_env *env);
-char	*get_parameters(char *str, t_cmd *cmd, t_env *env);
-char	*fill_string_param(char *param, char *cmd_line, int i);
+void	get_redirections(char *aux, t_cmd *cmd, t_env *env);
 void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output);
-void	get_redirections(t_cmd *cmd, t_env *env, char *expanded);
-void	get_redirections_parser(char *aux, t_cmd *cmd, t_env *env);
-
 
 //	U T I L I T I E S
 
@@ -147,15 +142,14 @@ int		search_char_in_str(char *str, char c);
 int		skip_whitespaces(char *str, int start);
 int		skip_characters(char *str, int start);
 int		skip_characters_and_spaces(char *str, int start);
-int		skip_cmd_and_flags(char	*cmd_line);
 int		skip_everything_til_quotes(char	*str, int j);
-int		skip_cmd_name(char *str, int start);
 int		skip_until_char(char *str, int i, char c);
 
 int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);
 char	*delete_outputs_from_line(char *cmd_line, int is_free);
 char	*delete_inputs_from_line(char *str);
+int		get_total_length_of_words_in_array(char **array);
 char	*ft_splitnt(char **array, int len, int is_len);
 void	print_error_file(char *input, char *msg, t_env *env);
 void	print_error_file_ambiguous(char	*str, t_cmd *cmd, t_env *env);
@@ -198,6 +192,7 @@ void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
 void	free_redirection(int *i1, int *i2, char **arr);
 void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4);
 void	close_fds(t_cmd *cmd);
+
 //	[T E M P]   L E A K S   &   P R I N T S
 
 void	print_test(char *str, t_cmd *cmd, int repeat);

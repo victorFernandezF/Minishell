@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:08:29 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/10 12:09:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:15:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,6 @@ int	skip_characters_and_spaces(char *str, int start)
 	start = skip_characters(str, start);
 	start = skip_whitespaces(str, start);
 	return (start);
-}
-
-/**
- * @brief Skips cmd name and flags from cmd line.
- * 
- * @param cmd_line command_line. 
- * @return [Int] The position of the string 
- * 	after skipping cmd and flags.
- */
-int	skip_cmd_and_flags(char	*cmd_line)
-{
-	int	i;
-
-	i = 0;
-	i = skip_cmd_name(cmd_line, 0);
-	while (cmd_line[i] == '-')
-		i = skip_characters_and_spaces(cmd_line, i);
-	return (i);
 }
 
 /**

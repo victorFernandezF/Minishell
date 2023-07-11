@@ -6,13 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 12:53:25 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:11:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	get_redirections_parser(char *expa, t_cmd *cmd, t_env *env)
+void	get_redirections(char *expa, t_cmd *cmd, t_env *env)
 {
 	if (cmd->nb_outputs > 0)
 		get_output(expa, cmd, env);
@@ -45,7 +45,7 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 	expanded = get_cmd(expanded, cmd);
 	expanded = get_flags(expanded, cmd);
 	expanded = get_parameters(expanded, cmd, env);
-	get_redirections_parser(aux, cmd, env);
+	get_redirections(aux, cmd, env);
 	free(expanded);
 	free(aux);
 }
