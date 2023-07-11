@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 13:45:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:48:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag)
 		env_value = join_firt_str_and_env_var(i, comp, env, flag);
 	}
 	if (!rest)
-		return (renv_valueedi);
+		return (env_value);
 	join_env_and_rest = ft_strjoin(env_value, rest);
 	free_maximun_of_four_str(rest, env_value, NULL, NULL);
 	return (join_env_and_rest);

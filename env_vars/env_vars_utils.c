@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:53:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:53:34 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:47:33 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
  */
 static char	*delete_spaces(char *str)
 {
-	int		nb;
 	int		i;
 	int		j;
-	char	*nosp;
+	int		nb;
+	char	*no_spaces;
 
 	i = -1;
 	j = 0;
@@ -31,14 +31,14 @@ static char	*delete_spaces(char *str)
 	while (str[++i])
 		if (str[i] == ' ')
 			nb++;
-	nosp = malloc((ft_strlen(str) - nb) * sizeof(char));
-	if (!nosp)
+	no_spaces = malloc((ft_strlen(str) - nb) * sizeof(char));
+	if (!no_spaces)
 		return (NULL);
 	i = -1;
 	while (str[++i])
 		if (str[i] != ' ')
-			nosp[j++] = str[i];
-	return (nosp);
+			no_spaces[j++] = str[i];
+	return (no_spaces);
 }
 
 /**
@@ -54,7 +54,7 @@ static char	**take_only_the_good_ones(char **array)
 	int		i;
 	int		j;
 	int		len;
-	char	**res;
+	char	**good_envars;
 
 	i = -1;
 	len = 0;
@@ -64,16 +64,16 @@ static char	**take_only_the_good_ones(char **array)
 			len++;
 	if (len == 0)
 		return (array);
-	res = malloc((len + 1) * sizeof(char *));
-	if (!res)
+	good_envars = malloc((len + 1) * sizeof(char *));
+	if (!good_envars)
 		return (NULL);
 	i = -1;
 	while (array[++i])
 		if (array[i][0] != '$')
-			res[j++] = ft_copy_str(array[i]);
-	res[j] = NULL;
+			good_envars[j++] = ft_copy_str(array[i]);
+	good_envars[j] = NULL;
 	free_array(array);
-	return (res);
+	return (good_envars);
 }
 
 /**
