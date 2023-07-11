@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 18:57:23 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/06 18:30:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:45:52 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	get_position_of_last_char_found(char *str, char c)
  * @param cmd_line Command line. 
  * @return [Char *] String with everything except outputs.
  */
-char	*delete_outputs_from_line(char *cmd_line)
+char	*delete_outputs_from_line(char *cmd_line, int is_free)
 {
 	int		i;
 	int		len;
@@ -121,6 +121,8 @@ char	*delete_outputs_from_line(char *cmd_line)
 		len++;
 	no_outputs = get_string_without_redir(array, len, '>');
 	free_array_and_str(array, no_spaces);
+	if (is_free == 1)
+		free(cmd_line);
 	return (no_outputs);
 }
 
@@ -153,5 +155,6 @@ char	*delete_inputs_from_line(char *cmd_line)
 		len++;
 	no_inputs = get_string_without_redir(array, len, '<');
 	free_array_and_str(array, no_space);
+	free(cmd_line);
 	return (no_inputs);
 }

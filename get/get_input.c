@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:12:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/29 19:18:24 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:34:09 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	get_input(char *cmd_line, t_cmd *cmd, t_env *env)
 	free_redirection(in_pos, inputs_fd, input);
 	if (cmd->nb_inputs == 0)
 		return (0);
-	return (last_input);
+	cmd->input = last_input;
+	return (1);
 }
 
 /**

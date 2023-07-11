@@ -6,11 +6,19 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/10 11:21:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:35:07 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	get_redirections_parser(char *expa, t_cmd *cmd, t_env *env)
+{
+	if (cmd->nb_outputs > 0)
+		get_output(expa, cmd, env);
+	if (cmd->nb_inputs > 0)
+		get_input(expa, cmd, env);
+}
 
 /**
  * @brief Sets the components of the line into the struct.
@@ -19,30 +27,27 @@
  * @param command An string whith the given command
  * @return [t_cmd *] The given struct filled with the datas from line.
  */
-t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *env)
+void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 {
-	t_cmd	*new;
 	char	*expanded;
-	char	*no_outputs;
-	char	*no_output_input;
+	char	*aux;
 
-	new = tmp;
 	expanded = expand_environment_variables(command, env);
-	no_outputs = delete_outputs_from_line(expanded);
-	no_output_input = delete_inputs_from_line(no_outputs);
-	new->nb_outputs = get_nb_outputs(expanded);
-	new->nb_inputs = get_nb_inputs(expanded);
-	if (ft_strlen(no_output_input) == 0)
-		new->error = 2;
-	if (new->nb_outputs > 0)
-		new->output = get_output(expanded, new, env);
-	new->cmd = get_cmd(no_output_input);
-	new->flags = get_flags(no_outputs);
-	if (new->nb_inputs > 0)
-		new->input = get_input(expanded, new, env);
-	new->params = get_parameters(no_output_input, new, env);
-	free_maximun_of_four_str(no_output_input, no_outputs, expanded, NULL);
-	return (new);
+	aux = ft_copy_str(expanded);
+	cmd->nb_outputs = get_nb_outputs(expanded);
+	cmd->nb_inputs = get_nb_inputs(expanded);
+	if (cmd->nb_outputs > 0)
+		expanded = delete_outputs_from_line(expanded, 1);
+	if (cmd->nb_inputs > 0)
+		expanded = delete_inputs_from_line(expanded);
+	if (ft_strlen(expanded) == 0)
+		cmd->error = 2;
+	expanded = get_cmd(expanded, cmd);
+	expanded = get_flags(expanded, cmd);
+	expanded = get_parameters(expanded, cmd, env);
+	get_redirections_parser(aux, cmd, env);
+	free(expanded);
+	free(aux);
 }
 
 /**
@@ -119,7 +124,7 @@ static char	**split_by_pipes(char *str)
  * @param cmd_line Line with the command 
  * @return [t_cmd *] Given struct whith all elements from cmd_line.
  */
-t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
+void	start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 {
 	int		i;
 	int		nb_cmd;
@@ -139,11 +144,10 @@ t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 			command[i] = manage_heredoc(aux_var, envar);
 		}
 	}
-	cmd = fill_struct(cmd, command[0], envar);
+	fill_struct(cmd, command[0], envar);
 	i = 0;
 	if (nb_cmd > 1)
 		while (command[++i] != NULL)
-			cmd = add_new_node_to_the_list(cmd, command[i], i + 1, envar);
+			add_new_node_to_the_list(cmd, command[i], i + 1, envar);
 	free_array(command);
-	return (cmd);
 }

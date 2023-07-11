@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:11:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:24:42 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,26 @@
  * @param cmd_line command_line
  * @return [Char *] A string with the flags found.
  */
-char	*get_flags(char *cmd_line)
+char	*get_flags(char *cmd_line, t_cmd *cmd)
 {
-	int		i;
 	int		end;
 	int		start;
 	char	*flags;
+	char	*rest;
 
-	start = skip_cmd_name(cmd_line, 0);
-	if (cmd_line[start] != '-')
-		return (NULL);
+	start = 0;
+	if (cmd_line[0] != '-')
+		return (cmd_line);
 	end = get_position_of_last_char_found(cmd_line, '-');
 	end = skip_characters(cmd_line, end);
-	flags = malloc((end - start +1) * sizeof(char));
+	flags = ft_substr(cmd_line, start, end);
 	if (!flags)
-		return (NULL);
-	i = 0;
-	while (start < end)
-		flags[i++] = cmd_line[start++];
-	flags[i] = '\0';
-	return (flags);
+	{
+		cmd->flags = NULL;
+		return (cmd_line);
+	}
+	cmd->flags = flags;
+	rest = ft_substr(cmd_line, end, ft_strlen(cmd_line));
+	free(cmd_line);
+	return (rest);
 }

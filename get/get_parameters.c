@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 13:53:43 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:27:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*fill_string_param(char *param, char *cmd_line, int i)
  * @param cmd_line Command line.
  * @return [Int] 1 if only cmd name found. 0 if there are more things.
  */
-static int	check_if_only_cmd_name(char *cmd_line)
+/* static int	check_if_only_cmd_name(char *cmd_line)
 {
 	int	i;
 
@@ -44,9 +44,9 @@ static int	check_if_only_cmd_name(char *cmd_line)
 	if (!cmd_line[i])
 		return (1);
 	return (0);
-}
+} */
 
-static void	free_param(char **param_array, int errmalloc)
+/* static void	free_param(char **param_array, int errmalloc)
 {
 	if (errmalloc == 1)
 	{
@@ -57,7 +57,7 @@ static void	free_param(char **param_array, int errmalloc)
 	if (param_array[1][0] == '-')
 		free(param_array[1]);
 	free(param_array);
-}
+} */
 
 /**
  * @brief Counts the number of parameters found.
@@ -65,7 +65,7 @@ static void	free_param(char **param_array, int errmalloc)
  * @param param_array 
  * @return [Int] Number of parameters. 
  */
-static int	count_parameters(char **param_array)
+/* static int	count_parameters(char **param_array)
 {
 	int	i;
 	int	len;
@@ -77,7 +77,7 @@ static int	count_parameters(char **param_array)
 	if (param_array[1][0] == '-')
 		len--;
 	return (len);
-}
+} */
 
 /**
  * @brief creates an array of strings with the parameters found
@@ -86,31 +86,12 @@ static int	count_parameters(char **param_array)
  * @param cmd_line Command line
  * @return [Char **] An array of strings with every parameters found. 
  */
-char	**get_parameters(char *cmd_line, t_cmd *cmd, t_env *env)
+char	*get_parameters(char *cmd_line, t_cmd *cmd, t_env *env)
 {
-	int		i;
-	int		j;
-	int		len;
-	char	**param;
-	char	**param_array;
+	char	**parameters;
 
-	i = 0;
-	j = 0;
-	if (check_if_only_cmd_name(cmd_line))
-		return (NULL);
-	param_array = ft_split_minishell(cmd_line, 0);
-	len = count_parameters(param_array);
-	param = malloc((len + 1) * sizeof(char *));
-	if (!param)
-	{
-		free_param(param_array, 1);
-		return (err_malloc(cmd, env), NULL);
-	}
-	if (param_array[1][0] == '-')
-		i++;
-	while (param_array[++i] != NULL)
-		param[j++] = param_array[i];
-	param[j] = NULL;
-	free_param(param_array, 0);
-	return (param);
+	(void)env;
+	parameters = ft_split_minishell(cmd_line, 0);
+	cmd->params = parameters;
+	return (cmd_line);
 }

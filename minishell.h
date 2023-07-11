@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/10 13:14:19 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:20:37 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_env
 // S T R U C T   S T U F F
 
 t_cmd	*init_struct(t_cmd *structure);
-t_cmd	*add_new_node_to_the_list(t_cmd *cmd, char *str, int id, t_env *envar);
+void	add_new_node_to_the_list(t_cmd *cmd, char *str, int id, t_env *envar);
 
 // I N I T I A L   C H E C K S
 
@@ -87,8 +87,8 @@ int		not_empty(char *str, t_env *env);
 
 //	P A R S E R
 
-t_cmd	*start_parser(t_cmd *cmd, char *cmd_line, t_env *envar);
-t_cmd	*fill_struct(t_cmd *tmp, char *command, t_env *envar);
+void	start_parser(t_cmd *cmd, char *cmd_line, t_env *envar);
+void	fill_struct(t_cmd *tmp, char *command, t_env *envar);
 void	settings(void);
 
 // E N V I R O M E N T   V A R S
@@ -113,8 +113,8 @@ char	*redi_string_starting(int len, char *env_complete, char *env, int flag);
 //	G E T   E A C H   P A R T   O F   C M D   L I N E
 
 int		get_nb_cmd(char *str);
-char	*get_cmd(char *str);
-char	*get_flags(char *str);
+char	*get_cmd(char *str, t_cmd *cmd);
+char	*get_flags(char *str, t_cmd *cmd);
 int		get_nb_inputs(char *cmd_line);
 char	*get_input_from_pos(char *cmd_line, int pos, t_cmd *cmd, t_env *env);
 int		*get_input_char_positions(char *cmd_line, t_cmd *cmd);
@@ -125,10 +125,12 @@ char	*get_output_from_pos(char *cmd_line, int pos);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 int		*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env);
 int		get_output(char *str, t_cmd *cmd, t_env *env);
-char	**get_parameters(char *str, t_cmd *cmd, t_env *env);
+char	*get_parameters(char *str, t_cmd *cmd, t_env *env);
 char	*fill_string_param(char *param, char *cmd_line, int i);
 void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output);
 void	get_redirections(t_cmd *cmd, t_env *env, char *expanded);
+void	get_redirections_parser(char *aux, t_cmd *cmd, t_env *env);
+
 
 //	U T I L I T I E S
 
@@ -152,7 +154,7 @@ int		skip_until_char(char *str, int i, char c);
 
 int		get_position_of_last_char_found(char *str, char c);
 char	*replace_spaces_after_redirect(char *cmd_line);
-char	*delete_outputs_from_line(char *cmd_line);
+char	*delete_outputs_from_line(char *cmd_line, int is_free);
 char	*delete_inputs_from_line(char *str);
 char	*ft_splitnt(char **array, int len, int is_len);
 void	print_error_file(char *input, char *msg, t_env *env);

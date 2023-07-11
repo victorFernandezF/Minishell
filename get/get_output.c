@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:38:25 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:55:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:28:16 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	get_output(char *cmd_line, t_cmd *cmd, t_env *env)
 	cmd->array_outut = outputs_fd;
 	last_output = outputs_fd[cmd->nb_outputs - 1];
 	free_redirection(out_pos, outputs_fd, out);
-	return (last_output);
+	cmd->output = last_output;
+	return (1);
 }
 
 /**
