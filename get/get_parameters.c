@@ -6,78 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:10:24 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/10 19:27:17 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:51:24 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/**
- * @brief Auxiliary function to help get_param filling the string
- * 
- * @param param 
- * @param cmd_line 
- * @param i 
- * @return [Char *] A string.
- */
-char	*fill_string_param(char *param, char *cmd_line, int i)
-{
-	int	j;
-
-	j = 0;
-	while (cmd_line[++i] != 34)
-		param[j++] = cmd_line[i];
-	return (param);
-}
-
-/**
- * @brief Checks if there is only the cmd name in the line.
- * 
- * @param cmd_line Command line.
- * @return [Int] 1 if only cmd name found. 0 if there are more things.
- */
-/* static int	check_if_only_cmd_name(char *cmd_line)
-{
-	int	i;
-
-	i = skip_cmd_and_flags(cmd_line);
-	if (!cmd_line[i])
-		return (1);
-	return (0);
-} */
-
-/* static void	free_param(char **param_array, int errmalloc)
-{
-	if (errmalloc == 1)
-	{
-		free_array(param_array);
-		return ;
-	}
-	free(param_array[0]);
-	if (param_array[1][0] == '-')
-		free(param_array[1]);
-	free(param_array);
-} */
-
-/**
- * @brief Counts the number of parameters found.
- * 
- * @param param_array 
- * @return [Int] Number of parameters. 
- */
-/* static int	count_parameters(char **param_array)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = 0;
-	while (param_array[++i])
-		len++;
-	if (param_array[1][0] == '-')
-		len--;
-	return (len);
-} */
 
 /**
  * @brief creates an array of strings with the parameters found
