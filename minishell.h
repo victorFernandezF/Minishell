@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 13:18:50 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:31:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	settings(void);
 // E N V I R O M E N T   V A R S
 
 char	*del_last_quote(char *str);
-char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar);
+char	*convert_env_var_in_its_value(char *line, t_env *envar);
 char	*replace_simple_quotes_by_double_quotes(char *str);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
 char	*expand_environment_variables(char *cmd_line, t_env *envar);

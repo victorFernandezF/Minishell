@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 18:03:13 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 12:39:06 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:35:21 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ char	*del_last_quote(char *str)
 {
 	int		i;
 	int		len;
-	char	*res;
+	char	*no_last_quote;
 
 	i = 0;
 	len = ft_strlen(str);
-	res = malloc(len * sizeof(char));
-	if (!res)
+	no_last_quote = malloc(len * sizeof(char));
+	if (!no_last_quote)
 		return (NULL);
 	while (str[i] != '\0' && (str[i] != 34 && str[i] != 39))
 	{
-		res[i] = str[i];
+		no_last_quote[i] = str[i];
 		i++;
 	}
 	str[i] = '\0';
-	return (res);
+	return (no_last_quote);
 }
 
 /**
@@ -45,21 +45,21 @@ char	*del_last_quote(char *str)
  * @param envar Struct whith the enviroment vars.
  * @return [Char *] A line with the expanded env vars. 
  */
-char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
+char	*convert_env_var_in_its_value(char *line, t_env *envar)
 {
-	char	*env;
-	char	*final;
-	char	*no_end_quotes;
+	char	*env_val;
 	char	*env_name;
 	int		last_quote;
+	char	*str_with_env;
+	char	*no_end_quotes;
 
 	last_quote = 0;
-	env_name = get_env_var_name_including_dollar(cmd_line);
-	if (env_var_counter(cmd_line) > 1)
+	env_name = get_env_var_name_including_dollar(line);
+	if (env_var_counter(line) > 1)
 	{
-		final = more_than_one_env_vars(cmd_line, envar);
+		str_with_env = more_than_one_env_vars(line, envar);
 		free(env_name);
-		return (final);
+		return (str_with_env);
 	}
 	if (!env_name)
 		return (NULL);
@@ -67,10 +67,10 @@ char	*convert_env_var_in_its_value(char *cmd_line, t_env *envar)
 		|| env_name[ft_strlen(env_name) - 1] == 39)
 		last_quote = 1;
 	no_end_quotes = del_last_quote(env_name);
-	env = env_var_transformation(env_name, envar);
-	final = fill_str_with_env_value(cmd_line, env_name, env, last_quote);
-	free_env_var_things(no_end_quotes, cmd_line, env_name, env);
-	return (final);
+	env_val = env_var_transformation(env_name, envar);
+	str_with_env = fill_str_with_env_value(line, env_name, env_val, last_quote);
+	free_env_var_things(no_end_quotes, line, env_name, env_val);
+	return (str_with_env);
 }
 
 /**
@@ -104,23 +104,23 @@ char	*replace_simple_quotes_by_double_quotes(char *str)
 char	*find_env_from_srruct(t_env *envar, char *name)
 {
 	int		i;
-	t_env	*vari;
+	t_env	*envars;
 	t_env	*tmp;
 
-	vari = envar;
-	while (vari)
+	envars = envar;
+	while (envars)
 	{
 		i = 0;
-		if (are_two_strs_equal(vari->var, name))
+		if (are_two_strs_equal(envars->var, name))
 		{
-			if (vari->vals[i + 1] == NULL)
-				return (vari->vals[0]);
-			while (vari->vals[i])
+			if (envars->vals[i + 1] == NULL)
+				return (envars->vals[0]);
+			while (envars->vals[i])
 				i++;
-			return (vari->vals[0]);
+			return (envars->vals[0]);
 		}
-		tmp = vari->next;
-		vari = tmp;
+		tmp = envars->next;
+		envars = tmp;
 	}
 	return (NULL);
 }
@@ -135,28 +135,28 @@ char	*find_env_from_srruct(t_env *envar, char *name)
 char	*expand_environment_variables(char *cmd_line, t_env *envar)
 {
 	int		i;
-	char	*new_line;
-	char	**array;
-	char	*temp;
+	char	**split;
+	char	*env_var_value;
+	char	*str_with_env_value;
 
-	array = ft_split_2(cmd_line);
+	split = ft_split_2(cmd_line);
 	i = -1;
-	while (array[++i])
+	while (split[++i])
 	{
-		if (env_var_detector(array[i]))
+		if (env_var_detector(split[i]))
 		{
-			if (check_simple_quotes(array[i])
-				|| is_inside_simple_quotes(array, i))
+			if (check_simple_quotes(split[i])
+				|| is_inside_simple_quotes(split, i))
 			{
-				array[i] = replace_simple_quotes_by_double_quotes(array[i]);
+				split[i] = replace_simple_quotes_by_double_quotes(split[i]);
 				continue ;
 			}
-			temp = NULL;
-			temp = convert_env_var_in_its_value(array[i], envar);
-			array[i] = temp;
+			env_var_value = NULL;
+			env_var_value = convert_env_var_in_its_value(split[i], envar);
+			split[i] = env_var_value;
 		}
 	}
-	new_line = ft_splitnt(array, 0, 0);
-	free_array(array);
-	return (replace_simple_quotes_by_double_quotes(new_line));
+	str_with_env_value = ft_splitnt(split, 0, 0);
+	free_array(split);
+	return (replace_simple_quotes_by_double_quotes(str_with_env_value));
 }
