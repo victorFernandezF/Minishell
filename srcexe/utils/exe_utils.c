@@ -6,11 +6,19 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:05:11 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/07 18:31:08 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/11 08:23:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+void	closeback(t_cmd *cmd)
+{
+	if (cmd->index < cmd->nb_cmd)
+		close(cmd->pipes[cmd->index - 1][1]);
+	if (cmd->index > 1)
+		close(cmd->pipes[cmd->index - 2][0]);
+}
 
 int	argsize(t_cmd *cmd)
 {

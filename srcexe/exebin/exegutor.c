@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 19:35:02 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/11 08:26:51 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ int		n_params(char **mat);
 char	*fillargmat(char *str);
 int		argsize(t_cmd *cmd);
 
-void	closeback(t_cmd *cmd)
+void	wstatus(int status, t_env *env)
 {
-	if (cmd->index < cmd->nb_cmd)
-		close(cmd->pipes[cmd->index - 1][1]);
-	if (cmd->index > 1)
-		close(cmd->pipes[cmd->index - 2][0]);
+	char	*tmp;
+
+	tmp = ft_itoa(status);
+	set_env(env, "?", tmp);
+	free(tmp);
 }
 
 void	exepro(char *path, char **arg, char **senv, t_cmd *cmd)
@@ -121,6 +122,7 @@ int	exegutor(t_cmd *cmd, t_env *env)
 	free_mat(arg);
 	free_mat(senv);
 	wait(&status);
+	wstatus(status, env);
 	closeback(cmd);
 	return (EXIT_SUCCESS);
 }
