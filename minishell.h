@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 13:31:21 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:37:14 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	*convert_env_var_in_its_value(char *line, t_env *envar);
 char	*replace_simple_quotes_by_double_quotes(char *str);
 char	*find_env_from_srruct(t_env *envar, char *tmp);
 char	*expand_environment_variables(char *cmd_line, t_env *envar);
-char	*env_var_transformation(char *env_name, t_env *envar);
+char	*env_var_transformation(char *env_complete, t_env *envar);
 char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag);
 char	*get_env_var_name_including_dollar(char *redirection);
 char	*more_than_one_env_vars(char *str, t_env *envar);

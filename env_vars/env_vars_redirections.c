@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 12:49:42 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:45:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,27 @@ char	*env_var_transformation(char *env_complete, t_env *envar)
 {
 	int		i;
 	int		j;
-	char	*temp;
-	char	*env;
+	char	*env_value;
+	char	*envname_no_dollar;
 
 	i = 0;
 	j = 0;
 	if (are_two_strs_equal(env_complete, "$PATH"))
 	{
-		env = get_path(envar);
-		return (env);
+		env_value = get_path(envar);
+		return (env_value);
 	}
-	temp = malloc(ft_strlen(env_complete) * sizeof(char));
-	if (!temp)
+	envname_no_dollar = malloc(ft_strlen(env_complete) * sizeof(char));
+	if (!envname_no_dollar)
 		return (NULL);
 	while (env_complete[++i])
-		temp[j++] = env_complete[i];
-	temp[j] = '\0';
-	env = find_env_from_srruct(envar, temp);
-	free(temp);
-	if (env == NULL)
-		env = " ";
-	return (env);
+		envname_no_dollar[j++] = env_complete[i];
+	envname_no_dollar[j] = '\0';
+	env_value = find_env_from_srruct(envar, envname_no_dollar);
+	free(envname_no_dollar);
+	if (env_value == NULL)
+		env_value = " ";
+	return (env_value);
 }
 
 /**
@@ -57,15 +57,15 @@ char	*env_var_transformation(char *env_complete, t_env *envar)
 char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag)
 {
 	int		i;
-	char	*redi;
 	char	*rest;
-	char	*join;
+	char	*env_value;
+	char	*join_env_and_rest;
 
 	i = 0;
 	rest = get_env_rest(comp, name);
 	if (comp[0] == '$')
 	{
-		redi = redi_string_starting(ft_strlen(env), comp, env, flag);
+		env_value = redi_string_starting(ft_strlen(env), comp, env, flag);
 	}
 	else
 	{
@@ -73,13 +73,13 @@ char	*fill_str_with_env_value(char *comp, char *name, char *env, int flag)
 		i += ft_strlen(env);
 		if (flag == 1)
 			i++;
-		redi = join_firt_str_and_env_var(i, comp, env, flag);
+		env_value = join_firt_str_and_env_var(i, comp, env, flag);
 	}
 	if (!rest)
-		return (redi);
-	join = ft_strjoin(redi, rest);
-	free_maximun_of_four_str(rest, redi, NULL, NULL);
-	return (join);
+		return (renv_valueedi);
+	join_env_and_rest = ft_strjoin(env_value, rest);
+	free_maximun_of_four_str(rest, env_value, NULL, NULL);
+	return (join_env_and_rest);
 }
 
 /**
@@ -94,7 +94,7 @@ char	*get_env_var_name_including_dollar(char *str)
 	int		j;
 	int		start;
 	int		end;
-	char	*tmp;
+	char	*envar_name;
 
 	j = 0;
 	end = 0;
@@ -111,8 +111,8 @@ char	*get_env_var_name_including_dollar(char *str)
 			break ;
 		j++;
 	}
-	tmp = ft_substr(str, start, end + 1);
-	return (tmp);
+	envar_name = ft_substr(str, start, end + 1);
+	return (envar_name);
 }
 
 /**
