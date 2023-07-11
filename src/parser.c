@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 11:43:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:43:18 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 	char	*aux;
 
 	expanded = expand_environment_variables(command, env);
+	//printf("exp: %s\n", expanded);
 	aux = ft_copy_str(expanded);
 	cmd->nb_outputs = get_nb_outputs(expanded);
 	cmd->nb_inputs = get_nb_inputs(expanded);

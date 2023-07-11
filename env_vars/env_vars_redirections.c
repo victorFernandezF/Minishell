@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:56:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:53:12 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:45:06 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	*env_var_transformation(char *env_complete, t_env *envar)
 	if (are_two_strs_equal(env_complete, "$PATH"))
 	{
 		env = get_path(envar);
+		printf("env %s\n", env);
 		return (env);
 	}
 	temp = malloc(ft_strlen(env_complete) * sizeof(char));

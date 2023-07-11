@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:27:28 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:53:48 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:46:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ char	*get_path(t_env *envar)
 		tmp = vari->next;
 		vari = tmp;
 	}
-	return (NULL);
+	res = ft_copy_str(" ");
+	return (res);
 }
 
 /**
