@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 12:06:27 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/12 22:24:10 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,5 +222,6 @@ int		cmd_error(char *cmd, char *error, t_env *env);
 int		cmd_cd_error(char *cmd, char *error, t_env *env);
 void	free_mat(char **mat);
 void	closeback(t_cmd *cmd);
+void	check_signal(t_env *env);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 13:15:31 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/12 22:22:28 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_redirections(char *expa, t_cmd *cmd, t_env *env)
 
 /**
  * @brief Sets the components of the line into the struct.
- * 
+ *
  * @param tmp The struct created in main.
  * @param command An string whith the given command
  * @return [t_cmd *] The given struct filled with the datas from line.
@@ -61,9 +61,9 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 /**
  * @brief If a heredoc is found. the function creates a temp
  * file to store the heredoc.
- * 
- * @param str 
- * @param envar 
+ *
+ * @param str
+ * @param envar
  * @return [Char *] Command with the heredoc replaced by a normal input.
  */
 char	*manage_heredoc(char *str, t_env *envar)
@@ -97,9 +97,9 @@ char	*manage_heredoc(char *str, t_env *envar)
 
 /**
  * @brief Split command by pipes only if the pipe is not inside quotes
- * 
- * @param str 
- * @return [Char **] An array with the different commands found in str. 
+ *
+ * @param str
+ * @return [Char **] An array with the different commands found in str.
  */
 static char	**split_by_pipes(char *str)
 {
@@ -128,9 +128,9 @@ static char	**split_by_pipes(char *str)
 /**
  * @brief Separates the different parts of the commmand line
  *	and save them in the given structure.
- * 
+ *
  * @param cmd Struct
- * @param cmd_line Line with the command 
+ * @param cmd_line Line with the command
  * @return [t_cmd *] Given struct whith all elements from cmd_line.
  */
 void	start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
@@ -140,6 +140,7 @@ void	start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 	char	*aux_var;
 	char	**command;
 
+	check_signal(envar);
 	i = -1;
 	nb_cmd = get_nb_cmd(cmd_line);
 	cmd->nb_cmd = nb_cmd;

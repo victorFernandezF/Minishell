@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 11:55:10 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/12 22:18:25 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int sign = 0;
+int g_sign = 0;
 
 /**
  * @brief Controls the signal 'SIGINT' so when user press ctrl-c
@@ -24,7 +24,7 @@ void	signal_handler(int sig)
 {
 	if (sig == 2)
 	{
-		sign = 1;
+		g_sign = 1;
 		printf("\n");
 		rl_on_new_line();
 		rl_replace_line("", 0);
@@ -93,11 +93,7 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 			cmd = init_struct(cmd);
 			start_parser(cmd, read, env);
 			if (check_errors_in_cmd(cmd) == 0)
-			{
-				print_test(read, cmd, 0);
 				processing(cmd, env);
-			}
-			free_struct(cmd);
 		}
 		free_maximun_of_four_str(read, prompt, NULL, NULL);
 	}

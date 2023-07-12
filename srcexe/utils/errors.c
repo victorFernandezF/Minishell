@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:53:21 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/23 12:17:13 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 22:20:56 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,14 @@ int	cmd_cd_error(char *cmd, char *error, t_env *env)
 	free(print);
 	set_env(env, "?", "1");
 	return (EXIT_FAILURE);
+}
+
+void	check_signal(t_env *env)
+{
+	extern int	g_sign;
+	char		*nb;
+
+	nb = ft_itoa(g_sign);
+	set_env(env, "?", nb);
+	free(nb);
 }
