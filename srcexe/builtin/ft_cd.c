@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:55:38 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 10:07:26 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:15:53 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,5 @@ int	ft_cd(t_cmd *cmd, t_env *env)
 	np = n_flags(cmd->flags);
 	if (np < 0)
 		return (EXIT_FAILURE);
-	/*if (n_params(cmd->params) > 1 || np > 1)
-		return (cmd_error("cd", "too many arguments"));*/
 	return (cd_nav(cmd, cd_nav_to(cmd, env), env));
 }

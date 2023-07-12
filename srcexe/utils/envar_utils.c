@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:44:00 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 17:01:24 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:18:16 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,6 @@ char	*fillmatenv(t_env *env)
 	int		i;
 	int		j;
 
-	//printf("Entra con %s\n", env->var);
-	/*if (!(ft_strncmp("PATH", env->var, ft_strlen("PATH"))))
-		printf("size %s: %d\n", env->var, cntvar(env));*/
 	str = (char *)malloc((cntvar(env) + 1) * sizeof(char));
 	i = 0;
 	j = 0;
@@ -104,7 +101,6 @@ char	*fillmatenv(t_env *env)
 		str[j++] = env->var[i++];
 	if (env->vals[0] == NULL)
 	{
-		//printf("sale con %s\n", env->var);
 		str[j] = '\0';
 		return (str);
 	}
@@ -133,7 +129,6 @@ char	**envtomatexp(t_env *env)
 			continue ;
 		}
 		mat[i] = fillmatenv(tmp);
-		//printf("filled: %s\n", mat[i]);
 		tmp = tmp->next;
 		i++;
 	}

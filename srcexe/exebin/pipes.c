@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:47:11 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 09:40:09 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:24:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void	modfds(int	**pipes, t_cmd *cmd)
 		cmd->owin = 1;
 	}
 	if (cmd->index < cmd->nb_cmd && cmd->output == 0)
-	{
 		cmd->output = pipes[cmd->index - 1][1];
-		cmd->owout = 1;
-	}
 }
 
 int	**spipes(t_cmd *cmd)

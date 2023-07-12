@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/11 08:26:51 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:17:42 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	exepro(char *path, char **arg, char **senv, t_cmd *cmd)
 		dup2(cmd->pipes[cmd->index - 1][1], STDOUT_FILENO);
 		close(cmd->pipes[cmd->index - 1][1]);
 	}
-	if (cmd->nb_cmd == 1 && cmd->input != 0)
+	if (cmd->index == 1 && cmd->input != 0)
 		dup2(cmd->input, STDIN_FILENO);
-	if (cmd->nb_cmd == 1 && cmd->output != 0)
+	if (cmd->index == cmd->nb_cmd && cmd->output != 0)
 		dup2(cmd->output, STDOUT_FILENO);
 	execve(path, arg, senv);
 }
@@ -116,7 +116,6 @@ int	exegutor(t_cmd *cmd, t_env *env)
 	pid = fork();
 	if (pid == 0)
 		exepro(path, arg, senv, cmd);
-		//execve(path, arg, senv);
 	if ((ft_strncmp(path, cmd->cmd, ft_strlen(cmd->cmd))))
 		free(path);
 	free_mat(arg);

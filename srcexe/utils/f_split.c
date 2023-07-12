@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:52:25 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/30 15:54:29 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:18:36 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ char	**f_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	i = 0;
-	//printf("%s: %d\n", s, ft_rows((char *) s, c));
 	mat = (char **)malloc(((ft_rows((char *) s, c)) + 1) * sizeof(char *));
 	if (mat == NULL)
 		return (NULL);
