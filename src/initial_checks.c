@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:49:00 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/29 18:07:41 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:05:45 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int	check_invalid_characters(char *str, t_env *env)
 
 	i = -1;
 	res = 0;
+	printf("%s\n", str);
 	while (str[++i])
 	{
 		if (check_two_pipes_in_a_row(str, i))

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 12:38:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:10:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,14 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 		expanded = delete_inputs_from_line(expanded);
 	if (ft_strlen(expanded) == 0)
 		cmd->error = 2;
-	expanded = get_cmd(expanded, cmd);
-	expanded = get_flags(expanded, command, cmd);
-	expanded = get_parameters(expanded, cmd, env);
+	if (expanded[0] != '\0')
+	{
+		expanded = get_cmd(expanded, cmd);
+		expanded = get_flags(expanded, command, cmd);
+		expanded = get_parameters(expanded, cmd, env);
+	}
 	get_redirections(aux, cmd, env);
+	cmd->error = 1;
 	free(expanded);
 	free(aux);
 }
