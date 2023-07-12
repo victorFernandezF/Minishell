@@ -6,13 +6,13 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 22:18:25 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 22:28:14 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int g_sign = 0;
+int	g_sign = 0;
 
 /**
  * @brief Controls the signal 'SIGINT' so when user press ctrl-c
