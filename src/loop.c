@@ -12,6 +12,8 @@
 
 #include "../minishell.h"
 
+int sign = 0;
+
 /**
  * @brief Controls the signal 'SIGINT' so when user press ctrl-c
  * 	a new line will be displayed.
@@ -22,6 +24,7 @@ void	signal_handler(int sig)
 {
 	if (sig == 2)
 	{
+		sign = 1;
 		printf("\n");
 		rl_on_new_line();
 		rl_replace_line("", 0);
