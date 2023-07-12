@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 10:22:44 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:25:44 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,19 @@
  */
 int	check_errors_in_cmd(t_cmd *cmd)
 {
+	t_cmd	*cmd_2;
 	t_cmd	*tmp;
 	int		error;
 
-	tmp = cmd;
 	error = 0;
-	if (tmp->error == 1)
-		error++;
-	while (tmp->next != NULL)
+	cmd_2 = cmd;
+	while (cmd_2)
 	{
-		if (tmp->error == 1)
+		if (cmd_2->error == 1)
 			error++;
 		tmp = tmp->next;
+		tmp = cmd_2->next;
+		cmd_2 = tmp;
 	}
 	return (error);
 }
