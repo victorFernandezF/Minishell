@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:39:43 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 10:08:24 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:32:14 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,20 @@ void	sort_mat(char **mat)
 void	insert_var(char *envar, t_env *env)
 {
 	t_env	*tmp;
+	char	**stmp;
 
 	tmp = env;
+	stmp = ft_splitf(envar);
 	while (tmp && tmp->next)
+	{
+		if (ft_strncmp(tmp->var, stmp[0], ft_strlen(tmp->var)) != 0)
+		{
+			set_env(env, stmp[0], stmp[1]);
+			free_mat(stmp);
+			return ;
+		}
 		tmp = tmp->next;
+	}
 	tmp->next = ft_new_envar(envar);
 }
 
