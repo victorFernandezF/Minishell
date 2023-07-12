@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 08:15:22 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:06:27 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int		get_nb_cmd(char *str);
 int		get_nb_inputs(char *cmd_line);
 int		get_nb_outputs(char *str);
 char	*get_cmd(char *str, t_cmd *cmd);
-char	*get_flags(char *str, t_cmd *cmd);
+char	*get_flags(char *expanded, char *str, t_cmd *cmd);
 char	*get_parameters(char *str, t_cmd *cmd, t_env *env);
 int		get_input(char *cmd_line, t_cmd *cmd, t_env *env);
 char	*get_input_from_pos(char *cmd_line, int pos, t_cmd *cmd, t_env *env);

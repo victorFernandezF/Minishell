@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 10:23:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:55:10 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 			cmd = init_struct(cmd);
 			start_parser(cmd, read, env);
 			if (check_errors_in_cmd(cmd) == 0)
+			{
+				print_test(read, cmd, 0);
 				processing(cmd, env);
+			}
 			free_struct(cmd);
 		}
 		free_maximun_of_four_str(read, prompt, NULL, NULL);
