@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 12:59:21 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:42:37 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	get_len_of_flags(char *str)
 }
 
 /**
- * @brief Get the flags of the command line.
+ * @brief Splits the flags from the command_line
+ * and store it in the struct.
  * 
- * @param cmd_line command_line
- * @return [Char *] A string with the flags found.
-	//printf("test: [%i]\n", len);
+ * @param cmd_line Command lime.
+ * @return [Char *] The given line, after deleting the flags. 
  */
 char	*get_flags(char *exp, char *cmd_line, t_cmd *cmd)
 {

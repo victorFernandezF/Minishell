@@ -6,29 +6,11 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 14:23:39 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:50:22 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-/**
- * @brief Change the terminal settings to avoid printing
- * '^C' when ctrl-c is pressed. And before exit the program
- * change the settings to its orriginal values.
- * 
- * @param set If 0, does not print '^C'. If 0, prints `^C`.
- */
-void	settings(void)
-{
-	struct termios	settings;
-
-	if (tcgetattr(0, &settings))
-		perror("Error");
-	settings.c_lflag &= ~ECHOCTL;
-	if (tcsetattr(0, 0, &settings))
-		perror("Error.");
-}
 
 int	main(int argc, char **argv, char **env)
 {

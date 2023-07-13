@@ -6,12 +6,21 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 10:42:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:39:31 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/**
+ * @brief Check if there are redirections and get them if
+ * necesary.
+ * 
+ * @param expa expanded str
+ * @param cmd struct
+ * @param env struct
+ * @param error int.
+ */
 void	get_redirections(char *expa, t_cmd *cmd, t_env *env, int error)
 {
 	if (cmd->nb_outputs > 0)
@@ -27,7 +36,6 @@ void	get_redirections(char *expa, t_cmd *cmd, t_env *env, int error)
  *
  * @param tmp The struct created in main.
  * @param command An string whith the given command
- * @return [t_cmd *] The given struct filled with the datas from line.
  */
 void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 {

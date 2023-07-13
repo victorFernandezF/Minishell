@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 10:41:59 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:47:13 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ int		not_empty(char *str, t_env *env);
 
 //	P A R S E R
 
+void	settings(void);
 void	start_parser(t_cmd *cmd, char *cmd_line, t_env *envar);
 void	fill_struct(t_cmd *tmp, char *command, t_env *envar);
-void	settings(void);
 
 // E N V I R O M E N T   V A R S
 

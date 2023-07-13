@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 13:13:47 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:41:38 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	get_nb_cmd(char *cmd_line)
 }
 
 /**
- * @brief Splits the name of the command from the command_line.
+ * @brief Splits the name of the command from the command_line
+ * and store it in the struct.
  * 
  * @param cmd_line Command lime.
- * @return [Char *] The command name. 
+ * @return [Char *] The given line, after deleting the command name 
  */
 char	*get_cmd(char *cmd_line, t_cmd	*cmd)
 {
