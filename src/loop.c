@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 22:28:14 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/13 11:56:01 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static char	*get_prompt(t_env *env)
 	char	*pwd;
 
 	pwd = find_env_from_srruct(env, "PWD");
+	if (!pwd)
+		pwd = "[Minishell]";	
 	tmp = ft_strjoin("\x1B[32m", pwd);
 	res = ft_strjoin(tmp, "$\x1B[0m ");
 	free(tmp);
