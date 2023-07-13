@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 12:00:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:33:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_ctrl_d(char *read, t_env *env, char *prompt)
 		if (env != NULL)
 			freeenv(env);
 		printf("%s exit\n", prompt);
-		exit(0);
+		exit(1);
 	}
 }
 
@@ -98,6 +98,7 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 				processing(cmd, env);
 		}
 		free_maximun_of_four_str(read, prompt, NULL, NULL);
+		g_sign = 0;
 	}
 	free_struct(cmd);
 }
