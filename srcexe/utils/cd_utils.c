@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 21:18:19 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/21 19:26:29 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/13 22:54:01 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,18 @@ int	n_flags(char *array)
 		i++;
 	free_mat(tmp);
 	return (i);
+}
+
+int	is_env(t_env *env, char *var)
+{
+	t_env	*tmp;
+
+	tmp = env;
+	while (tmp)
+	{
+		if (!(ft_strncmp(var, tmp->var, ft_strlen(var))))
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }

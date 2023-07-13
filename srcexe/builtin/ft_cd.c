@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:55:38 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/12 08:15:53 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/13 22:57:57 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ char	*get_pwd(t_env *env);
 int	cd_go(t_cmd *cmd, t_env *env, char *dir)
 {
 	char	*tmp;
-	char	s[100];
+	char	s[5000];
 
-	getcwd(s, 100);
+	getcwd(s, 5000);
 	if (chdir(dir) != 0)
 	{
 		tmp = ft_strjoin(dir, ": No such file or directory");
 		return (cmd_cd_error("cd", tmp, env));
 	}
 	set_env(env, "OLDPWD", s);
-	getcwd(s, 100);
-	set_env(env, "PWD", s);
+	getcwd(s, 5000);
+	if (is_env(env, "PWD"))
+		set_env(env, "PWD", s);
 	if (!cmd->params || !cmd->params[0]
 		|| cmd->params[0][0] == '\0')
 	{

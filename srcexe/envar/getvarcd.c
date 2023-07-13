@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 18:14:53 by fortega-          #+#    #+#             */
-/*   Updated: 2023/06/23 16:20:01 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/13 22:44:24 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*get_oldpwd(t_env *env)
 char	*get_pwd(t_env *env)
 {
 	t_env	*tmp;
+	char	s[5000];
+	char	*pwd;
 
 	tmp = env;
 	while (tmp)
@@ -64,7 +66,9 @@ char	*get_pwd(t_env *env)
 		}
 		tmp = tmp->next;
 	}
-	return (NULL);
+	getcwd(s, 5000);
+	pwd = ft_strdup(s);
+	return (pwd);
 }
 
 char	*get_lexde(t_env *env)
