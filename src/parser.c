@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 22:22:28 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/13 10:42:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	get_redirections(char *expa, t_cmd *cmd, t_env *env)
+void	get_redirections(char *expa, t_cmd *cmd, t_env *env, int error)
 {
 	if (cmd->nb_outputs > 0)
 		get_output(expa, cmd, env);
 	if (cmd->nb_inputs > 0)
 		get_input(expa, cmd, env);
+	if (error == 1)
+		cmd->error = 1;
 }
 
 /**
@@ -47,15 +49,11 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 		expanded = get_cmd(expanded, cmd);
 		expanded = get_flags(expanded, command, cmd);
 		expanded = get_parameters(expanded, cmd, env);
-		get_redirections(aux, cmd, env);
+		get_redirections(aux, cmd, env, 0);
 	}
 	else
-	{
-		get_redirections(aux, cmd, env);
-		cmd->error = 1;
-	}
-	free(expanded);
-	free(aux);
+		get_redirections(aux, cmd, env, 1);
+	free_maximun_of_four_str(expanded, aux, NULL, NULL);
 }
 
 /**

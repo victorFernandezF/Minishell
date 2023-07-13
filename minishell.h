@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 22:24:10 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/13 10:41:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int		get_output(char *str, t_cmd *cmd, t_env *env);
 char	*get_output_from_pos(char *cmd_line, int pos);
 int		*get_output_char_positions(char *str, t_cmd *cmd);
 int		*output_filename_to_fd_converter(char **output, t_cmd *cmd, t_env *env);
-void	get_redirections(char *aux, t_cmd *cmd, t_env *env);
+void	get_redirections(char *expa, t_cmd *cmd, t_env *env, int error);
 void	check_error_to_open(t_cmd *cmd, t_env *env, int res, char *output);
 
 //	U T I L I T I E S

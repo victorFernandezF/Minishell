@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:26:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:24:58 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/13 11:48:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,34 @@ char	*convert_heredoc_env_var_in_its_value(char *here_line, t_env *envar)
 	return (final);
 }
 
+static char	*get_heredoc_new_line(char *name, char *value)
+{
+	char	*content;
+	int		len;
+	int		end;
+	int		i;
+
+	i = -1;
+	len = ft_strlen(value);
+	end = ft_strlen(name) - 1;
+	if (name[end] == 39 || name[end] == 34)
+		len++;
+	content = malloc (len * sizeof(char *));
+	while (value[++i])
+		content[i] = value[i];
+	content[i] = '\0';
+	if (name[end] == 39 || name[end] == 34)
+	{
+		content[i] = 34;
+		if (name[end] == 39)
+			content[i] = 39;
+		content[i + 1] = '\0';
+	}
+	free(value);
+	free(name);
+	return (content);
+}
+
 /**
  * @brief Expands the environment var found in the command line. 
  * 
@@ -96,12 +124,15 @@ char	*expand_heredoc_env_vars(char *here_line, t_env *envar)
 	{
 		if (env_var_detector(array[i]))
 		{
+			new_line = ft_copy_str(array[i]);
 			temp = convert_heredoc_env_var_in_its_value(array[i], envar);
+			temp = get_heredoc_new_line(new_line, temp);
 			array[i] = temp;
 		}
 	}
 	len = get_total_length_of_words_in_array(array);
-	new_line = ft_splitnt(array, len, 0);
+	len--;
+	new_line = ft_splitnt(array, len, 1);
 	free_array(array);
 	free(here_line);
 	return (new_line);
