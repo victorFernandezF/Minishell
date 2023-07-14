@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:53:21 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/14 09:20:49 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:58:53 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ void	check_signal(t_env *env)
 		free(nb);
 		g_sign = 0;
 	}
+}
+
+void	signal_handler_child(int sig)
+{
+	printf("Hijo\n");
+	(void)sig;
+	exit(0);
 }

@@ -6,12 +6,13 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/14 11:20:58 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:06:09 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+void	signal_handler_child(int sig);
 char	*pathbar(char *path, char *cmd);
 char	**get_binpath(t_env *env);
 int		n_params(char **mat);
@@ -29,6 +30,7 @@ void	wstatus(int status, t_env *env)
 
 void	exepro(char *path, char **arg, char **senv, t_cmd *cmd)
 {
+	signal(SIGINT, signal_handler_child);
 	if (cmd->index > 1)
 	{
 		close(cmd->pipes[cmd->index - 2][1]);
