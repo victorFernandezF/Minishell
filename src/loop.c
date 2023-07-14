@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/14 09:22:45 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/14 10:57:37 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	signal_handler(int sig)
 		printf("\n");
 		rl_on_new_line();
 		rl_replace_line("", 0);
+		rl_redisplay();
+	}
+	if (sig == 3)
+	{
+		rl_on_new_line();
 		rl_redisplay();
 	}
 }
@@ -85,6 +90,7 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 	{
 		prompt = get_prompt(env);
 		signal(SIGINT, signal_handler);
+		signal(SIGQUIT, signal_handler);
 		read = readline(prompt);
 		check_ctrl_d(read, env, prompt);
 		if (read[0] != '\0')
