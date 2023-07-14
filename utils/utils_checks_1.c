@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/15 18:06:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:09:41 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	env_var_detector(char *str)
 
 	i = -1;
 	while (str[++i])
-		if (is_env_var(str[i]))
-			return (1);
+		if (is_env_var(str[i]) && ft_isalpha(str[i + 1]))
+			return (1); 
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 08:55:38 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/13 22:57:57 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:07:04 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	cd_go(t_cmd *cmd, t_env *env, char *dir)
 	}
 	set_env(env, "OLDPWD", s);
 	getcwd(s, 5000);
-	if (is_env(env, "PWD"))
-		set_env(env, "PWD", s);
+	//if (is_env(env, "PWD"))
+	set_env(env, "PWD", s);
 	if (!cmd->params || !cmd->params[0]
 		|| cmd->params[0][0] == '\0')
 	{
