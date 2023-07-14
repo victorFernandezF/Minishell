@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 12:50:22 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/14 09:48:29 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(int argc, char **argv, char **env)
 	cmd = NULL;
 	envars = ft_envar(env);
 	settings();
-	atexit(leaks);
-	printf("%i\n", (int)getpid());
+	//atexit(leaks);
+	//printf("%i\n", (int)getpid());
 	if (argc == 1)
 		mini_loop(cmd, envars);
 	else

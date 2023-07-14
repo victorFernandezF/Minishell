@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/12 08:17:42 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:20:58 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ char	**argtomat(t_cmd *cmd)
 	s = argsize(cmd);
 	args = (char **)malloc((s + 1) * sizeof(char *));
 	i = -1;
+	j = -1;
 	while (++i < s)
 	{
-		j = -1;
 		if (i == 0)
 			args[i] = fillargmat(cmd->cmd);
 		else if (i == 1 && cmd->flags)
