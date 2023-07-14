@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:53:21 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/12 22:20:56 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/14 09:20:49 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,11 @@ void	check_signal(t_env *env)
 	extern int	g_sign;
 	char		*nb;
 
-	nb = ft_itoa(g_sign);
-	set_env(env, "?", nb);
-	free(nb);
+	if (g_sign == 1)
+	{
+		nb = ft_itoa(g_sign);
+		set_env(env, "?", nb);
+		free(nb);
+		g_sign = 0;
+	}
 }
