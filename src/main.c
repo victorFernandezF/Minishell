@@ -6,24 +6,28 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/17 10:59:13 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 11:27:00 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	getfirstpid(t_env *env)
-{
-	t_env	*tmp;
+int		getfirstpid(t_env *env);
+void	signal_handler_child(int sig);
 
-	tmp = env;
-	while (tmp)
+void	s_handler(t_env *env)
+{
+	if (getfirstpid(env) == getpid())
 	{
-		if (!(ft_strncmp("1PID", tmp->var, ft_strlen("1PID"))))
-			return (ft_atoi(tmp->vals[0]));
-		tmp = tmp->next;
+		signal(SIGINT, signal_handler);
+		signal(SIGQUIT, signal_handler);
 	}
-	return (0);
+	else
+	{
+		freeenv(env);
+		signal(SIGINT, signal_handler_child);
+		signal(SIGQUIT, signal_handler_child);
+	}
 }
 
 int	main(int argc, char **argv, char **env)
@@ -43,6 +47,7 @@ int	main(int argc, char **argv, char **env)
 	settings();
 	//atexit(leaks);
 	printf("%i\n", (int)getpid());
+	s_handler(envars);
 	if (argc == 1)
 		mini_loop(cmd, envars);
 	else

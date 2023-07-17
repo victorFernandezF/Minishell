@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:36:19 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/17 10:45:25 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 11:22:20 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,27 @@ int		fillmatenv2(t_env *var, char *str, int j);
 void	shlvl_up(t_env *env);
 int		n_vars(t_env *env);
 int		cntvar(t_env *var);
+
+void	signal_handler_child(int sig)
+{
+	printf("Hijo\n");
+	(void)sig;
+	exit(0);
+}
+
+int	getfirstpid(t_env *env)
+{
+	t_env	*tmp;
+
+	tmp = env;
+	while (tmp)
+	{
+		if (!(ft_strncmp("1PID", tmp->var, ft_strlen("1PID"))))
+			return (ft_atoi(tmp->vals[0]));
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
 char	*fillmatenvexe(t_env *env)
 {

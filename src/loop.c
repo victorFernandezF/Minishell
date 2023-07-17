@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/14 14:06:29 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 11:17:31 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 	while (1)
 	{
 		prompt = get_prompt(env);
-		signal(SIGINT, signal_handler);
-		signal(SIGQUIT, signal_handler);
+		//signal(SIGINT, signal_handler);
+		//signal(SIGQUIT, signal_handler);
 		read = readline(prompt);
 		check_ctrl_d(read, env, prompt);
 		if (read[0] != '\0')
