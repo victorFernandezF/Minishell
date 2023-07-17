@@ -6,11 +6,13 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 16:01:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/12 08:16:46 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 09:53:38 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+t_env	*new_set(char *var, char *vals);
 
 void	freevals(char **vals)
 {

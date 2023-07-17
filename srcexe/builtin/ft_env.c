@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:11:39 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/12 08:16:10 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 10:24:16 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	ft_cntenv(t_env *env)
 		t += ft_strlen(tmp->var) + 1;
 		while (tmp->vals[++j])
 		{
-			if (!(ft_strncmp("?", tmp->var, ft_strlen("?"))))
+			if (!(ft_strncmp("?", tmp->var, ft_strlen("?")))
+				|| !(ft_strncmp("1PID", tmp->var, ft_strlen("1PID"))))
 				continue ;
 			while (tmp->vals[j][i++])
 				t++;
@@ -84,7 +85,8 @@ char	*envtoarray(t_env *env, char *str)
 	i = 0;
 	while (tmp)
 	{
-		if (!(ft_strncmp("?", tmp->var, ft_strlen("?"))))
+		if (!(ft_strncmp("?", tmp->var, ft_strlen("?")))
+			|| !(ft_strncmp("1PID", tmp->var, ft_strlen("1PID"))))
 		{
 			tmp = tmp->next;
 			continue ;

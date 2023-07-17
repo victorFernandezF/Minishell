@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:44:00 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/17 09:36:27 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 10:26:07 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ char	**envtomatexp(t_env *env)
 	tmp = env;
 	while (tmp && i < n_vars(env))
 	{
-		if (!(ft_strncmp("?", tmp->var, ft_strlen("?"))))
+		if (!(ft_strncmp("?", tmp->var, ft_strlen("?")))
+			|| !(ft_strncmp("1PID", tmp->var, ft_strlen("1PID"))))
 		{
 			tmp = tmp->next;
 			continue ;

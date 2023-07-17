@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 12:37:28 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 10:08:34 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 10:31:55 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	ft_delvar(char *var, t_env *env)
 	t_env	*prev;
 
 	tmp = env;
+	if (!(ft_strncmp("?", var, ft_strlen("?")))
+		|| !(ft_strncmp("1PID", var, ft_strlen("1PID"))))
+		return ;
 	while (tmp && ft_strncmp(tmp->var, var, ft_strlen(tmp->var)) != 0)
 	{
 		prev = tmp;
