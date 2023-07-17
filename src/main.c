@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/17 12:52:04 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:16:30 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv, char **env)
 	free(tmp);
 	printf("First PID: %d\n", getfirstpid(envars));
 	settings();
-	//atexit(leaks);
+	atexit(leaks);
 	printf("%i\n", (int)getpid());
 	//s_handler(envars);
 	if (argc == 1)

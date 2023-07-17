@@ -6,11 +6,13 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:43:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/17 13:08:49 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:11:31 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+int	g_sign = 0;
 
 void	actsdad(int sig)
 {

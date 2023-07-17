@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/17 13:06:11 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:14:30 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	sigdad(void);
 void	sigchild(void);
-
-int	g_sign = 0;
 
 /**
  * @brief Controls the signal 'SIGINT' so when user press ctrl-c
@@ -25,6 +23,8 @@ int	g_sign = 0;
  */
 void	signal_handler(int sig)
 {
+	extern int	g_sign;
+
 	if (sig == 2)
 	{
 		g_sign = 1;
@@ -109,7 +109,7 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 				processing(cmd, env);
 		}
 		free_maximun_of_four_str(read, prompt, NULL, NULL);
-		g_sign = 0;
+		//g_sign = 0;
 	}
 	free_struct(cmd);
 }
