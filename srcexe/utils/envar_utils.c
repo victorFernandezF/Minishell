@@ -6,14 +6,24 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:44:00 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/17 10:26:07 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 10:57:52 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	shlvl_up(t_env *env);
 int		n_vars(t_env *env);
+
+void	txt_export(char	*str)
+{
+	str[0] = 'e';
+	str[1] = 'x';
+	str[2] = 'p';
+	str[3] = 'o';
+	str[4] = 'r';
+	str[5] = 't';
+	str[6] = ' ';
+}
 
 int	cntvar(t_env *var)
 {
@@ -40,7 +50,6 @@ int	cntvar(t_env *var)
 			&& var->vals[j + 1])
 			t++;
 	}
-	//t += 2;
 	return (t);
 }
 
@@ -77,9 +86,10 @@ char	*fillmatenv(t_env *env)
 	int		i;
 	int		j;
 
-	str = (char *)malloc((cntvar(env) + 1) * sizeof(char));
+	str = (char *)malloc((cntvar(env) + 8) * sizeof(char));
 	i = 0;
-	j = 0;
+	txt_export(str);
+	j = 7;
 	while (env->var[i])
 		str[j++] = env->var[i++];
 	if (env->vals[0] == NULL)
@@ -108,31 +118,6 @@ char	**envtomatexp(t_env *env)
 	{
 		if (!(ft_strncmp("?", tmp->var, ft_strlen("?")))
 			|| !(ft_strncmp("1PID", tmp->var, ft_strlen("1PID"))))
-		{
-			tmp = tmp->next;
-			continue ;
-		}
-		mat[i] = fillmatenv(tmp);
-		tmp = tmp->next;
-		i++;
-	}
-	mat[i] = NULL;
-	return (mat);
-}
-
-char	**envtomatexecve(t_env *env)
-{
-	int		i;
-	char	**mat;
-	t_env	*tmp;
-
-	shlvl_up(env);
-	i = 0;
-	mat = (char **)malloc((n_vars(env) + 1) * sizeof(char *));
-	tmp = env;
-	while (tmp && i < n_vars(env))
-	{
-		if (!(ft_strncmp("?", tmp->var, ft_strlen("?"))))
 		{
 			tmp = tmp->next;
 			continue ;

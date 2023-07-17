@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
+#    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/07/12 10:31:00 by victofer         ###   ########.fr        #
+#    Updated: 2023/07/17 10:40:29 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRC 	= 	src/loop.c \
 			srcexe/utils/memory.c \
 			srcexe/utils/f_split.c \
 			srcexe/utils/envar_utils.c \
+			srcexe/utils/envar_utils_exe.c \
 			srcexe/utils/export_utils.c \
 			srcexe/utils/exe_utils.c \
 			srcexe/envar/envar.c \
