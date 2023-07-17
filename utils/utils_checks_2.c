@@ -26,11 +26,10 @@ int	check_errors_in_cmd(t_cmd *cmd)
 
 	error = 0;
 	cmd_2 = cmd;
-	while (cmd_2)
+	while (cmd_2 != NULL)
 	{
 		if (cmd_2->error == 1)
 			error++;
-		tmp = tmp->next;
 		tmp = cmd_2->next;
 		cmd_2 = tmp;
 	}
