@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:44:00 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/12 08:18:16 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 09:00:05 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	cntvar(t_env *var)
 			&& var->vals[j + 1])
 			t++;
 	}
-	t += 2;
+	//t += 2;
 	return (t);
 }
 
@@ -105,9 +105,9 @@ char	*fillmatenv(t_env *env)
 		return (str);
 	}
 	str[j++] = '=';
-	str[j++] = '"';
+	//str[j++] = '"';
 	j += fillmatenv2(env, str, j);
-	str[j++] = '"';
+	//str[j++] = '"';
 	str[j] = '\0';
 	return (str);
 }
