@@ -6,11 +6,14 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/17 11:17:31 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:06:11 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	sigdad(void);
+void	sigchild(void);
 
 int	g_sign = 0;
 
@@ -91,7 +94,9 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 		prompt = get_prompt(env);
 		//signal(SIGINT, signal_handler);
 		//signal(SIGQUIT, signal_handler);
+		sigdad();
 		read = readline(prompt);
+		sigchild();
 		check_ctrl_d(read, env, prompt);
 		if (read[0] != '\0')
 			add_history(read);

@@ -6,7 +6,7 @@
 #    By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/07/17 10:40:29 by fortega-         ###   ########.fr        #
+#    Updated: 2023/07/17 12:52:46 by fortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC 	= 	src/loop.c \
 			srcexe/processing.c \
 			srcexe/exebin/exegutor.c \
 			srcexe/exebin/pipes.c \
+			srcexe/exebin/signals.c \
 			srcexe/utils/cd_utils.c \
 			srcexe/utils/split_first.c \
 			srcexe/utils/errors.c \
