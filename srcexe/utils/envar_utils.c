@@ -6,31 +6,14 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:44:00 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/17 09:00:05 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 09:36:27 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int	n_vars(t_env *env)
-{
-	int		t;
-	t_env	*tmp;
-
-	t = 0;
-	tmp = env;
-	while (tmp)
-	{
-		if (!(ft_strncmp("?", tmp->var, ft_strlen("?"))))
-		{
-			tmp = tmp->next;
-			continue ;
-		}
-		tmp = tmp->next;
-		t++;
-	}
-	return (t);
-}
+void	shlvl_up(t_env *env);
+int		n_vars(t_env *env);
 
 int	cntvar(t_env *var)
 {
@@ -118,6 +101,31 @@ char	**envtomatexp(t_env *env)
 	char	**mat;
 	t_env	*tmp;
 
+	i = 0;
+	mat = (char **)malloc((n_vars(env) + 1) * sizeof(char *));
+	tmp = env;
+	while (tmp && i < n_vars(env))
+	{
+		if (!(ft_strncmp("?", tmp->var, ft_strlen("?"))))
+		{
+			tmp = tmp->next;
+			continue ;
+		}
+		mat[i] = fillmatenv(tmp);
+		tmp = tmp->next;
+		i++;
+	}
+	mat[i] = NULL;
+	return (mat);
+}
+
+char	**envtomatexecve(t_env *env)
+{
+	int		i;
+	char	**mat;
+	t_env	*tmp;
+
+	shlvl_up(env);
 	i = 0;
 	mat = (char **)malloc((n_vars(env) + 1) * sizeof(char *));
 	tmp = env;

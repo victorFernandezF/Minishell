@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/14 14:06:09 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/17 09:36:37 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	exegutor(t_cmd *cmd, t_env *env)
 	if (!path)
 		return (cmd_error(cmd->cmd, ": No such file or directory", env));
 	arg = argtomat(cmd);
-	senv = envtomatexp(env);
+	senv = envtomatexecve(env);
 	pid = fork();
 	if (pid == 0)
 		exepro(path, arg, senv, cmd);
