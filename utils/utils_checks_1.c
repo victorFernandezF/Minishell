@@ -72,7 +72,7 @@ int	env_var_detector(char *str)
 	i = -1;
 	while (str[++i])
 		if (is_env_var(str[i])
-			&& (ft_isalpha(str[i + 1]) || str[i + 1] == '?' || str[i + 1] == '_'))
+			&& (ft_isalnum(str[i + 1]) || str[i + 1] == '?' || str[i + 1] == '_'))
 			return (1);
 	return (0);
 }
