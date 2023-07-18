@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:43:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/17 13:11:31 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/18 08:28:38 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,21 @@ void	signal_handler_child(int sig)
 	rl_on_new_line();
 }
 
+void	no_sigquit(void)
+{
+	struct sigaction	no_sigquit;
+
+	ft_memset(&no_sigquit, 0, sizeof(no_sigquit));
+	no_sigquit.sa_handler = SIG_IGN;
+	no_sigquit.sa_flags = SA_RESTART;
+	sigaction(SIGQUIT, &no_sigquit, NULL);
+}
+
 void	sigdad(void)
 {
 	struct sigaction	dad;
 
+	no_sigquit();
 	ft_memset(&dad, 0, sizeof(dad));
 	dad.sa_handler = &actsdad;
 	dad.sa_flags = SA_RESTART;
@@ -47,6 +58,7 @@ void	sigchild(void)
 {
 	struct sigaction	child;
 
+	no_sigquit();
 	ft_memset(&child, 0, sizeof(child));
 	child.sa_handler = &signal_handler_child;
 	child.sa_flags = SA_RESTART;
