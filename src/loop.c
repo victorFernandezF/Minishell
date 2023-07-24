@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/17 13:14:30 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/24 09:49:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sigchild(void);
  *
  * @param sig Signal id.
  */
-void	signal_handler(int sig)
+/* void	signal_handler(int sig)
 {
 	extern int	g_sign;
 
@@ -38,7 +38,7 @@ void	signal_handler(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-}
+} */
 
 /**
  * @brief checks if readline takes EOF character which means
@@ -92,8 +92,6 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 	while (1)
 	{
 		prompt = get_prompt(env);
-		//signal(SIGINT, signal_handler);
-		//signal(SIGQUIT, signal_handler);
 		sigdad();
 		read = readline(prompt);
 		sigchild();
@@ -109,7 +107,6 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 				processing(cmd, env);
 		}
 		free_maximun_of_four_str(read, prompt, NULL, NULL);
-		//g_sign = 0;
 	}
 	free_struct(cmd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_checks_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 11:20:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/14 14:07:37 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/24 09:47:23 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int	env_var_detector(char *str)
 	i = -1;
 	while (str[++i])
 		if (is_env_var(str[i])
-			&& (ft_isalnum(str[i + 1]) || str[i + 1] == '?' || str[i + 1] == '_'))
+			&& (ft_isalnum(str[i + 1]) || str[i + 1] == '?'
+				|| str[i + 1] == '_'))
 			return (1);
 	return (0);
 }

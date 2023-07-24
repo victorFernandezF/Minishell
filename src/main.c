@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/17 13:16:30 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/24 09:49:36 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ void	s_handler(t_env *env)
 		signal(SIGINT, signal_handler);
 		signal(SIGQUIT, signal_handler);
 	}
-	/*else
-	{
-		freeenv(env);
-		signal(SIGINT, signal_handler_child);
-		signal(SIGQUIT, signal_handler_child);
-	}*/
 }
 
 int	main(int argc, char **argv, char **env)
@@ -47,7 +41,6 @@ int	main(int argc, char **argv, char **env)
 	settings();
 	atexit(leaks);
 	printf("%i\n", (int)getpid());
-	//s_handler(envars);
 	if (argc == 1)
 		mini_loop(cmd, envars);
 	else
