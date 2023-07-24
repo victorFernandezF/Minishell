@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/24 09:49:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/24 10:05:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sigchild(void);
  *
  * @param sig Signal id.
  */
-/* void	signal_handler(int sig)
+void	signal_handler(int sig)
 {
 	extern int	g_sign;
 
@@ -38,7 +38,7 @@ void	sigchild(void);
 		rl_on_new_line();
 		rl_redisplay();
 	}
-} */
+}
 
 /**
  * @brief checks if readline takes EOF character which means

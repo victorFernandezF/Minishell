@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/24 09:49:36 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/24 10:11:35 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ void	s_handler(t_env *env)
 	}
 }
 
+void	title(void)
+{
+	printf("%s\n", B);
+	printf(" ███╗   ███╗██╗███╗   ██╗██╗██████╗██╗  ██╗██████╗██╗    ██╗\n");
+	printf(" ████╗ ████║██║████╗  ██║██║██╔═══╝██║  ██║██╔═══╝██║    ██║\n");
+	printf(" ██╔████╔██║██║██╔██╗ ██║██║██████╗███████║████╗  ██║    ██║\n");
+	printf(" ██║╚██╔╝██║██║██║╚██╗██║██║╚════█║██╔══██║██╔═╝  ██║    ██║\n");
+	printf(" ██║ ╚═╝ ██║██║██║ ╚████║██║██████║██║  ██║██████╗██████╗██████╗\n");
+	printf(" ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═════╝╚═╝  ╚═╝╚═════╝╚═════╝╚═════╝\n");
+	printf("                    FORTEGA-  VICTOFER        %s\n", W);
+}
+
 int	main(int argc, char **argv, char **env)
 {
 	t_cmd	*cmd;
@@ -31,23 +43,21 @@ int	main(int argc, char **argv, char **env)
 	char	*tmp;
 
 	(void)argv;
-	tmp = ft_itoa(getpid());
+	if (argc != 1)
+	{
+		ft_putendl_fd("Error: execute minishell without parameters", 2);
+		return (0);
+	}
 	cmd = NULL;
+	tmp = ft_itoa(getpid());
 	envars = ft_envar(env);
 	if (!is_env(envars, "1PID"))
 		set_env(envars, "1PID", tmp);
 	free(tmp);
-	printf("First PID: %d\n", getfirstpid(envars));
-	settings();
 	atexit(leaks);
-	printf("%i\n", (int)getpid());
-	if (argc == 1)
-		mini_loop(cmd, envars);
-	else
-	{
-		ft_putendl_fd("Error: execute minishell without parameters", 2);
-		free_struct(cmd);
-		freeenv(envars);
-	}
+	settings();
+	title();
+	printf("First PID: %d\n", getfirstpid(envars));
+	mini_loop(cmd, envars);
 	return (0);
 }
