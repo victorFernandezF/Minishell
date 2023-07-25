@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 12:41:38 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/25 19:36:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ int	get_nb_cmd(char *cmd_line)
  * @param cmd_line Command lime.
  * @return [Char *] The given line, after deleting the command name 
  */
-char	*get_cmd(char *cmd_line, t_cmd	*cmd)
+char	*get_cmd(char *aux, char *cmd_line, t_cmd	*cmd)
 {
 	int		i;
 	int		len;
 	char	*rest;
 
+	(void)aux;
 	if (ft_strlen(cmd_line) == 0)
 		return (NULL);
 	i = skip_characters(cmd_line, 0);

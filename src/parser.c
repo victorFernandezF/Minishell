@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/14 09:20:54 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/25 19:36:57 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ void	get_redirections(char *expa, t_cmd *cmd, t_env *env, int error)
 void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 {
 	char	*expanded;
-	char	*aux;
 
 	expanded = expand_environment_variables(command, env);
-	aux = ft_copy_str(expanded);
+	cmd->aux = ft_strdup(expanded);
 	cmd->nb_outputs = get_nb_outputs(expanded);
 	cmd->nb_inputs = get_nb_inputs(expanded);
 	if (cmd->nb_outputs > 0)
@@ -54,14 +53,14 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 		cmd->error = 2;
 	if (expanded[0] != '\0')
 	{
-		expanded = get_cmd(expanded, cmd);
+		expanded = get_cmd(cmd->aux, expanded, cmd);
 		expanded = get_flags(expanded, command, cmd);
 		expanded = get_parameters(expanded, cmd, env);
-		get_redirections(aux, cmd, env, 0);
+		get_redirections(cmd->aux, cmd, env, 0);
 	}
 	else
-		get_redirections(aux, cmd, env, 1);
-	free_maximun_of_four_str(expanded, aux, NULL, NULL);
+		get_redirections(cmd->aux, cmd, env, 1);
+	free_maximun_of_four_str(expanded, cmd->aux, NULL, NULL);
 }
 
 /**

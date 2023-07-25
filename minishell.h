@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/24 10:13:46 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/25 19:29:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_cmd
 {
 	int		nb_cmd;
 	char	*cmd;
+	char	*aux;
 	char	*flags;
 	char	**params;
 	int		nb_inputs;
@@ -113,7 +114,7 @@ char	*redi_string_starting(int len, char *env_complete, char *env, int flag);
 int		get_nb_cmd(char *str);
 int		get_nb_inputs(char *cmd_line);
 int		get_nb_outputs(char *str);
-char	*get_cmd(char *str, t_cmd *cmd);
+char	*get_cmd(char *aux, char *str, t_cmd *cmd);
 char	*get_flags(char *expanded, char *str, t_cmd *cmd);
 char	*get_parameters(char *str, t_cmd *cmd, t_env *env);
 int		get_input(char *cmd_line, t_cmd *cmd, t_env *env);
