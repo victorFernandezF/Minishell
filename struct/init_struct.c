@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 10:55:59 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 12:58:57 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/26 13:59:54 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_cmd	*init_struct(t_cmd *structure)
 {
 	structure = malloc(sizeof(t_cmd));
 	structure->cmd = NULL;
+	structure->aux = NULL;
 	structure->nb_cmd = 0;
 	structure->flags = NULL;
 	structure->params = NULL;
