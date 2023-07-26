@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 12:02:54 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*replace_heredoc(char *line)
 	char	**arr_tmp;
 	char	*new;
 
-	temp = ft_copy_str(line);
+	temp = ft_strdup(line);
 	i = -1;
 	temp = convert_heredoc_in_input(temp);
 	arr_tmp = ft_split_minishell(temp, 0);
@@ -130,7 +130,7 @@ char	*heredoc(char *cmd_line, t_env *envar)
 	char	*read_here;
 	char	*new_line;
 
-	temporary = ft_copy_str(cmd_line);
+	temporary = ft_strdup(cmd_line);
 	delimiter = get_delimiter(temporary);
 	heredoc_fd = open_heredoc_file();
 	while (1)

@@ -6,7 +6,7 @@
 #    By: victofer <victofer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 18:12:44 by victofer          #+#    #+#              #
-#    Updated: 2023/07/24 10:11:55 by victofer         ###   ########.fr        #
+#    Updated: 2023/07/26 10:01:42 by victofer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,6 @@ norminette:
 	@echo "$(Y)------- $(G)EVERITHING OK$(Y) -------$(E)"
 
 $(NAME): $(OBJS)
-	@mkdir -p redir
 	@$(COMP) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBFT) $(READLINE_LIB) -o $(NAME)
 	@echo "$(Y)0-----------------------0"
 	@echo "$(Y)|$(G)    MINISHELL CREATED $(Y) |"

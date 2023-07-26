@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 12:42:37 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ char	*get_flags(char *exp, char *cmd_line, t_cmd *cmd)
 	char	*no_cmd;
 	char	*copy;
 
-	copy = ft_copy_str(cmd_line);
+	copy = ft_strdup(cmd_line);
 	start = skip_characters_and_spaces(copy, 0);
 	no_cmd = ft_substr(copy, start, strlen_starting_in(cmd_line, start));
 	if (no_cmd[0] != '-')
 	{
 		free(copy);
-		copy = ft_copy_str(exp);
+		copy = ft_strdup(exp);
 		cmd->flags = NULL;
 		free_maximun_of_four_str(no_cmd, exp, NULL, NULL);
 		return (copy);

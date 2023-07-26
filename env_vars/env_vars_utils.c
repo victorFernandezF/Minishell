@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:53:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/11 13:47:33 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char	**take_only_the_good_ones(char **array)
 	i = -1;
 	while (array[++i])
 		if (array[i][0] != '$')
-			good_envars[j++] = ft_copy_str(array[i]);
+			good_envars[j++] = ft_strdup(array[i]);
 	good_envars[j] = NULL;
 	free_array(array);
 	return (good_envars);

@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:26:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 11:48:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ char	*expand_heredoc_env_vars(char *here_line, t_env *envar)
 	{
 		if (env_var_detector(array[i]))
 		{
-			new_line = ft_copy_str(array[i]);
+			new_line = ft_strdup(array[i]);
 			temp = convert_heredoc_env_var_in_its_value(array[i], envar);
 			temp = get_heredoc_new_line(new_line, temp);
 			array[i] = temp;

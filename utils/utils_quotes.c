@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:48:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/06/22 18:32:03 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_unclosed_quotes(char *str)
 		if (str[i] == 39 || str[i] == 34)
 			nb_quot++;
 	if (nb_quot % 2 == 0)
-		return (ft_copy_str(str));
+		return (ft_strdup(str));
 	len = ft_strlen(str) - 1;
 	no_last_quot = malloc(len * sizeof(char));
 	if (!no_last_quot)

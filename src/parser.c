@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/25 19:36:57 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*manage_heredoc(char *str, t_env *envar)
 	{
 		if (array[i][0] == '<' && array[i][1] == '<')
 		{
-			new = ft_copy_str(array[i]);
+			new = ft_strdup(array[i]);
 			free(array[i]);
 			array[i] = heredoc(new, envar);
 			free (new);
@@ -154,7 +154,7 @@ void	start_parser(t_cmd *cmd, char *cmd_line, t_env *envar)
 	{
 		if (heredoc_detector(command[i]))
 		{
-			aux_var = ft_copy_str(command[i]);
+			aux_var = ft_strdup(command[i]);
 			free(command[i]);
 			command[i] = manage_heredoc(aux_var, envar);
 		}
