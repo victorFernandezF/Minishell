@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 12:43:44 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/18 08:28:38 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:54:59 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	actsdad(int sig)
 
 void	signal_handler_child(int sig)
 {
-	//printf("Hijo\n");
 	(void)sig;
 	rl_on_new_line();
 }

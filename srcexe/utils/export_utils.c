@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 18:52:36 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/17 09:41:11 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:03:30 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,15 @@ int	get_shlvl(t_env *env)
 	return (0);
 }
 
-void	shlvl_up(t_env *env)
+void	shlvl_up(t_env *env, bool ud)
 {
 	int		now;
 	char	*tmp;
 
-	now = get_shlvl(env) + 1;
+	if (ud == true)
+		now = get_shlvl(env) + 1;
+	else
+		now = get_shlvl(env) - 1;
 	tmp = ft_itoa(now);
 	set_env(env, "SHLVL", tmp);
 	free(tmp);

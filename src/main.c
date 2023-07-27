@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:03 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/24 10:14:45 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:48:22 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int		getfirstpid(t_env *env);
-void	signal_handler_child(int sig);
-
-void	s_handler(t_env *env)
-{
-	if (getfirstpid(env) == getpid())
-	{
-		signal(SIGINT, signal_handler);
-		signal(SIGQUIT, signal_handler);
-	}
-}
 
 void	title(void)
 {
@@ -40,7 +28,6 @@ int	main(int argc, char **argv, char **env)
 {
 	t_cmd	*cmd;
 	t_env	*envars;
-	char	*tmp;
 
 	(void)argv;
 	if (argc != 1)
@@ -49,15 +36,10 @@ int	main(int argc, char **argv, char **env)
 		return (0);
 	}
 	cmd = NULL;
-	tmp = ft_itoa(getpid());
 	envars = ft_envar(env);
-	if (!is_env(envars, "1PID"))
-		set_env(envars, "1PID", tmp);
-	free(tmp);
 	atexit(leaks);
 	settings();
 	title();
-	printf("First PID: %d\n", getfirstpid(envars));
 	mini_loop(cmd, envars);
 	return (0);
 }
