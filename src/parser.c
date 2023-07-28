@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/28 10:55:49 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 12:56:03 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	get_redirections(char *expa, t_cmd *cmd, t_env *env, int error)
  * @param tmp The struct created in main.
  * @param command An string whith the given command
  */
-void	fill_struct(t_cmd *cmd, char *command, t_env *env)
+int	fill_struct(t_cmd *cmd, char *command, t_env *env)
 {
 	char	*expanded;
 	char	*aux;
@@ -56,17 +56,14 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 	{
 		expanded = get_cmd(expanded, cmd);
 		if (expanded == NULL)
-		{
-			free_maximun_of_four_str(expanded, aux, NULL, NULL);
-			return ;
-		}
+			return (free_maximun_of_four_str(expanded, aux, NULL, NULL), 0);
 		expanded = get_flags(expanded, command, cmd);
 		expanded = get_parameters(expanded, cmd, env);
 		get_redirections(aux, cmd, env, 0);
 	}
 	else
 		get_redirections(aux, cmd, env, 1);
-	free_maximun_of_four_str(expanded, aux, NULL, NULL);
+	return (free_maximun_of_four_str(expanded, aux, NULL, NULL), 0);
 }
 
 /**
