@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 15:15:22 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 10:08:17 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/28 09:20:28 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	ft_exit(t_cmd *cmd, t_env *env)
 		return (cmd_error("exit", "too many arguments", env));
 	if (ft_atoi_test_nums(cmd->params[0]) == 'f')
 	{
+		printf("exit\n");
 		tmp = ft_strjoin(cmd->params[0], ": numeric argument required");
 		cmd_cd_error("exit", tmp, env);
 		exit (255);

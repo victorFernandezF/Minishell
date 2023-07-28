@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 17:28:13 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/10 10:06:44 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/28 09:16:11 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_echo(t_cmd *cmd, t_env *env)
 			return (EXIT_SUCCESS);
 		}
 		else
-			return (cmd_error("echo", "Only -n option allowed\n", env));
+			return (cmd_error("echo", "Only -n option allowed", env));
 	}
 	else
 	{

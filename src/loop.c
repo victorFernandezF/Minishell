@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/24 10:05:40 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 09:45:39 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 			cmd = init_struct(cmd);
 			start_parser(cmd, read, env);
 			if (check_errors_in_cmd(cmd) == 0)
+			{
+				//print_test(read, cmd, 0);
 				processing(cmd, env);
+			}
 		}
 		free_maximun_of_four_str(read, prompt, NULL, NULL);
 	}
