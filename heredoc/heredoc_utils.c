@@ -6,11 +6,35 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:01:12 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/07 12:56:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:11:48 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	heredoc_while(char *del, int fd, t_env *envar)
+{
+	char	*read_here;
+
+	while (1)
+	{
+		read_here = readline("> ");
+		if (!read_here)
+			break ;
+		if (read_here[0] == 0)
+		{
+			free(read_here);
+			continue ;
+		}
+		read_here = expand_heredoc_env_vars(read_here, envar);
+		if (are_two_strs_equal(read_here, del))
+		{
+			free(read_here);
+			break ;
+		}
+		write_in_heredoc_temp_file(fd, read_here);
+	}
+}
 
 /**
  * @brief Frees the memory mallocked in heredoc.

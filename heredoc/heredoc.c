@@ -6,13 +6,14 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/28 12:09:56 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:11:59 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../minishell.h"
 
 void	sigchild(void);
+void	heredoc_while(char *del, int fd, t_env *envar);
 
 /**
  * @brief Replace heredoc by normal input in the command line.
@@ -128,28 +129,13 @@ char	*heredoc(char *cmd_line, t_env *envar)
 {
 	int		heredoc_fd;
 	char	*delimiter;
-	char	*read_here;
+	void	*old;
 
+	old = rl_getc_function;
+	rl_getc_function = getc;
 	delimiter = get_delimiter(cmd_line);
 	heredoc_fd = open_heredoc_file();
-	while (1)
-	{
-		read_here = readline("> ");
-		printf("%s\n", read_here);
-		if (!read_here)
-			break ;
-		if (read_here[0] == 0)
-		{
-			free(read_here);
-			continue ;
-		}
-		read_here = expand_heredoc_env_vars(read_here, envar);
-		if (are_two_strs_equal(read_here, delimiter))
-		{
-			free(read_here);
-			break ;
-		}
-		write_in_heredoc_temp_file(heredoc_fd, read_here);
-	}
+	heredoc_while(delimiter, heredoc_fd, envar);
+	rl_getc_function = old;
 	return (free_close(NULL, delimiter, heredoc_fd), replace_heredoc(cmd_line));
 }
