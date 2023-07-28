@@ -6,11 +6,13 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/28 11:22:11 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 12:09:56 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../minishell.h"
+
+void	sigchild(void);
 
 /**
  * @brief Replace heredoc by normal input in the command line.
@@ -133,6 +135,7 @@ char	*heredoc(char *cmd_line, t_env *envar)
 	while (1)
 	{
 		read_here = readline("> ");
+		printf("%s\n", read_here);
 		if (!read_here)
 			break ;
 		if (read_here[0] == 0)
