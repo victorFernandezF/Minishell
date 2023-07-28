@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 18:11:40 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/28 10:27:09 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 10:55:49 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void	fill_struct(t_cmd *cmd, char *command, t_env *env)
 	{
 		expanded = get_cmd(expanded, cmd);
 		if (expanded == NULL)
+		{
+			free_maximun_of_four_str(expanded, aux, NULL, NULL);
 			return ;
+		}
 		expanded = get_flags(expanded, command, cmd);
 		expanded = get_parameters(expanded, cmd, env);
 		get_redirections(aux, cmd, env, 0);

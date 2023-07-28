@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/28 10:31:28 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 10:59:17 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ char	*get_cmd(char *cmd_line, t_cmd	*cmd)
 	len = strlen_starting_in(cmd_line, i);
 	rest = ft_substr(cmd_line, i, len);
 	if (i == (int)ft_strlen(cmd_line) - 2)
+	{
+		free(rest);
 		rest = NULL;
+	}
 	free(cmd_line);
 	free_array(array);
 	return (rest);
