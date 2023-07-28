@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 11:51:06 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/12 13:25:44 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 10:05:39 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ int	not_empty(char *str, t_env *env)
 	if ((str[0] == 39 || str[0] == 34))
 	{
 		i = skip_whitespaces(str, i);
-		if ((str[i] == 39 || str[i] == 34))
+		if (i == 0 && str[i + 1] != ' ')
+			i++;
+		if (i == 0 || str[i] == 39 || str[i] == 34)
 		{
 			res = 1;
 			print_errors_by_code(4, env);

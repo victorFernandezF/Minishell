@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:12:47 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/26 17:51:07 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 10:31:28 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,18 @@ char	*get_cmd(char *cmd_line, t_cmd	*cmd)
 	int		i;
 	int		len;
 	char	*rest;
+	char	**array;
 
 	if (ft_strlen(cmd_line) == 0)
 		return (NULL);
-	i = skip_characters(cmd_line, 0);
-	cmd->cmd = ft_substr(cmd_line, 0, i);
-	i = skip_whitespaces(cmd_line, i);
+	array = ft_split_minishell(cmd_line, 0);
+	cmd->cmd = ft_strdup(array[0]);
+	i = ft_strlen(array[0]);
 	len = strlen_starting_in(cmd_line, i);
 	rest = ft_substr(cmd_line, i, len);
+	if (i == (int)ft_strlen(cmd_line) - 2)
+		rest = NULL;
 	free(cmd_line);
+	free_array(array);
 	return (rest);
 }

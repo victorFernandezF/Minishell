@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:09:26 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 10:49:40 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	*get_flags(char *exp, char *cmd_line, t_cmd *cmd)
 		start--;
 	flags = ft_substr(no_cmd, 0, start);
 	cmd->flags = flags;
+	start++;
 	rest = ft_substr(exp, start, strlen_starting_in(exp, start));
 	free_maximun_of_four_str(no_cmd, copy, exp, NULL);
 	return (rest);
