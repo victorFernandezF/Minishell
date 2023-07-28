@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:57:27 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/26 09:59:08 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:22:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,19 +125,21 @@ int	open_heredoc_file(void)
 char	*heredoc(char *cmd_line, t_env *envar)
 {
 	int		heredoc_fd;
-	char	*temporary;
 	char	*delimiter;
 	char	*read_here;
-	char	*new_line;
 
-	temporary = ft_strdup(cmd_line);
-	delimiter = get_delimiter(temporary);
+	delimiter = get_delimiter(cmd_line);
 	heredoc_fd = open_heredoc_file();
 	while (1)
 	{
 		read_here = readline("> ");
-		if (read_here == 0)
+		if (!read_here)
 			break ;
+		if (read_here[0] == 0)
+		{
+			free(read_here);
+			continue ;
+		}
 		read_here = expand_heredoc_env_vars(read_here, envar);
 		if (are_two_strs_equal(read_here, delimiter))
 		{
@@ -146,7 +148,5 @@ char	*heredoc(char *cmd_line, t_env *envar)
 		}
 		write_in_heredoc_temp_file(heredoc_fd, read_here);
 	}
-	new_line = replace_heredoc(cmd_line);
-	free_and_close_heredoc_stuff(temporary, delimiter, heredoc_fd);
-	return (new_line);
+	return (free_close(NULL, delimiter, heredoc_fd), replace_heredoc(cmd_line));
 }

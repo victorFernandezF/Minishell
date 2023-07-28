@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 18:06:01 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/13 12:03:00 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:22:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	free_array(char **array)
  * @param delimiter String to free
  * @param fd Fd to close
  */
-void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd)
+void	free_close(char *tmp, char *delimiter, int fd)
 {	
 	free(delimiter);
 	free(tmp);

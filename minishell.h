@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:50:39 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/27 09:46:48 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:22:11 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void	free_struct(t_cmd *cmd);
 void	free_int_array(int *array);
 void	free_array(char **array);
 void	free_array_and_str(char **array, char *str);
-void	free_and_close_heredoc_stuff(char *tmp, char *delimiter, int fd);
+void	free_close(char *tmp, char *delimiter, int fd);
 void	free_redirection(int *i1, int *i2, char **arr);
 void	free_maximun_of_four_str(char *s1, char *s2, char *s3, char *s4);
 void	close_fds(t_cmd *cmd);
