@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/27 09:47:47 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/28 10:22:21 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int		argsize(t_cmd *cmd);
 void	wstatus(int status, t_env *env)
 {
 	char	*tmp;
+	int		e;
 
-	tmp = ft_itoa(status);
+	e = WEXITSTATUS(status);
+	tmp = ft_itoa(e);
 	set_env(env, "?", tmp);
 	free(tmp);
 }
@@ -112,7 +114,7 @@ int	exegutor(t_cmd *cmd, t_env *env)
 
 	path = exepath(cmd->cmd, env);
 	if (!path)
-		return (cmd_error(cmd->cmd, ": No such file or directory", env));
+		return (cmd_error(cmd->cmd, ": command not found", env));
 	arg = argtomat(cmd);
 	senv = envtomatexecve(env, cmd->cmd);
 	pid = fork();
