@@ -6,7 +6,7 @@
 /*   By: fortega- <fortega-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:17:47 by fortega-          #+#    #+#             */
-/*   Updated: 2023/07/28 10:22:21 by fortega-         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:03:03 by fortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	exegutor(t_cmd *cmd, t_env *env)
 
 	path = exepath(cmd->cmd, env);
 	if (!path)
-		return (cmd_error(cmd->cmd, ": command not found", env));
+		return (cmd_error(cmd->cmd, "command not found", env));
 	arg = argtomat(cmd);
 	senv = envtomatexecve(env, cmd->cmd);
 	pid = fork();
