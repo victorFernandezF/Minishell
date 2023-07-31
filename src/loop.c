@@ -6,7 +6,7 @@
 /*   By: victofer <victofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:07:10 by victofer          #+#    #+#             */
-/*   Updated: 2023/07/28 12:28:23 by victofer         ###   ########.fr       */
+/*   Updated: 2023/07/28 13:14:12 by victofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void	mini_loop(t_cmd *cmd, t_env *env)
 			start_parser(cmd, read, env);
 			if (check_errors_in_cmd(cmd) == 0)
 			{
-				print_test(read, cmd, 0);
 				processing(cmd, env);
 			}
 		}
