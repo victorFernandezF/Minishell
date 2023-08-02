@@ -1,21 +1,55 @@
-# Minishell
-A little shell
+# ::shell: MINISHELL
 
-CLONE REPO
-~~~~
+<hr>
+
+## INFO [:gb:]
+
+#### Summary
+> The objective of this project is for you to create a simple shell.
+
+|   Keywords   |           Skills          |
+|--------------|:-------------------------:|
+| Unix logic   |           Unix            |
+|              |           Rigor           |
+|              |   Imperative programming  |
+
+### STATUS
+
+| Project status | FINISHED                |
+|--------------|---------------------------|
+| Proyecto mark |   ![result](https://img.shields.io/badge/RESULT-100%25-green) |
+
+#### CLONE REPO
+~~~~~
 git clone https://github.com/victorFernandezF/Minishell.git
-~~~~
+~~~~~
 
-struct info so far:
+#### PREVIEW IMAGE
+<img style="width:50%" src="preview.png">
 
-t_cmd
-*	cmd -> string with the command (ex: **<ins>echo</ins>** -n hello world > output_1.txt)
-*	nb_cmd -> number of commands.
-*	flags -> string with flags ((ex: echo **<ins>-n</ins>** hello world > output_1.txt))
-*	params -> array of strings with each param given in the command line. 
-((ex: echo -n **<ins>hello</ins><sup>params[0]</sup>** **<ins>world</ins><sup>params[1]</sup>** > output_1.txt))
-* 	intput -> last input fd.
-*	nb_output -> number of fd in which the command export its results
-*	output -> last fd opened and ready to store the result of the command.(ex: output.txt) In bash if you type: *echo "hello" > output_1.txt > output_2.txt* it will open output_1.txt but the result will be stored in output_2.txt and output_1.txt will be empty.
-*	index -> it is like an id for the structure.
-*	next -> the next node to the list, in case there were more than one command with a pipe.
+<hr>
+
+## INFO [:es:]
+
+#### Resumen 
+> El objetivo de este proyecto es crear un sencillo shell.
+
+|   Keywords   |           Skills          |
+|--------------|:-------------------------:|
+| Unix logic   |           Unix            |
+|              |           Rigor           |
+|              |   Imperative programming  |
+
+### ESTADO
+
+| Estado del proyecto | Finalizado         |
+|--------------|---------------------------|
+| Nota del proyecto   | ![result](https://img.shields.io/badge/RESULTADO-100%25-green)|
+
+
+#### CLONAR REPOSITORIO
+~~~~~
+git clone https://github.com/victorFernandezF/Minishell.git
+~~~~~
+#### IMAGEN
+<img style="width:50%" src="preview.png">
