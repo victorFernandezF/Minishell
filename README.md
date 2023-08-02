@@ -1,4 +1,4 @@
-# ::shell: MINISHELL
+# :shell: MINISHELL
 
 <hr>
 
